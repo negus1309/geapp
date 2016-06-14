@@ -18,15 +18,26 @@ app.controller('seancesController', function($scope, $http, API_URL) {
       });*/
 
 
-      $http.get(API_URL + "commissions")
+      $http.get(API_URL + "commissions/seances")
         .success(function(response) {
             $scope.commissions = response;
-            
-        })
-        .then(function(response){
-            console.log('1')
 
         });
+
+          /*$('div.uk-accordion.ng-scope').on('toggle.uk.accordion', function(){
+
+            console.log(this)
+            console.log('test')
+          //  $('.span.arrow-accordion')
+        })*/
+
+      /*  $scope.changeIcon = function($event){
+          console.log($event.currentTarget)
+          //$(this).remove();
+
+        }
+*/
+
 
       /*$scope.getSeanceParCommission = function($idCommission){
 

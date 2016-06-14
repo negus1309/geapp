@@ -12,27 +12,31 @@
         <link href="<?= asset('css/components/accordion.min.css') ?>" rel="stylesheet"  />
     </head>
     <body>
-      <h1>geApp</h1>
 
-    <div id="liste" class="uk-grid" ng-controller="seancesController">
+
+    <div id="liste" class="uk-grid uk-grid-small" ng-controller="seancesController">
 
           <div id="mes-pv" class="uk-width-1-3 ">
                   <div class="uk-panel uk-panel-box">
                     <h3 class="uk-panel-title">Mes PV</h3>
 
 <!--- ///////////////   ITEM SEANCE ///////////__-->
-                    <div class="uk-accordion" data-uk-accordion ng-repeat="commission in commissions">
+                    <div class="uk-accordion" data-uk-accordion ng-repeat="commission in commissions" ng-click="changeIcon($event)">
 
-                            <h4 class="uk-accordion-title" data-commission-id="{{commission.id}}">{{commission.nom}}</h4>
+                            <h4 class="uk-accordion-title" data-commission-id="{{commission.id}}">{{commission.nom}}
+                            </h4>
 
                             <div class="uk-accordion-content">
+
                               <ul class="pv-list-item">
-                                <!--<div >-->
-                                  mmh
-                                <!--</div>-->
+                                <div ng-repeat="uneSeance in commission.seance">
+                                  <ng-include src="'<?= asset('app/views/seanceListe.html')?>'">
+                                  </ng-include>
+                                </div>
                               </ul>
+
                             </div>
-                            
+
                     </div>
 
     <!--- ///////////////   ITEM SEANCE FIN///////////__-->

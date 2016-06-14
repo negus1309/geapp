@@ -1,9 +1,9 @@
 body{
   //padding: 15px;
-  h1{
+  /*h1{
     padding: 20px;
     padding-bottom: 0px;
-  }
+  }*/
 }
 
 div#liste{
@@ -23,13 +23,55 @@ div#workflow{
   visibility: hidden;
 }
 
+
+
+
+
+
+
+
+// UIkit modification
+
+
+// icon on accordion UIkit
+.uk-accordion-title:before {
+    /* enable icon font */
+    font-family: 'FontAwesome';
+    src: url("../fonts/fontawesome-webfont.eot");
+    src: url("../fonts/fontawesome-webfont-ie.eot") format("embedded-opentype"),
+         url("../fonts/fontawesome-webfont.woff2") format('woff2'),
+         url("../fonts/fontawesome-webfont.woff") format("woff"),
+         url("../fonts/fontawesome-webfont.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+
+    /* down arrow icon */
+    content: "\f078";
+
+    /* some space*/
+    padding-right:5px;
+ }
+.uk-accordion-title.uk-active:before {
+    /* up arrow icon */
+    content: "\f077";
+ }
+
+
+
+
+.uk-accordion-title{
+
+}
+
+
+
 .uk-panel{
-  margin: 20px;
+  margin: 10px;
 }
 
 
 ul.pv-list-item{
-  padding-left: 0px;
+  //padding-left: 0px;
 }
 
 ul.pv-list-item li {

@@ -28,4 +28,4 @@ Route::get('/geapp/public/api/v1/seances/commissions', 'SeanceController@getComm
 Route::get('/geapp/public/api/v1/commissions', 'CommissionController@index');
 Route::get('/geapp/public/api/v1/commissions/{idCommission}/seances', 'SeanceController@getSeanceParCommission');
 
-Route::get('/geapp/public/api/v1/jesus', 'CommissionController@getCommissionWithSeances');
+Route::get('/geapp/public/api/v1/commissions/seances', 'CommissionController@getCommissionWithSeances');
