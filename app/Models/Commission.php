@@ -10,7 +10,7 @@ class Commission extends Model
 
 
     public function seance() {
-      return $this->hasMany('Seance'); // this matches the Eloquent model
+      return $this->hasMany('App\Models\Seance'); // this matches the Eloquent model
     }
     public function attribution() {
       return $this->hasMany('Attribution'); // this matches the Eloquent model

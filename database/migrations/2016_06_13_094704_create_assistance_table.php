@@ -17,11 +17,11 @@ class CreateAssistanceTable extends Migration
           $table->timestamps();
 
           //FK
-          $table->integer('idInvite')->unsigned();;
-          $table->integer('numeroSeance')->unsigned();;
-          $table->time('heure_debutSeance');
+          $table->integer('invite_id')->unsigned();;
+          $table->integer('seance_id')->unsigned();;
 
-            $table->primary(array('idInvite', 'numeroSeance','heure_debutSeance'));
+
+            $table->primary(array('invite_id', 'seance_id'));
       });
     }
 

@@ -16,12 +16,12 @@ class CreateAttributionTable extends Migration
         $table->timestamps();
 
         //FK
-        $table->integer('idDepute')->unsigned();;
-        $table->integer('idCommission')->unsigned();;
+        $table->integer('depute_id')->unsigned();;
+        $table->integer('commission_id')->unsigned();;
 
 
 
-          $table->primary(array('idDepute', 'idCommission'));
+          $table->primary(array('depute_id', 'commission_id'));
       });
     }
 

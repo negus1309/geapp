@@ -16,6 +16,7 @@ class CreateInviteTable extends Migration
           $table->increments('id');
           $table->string('nom');
           $table->string('prenom');
+          $table->enum('titre', array('M.','MME'));
           $table->timestamps();
       });
     }

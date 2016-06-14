@@ -18,10 +18,9 @@ class CreateRapportTable extends Migration
           $table->timestamps();
 
           //FK
-          $table->integer('numeroSeanceRubrique')->unsigned(); // fk vers rubrique
-          $table->time('heure_debutSeanceRubrique'); //fk vers rubriques
-          $table->integer('numeroRubrique'); // fk vers rubrique
-          $table->integer('idRapporteur')->unsigned(); // fk vers rapporteur
+          $table->integer('rubrique_seance_id')->unsigned(); // fk vers rubrique
+          $table->integer('rubrique_id'); // fk vers rubrique
+          $table->integer('rapporteur_id')->unsigned(); // fk vers rapporteur
 
 
       });

@@ -10,7 +10,7 @@ class Seance extends Model
     return $this->hasMany('Rubrique'); // this matches the Eloquent model
   }
   public function commission() {
-    return $this->belongsTo('Commission'); // this matches the Eloquent model
+    return $this->belongsTo('App\Models\Commission'); // this matches the Eloquent model
   }
   public function president() {
     return $this->belongsTo('President'); // this matches the Eloquent model

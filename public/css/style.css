@@ -8,6 +8,14 @@ div#workflow {
 .uk-panel {
   margin: 20px; }
 
+ul.pv-list-item {
+  padding-left: 0px; }
+
+ul.pv-list-item li {
+  background-color: red;
+  height: 60px;
+  margin-bottom: 15px; }
+
 /*
 .uk-grid, .uk-grid-small{
   margin-left: 0px;

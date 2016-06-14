@@ -17,12 +17,11 @@ class CreatePresenceTable extends Migration
           $table->timestamps();
 
           //FK
-          $table->integer('idDepute')->unsigned();;
-          $table->integer('numeroSeance')->unsigned();;
-          $table->time('heure_debutSeance');
+          $table->integer('depute_id')->unsigned();;
+          $table->integer('seance_id')->unsigned();;
 
 
-            $table->primary(array('idDepute', 'numeroSeance','heure_debutSeance'));
+            $table->primary(array('depute_id', 'seance_id'));
 
       });
     }

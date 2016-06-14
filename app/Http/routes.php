@@ -14,11 +14,18 @@
 Route::get('/', function () {
     return view('index');
 });
-
+/*
 Route::get('/geapp/public/api/v1/employees/{id?}', 'Employees@index');
 Route::post('/geapp/public/api/v1/employees', 'Employees@store');
 Route::post('/geapp/public/api/v1/employees/{id}', 'Employees@update');
 Route::delete('/geapp/public/api/v1/employees/{id}', 'Employees@destroy');
+*/
+
+/*Route::get('/geapp/public/api/v1/seances', 'SeanceController@index');
+Route::get('/geapp/public/api/v1/seances/commissions', 'SeanceController@getCommissionNom');*/
 
 
-Route::get('/geapp/public/api/v1/seances', 'SeanceController@index');
+Route::get('/geapp/public/api/v1/commissions', 'CommissionController@index');
+Route::get('/geapp/public/api/v1/commissions/{idCommission}/seances', 'SeanceController@getSeanceParCommission');
+
+Route::get('/geapp/public/api/v1/jesus', 'CommissionController@getCommissionWithSeances');

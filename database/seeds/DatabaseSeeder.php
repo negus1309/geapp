@@ -118,12 +118,14 @@ class MyAppSeeder extends Seeder {
         Invite::create(array(
             'id'    => 1,
             'nom' => 'Chhen',
-            'prenom' => 'Patrick'
+            'prenom' => 'Patrick',
+            'titre' => 'M.'
         ));
         Invite::create(array(
             'id'    => 2,
             'nom' => 'Scheuner',
-            'prenom' => 'Nicolas'
+            'prenom' => 'Nicolas',
+            'titre' => 'M.'
 
         ));
 
@@ -141,77 +143,96 @@ class MyAppSeeder extends Seeder {
         $this->command->info('commissions ok');
 
         Attribution::create(array(
-            'idDepute'    => 1,
-            'idCommission' => 1
+            'depute_id'    => 1,
+            'commission_id' => 1
         ));
         Attribution::create(array(
-            'idDepute'    => 2,
-            'idCommission' => 2
+            'depute_id'    => 2,
+            'commission_id' => 2
         ));
 
         $this->command->info('attribution ok');
 
 
         Seance::create(array(
-            'numero'    => 1,
+            'id'    => 1,
+            'date' => '2016-06-03',
             'heure_debut' => '16:00',
             'heure_fin' => '20:30',
-            'idPresident' => 1,
-            'idCommission' => 2
+            'president_id' => 1,
+            'commission_id' => 2
+        ));
+        Seance::create(array(
+            'id'    => 2,
+            'date' => '2016-06-10',
+            'heure_debut' => '17:00',
+            'heure_fin' => '22:30',
+            'president_id' => 2,
+            'commission_id' => 1
+        ));
+        Seance::create(array(
+            'id'    => 3,
+            'date' => '2016-06-11',
+            'heure_debut' => '18:00',
+            'heure_fin' => '21:30',
+            'president_id' => 2,
+            'commission_id' => 1
         ));
         $this->command->info('seance ok');
 
         Rubrique::create(array(
-            'numero'    => 1,
+            'id'    => 1,
             'titre'   => 'Approbation du dernier pv',
             'contenu' => 'blablabla',
             'heure_debut' => '16:00',
             'heure_fin' => '16:20',
-            'numeroSeance' => 1,
-            'heure_debutSeance' => '16:00'
+            'seance_id' => 1
         ));
         Rubrique::create(array(
-            'numero'    => 2,
+            'id'    => 2,
             'titre'   => 'OBJ-23423423',
             'contenu' => 'blublublu',
             'heure_debut' => '16:20',
             'heure_fin' => '16:55',
-            'numeroSeance' => 1,
-            'heure_debutSeance' => '16:00'
+            'seance_id' => 1
+        ));
+        Rubrique::create(array(
+            'id'    => 1,
+            'titre'   => 'Petit mot du président',
+            'contenu' => 'bliblibli',
+            'heure_debut' => '17:00',
+            'heure_fin' => '17:20',
+            'seance_id' => 2
         ));
         $this->command->info('rubrique ok');
 
         Rapport::create(array(
             'id'    => 1,
             'type'   => 'majorité',
-            'numeroRubrique' => 1,
-            'numeroSeanceRubrique' => 1,
-            'heure_debutSeanceRubrique' => '16:00',
-            'idRapporteur' => 2
+            'rubrique_id' => 1,
+            'rubrique_seance_id' => 1,
+            'rapporteur_id' => 2
         ));
 
         $this->command->info('rapport ok');
 
         Assistance::create(array(
-            'idInvite'    => 1,
-            'numeroSeance'   => 1,
-            'heure_debutSeance' => '16:00'
+            'invite_id'    => 1,
+            'seance_id'   => 1
         ));
 
         $this->command->info('assistance ok');
 
         Presence::create(array(
-            'idDepute'    => 1,
-            'numeroSeance'   => 1,
-            'heure_debutSeance' => '16:00'
+            'depute_id'    => 1,
+            'seance_id'   => 1
         ));
 
         $this->command->info('presence ok');
 
         Absence::create(array(
-            'idDepute'    => 2,
-            'numeroSeance'   => 1,
-            'heure_debutSeance' => '16:00'
+            'depute_id'    => 2,
+            'seance_id'   => 1
         ));
 
         $this->command->info('presence ok');
