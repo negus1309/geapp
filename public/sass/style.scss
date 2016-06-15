@@ -6,6 +6,35 @@ body{
   }*/
 }
 
+//***************************************************//
+// Style personnalisé
+//***************************************************//
+div#menu{
+  width:100%;
+  height:40px;
+  display: block;
+  visibility: visible;
+  a{
+    display: none;
+  }
+  span.retourAccueil{
+    margin-left: 10px;
+    //line-height: 40px;
+
+  }
+  span.retourAccueil:before{
+  @extend %fontawesome;
+
+    /* down arrow icon */
+    content: "\f104";
+    //line-height: 40px;
+    font-size: 1.3em;
+
+    /* some space*/
+    padding-right:5px;
+  }
+}
+
 div#liste{
   #mes-pv{
     //background-color: blue;
@@ -20,7 +49,7 @@ div#liste{
 
 
 div#workflow{
-  visibility: hidden;
+display:none;
 }
 
 
@@ -30,58 +59,114 @@ div#workflow{
 
 
 
-// UIkit modification
-
+//***************************************************//
+// UIkit modifications
+//***************************************************//
 
 // icon on accordion UIkit
+.uk-accordion h4{
+  font-weight: bold;
+}
+
 .uk-accordion-title:before {
-    /* enable icon font */
-    font-family: 'FontAwesome';
-    src: url("../fonts/fontawesome-webfont.eot");
-    src: url("../fonts/fontawesome-webfont-ie.eot") format("embedded-opentype"),
-         url("../fonts/fontawesome-webfont.woff2") format('woff2'),
-         url("../fonts/fontawesome-webfont.woff") format("woff"),
-         url("../fonts/fontawesome-webfont.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
+  @extend %fontawesome;
 
     /* down arrow icon */
-    content: "\f078";
+    content: "\f107";
 
     /* some space*/
     padding-right:5px;
+
  }
 .uk-accordion-title.uk-active:before {
     /* up arrow icon */
-    content: "\f077";
+    content: "\f106";
+
  }
-
-
-
-
-.uk-accordion-title{
-
-}
-
-
 
 .uk-panel{
   margin: 10px;
 }
 
-
 ul.pv-list-item{
-  //padding-left: 0px;
+  padding: 0px;
+
 }
 
 ul.pv-list-item li {
-  background-color: red;
-  height: 60px;
+  background-color: #eee;
+  height: 80px;
+  width: 75%;
   margin-bottom: 15px;
+  display: inline-block;
+  float:left;
+  margin-right:5px;
+  padding:5px;
 }
 
-/*
-.uk-grid, .uk-grid-small{
-  margin-left: 0px;
+div.tools-pv{
+  float:left;
+  width:20%;
+  //padding-left:2px;
+  a{
+    margin-bottom:3px;
+    width: 80px;
+  }
 }
-*/
+
+
+span.edit-pv,span.convert-pv,span.supprimer-pv{
+  line-height: 25px;
+
+}
+
+span.supprimer-pv:before{
+  @extend %fontawesome;
+
+  /* down arrow icon */
+  content: "\f00d";
+
+  /* some space*/
+  padding-right:5px;
+
+}
+
+span.edit-pv:before{
+  @extend %fontawesome;
+
+  /* down arrow icon */
+  content: "\f044";
+
+  /* some space*/
+  padding-right:5px;
+}
+
+span.convert-pv:before{
+  @extend %fontawesome;
+
+  /* down arrow icon */
+  content: "\f1c2";
+
+  /* some space*/
+  padding-right:5px;
+
+}
+
+
+
+//***************************************************//
+// Classes abstraites (mixin, placeholder)
+//***************************************************//
+
+
+%fontawesome{
+  font-family: 'FontAwesome';
+  src: url("../fonts/fontawesome-webfont.eot");
+  src: url("../fonts/fontawesome-webfont-ie.eot") format("embedded-opentype"),
+       url("../fonts/fontawesome-webfont.woff2") format('woff2'),
+       url("../fonts/fontawesome-webfont.woff") format("woff"),
+       url("../fonts/fontawesome-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+
+}

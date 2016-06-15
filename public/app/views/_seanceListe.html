@@ -1,0 +1,14 @@
+
+<li>
+  PV du {{uneSeance.date | date :  "dd.MM.y" }}<br/>
+  N° {{uneSeance.numero}}
+
+
+</li>
+<div class="tools-pv">
+  <a href="#" ng-click="editPv()" class="uk-button uk-button-mini uk-button-primary"><span class="edit-pv" data-pv-id="{{uneSeance.id}}">éditer</span></a><br/>
+  <a href="#" class="uk-button uk-button-mini uk-button-primary"><span class="convert-pv" data-pv-id="{{uneSeance.id}}">convertir</span></a>
+</div>
+
+
+<ng-include src="'<?= asset('app/views/seanceListe.html')?>'"></ng-include>

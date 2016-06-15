@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seance extends Model
 {
+
+  //public $incrementing = false;
+
   public function rubrique() {
     return $this->hasMany('Rubrique'); // this matches the Eloquent model
   }
@@ -23,5 +26,8 @@ class Seance extends Model
   }
   public function assistance() {
     return $this->hasMany('Assistance'); // this matches the Eloquent model
+  }
+  public function responsabilite() {
+    return $this->hasMany('Responsabilite'); // this matches the Eloquent model
   }
 }

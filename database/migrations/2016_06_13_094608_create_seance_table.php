@@ -13,7 +13,8 @@ class CreateSeanceTable extends Migration
     public function up()
     {
       Schema::create('seances', function (Blueprint $table) {
-          $table->integer('id');
+          $table->increments('id');
+          $table->integer('numero');
           $table->date('date');
           $table->time('heure_debut');
           $table->time('heure_fin');
@@ -23,7 +24,7 @@ class CreateSeanceTable extends Migration
           $table->integer('president_id')->unsigned(); //fk vers president
           $table->integer('commission_id')->unsigned(); // fk vers commission
 
-            $table->primary('id');
+            //$table->primary('id');
       });
     }
 

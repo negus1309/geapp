@@ -5,6 +5,7 @@ use App\Models\Depute;
 use App\Models\President;
 use App\Models\Rapporteur;
 use App\Models\Invite;
+use App\Models\Procesverbaliste;
 use App\Models\Commission;
 use App\Models\Attribution;
 use App\Models\Seance;
@@ -13,7 +14,7 @@ use App\Models\Rapport;
 use App\Models\Assistance;
 use App\Models\Presence;
 use App\Models\Absence;
-
+use App\Models\Responsabilite;
 
 class DatabaseSeeder extends Seeder {
 
@@ -113,6 +114,21 @@ class MyAppSeeder extends Seeder {
         ));
 
         $this->command->info('rapporteurs ok');
+        Procesverbaliste::create(array(
+            'id'    => 1,
+            'nom' => 'Aliste',
+            'prenom' => 'Proc',
+            'titre' => 'M.'
+        ));
+        Procesverbaliste::create(array(
+            'id'    => 2,
+            'nom' => 'Verba',
+            'prenom' => 'Lise',
+            'titre' => 'MME'
+
+        ));
+
+        $this->command->info('pcv ok');
 
         // seed our trees table ---------------------
         Invite::create(array(
@@ -155,7 +171,8 @@ class MyAppSeeder extends Seeder {
 
 
         Seance::create(array(
-            'id'    => 1,
+            //'id'    => 1,
+            'numero' => 200001,
             'date' => '2016-06-03',
             'heure_debut' => '16:00',
             'heure_fin' => '20:30',
@@ -163,7 +180,8 @@ class MyAppSeeder extends Seeder {
             'commission_id' => 2
         ));
         Seance::create(array(
-            'id'    => 2,
+          //  'id'    => 2,
+            'numero' => 200002,
             'date' => '2016-06-10',
             'heure_debut' => '17:00',
             'heure_fin' => '22:30',
@@ -171,7 +189,8 @@ class MyAppSeeder extends Seeder {
             'commission_id' => 1
         ));
         Seance::create(array(
-            'id'    => 3,
+          //  'id'    => 3,
+            'numero' => 200003,
             'date' => '2016-06-11',
             'heure_debut' => '18:00',
             'heure_fin' => '21:30',
