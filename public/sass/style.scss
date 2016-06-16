@@ -64,34 +64,12 @@ display:none;
 
 
 
+
+
+
 //***************************************************//
-// UIkit modifications
+// Page Accueil
 //***************************************************//
-
-// icon on accordion UIkit
-.uk-accordion h4{
-  font-weight: bold;
-}
-
-.uk-accordion-title:before {
-  @extend %fontawesome;
-
-    /* down arrow icon */
-    content: "\f107";
-
-    /* some space*/
-    padding-right:5px;
-
- }
-.uk-accordion-title.uk-active:before {
-    /* up arrow icon */
-    content: "\f106";
-
- }
-
-.uk-panel{
-  margin: 10px;
-}
 
 ul.pv-list-item{
   padding: 0px;
@@ -155,6 +133,43 @@ span.convert-pv:before{
   /* some space*/
   padding-right:5px;
 
+}
+
+button.nouveau-pv:before{
+  @extend %fontawesome;
+  content: "\f067";
+  padding-right:5px;
+  font-weight: normal;
+}
+
+
+//***************************************************//
+// UIkit modifications
+//***************************************************//
+
+// icon on accordion UIkit
+.uk-accordion h4{
+  font-weight: bold;
+}
+
+.uk-accordion-title:before {
+  @extend %fontawesome;
+
+    /* down arrow icon */
+    content: "\f107";
+
+    /* some space*/
+    padding-right:5px;
+
+ }
+.uk-accordion-title.uk-active:before {
+    /* up arrow icon */
+    content: "\f106";
+
+ }
+
+.uk-panel{
+  margin: 10px;
 }
 
 

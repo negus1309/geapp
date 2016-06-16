@@ -28,22 +28,6 @@ div#workflow {
   .pv-form label {
     font-weight: bold; }
 
-.uk-accordion h4 {
-  font-weight: bold; }
-
-.uk-accordion-title:before {
-  /* down arrow icon */
-  content: "\f107";
-  /* some space*/
-  padding-right: 5px; }
-
-.uk-accordion-title.uk-active:before {
-  /* up arrow icon */
-  content: "\f106"; }
-
-.uk-panel {
-  margin: 10px; }
-
 ul.pv-list-item {
   padding: 0px; }
 
@@ -85,7 +69,28 @@ span.convert-pv:before {
   /* some space*/
   padding-right: 5px; }
 
-div#menu span.retourAccueil:before, .uk-accordion-title:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before {
+button.nouveau-pv:before {
+  content: "\f067";
+  padding-right: 5px;
+  font-weight: normal; }
+
+.uk-accordion h4 {
+  font-weight: bold; }
+
+.uk-accordion-title:before {
+  /* down arrow icon */
+  content: "\f107";
+  /* some space*/
+  padding-right: 5px; }
+
+.uk-accordion-title.uk-active:before {
+  /* up arrow icon */
+  content: "\f106"; }
+
+.uk-panel {
+  margin: 10px; }
+
+div#menu span.retourAccueil:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, button.nouveau-pv:before, .uk-accordion-title:before {
   font-family: 'FontAwesome';
   src: url("../fonts/fontawesome-webfont.eot");
   src: url("../fonts/fontawesome-webfont-ie.eot") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2") format("woff2"), url("../fonts/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome-webfont.ttf") format("truetype");
