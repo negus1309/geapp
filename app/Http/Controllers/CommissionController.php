@@ -22,6 +22,11 @@ class CommissionController extends Controller {
       return Commission::all();
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
     public function getCommissionWithSeances(){
       $comWithSeance = Commission::with('seance')->get();
 

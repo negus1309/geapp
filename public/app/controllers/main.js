@@ -8,7 +8,7 @@ app.controller('mainController', function($scope, $http, API_URL) {
 
       $scope.refreshSeance = function(){
 
-        console.log('dsjhfjfd')
+        //console.log('dsjhfjfd')
         // Accès aux commissions et les séances liées
         $http.get(API_URL + "commissions/seances")
           .success(function(response) {

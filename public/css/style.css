@@ -23,6 +23,11 @@ div#menu {
 div#workflow {
   display: none; }
 
+.pv-form {
+  padding-left: 40px; }
+  .pv-form label {
+    font-weight: bold; }
+
 .uk-accordion h4 {
   font-weight: bold; }
 

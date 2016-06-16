@@ -1,4 +1,4 @@
-app.controller('accueilController', function($scope, $http, API_URL) {
+app.controller('accueilController', function($scope, $http, API_URL,createSeanceInfos) {
 
       // Accès aux commissions et les séances liées
     /*  $http.get(API_URL + "commissions/seances")
@@ -7,7 +7,7 @@ app.controller('accueilController', function($scope, $http, API_URL) {
 
         });*/
 
-        
+
 
 
 
@@ -27,8 +27,8 @@ app.controller('accueilController', function($scope, $http, API_URL) {
 
       $scope.nouveauPV = function($idCommission,$nomCommission){
 
-          console.log($idCommission)
-          console.log($nomCommission)
+          //console.log($idCommission)
+          //console.log($nomCommission)
 
           $('#liste').hide();
           $('#workflow').show();
@@ -42,6 +42,12 @@ app.controller('accueilController', function($scope, $http, API_URL) {
            .success(function(response) {
                //$scope.reponse = response;
                console.log(response)
+               //console.log($idCommission)
+               //console.log($nomCommission)
+
+               createSeanceInfos.setProperty({'nomCommission':$nomCommission, 'idCommission':$idCommission, 'idSeance':response.id});
+               //console.log('maprop'+createSeanceInfos.getProperty());
+
 
 
 

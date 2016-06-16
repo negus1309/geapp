@@ -11,6 +11,9 @@
         <link href="<?= asset('css/uikit.almost-flat.min.css') ?>" rel="stylesheet"  />
         <link href="<?= asset('css/style.css') ?>" rel="stylesheet">
         <link href="<?= asset('css/components/accordion.min.css') ?>" rel="stylesheet"  />
+        <link href="<?= asset('css/components/datepicker.min.css') ?>" rel="stylesheet"  />
+
+
     </head>
     <body ng-controller="mainController">
 
@@ -26,6 +29,9 @@
 
         <script src="<?= asset('js/uikit.min.js') ?>"></script>
         <script src="<?= asset('js/components/accordion.js') ?>"></script>
+        <script src="<?= asset('js/components/datepicker.js') ?>"></script>
+        <script src="<?= asset('js/components/timepicker.js') ?>"></script>
+        <script src="<?= asset('js/components/autocomplete.js') ?>"></script>
 
         <!-- AngularJS Application Scripts -->
         <script src="<?= asset('app/app.js') ?>"></script>
