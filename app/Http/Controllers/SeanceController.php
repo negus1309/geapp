@@ -13,7 +13,22 @@ use DB;
 
 class SeanceController extends Controller {
 
+  /**
+   * Display a listing of the resource.
+   *
+   * @return Response
+   */
+  public function getSeance(Request $request){
 
+      $idPv = $request->idSeance;
+
+      $editPv = Seance::find($idPv);
+
+      return response($editPv->toJson(), 200, array('Content-Type' => 'application/json'));
+
+
+
+  }
 
     /**
      * Display a listing of the resource.

@@ -13,11 +13,38 @@ app.controller('accueilController', function($scope, $http, API_URL,createSeance
 
       // EVENEMENTS
 
-      $scope.editPv = function(){
+      $scope.editPv = function($idCommission,$nomCommission,$idSeance){
 
         $('#liste').hide();
         $('#workflow').show();
         $('div#menu a').show();
+
+        console.log($idSeance)
+        //var idSeance =
+
+        $http({
+          url: API_URL + "seance/"+$idSeance,
+          method: "GET",
+          params: {'commission_id': $idCommission}
+         })
+         .success(function(response) {
+             //$scope.reponse = response;
+             console.log(response)
+             //console.log($idCommission)
+             //console.log($nomCommission)
+
+             createSeanceInfos.setProperty({
+               'nomCommission':$nomCommission,
+               'idCommission':$idCommission,
+               'idSeance':$idSeance,
+               'numero':response.numero
+             });
+             //console.log('maprop'+createSeanceInfos.getProperty());
+
+
+
+
+         });
 
       }
 
@@ -52,18 +79,7 @@ app.controller('accueilController', function($scope, $http, API_URL,createSeance
 
 
            });
-          /*
 
-          // ok ci dessous
-
-          $http.post(API_URL + "seance/create")
-            .success(function(response) {
-                //$scope.reponse = response;
-                console.log(response)
-
-
-
-            });*/
 
 
 
@@ -71,33 +87,7 @@ app.controller('accueilController', function($scope, $http, API_URL,createSeance
 
 
 
-          /*$('div.uk-accordion.ng-scope').on('toggle.uk.accordion', function(){
 
-            console.log(this)
-            console.log('test')
-          //  $('.span.arrow-accordion')
-        })*/
-
-      /*  $scope.changeIcon = function($event){
-          console.log($event.currentTarget)
-          //$(this).remove();
-
-        }
-*/
-
-
-      /*$scope.getSeanceParCommission = function($idCommission){
-
-        console.log($idCommission)
-
-
-        $http.get(API_URL + "commissions/"+$idCommission+"/seances")
-          .success(function(response) {
-              $scope.seancesParCommission = response;
-          });
-
-
-      }*/
 
 
 

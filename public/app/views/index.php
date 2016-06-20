@@ -12,7 +12,7 @@
         <link href="<?= asset('css/style.css') ?>" rel="stylesheet">
         <link href="<?= asset('css/components/accordion.min.css') ?>" rel="stylesheet"  />
         <link href="<?= asset('css/components/datepicker.min.css') ?>" rel="stylesheet"  />
-
+        <link href="<?= asset('css/components/notify.min.css') ?>" rel="stylesheet"  />
 
     </head>
     <body ng-controller="mainController">
@@ -32,6 +32,7 @@
         <script src="<?= asset('js/components/datepicker.js') ?>"></script>
         <script src="<?= asset('js/components/timepicker.js') ?>"></script>
         <script src="<?= asset('js/components/autocomplete.js') ?>"></script>
+        <script src="<?= asset('js/components/notify.js') ?>"></script>
 
         <!-- AngularJS Application Scripts -->
         <script src="<?= asset('app/app.js') ?>"></script>

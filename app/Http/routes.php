@@ -24,3 +24,6 @@ Route::post('/geapp/public/api/v1/seance/create', 'SeanceController@newSeance');
 
 // Ajout d'information pour une séance
 Route::put('/geapp/public/api/v1/seance/update', 'SeanceController@updateSeance');
+
+// Accès à chaque commission comprenant les séances liées
+Route::get('/geapp/public/api/v1/seance/{idSeance}', 'SeanceController@getSeance');

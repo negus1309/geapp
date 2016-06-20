@@ -64,6 +64,14 @@ app.controller('workflowController', function($scope, $http, API_URL,createSeanc
          .success(function(response) {
 
            console.log(response)
+           UIkit.notify({
+               message : '<i class=\'uk-icon-check\'></i>&nbsp;PV sauvegardé!',
+               status  : 'success',
+               timeout : 3000,
+               pos     : 'top-right'
+           });
+
+
          });
 
 
