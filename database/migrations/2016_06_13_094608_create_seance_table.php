@@ -19,6 +19,7 @@ class CreateSeanceTable extends Migration
           $table->time('heure_debut');
           $table->time('heure_fin');
           $table->timestamps();
+          $table->softDeletes();
 
           //FK
           $table->integer('president_id')->unsigned(); //fk vers president

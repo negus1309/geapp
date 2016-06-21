@@ -240,6 +240,10 @@ class MyAppSeeder extends Seeder {
             'seance_id'   => 1
         ));
 
+        Assistance::create(array(
+            'invite_id'    => 2,
+            'seance_id'   => 1
+        ));
         $this->command->info('assistance ok');
 
         Presence::create(array(

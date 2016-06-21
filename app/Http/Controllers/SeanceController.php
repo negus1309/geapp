@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Seance;
 use App\Models\Commission;
+use App\Models\Assistance;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests;
@@ -22,9 +23,11 @@ class SeanceController extends Controller {
 
       $idPv = $request->idSeance;
 
-      $editPv = Seance::find($idPv);
-
-      return response($editPv->toJson(), 200, array('Content-Type' => 'application/json'));
+      //$editPv = Seance::find($idPv)->with('assistance')->with('invite')->get();
+      $editPv = Seance::where('seances.id',$idPv)->with( array( 'assistance', 'assistance.invite' ) )->first();
+      return $editPv;
+      //eturn $editPv;
+      //return response($editPv->toJson(), 200, array('Content-Type' => 'application/json'));
 
 
 
@@ -75,7 +78,23 @@ class SeanceController extends Controller {
     }
 
 
+    public function deleteSeance(Request $request){
 
+      //return $request->idSeance;
+      $idPv = $request->idSeance;
+
+      $deletePv = Seance::find($idPv);
+
+      if($deletePv){
+
+        $deletePv->delete();
+      }
+
+      //return response($deletePv->toJson(), 200, array('Content-Type' => 'application/json'));
+
+
+
+    }
 
 
 
