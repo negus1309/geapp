@@ -62,8 +62,21 @@ display:none;
 }
 
 
+span.supprimer-invite{
+  line-height: 25px;
 
+}
+span.supprimer-invite:before{
+  @extend %fontawesome;
 
+    /* down arrow icon */
+    content: "\f00d";
+    padding-right:5px;
+}
+
+.sauvegarder-pv{
+  margin-top:20px;
+}
 
 
 

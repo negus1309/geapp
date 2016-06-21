@@ -32,7 +32,33 @@ class AssistanceController extends Controller {
 
 
 
+  /**
+   * Display a listing of the resource.
+   *
+   * @return Response
+   */
+  public function deleteAssistance(Request $request){
 
+    $idSeance = $request->seance_id;
+    $idInvite = $request->invite_id;
+
+    $test = DB::table('assistances')
+      ->where('seance_id','=',$idSeance)
+      ->where('invite_id','=',$idInvite)
+      ->get();
+
+      if($test){
+        DB::table('assistances')
+          ->where('seance_id','=',$idSeance)
+          ->where('invite_id','=',$idInvite)
+          ->delete();
+          return $test;
+      }
+
+
+
+
+  }
 
 
 

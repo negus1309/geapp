@@ -32,33 +32,7 @@ class InviteController extends Controller {
 
   }
 
-  /**
-   * Display a listing of the resource.
-   *
-   * @return Response
-   */
-  public function getInvitePourSeance(Request $request){
 
-
-      //$invite = Invite::all()->assistance;
-
-      //Commission
-
-      //$inviteS = $invite->assistance()->where('seance_id', $request->seance_id)->get();
-
-      //return $invite;
-
-/*
-    DB::table('invites')
-                ->join('assistances', 'assistances.invite_id', '=', 'invites.id')
-                ->select('invites.id', 'invites.nom', 'invites.prenom','invites.titre')
-                //->where('assistances.seance_id', '=', $request->seance_id)
-                ->get();*/
-
-
-//$request->seance_id
-
-  }
 
 
 

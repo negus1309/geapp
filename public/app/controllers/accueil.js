@@ -1,4 +1,4 @@
-app.controller('accueilController', function($scope, $http, API_URL,createSeanceInfos) {
+app.controller('accueilController', function($scope, $http, API_URL,createSeanceInfos,$rootScope) {
 
       // Accès aux commissions et les séances liées
     /*  $http.get(API_URL + "commissions/seances")
@@ -7,7 +7,7 @@ app.controller('accueilController', function($scope, $http, API_URL,createSeance
 
         });*/
 
-
+        $rootScope.test = "salut";
 
 
 
@@ -77,7 +77,7 @@ app.controller('accueilController', function($scope, $http, API_URL,createSeance
              var mesInvites = [];
              angular.forEach(response.assistance, function(assist, key) {
 
-                mesInvites.push({'nom':assist.invite.nom,'prenom':assist.invite.prenom,'titre':assist.invite.titre});
+                mesInvites.push({'nom':assist.invite.nom,'prenom':assist.invite.prenom,'titre':assist.invite.titre, 'id':assist.invite.id});
               });
               console.log(mesInvites)
 

@@ -1,28 +1,12 @@
 app.controller('workflowController', function($scope, $http, API_URL,createSeanceInfos) {
 
-      // Accès aux commissions et les séances liées
-      /*$http.get(API_URL + "commissions/seances")
-        .success(function(response) {
-            $scope.commissions = response;
-
-        });*/
-
-      /*$scope.getMinInfos = function(){
-
-      }*/
-
 
 
       // Date actuelle pour le placeholder du formulaire
       var date = new Date();
       $scope.currentDate = date;
 
-      //console.log('dss'+$scope.currentDate)
 
-
-
-
-      //console.log($scope.invites)
 
 
       // Get infos de la page accueil
@@ -33,15 +17,36 @@ app.controller('workflowController', function($scope, $http, API_URL,createSeanc
         //console.log($scope.general)
 
       })
-    //  $scope.general.invites = [];
 
+
+
+      //*******************************************//
+      // EVENEMENTS
+      //*******************************************//
+
+      // Ajout de champ invités
       $scope.ajouterInvite = function(){
+        if(!$scope.general.invites){
+          $scope.general.invites = [];
+        }
         $scope.general.invites.push({'nom':'','prenom':'','titre':''});
       }
 
+      // Suppression de champ invité
+      $scope.supprimerInvite = function($index, $seance_id, $invite_id){
 
+        $scope.general.invites.splice($index,1);
+        $http({
+          url: API_URL + "seance/"+$seance_id+"/invite/"+$invite_id+"/delete",
+          method: "DELETE"
+          //params: {'commission_id': $idCommission}
+         })
+         .success(function(response){
+           console.log('furof')
+         });
 
-      // EVENEMENTS
+      }
+
 
       $scope.sauvegarderSeance = function(){
 
@@ -56,8 +61,6 @@ app.controller('workflowController', function($scope, $http, API_URL,createSeanc
           'president_id':1
 
         };
-
-
 
 
         $http({
@@ -94,27 +97,21 @@ app.controller('workflowController', function($scope, $http, API_URL,createSeanc
 
                     //console.log(response)
 
+
                  });
-
-
-
 
               });
 
-
-
-
            });
-
-
-
-           //console.log(response)
            UIkit.notify({
                message : '<i class=\'uk-icon-check\'></i>&nbsp;PV sauvegardé!',
                status  : 'success',
                timeout : 3000,
                pos     : 'top-right'
            });
+
+           //console.log(response)
+
 
 
 

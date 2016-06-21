@@ -39,3 +39,5 @@ Route::post('/geapp/public/api/v1/assistance/create', 'AssistanceController@stor
 
 // Accès aux invite d'une séance
 Route::get('/geapp/public/api/v1/seance/{seance_id}/invite', 'InviteController@getInvitePourSeance');
+
+Route::delete('/geapp/public/api/v1/seance/{seance_id}/invite/{invite_id}/delete','AssistanceController@deleteAssistance');
