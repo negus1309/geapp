@@ -1,25 +1,3 @@
-body {
-  /*h1{
-    padding: 20px;
-    padding-bottom: 0px;
-  }*/ }
-
-div#menu {
-  width: 100%;
-  height: 40px;
-  display: block;
-  visibility: visible; }
-  div#menu a {
-    display: none; }
-  div#menu span.retourAccueil {
-    margin-left: 10px; }
-  div#menu span.retourAccueil:before {
-    /* down arrow icon */
-    content: "\f104";
-    font-size: 1.3em;
-    /* some space*/
-    padding-right: 5px; }
-
 div#workflow {
   display: none; }
 
@@ -43,6 +21,33 @@ span.ajouter-invite:before {
   /* down arrow icon */
   content: "\f067";
   padding-right: 5px; }
+
+div#menu {
+  width: 100%;
+  height: 40px;
+  display: block;
+  visibility: visible; }
+  div#menu a {
+    display: none;
+    line-height: 40px; }
+  div#menu span.retourAccueil {
+    margin-left: 10px; }
+  div#menu span.retourAccueil:before {
+    /* down arrow icon */
+    content: "\f104";
+    font-size: 1.3em;
+    /* some space*/
+    padding-right: 5px; }
+
+span#status-network {
+  color: white;
+  position: absolute;
+  right: 20px;
+  line-height: 40px; }
+  span#status-network #status-online:before {
+    color: green; }
+  span#status-network #status-offline:before {
+    color: red; }
 
 ul.pv-list-item {
   padding: 0px; }
@@ -106,11 +111,16 @@ button.nouveau-pv:before {
 .uk-panel {
   margin: 10px; }
 
-div#menu span.retourAccueil:before, span.supprimer-invite:before, span.ajouter-invite:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, button.nouveau-pv:before, .uk-accordion-title:before {
+span.supprimer-invite:before, span.ajouter-invite:before, div#menu span.retourAccueil:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, button.nouveau-pv:before, .uk-accordion-title:before, span#status-network #status-online:before, span#status-network #status-offline:before {
   font-family: 'FontAwesome';
   src: url("../fonts/fontawesome-webfont.eot");
   src: url("../fonts/fontawesome-webfont-ie.eot") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2") format("woff2"), url("../fonts/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+
+span#status-network #status-online:before, span#status-network #status-offline:before {
+  content: "\f111";
+  line-height: 40px;
+  padding-right: 5px; }
 
 /*# sourceMappingURL=style.css.map */

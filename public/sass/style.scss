@@ -1,39 +1,15 @@
-body{
-  //padding: 15px;
-  /*h1{
-    padding: 20px;
-    padding-bottom: 0px;
-  }*/
-}
+//***************************************************//
+// Variables
+//***************************************************//
+
+$menu-height: 40px;
+
+
 
 //***************************************************//
 // Style personnalisé
 //***************************************************//
-div#menu{
-  width:100%;
-  height:40px;
-  display: block;
-  visibility: visible;
-  a{
-    display: none;
-  }
-  span.retourAccueil{
-    margin-left: 10px;
-    //line-height: 40px;
 
-  }
-  span.retourAccueil:before{
-  @extend %fontawesome;
-
-    /* down arrow icon */
-    content: "\f104";
-    //line-height: 40px;
-    font-size: 1.3em;
-
-    /* some space*/
-    padding-right:5px;
-  }
-}
 
 div#liste{
   #mes-pv{
@@ -86,6 +62,54 @@ span.ajouter-invite:before{
     padding-right:5px;
 }
 
+
+//***************************************************//
+// Menu
+//***************************************************//
+
+div#menu{
+  width:100%;
+  height:$menu-height;
+  display: block;
+  visibility: visible;
+  a{
+    display: none;
+    line-height: $menu-height;
+  }
+  span.retourAccueil{
+    margin-left: 10px;
+    //line-height: 40px;
+
+  }
+  span.retourAccueil:before{
+  @extend %fontawesome;
+
+    /* down arrow icon */
+    content: "\f104";
+    //line-height: 40px;
+    font-size: 1.3em;
+
+    /* some space*/
+    padding-right:5px;
+  }
+}
+
+span#status-network{
+  color: white;
+  position: absolute;
+  right: 20px;
+  line-height: $menu-height;
+
+  #status-online:before{
+    color: green;
+    @extend %circle-status;
+  }
+  #status-offline:before{
+    color: red;
+    @extend %circle-status;
+
+  }
+}
 
 //***************************************************//
 // Page Accueil
@@ -208,5 +232,14 @@ button.nouveau-pv:before{
        url("../fonts/fontawesome-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+
+}
+
+%circle-status{
+  @extend %fontawesome;
+    // circle character
+    content: "\f111";
+    line-height: $menu-height;
+    padding-right:5px;
 
 }

@@ -124,39 +124,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
         var dateParts = usDate.split(/(\d{1,2})\-(\d{1,2})\-(\d{4})/);
         return dateParts[3] + "-" + dateParts[2] + "-" + dateParts[1];
       }
-/*
-      function reverse(date){
-          return date.split("").reverse().join("");
-      }*/
 
-
-          /*$('div.uk-accordion.ng-scope').on('toggle.uk.accordion', function(){
-
-            console.log(this)
-            console.log('test')
-          //  $('.span.arrow-accordion')
-        })*/
-
-      /*  $scope.changeIcon = function($event){
-          console.log($event.currentTarget)
-          //$(this).remove();
-
-        }
-*/
-
-
-      /*$scope.getSeanceParCommission = function($idCommission){
-
-        console.log($idCommission)
-
-
-        $http.get(API_URL + "commissions/"+$idCommission+"/seances")
-          .success(function(response) {
-              $scope.seancesParCommission = response;
-          });
-
-
-      }*/
 
 
 

@@ -2,135 +2,147 @@
 
   <div class="uk-accordion" data-uk-accordion>
 
-          <h2 class="uk-accordion-title">Général</h2>
+    <h2 class="uk-accordion-title">Général</h2>
+    <div class="uk-accordion-content">
+      <!-- /***********************************/-->
+      <!-- /*******  GENERAL FORMULAIRE *******/-->
+      <!-- /***********************************/-->
+      <form class="uk-form uk-form-horizontal pv-form">
 
-          <div class="uk-accordion-content">
-            <!-- /***********************************/-->
-            <!-- /*******  GENERAL FORMULAIRE *******/-->
-            <!-- /***********************************/-->
-            <form class="uk-form uk-form-horizontal pv-form">
+        <!-- /******* NOM COMMISSION **********/-->
+        <div class="uk-form-row">
+            <label class="uk-form-label" for="commission_nom">Commission</label>
+            <div class="uk-form-controls">
+                <p>{{general.nomCommission}}</p>
+                <input type="hidden" id="commission_nom" ng-model="general.nomCommission">
+                <input type="hidden" ng-model="general.idCommission">
+            </div>
+        </div>
 
-              <!-- /******* NOM COMMISSION **********/-->
-              <div class="uk-form-row">
-                  <label class="uk-form-label" for="commission_nom">Commission</label>
-                  <div class="uk-form-controls">
-                      <p>{{general.nomCommission}}</p>
-                      <input type="hidden" id="commission_nom" ng-model="general.nomCommission">
-                      <input type="hidden" ng-model="general.idCommission">
-                  </div>
-              </div>
+        <!-- /******* NO PV **********/-->
+        <div class="uk-form-row">
+            <label class="uk-form-label" for="numero">Numero</label>
+            <div class="uk-form-controls">
+                <input type="number" id="numero" ng-model="general.numero">
+            </div>
+        </div>
 
-              <!-- /******* NO PV **********/-->
-              <div class="uk-form-row">
-                  <label class="uk-form-label" for="numero">Numero</label>
-                  <div class="uk-form-controls">
-                      <input type="number" id="numero" ng-model="general.numero">
-                  </div>
-              </div>
+        <!-- /******* DATE PV **********/-->
+        <div class="uk-form-row">
+            <label class="uk-form-label" for="date">Date</label>
+            <div class="uk-form-controls">
+                <input id ="date" type="text" data-uk-datepicker="{format:'DD-MM-YYYY'}"  ng-model="general.date" required>
+            </div>
+        </div>
+        {{general.date}}
+        <!-- /******* HEURE DEBUT **********/-->
+        <div class="uk-form-row">
+            <label class="uk-form-label" for="heure_debut">Heure de début</label>
+            <div class="uk-form-controls">
+              <input id="heure_debut" type="text" data-uk-timepicker placeholder="17:00" ng-model="general.heure_debut">
+            </div>
+        </div>
 
-              <!-- /******* DATE PV **********/-->
-              <div class="uk-form-row">
-                  <label class="uk-form-label" for="date">Date</label>
-                  <div class="uk-form-controls">
-                      <input id ="date" type="text" data-uk-datepicker="{format:'DD-MM-YYYY'}"  ng-model="general.date" required>
-                  </div>
-              </div>
-              {{general.date}}
-              <!-- /******* HEURE DEBUT **********/-->
-              <div class="uk-form-row">
-                  <label class="uk-form-label" for="heure_debut">Heure de début</label>
-                  <div class="uk-form-controls">
-                    <input id="heure_debut" type="text" data-uk-timepicker placeholder="17:00" ng-model="general.heure_debut">
-                  </div>
-              </div>
+        <!-- /******* HEURE FIN **********/-->
+        <div class="uk-form-row">
+          <label class="uk-form-label" for="heure_fin">Heure de fin</label>
+          <div class="uk-form-controls">
+            <input id="heure_fin" type="text" data-uk-timepicker placeholder="20:00" ng-model="general.heure_fin">
+          </div>
+        </div>
 
-              <!-- /******* HEURE FIN **********/-->
-              <div class="uk-form-row">
-                <label class="uk-form-label" for="heure_fin">Heure de fin</label>
-                <div class="uk-form-controls">
-                  <input id="heure_fin" type="text" data-uk-timepicker placeholder="20:00" ng-model="general.heure_fin">
-                </div>
-              </div>
+        <!-- /******* LIEU **********/-->
+        <div class="uk-form-row">
+          <label class="uk-form-label" for="lieu">Lieu</label>
+          <div class="uk-form-controls">
+            <input id="lieu" type="text" placeholder="Salle des Fiefs">
+          </div>
+        </div>
 
-              <!-- /******* LIEU **********/-->
-              <div class="uk-form-row">
-                <label class="uk-form-label" for="lieu">Lieu</label>
-                <div class="uk-form-controls">
-                  <input id="lieu" type="text" placeholder="Salle des Fiefs">
-                </div>
-              </div>
-
-              <!-- /******* PRESIDENT **********/-->
-              <div class="uk-form-row">
-                <label class="uk-form-label" for="president">Président</label>
-                <div class="uk-form-controls">
-                  <input id="president" type="text">
-                </div>
-              </div>
-
-
-
-
-              <!-- PLACE POUR PRESENT/ABSENT -->
-
-
-
-              <!-- /******* INVITE (assistent) **********/-->
-              <div class="uk-form-row">
-                <label class="uk-form-label" for="invites">Invités</label>
-                <div ng-repeat="invite in general.invites">
-                  <div class="uk-form-controls" style="margin-bottom:10px;">
-
-                    <input type="text" ng-model="invite.nom" placeholder="Nom">
-                    <input type="text" ng-model="invite.prenom" placeholder="Prenom">
-                    <input type="text" ng-model="invite.titre" placeholder="Titre" size="5">
-                    <a href="#" ng-click="supprimerInvite($index, general.idSeance, invite.id)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a>
-                    {{invite.id}}
-                    {{$index}}
-
-                  <!--  <input type="text" ng-model="invite.fonction" placeholder="Fonction" size="50">-->
-
-                  </div>
-                </div>
-                <div class="uk-form-controls">
-                  <a href="#" ng-click="ajouterInvite()" class="uk-button uk-button-mini uk-button-primary"><span class="ajouter-invite">Ajouter un invité</span></a>
-
-                </div>
-
-
-                <button type="submit" class="uk-button uk-button-primary uk-width-1-1 sauvegarder-pv" ng-click="sauvegarderSeance()">Sauvegarder</button>
-                {{general}}<br/>
-                {{invites}}<br/>
-                {{test}}
+        <!-- /******* PRESIDENT **********/-->
+        <div class="uk-form-row">
+          <label class="uk-form-label" for="president">Président</label>
+          <div class="uk-form-controls">
+            <input id="president" type="text">
+          </div>
+        </div>
 
 
 
 
-                    <!--<label>Commission</label>
-                    <input type="text" placeholder="" ng-model="general.nomCommission">
-                    <input type="hidden" placeholder="" ng-model="general.idCommission">
-                    <br/>
-                    <label>Numero</label>
-                    <input type="number" placeholder="" >-->
+        <!-- PLACE POUR PRESENT/ABSENT -->
 
 
 
+        <!-- /******* INVITE (assistent) **********/-->
+        <div class="uk-form-row">
+          <label class="uk-form-label" for="invites">Invités</label>
+          <div ng-repeat="invite in general.invites">
+            <div class="uk-form-controls" style="margin-bottom:10px;">
 
+              <input type="text" ng-model="invite.nom" placeholder="Nom">
+              <input type="text" ng-model="invite.prenom" placeholder="Prenom">
+              <input type="text" ng-model="invite.titre" placeholder="Titre" size="5">
+              <a href="#" ng-click="supprimerInvite($index, general.idSeance, invite.id)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a>
+              {{invite.id}}
+              {{$index}}
 
-                    <!--<input type="password" placeholder="">
-                    <select>
-                        <option>...</option>
-                        <option>...</option>
-                    </select>
-                    <button class="uk-button">...</button>
-                    <label><input type="checkbox"> ...</label>-->
+            <!--  <input type="text" ng-model="invite.fonction" placeholder="Fonction" size="50">-->
 
-            </form>
-
-
+            </div>
           </div>
 
+          <div class="uk-form-controls">
+            <a href="#" ng-click="ajouterInvite()" class="uk-button uk-button-mini uk-button-primary"><span class="ajouter-invite">Ajouter un invité</span></a>
+          </div>
+        </div>
+
+          <button type="submit" class="uk-button uk-button-primary uk-width-1-1 sauvegarder-pv" ng-click="sauvegarderSeance()">Sauvegarder</button>
+          {{general}}<br/>
+          {{invites}}<br/>
+          {{test}}
+
+
+
+
+              <!--<label>Commission</label>
+              <input type="text" placeholder="" ng-model="general.nomCommission">
+              <input type="hidden" placeholder="" ng-model="general.idCommission">
+              <br/>
+              <label>Numero</label>
+              <input type="number" placeholder="" >-->
+
+
+
+
+
+              <!--<input type="password" placeholder="">
+              <select>
+                  <option>...</option>
+                  <option>...</option>
+              </select>
+              <button class="uk-button">...</button>
+              <label><input type="checkbox"> ...</label>-->
+
+      </form>
+
+
+    </div>
+
+
+    <h2 class="uk-accordion-title">objet1</h2>
+
+    <div class="uk-accordion-content"><p>objet1</p></div>
+
+
+
+
   </div>
+
+
+
+
+
 
 
 

@@ -2,6 +2,10 @@ app.controller('menuController', function($scope, $http, API_URL) {
 
 
 
+    checkNetworkStatus();
+
+
+
       // EVENEMENTS
 
       $scope.retourAccueil = function(){
@@ -9,52 +13,40 @@ app.controller('menuController', function($scope, $http, API_URL) {
         $('#liste').show();
         $('#workflow').hide();
         $('div#menu a').hide();
-
-        
-
-        /*
-        $http.get(API_URL + "commissions/seances")
-          .success(function(response) {
-              $scope.commissions = response;
-              console.log(response)
-
-          });*/
-
       }
 
+      // FONCTIONS
+
+
+
+    function checkNetworkStatus(){
+
+       if(navigator.onLine){
+         $('span#status-network').empty();
+         $('span#status-network').append('<span id="status-online">online</span>')
+       }else{
+         $('span#status-network').empty();
+         $('span#status-network').append('<span id="status-offline">offline</span>')
+       }
+
+       setInterval(function () {
+
+           if(navigator.onLine){
+             $('span#status-network').empty();
+             $('span#status-network').append('<span id="status-online">online</span>')
+           }else{
+             $('span#status-network').empty();
+             $('span#status-network').append('<span id="status-offline">offline</span>')
+           }
+
+
+       }, 500);
+     }
 
 
 
 
 
-
-          /*$('div.uk-accordion.ng-scope').on('toggle.uk.accordion', function(){
-
-            console.log(this)
-            console.log('test')
-          //  $('.span.arrow-accordion')
-        })*/
-
-      /*  $scope.changeIcon = function($event){
-          console.log($event.currentTarget)
-          //$(this).remove();
-
-        }
-*/
-
-
-      /*$scope.getSeanceParCommission = function($idCommission){
-
-        console.log($idCommission)
-
-
-        $http.get(API_URL + "commissions/"+$idCommission+"/seances")
-          .success(function(response) {
-              $scope.seancesParCommission = response;
-          });
-
-
-      }*/
 
 
 
