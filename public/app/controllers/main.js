@@ -4,7 +4,10 @@ app.controller('mainController', function($scope, $http, API_URL) {
 
 
 
-      // EVENEMENTS
+
+        //*******************************************//
+        // EVENEMENTS
+        //*******************************************//
 
       $scope.refreshSeance = function(){
 

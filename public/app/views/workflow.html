@@ -32,7 +32,7 @@
               <div class="uk-form-row">
                   <label class="uk-form-label" for="date">Date</label>
                   <div class="uk-form-controls">
-                      <input id ="date" type="text" data-uk-datepicker="{format:'DD-MM-YYYY'}" placeholder="{{currentDate | date:'DD-MM-YYYY'}}" ng-model="general.date">
+                      <input id ="date" type="text" data-uk-datepicker="{format:'DD-MM-YYYY'}"  ng-model="general.date" required>
                   </div>
               </div>
               {{general.date}}
@@ -98,7 +98,7 @@
                 </div>
 
 
-                <button class="uk-button uk-button-primary uk-width-1-1 sauvegarder-pv" ng-click="sauvegarderSeance()">Sauvegarder</button>
+                <button type="submit" class="uk-button uk-button-primary uk-width-1-1 sauvegarder-pv" ng-click="sauvegarderSeance()">Sauvegarder</button>
                 {{general}}<br/>
                 {{invites}}<br/>
                 {{test}}

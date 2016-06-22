@@ -1,18 +1,10 @@
-app.controller('accueilController', function($scope, $http, API_URL,createSeanceInfos,$rootScope,$filter) {
-
-      // Accès aux commissions et les séances liées
-    /*  $http.get(API_URL + "commissions/seances")
-        .success(function(response) {
-            $scope.commissions = response;
-
-        });*/
-
-        $rootScope.test = "salut";
+app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$filter) {
 
 
 
+      //*******************************************//
       // EVENEMENTS
-
+      //*******************************************//
 
 
       $scope.convertPv = function(){
@@ -20,9 +12,6 @@ app.controller('accueilController', function($scope, $http, API_URL,createSeance
       }
 
       $scope.nouveauPV = function($idCommission,$nomCommission){
-
-          //console.log($idCommission)
-          //console.log($nomCommission)
 
           $('#liste').hide();
           $('#workflow').show();
@@ -34,16 +23,25 @@ app.controller('accueilController', function($scope, $http, API_URL,createSeance
             params: {'commission_id': $idCommission}
            })
            .success(function(response) {
-               //$scope.reponse = response;
-               //console.log(response)
-               //console.log($idCommission)
+
                //console.log($nomCommission)
+               // Date actuelle pour le placeholder du formulaire
+               var currentDate = new Date();
 
-               createSeanceInfos.setProperty({'nomCommission':$nomCommission, 'idCommission':$idCommission, 'idSeance':response.id});
-               //console.log('maprop'+createSeanceInfos.getProperty());
+               var currentDateHuman = $filter('date')(currentDate, 'dd-MM-yyyy')
 
 
+                 //$scope.general.date = currentDateHuman;
 
+                 $rootScope.general = {};
+
+               $rootScope.general = {
+                 'nomCommission' : $nomCommission,
+                 'idCommission' : $idCommission,
+                 'idSeance' : response.id,
+                 'date':currentDateHuman
+               }
+                
 
            });
 
@@ -86,31 +84,14 @@ app.controller('accueilController', function($scope, $http, API_URL,createSeance
               //console.log(dateMysql)
               //console.log(dateHuman)
 
-
-             createSeanceInfos.setProperty({
-               'nomCommission':$nomCommission,
-               'idCommission':$idCommission,
-               'idSeance':$idSeance,
-               'numero':response.numero,
-               'invites':mesInvites,
-               'date':dateHuman
-             });
-
-
-             //console.log(createSeanceInfos.getProperty())
-
-             /*// get invite
-             $http({
-               url: API_URL +"seance/"+$idSeance+"/invite",
-               method: "GET",
-               params: {'seance_id': $idSeance}
-              })
-              .success(function(response) {
-                console.log(response)
-
-              });*/
-
-
+              $rootScope.general = {
+                'nomCommission' : $nomCommission,
+                'idCommission' : $idCommission,
+                'idSeance':$idSeance,
+                'numero':response.numero,
+                'invites':mesInvites,
+                'date':dateHuman
+              }
 
          });
 
@@ -140,6 +121,10 @@ app.controller('accueilController', function($scope, $http, API_URL,createSeance
 
 
       }
+
+      //*******************************************//
+      // FONCTIONS
+      //*******************************************//
 
       var convertMysqlDateToHumanDate = function(usDate) {
         var dateParts = usDate.split(/(\d{4})\-(\d{1,2})\-(\d{1,2})/);

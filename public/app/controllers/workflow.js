@@ -1,22 +1,11 @@
-app.controller('workflowController', function($scope, $http, API_URL,createSeanceInfos,$filter) {
-
-
-
-      // Date actuelle pour le placeholder du formulaire
-      var date = new Date();
-      $scope.currentDate = date;
+app.controller('workflowController', function($scope, $http, API_URL,$filter,$rootScope) {
 
 
 
 
-      // Get infos de la page accueil
-      var general = {};
-      $scope.$watch(function(){
-        $scope.general = createSeanceInfos.getProperty();
-        //console.log(createSeanceInfos.getProperty());
-        //console.log($scope.general)
 
-      })
+
+
 
 
 
@@ -49,6 +38,7 @@ app.controller('workflowController', function($scope, $http, API_URL,createSeanc
 
 
       $scope.sauvegarderSeance = function(){
+
 
         //var dateHuman =
         var dateHuman = $scope.general.date;
