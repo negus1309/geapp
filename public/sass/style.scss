@@ -62,7 +62,7 @@ display:none;
 }
 
 
-span.supprimer-invite{
+span.supprimer-invite,span.ajouter-invite{
   line-height: 25px;
 
 }
@@ -78,6 +78,13 @@ span.supprimer-invite:before{
   margin-top:20px;
 }
 
+span.ajouter-invite:before{
+  @extend %fontawesome;
+
+    /* down arrow icon */
+    content: "\f067";
+    padding-right:5px;
+}
 
 
 //***************************************************//

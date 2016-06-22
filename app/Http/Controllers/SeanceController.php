@@ -42,8 +42,13 @@ class SeanceController extends Controller {
 
         $nouveauPv = new Seance;
 
+        //$humanDate = $request->date;
+        //$mysql_date = date('YYYY-mm-dd', strtodate($humanDate));
+
+        //$nouveauPv->date = $mysql_date;
+
         $nouveauPv->commission_id = $request->input('commission_id');
-        $nouveauPv->date = '2017-10-06';
+
         $nouveauPv->save();
 
         return response($nouveauPv->toJson(), 201, array('Content-Type' => 'application/json'));

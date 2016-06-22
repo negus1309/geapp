@@ -1,4 +1,4 @@
-app.controller('workflowController', function($scope, $http, API_URL,createSeanceInfos) {
+app.controller('workflowController', function($scope, $http, API_URL,createSeanceInfos,$filter) {
 
 
 
@@ -50,11 +50,20 @@ app.controller('workflowController', function($scope, $http, API_URL,createSeanc
 
       $scope.sauvegarderSeance = function(){
 
+        //var dateHuman =
+        var dateHuman = $scope.general.date;
+        //console.log(dateHuman)
+        var dateToPost = convertHumanDateToMysqlDate(dateHuman);
+
+
+       //var dateToPost = reverse(dateHuman);
+       //console.log(dateToPost)
+
         // infos séances
         var maSeance = {
           'id':$scope.general.idSeance,
           'numero': $scope.general.numero,
-          'date': $scope.general.date,
+          'date': dateToPost,
           'heure_debut':$scope.general.heure_debut,
           'heure_fin':$scope.general.heure_fin,
           'commission_id':$scope.general.idCommission,
@@ -119,6 +128,16 @@ app.controller('workflowController', function($scope, $http, API_URL,createSeanc
 
 
       }
+
+      // convertir date
+      var convertHumanDateToMysqlDate = function(usDate) {
+        var dateParts = usDate.split(/(\d{1,2})\-(\d{1,2})\-(\d{4})/);
+        return dateParts[3] + "-" + dateParts[2] + "-" + dateParts[1];
+      }
+/*
+      function reverse(date){
+          return date.split("").reverse().join("");
+      }*/
 
 
           /*$('div.uk-accordion.ng-scope').on('toggle.uk.accordion', function(){

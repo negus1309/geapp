@@ -1,4 +1,4 @@
-app.controller('accueilController', function($scope, $http, API_URL,createSeanceInfos,$rootScope) {
+app.controller('accueilController', function($scope, $http, API_URL,createSeanceInfos,$rootScope,$filter) {
 
       // Accès aux commissions et les séances liées
     /*  $http.get(API_URL + "commissions/seances")
@@ -73,14 +73,18 @@ app.controller('accueilController', function($scope, $http, API_URL,createSeance
              //console.log(response)
              //console.log($idCommission)
              //console.log($nomCommission)
-             console.log(response)
+             //console.log(response)
              var mesInvites = [];
              angular.forEach(response.assistance, function(assist, key) {
 
                 mesInvites.push({'nom':assist.invite.nom,'prenom':assist.invite.prenom,'titre':assist.invite.titre, 'id':assist.invite.id});
               });
-              console.log(mesInvites)
+              //console.log(mesInvites)
 
+              var dateMysql = response.date;
+              var dateHuman = convertMysqlDateToHumanDate(dateMysql);
+              //console.log(dateMysql)
+              //console.log(dateHuman)
 
 
              createSeanceInfos.setProperty({
@@ -88,11 +92,12 @@ app.controller('accueilController', function($scope, $http, API_URL,createSeance
                'idCommission':$idCommission,
                'idSeance':$idSeance,
                'numero':response.numero,
-               'invites':mesInvites
+               'invites':mesInvites,
+               'date':dateHuman
              });
 
 
-             console.log(createSeanceInfos.getProperty())
+             //console.log(createSeanceInfos.getProperty())
 
              /*// get invite
              $http({
@@ -134,6 +139,11 @@ app.controller('accueilController', function($scope, $http, API_URL,createSeance
          });
 
 
+      }
+
+      var convertMysqlDateToHumanDate = function(usDate) {
+        var dateParts = usDate.split(/(\d{4})\-(\d{1,2})\-(\d{1,2})/);
+        return dateParts[3] + "-" + dateParts[2] + "-" + dateParts[1];
       }
 
 
