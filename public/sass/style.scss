@@ -3,6 +3,7 @@
 //***************************************************//
 
 $menu-height: 40px;
+$color-primary: #00a8e6;
 
 
 
@@ -73,19 +74,35 @@ div#menu{
   display: block;
   visibility: visible;
   a{
-    display: none;
+    color:$color-primary;
     line-height: $menu-height;
   }
-  span.retourAccueil{
+  a.back{
+    display: none;
+  }
+  span.retourAccueil,span.presenceCheck{
     margin-left: 10px;
+    color:$color-primary;
     //line-height: 40px;
 
   }
+
   span.retourAccueil:before{
   @extend %fontawesome;
-
+    color:$color-primary;
     /* down arrow icon */
     content: "\f104";
+    //line-height: 40px;
+    font-size: 1.3em;
+
+    /* some space*/
+    padding-right:5px;
+  }
+  span.presenceCheck:before{
+  @extend %fontawesome;
+    color: $color-primary;
+    /* down arrow icon */
+    content: "\f0c0";
     //line-height: 40px;
     font-size: 1.3em;
 
@@ -96,8 +113,9 @@ div#menu{
 
 span#status-network{
   color: white;
-  position: absolute;
+//  position: absolute;
   right: 20px;
+  float:right;
   line-height: $menu-height;
 
   #status-online:before{
@@ -110,6 +128,21 @@ span#status-network{
 
   }
 }
+
+a#presence-check{
+  display: none;
+  color: white;
+  //position: absolute;
+  //text-align: right;
+  float:right;
+  right: 130px;
+  line-height: $menu-height;
+  font-size: 1.3em;
+  &:hover{
+    text-decoration: none;
+  }
+}
+
 
 //***************************************************//
 // Page Accueil

@@ -46,10 +46,36 @@
 
 
 
-      <div id="dernier-pv" class="uk-width-1-3">
+      <div id="dernier-pv" class="uk-width-1-3" ng-controller="dernierPvController">
               <div class="uk-panel uk-panel-box">
                 <h3 class="uk-panel-title">Derniers PV</h3>
-                <p>blafd</p>
+                <div class="uk-accordion" data-uk-accordion ng-repeat="commission in commissionsLast">
+
+                        <h4 class="uk-accordion-title" data-commission-id="{{commission.id}}">{{commission.nom}}
+                        </h4>
+
+                        <div class="uk-accordion-content">
+                          <ul class="pv-list-item">
+                            <div ng-repeat="uneSeance in commission.seance_lastpv">
+
+                              <li>
+                                PV du {{uneSeance.date | date :  "dd.MM.y" }}<br/>
+                                N° {{uneSeance.numero}}<br/>
+                                {{uneSeance.id}}
+
+
+                              </li>
+                              <div class="tools-pv">
+                                <a href="#" ng-click="editPv(commission.id, commission.nom,uneSeance.id);test();" class="uk-button uk-button-mini uk-button-primary"><span class="edit-pv" data-pv-id="{{uneSeance.id}}">éditer</span></a><br/>
+                                <a href="#" class="uk-button uk-button-mini uk-button-success"><span class="convert-pv" data-pv-id="{{uneSeance.id}}">convertir</span></a>
+                                <a href="#" ng-click="deletePv(uneSeance.id);refreshSeance();" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-pv" data-pv-id="{{uneSeance.id}}">supprimer</span></a>
+
+                              </div>
+
+                            </div>
+                          </ul>
+                        </div>
+                </div>
               </div>
       </div>
       <div id="calendrier" class="uk-width-1-3">

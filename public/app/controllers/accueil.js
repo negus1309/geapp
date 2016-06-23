@@ -15,7 +15,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
           $('#liste').hide();
           $('#workflow').show();
-          $('div#menu a.back').show();
+        $('div#menu a').show();
 
           $http({
             url: API_URL + "seance/create",
@@ -58,6 +58,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
         $('#liste').hide();
         $('#workflow').show();
         $('div#menu a').show();
+
 
         //console.log($idSeance)
 

@@ -1,9 +1,16 @@
 <div id="menu" class="uk-block-primary" ng-controller="menuController">
-  <a class="back" href="#" class="uk-vertical-align" ng-click="retourAccueil();refreshSeance();getMinInfos();">
+  <a class="back" href="#" class="uk-vertical-align" ng-click="retourAccueil();refreshSeance();">
     <span class="retourAccueil uk-button uk-button-small uk-text-primary">Retour à l'accueil</span>
   </a>
-
   <span id="status-network">
 
   </span>
+  <a id="presence-check"  href="#" class="uk-vertical-align" ng-click="getDeputes(general.idCommission)" data-uk-modal="{target:'#gestion-presence-modal'}">
+    <span class="presenceCheck uk-button uk-button-small uk-text-primary">Gestion des présences</span>
+  </a>
+
+
+
+  <!-- modal absence -->
+
 </div>

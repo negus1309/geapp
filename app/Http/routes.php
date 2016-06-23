@@ -19,6 +19,9 @@ Route::get('/', function () {
 // Accès à chaque commission comprenant les séances liées
 Route::get('/geapp/public/api/v1/commissions/seances', 'CommissionController@getCommissionWithSeances');
 
+// Accès à chaque commission comprenant la dernière séance en date
+Route::get('/geapp/public/api/v1/commissions/seance/last', 'CommissionController@getCommissionWithLastSeance');
+
 // Création d'une séance vide
 Route::post('/geapp/public/api/v1/seance/create', 'SeanceController@newSeance');
 
@@ -41,3 +44,5 @@ Route::post('/geapp/public/api/v1/assistance/create', 'AssistanceController@stor
 Route::get('/geapp/public/api/v1/seance/{seance_id}/invite', 'InviteController@getInvitePourSeance');
 
 Route::delete('/geapp/public/api/v1/seance/{seance_id}/invite/{invite_id}/delete','AssistanceController@deleteAssistance');
+
+Route::get('/geapp/public/api/v1/commissions/{commission_id}/deputes', 'DeputeController@getDeputeForSeance');

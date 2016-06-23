@@ -9,10 +9,13 @@
 
         <link href="<?= asset('css/uikit.min.css') ?>" rel="stylesheet"  />
         <link href="<?= asset('css/uikit.almost-flat.min.css') ?>" rel="stylesheet"  />
-        <link href="<?= asset('css/style.css') ?>" rel="stylesheet">
+
         <link href="<?= asset('css/components/accordion.min.css') ?>" rel="stylesheet"  />
         <link href="<?= asset('css/components/datepicker.min.css') ?>" rel="stylesheet"  />
         <link href="<?= asset('css/components/notify.min.css') ?>" rel="stylesheet"  />
+        <link href="<?= asset('css/font-awesome.min.css') ?>" rel="stylesheet"  />
+        <link href="<?= asset('css/style.css') ?>" rel="stylesheet">
+
 
     </head>
     <body ng-controller="mainController">
@@ -20,6 +23,7 @@
       <ng-include src="'<?= asset('app/views/menu.html')?>'"></ng-include>
       <ng-include src="'<?= asset('app/views/accueil.html')?>'"></ng-include>
       <ng-include src="'<?= asset('app/views/workflow.html')?>'"></ng-include>
+      <ng-include src="'<?= asset('app/views/gestion_presence.html')?>'"></ng-include>
 
 
 
@@ -37,8 +41,10 @@
         <!-- AngularJS Application Scripts -->
         <script src="<?= asset('app/app.js') ?>"></script>
         <script src="<?= asset('app/controllers/accueil.js') ?>"></script>
+        <script src="<?= asset('app/controllers/dernier_pv.js') ?>"></script>
         <script src="<?= asset('app/controllers/workflow.js') ?>"></script>
         <script src="<?= asset('app/controllers/main.js') ?>"></script>
         <script src="<?= asset('app/controllers/menu.js') ?>"></script>
+        <script src="<?= asset('app/controllers/gestion_presence.js') ?>"></script>
     </body>
 </html>

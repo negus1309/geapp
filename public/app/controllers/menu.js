@@ -13,6 +13,7 @@ app.controller('menuController', function($scope, $http, API_URL) {
         $('#liste').show();
         $('#workflow').hide();
         $('div#menu a').hide();
+
       }
 
       // FONCTIONS

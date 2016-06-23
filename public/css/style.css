@@ -28,26 +28,47 @@ div#menu {
   display: block;
   visibility: visible; }
   div#menu a {
-    display: none;
+    color: #00a8e6;
     line-height: 40px; }
-  div#menu span.retourAccueil {
-    margin-left: 10px; }
+  div#menu a.back {
+    display: none; }
+  div#menu span.retourAccueil, div#menu span.presenceCheck {
+    margin-left: 10px;
+    color: #00a8e6; }
   div#menu span.retourAccueil:before {
+    color: #00a8e6;
     /* down arrow icon */
     content: "\f104";
+    font-size: 1.3em;
+    /* some space*/
+    padding-right: 5px; }
+  div#menu span.presenceCheck:before {
+    color: #00a8e6;
+    /* down arrow icon */
+    content: "\f0c0";
     font-size: 1.3em;
     /* some space*/
     padding-right: 5px; }
 
 span#status-network {
   color: white;
-  position: absolute;
   right: 20px;
+  float: right;
   line-height: 40px; }
   span#status-network #status-online:before {
     color: green; }
   span#status-network #status-offline:before {
     color: red; }
+
+a#presence-check {
+  display: none;
+  color: white;
+  float: right;
+  right: 130px;
+  line-height: 40px;
+  font-size: 1.3em; }
+  a#presence-check:hover {
+    text-decoration: none; }
 
 ul.pv-list-item {
   padding: 0px; }
@@ -111,7 +132,7 @@ button.nouveau-pv:before {
 .uk-panel {
   margin: 10px; }
 
-span.supprimer-invite:before, span.ajouter-invite:before, div#menu span.retourAccueil:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, button.nouveau-pv:before, .uk-accordion-title:before, span#status-network #status-online:before, span#status-network #status-offline:before {
+span.supprimer-invite:before, span.ajouter-invite:before, div#menu span.retourAccueil:before, div#menu span.presenceCheck:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, button.nouveau-pv:before, .uk-accordion-title:before, span#status-network #status-online:before, span#status-network #status-offline:before {
   font-family: 'FontAwesome';
   src: url("../fonts/fontawesome-webfont.eot");
   src: url("../fonts/fontawesome-webfont-ie.eot") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2") format("woff2"), url("../fonts/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome-webfont.ttf") format("truetype");

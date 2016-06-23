@@ -15,12 +15,14 @@ class CreateAbsenceTable extends Migration
       Schema::create('absences', function (Blueprint $table) {
         $table->timestamps();
 
+        $table->time('heure_debut');
+        $table->time('heure_fin');
         //FK
         $table->integer('depute_id')->unsigned();;
         $table->integer('seance_id')->unsigned();;
 
 
-          $table->primary(array('depute_id', 'seance_id'));
+          $table->primary(array('depute_id', 'seance_id', 'heure_debut'));
       });
     }
 

@@ -64,18 +64,44 @@ class MyAppSeeder extends Seeder {
             'id'         => 1,
             'nom'        => 'Empion',
             'prenom'     => 'Tarte',
-            'titre'      => 'MME',
-            'parti'      => 'PDC'
+            'titre'      => 'mme',
+            'parti'      => 'pdc'
         ));
         Depute::create(array(
             'id'         => 2,
             'nom'        => 'Duvoyage',
             'prenom'     => 'Jean',
-            'titre'      => 'M.',
-            'parti'      => 'UDC'
+            'titre'      => 'm',
+            'parti'      => 'udc'
         ));
-
-
+        Depute::create(array(
+            'id'         => 3,
+            'nom'        => 'Armstrong',
+            'prenom'     => 'Louis',
+            'titre'      => 'm',
+            'parti'      => 'pdc'
+        ));
+        Depute::create(array(
+            'id'         => 4,
+            'nom'        => 'Bush',
+            'prenom'     => 'Georges',
+            'titre'      => 'm',
+            'parti'      => 'ps'
+        ));
+        Depute::create(array(
+            'id'         => 5,
+            'nom'        => 'Clinton',
+            'prenom'     => 'Hillary',
+            'titre'      => 'mme',
+            'parti'      => 'ps'
+        ));
+        Depute::create(array(
+            'id'         => 6,
+            'nom'        => 'Trump',
+            'prenom'     => 'Donald',
+            'titre'      => 'm',
+            'parti'      => 'mcg'
+        ));
         $this->command->info('The bears are alive!');
 
         // seed our fish table ------------------------
@@ -87,13 +113,13 @@ class MyAppSeeder extends Seeder {
             'id'  => 1,
             'nom' => 'Banderas',
             'prenom' => 'Antonio',
-            'titre' => 'M.'
+            'titre' => 'm'
         ));
         President::create(array(
             'id'  => 2,
             'nom' => 'Hayek',
             'prenom' => 'Salma',
-            'titre' => 'MME'
+            'titre' => 'mme'
         ));
 
         $this->command->info('president ok');
@@ -103,13 +129,13 @@ class MyAppSeeder extends Seeder {
             'id'    => 1,
             'nom' => 'Orteur',
             'prenom' => 'Rappe',
-            'titre' => 'M.'
+            'titre' => 'm'
         ));
         Rapporteur::create(array(
             'id'    => 2,
             'nom' => 'Christ',
             'prenom' => 'Jesus',
-            'titre' => 'M.'
+            'titre' => 'm'
 
         ));
 
@@ -118,13 +144,13 @@ class MyAppSeeder extends Seeder {
             'id'    => 1,
             'nom' => 'Aliste',
             'prenom' => 'Proc',
-            'titre' => 'M.'
+            'titre' => 'm'
         ));
         Procesverbaliste::create(array(
             'id'    => 2,
             'nom' => 'Verba',
             'prenom' => 'Lise',
-            'titre' => 'MME'
+            'titre' => 'mme'
 
         ));
 
@@ -135,13 +161,13 @@ class MyAppSeeder extends Seeder {
             'id'    => 1,
             'nom' => 'Chhen',
             'prenom' => 'Patrick',
-            'titre' => 'M.'
+            'titre' => 'm'
         ));
         Invite::create(array(
             'id'    => 2,
             'nom' => 'Scheuner',
             'prenom' => 'Nicolas',
-            'titre' => 'M.'
+            'titre' => 'm'
 
         ));
 
@@ -166,7 +192,22 @@ class MyAppSeeder extends Seeder {
             'depute_id'    => 2,
             'commission_id' => 2
         ));
-
+        Attribution::create(array(
+            'depute_id'    => 3,
+            'commission_id' => 2
+        ));
+        Attribution::create(array(
+            'depute_id'    => 4,
+            'commission_id' => 2
+        ));
+        Attribution::create(array(
+            'depute_id'    => 5,
+            'commission_id' => 2
+        ));
+        Attribution::create(array(
+            'depute_id'    => 6,
+            'commission_id' => 2
+        ));
         $this->command->info('attribution ok');
 
 

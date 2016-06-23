@@ -16,6 +16,11 @@ app.controller('mainController', function($scope, $http, API_URL) {
               $scope.commissions = response;
 
           });
+        $http.get(API_URL + "commissions/seance/last")
+          .success(function(response) {
+              $scope.commissionsLast = response;
+
+          });
 
 
 

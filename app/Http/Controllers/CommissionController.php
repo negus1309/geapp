@@ -37,4 +37,19 @@ class CommissionController extends Controller {
     }
 
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function getCommissionWithLastSeance(){
+      $comWithSeance = Commission::with('seance_lastpv')->get();
+
+
+
+      return $comWithSeance;
+
+    }
+
+
 }

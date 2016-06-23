@@ -1,0 +1,33 @@
+<div id="gestion-presence-modal" class="uk-modal" ng-controller="gestionPresenceController">
+  <div class="uk-modal-dialog">
+      <div class="uk-modal-header"><h2>Gestion des présences</h2></div>
+        <table class="uk-table uk-table-striped">
+          <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Titre</th>
+                <th>Parti</th>
+                <!-- hour colomn -->
+                <th>H1</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="depute in deputes">
+              <td>{{depute.nom}}</td>
+              <td>{{depute.prenom}}</td>
+              <td>{{depute.titre}}</td>
+              <td>{{depute.parti}}</td>
+              <!-- hour tick -->
+              <td>[]</td>
+            </tr>
+
+        </tbody>
+
+      </table>
+      <div class="uk-modal-footer">
+
+      </div>
+  </div>
+</div>
