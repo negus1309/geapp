@@ -21,6 +21,8 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
         $scope.general.invites.push({'nom':'','prenom':'','titre':''});
       }
 
+
+
       // Suppression de champ invité
       $scope.supprimerInvite = function($index, $seance_id, $invite_id){
 
@@ -36,6 +38,13 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
       }
 
+      // Ajout de champ invités
+      $scope.ajouterPointODJ = function(){
+        if(!$scope.odj){
+          $scope.odj = [];
+        }
+        $scope.odj.push({'titre':'','contenu':'','heure_debut':'','heure_fin':''});
+      }
 
       $scope.sauvegarderSeance = function(){
 
@@ -102,6 +111,32 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
               });
 
            });
+
+           var mesRubriques = $scope.odj;
+
+           angular.forEach(mesRubriques, function(maRubrique, key) {
+
+              maRubrique.seance_id = maSeance.id;
+              var numeroToPost = key + 1;
+              maRubrique.numero = numeroToPost;
+
+              console.log(maRubrique)
+
+               $http({
+                 url: API_URL + "rubrique/create",
+                 method: "POST",
+                 params: maRubrique
+                })
+                .success(function(response) {
+
+                  console.log(response)
+                });
+
+           });
+
+
+
+
            UIkit.notify({
                message : '<i class=\'uk-icon-check\'></i>&nbsp;PV sauvegardé!',
                status  : 'success',

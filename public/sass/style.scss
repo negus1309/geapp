@@ -11,8 +11,11 @@ $color-primary: #00a8e6;
 // Style personnalisé
 //***************************************************//
 
-
+body{
+  padding-top: 40px;
+}
 div#liste{
+  //margin-top: 40px;
   #mes-pv{
     //background-color: blue;
 
@@ -39,7 +42,7 @@ display:none;
 }
 
 
-span.supprimer-invite,span.ajouter-invite{
+span.supprimer-invite,span.ajouter-invite, span.ajouter-odj{
   line-height: 25px;
 
 }
@@ -55,7 +58,7 @@ span.supprimer-invite:before{
   margin-top:20px;
 }
 
-span.ajouter-invite:before{
+span.ajouter-invite:before,span.ajouter-odj:before{
   @extend %fontawesome;
 
     /* down arrow icon */
@@ -63,12 +66,101 @@ span.ajouter-invite:before{
     padding-right:5px;
 }
 
+// ODJ
+td.odj-numbered{
+  background-color: $color-primary;
+  color: white;
+  font-weight: bold;
+  width: 25px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+
+//***************************************************//
+// Audio panel
+//***************************************************//
+div#audio-panel{
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: $color-primary;
+  border-top: 1px white solid;
+  float:left;
+}
+div#toggle-audio{
+  position: fixed;
+  bottom:110px;
+  right:10px;
+  //text-align: right;
+  i{
+    color:$color-primary;
+    //padding: 5px 5px 0px 5px;
+    font-size: 1.5em;
+  }
+}
+
+#toggle-audio-icon{
+  position: fixed;
+  bottom: 10px;
+  //text-align: right;
+  right:10px;
+  color:$color-primary;
+  font-size: 1.5em;
+}
+
+#message-audio-transfert{
+  position: fixed;
+  bottom:0;
+  text-align: center;
+  width: 100%;
+  height:100px;
+  color:white;
+  //background-color: blue;
+  vertical-align: middle;
+  line-height: 100px;
+  z-index: 5000;
+}
+
+#submit-audio{
+  float:right;
+  //margin-left:0px;
+}
+
+//***************************************************//
+// Gestion présence module
+//***************************************************//
+form#presence-form{
+  th{
+    font-weight: bold;
+  }
+}
+
+.hour-header{
+  background-color:$color-primary;
+  color:white;
+}
+.hour-cell{
+  //background-color:;
+  background-color: rgba($color-primary, 0.2);
+  text-align: center;
+}
+
+
+
 
 //***************************************************//
 // Menu
 //***************************************************//
 
 div#menu{
+  position: fixed;
+  top:0px;
+  z-index: 1;
+  //margin-bottom: 40px;
   width:100%;
   height:$menu-height;
   display: block;
@@ -117,6 +209,8 @@ span#status-network{
   right: 20px;
   float:right;
   line-height: $menu-height;
+  margin-left:20px;
+  margin-right:20px;
 
   #status-online:before{
     color: green;

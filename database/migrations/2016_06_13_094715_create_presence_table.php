@@ -16,15 +16,15 @@ class CreatePresenceTable extends Migration
 
           $table->timestamps();
 
-          $table->time('heure_debut');
-          $table->time('heure_fin');
+          $table->integer('heure');
+
 
           //FK
           $table->integer('depute_id')->unsigned();
           $table->integer('seance_id')->unsigned();
 
 
-            $table->primary(array('depute_id', 'seance_id','heure_debut'));
+            $table->primary(array('depute_id', 'seance_id','heure'));
 
       });
     }

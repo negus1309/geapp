@@ -241,7 +241,7 @@ class MyAppSeeder extends Seeder {
         $this->command->info('seance ok');
 
         Rubrique::create(array(
-            'id'    => 1,
+            'numero'    => 1,
             'titre'   => 'Approbation du dernier pv',
             'contenu' => 'blablabla',
             'heure_debut' => '16:00',
@@ -249,7 +249,7 @@ class MyAppSeeder extends Seeder {
             'seance_id' => 1
         ));
         Rubrique::create(array(
-            'id'    => 2,
+            'numero'    => 2,
             'titre'   => 'OBJ-23423423',
             'contenu' => 'blublublu',
             'heure_debut' => '16:20',
@@ -257,7 +257,7 @@ class MyAppSeeder extends Seeder {
             'seance_id' => 1
         ));
         Rubrique::create(array(
-            'id'    => 1,
+            'numero'    => 1,
             'titre'   => 'Petit mot du président',
             'contenu' => 'bliblibli',
             'heure_debut' => '17:00',

@@ -46,3 +46,6 @@ Route::get('/geapp/public/api/v1/seance/{seance_id}/invite', 'InviteController@g
 Route::delete('/geapp/public/api/v1/seance/{seance_id}/invite/{invite_id}/delete','AssistanceController@deleteAssistance');
 
 Route::get('/geapp/public/api/v1/commissions/{commission_id}/deputes', 'DeputeController@getDeputeForSeance');
+
+// Ajout d'une rubrique
+Route::post('/geapp/public/api/v1/rubrique/create', 'RubriqueController@storeRubrique');

@@ -1,3 +1,6 @@
+body {
+  padding-top: 40px; }
+
 div#workflow {
   display: none; }
 
@@ -6,7 +9,7 @@ div#workflow {
   .pv-form label {
     font-weight: bold; }
 
-span.supprimer-invite, span.ajouter-invite {
+span.supprimer-invite, span.ajouter-invite, span.ajouter-odj {
   line-height: 25px; }
 
 span.supprimer-invite:before {
@@ -17,12 +20,73 @@ span.supprimer-invite:before {
 .sauvegarder-pv {
   margin-top: 20px; }
 
-span.ajouter-invite:before {
+span.ajouter-invite:before, span.ajouter-odj:before {
   /* down arrow icon */
   content: "\f067";
   padding-right: 5px; }
 
+td.odj-numbered {
+  background-color: #00a8e6;
+  color: white;
+  font-weight: bold;
+  width: 25px;
+  text-align: center;
+  vertical-align: middle; }
+
+div#audio-panel {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #00a8e6;
+  border-top: 1px white solid;
+  float: left; }
+
+div#toggle-audio {
+  position: fixed;
+  bottom: 110px;
+  right: 10px; }
+  div#toggle-audio i {
+    color: #00a8e6;
+    font-size: 1.5em; }
+
+#toggle-audio-icon {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: #00a8e6;
+  font-size: 1.5em; }
+
+#message-audio-transfert {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  height: 100px;
+  color: white;
+  vertical-align: middle;
+  line-height: 100px;
+  z-index: 5000; }
+
+#submit-audio {
+  float: right; }
+
+form#presence-form th {
+  font-weight: bold; }
+
+.hour-header {
+  background-color: #00a8e6;
+  color: white; }
+
+.hour-cell {
+  background-color: rgba(0, 168, 230, 0.2);
+  text-align: center; }
+
 div#menu {
+  position: fixed;
+  top: 0px;
+  z-index: 1;
   width: 100%;
   height: 40px;
   display: block;
@@ -54,7 +118,9 @@ span#status-network {
   color: white;
   right: 20px;
   float: right;
-  line-height: 40px; }
+  line-height: 40px;
+  margin-left: 20px;
+  margin-right: 20px; }
   span#status-network #status-online:before {
     color: green; }
   span#status-network #status-offline:before {
@@ -132,7 +198,7 @@ button.nouveau-pv:before {
 .uk-panel {
   margin: 10px; }
 
-span.supprimer-invite:before, span.ajouter-invite:before, div#menu span.retourAccueil:before, div#menu span.presenceCheck:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, button.nouveau-pv:before, .uk-accordion-title:before, span#status-network #status-online:before, span#status-network #status-offline:before {
+span.supprimer-invite:before, span.ajouter-invite:before, span.ajouter-odj:before, div#menu span.retourAccueil:before, div#menu span.presenceCheck:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, button.nouveau-pv:before, .uk-accordion-title:before, span#status-network #status-online:before, span#status-network #status-offline:before {
   font-family: 'FontAwesome';
   src: url("../fonts/fontawesome-webfont.eot");
   src: url("../fonts/fontawesome-webfont-ie.eot") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2") format("woff2"), url("../fonts/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome-webfont.ttf") format("truetype");

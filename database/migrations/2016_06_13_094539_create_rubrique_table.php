@@ -13,7 +13,8 @@ class CreateRubriqueTable extends Migration
     public function up()
     {
       Schema::create('rubriques', function (Blueprint $table) {
-          $table->integer('id');
+          $table->increments('id');
+          $table->integer('numero');
           $table->string('titre');
           $table->string('contenu');
           $table->string('heure_debut');
@@ -23,7 +24,7 @@ class CreateRubriqueTable extends Migration
           //FK
           $table->integer('seance_id')->unsigned(); // fk vers seances
 
-            $table->primary(array('id', 'seance_id'));
+            //$table->primary(array('numero', 'seance_id'));
 
       });
     }

@@ -14,6 +14,7 @@
         <link href="<?= asset('css/components/datepicker.min.css') ?>" rel="stylesheet"  />
         <link href="<?= asset('css/components/notify.min.css') ?>" rel="stylesheet"  />
         <link href="<?= asset('css/font-awesome.min.css') ?>" rel="stylesheet"  />
+        
         <link href="<?= asset('css/style.css') ?>" rel="stylesheet">
 
 
@@ -24,7 +25,8 @@
       <ng-include src="'<?= asset('app/views/accueil.html')?>'"></ng-include>
       <ng-include src="'<?= asset('app/views/workflow.html')?>'"></ng-include>
       <ng-include src="'<?= asset('app/views/gestion_presence.html')?>'"></ng-include>
-
+      <ng-include src="'<?= asset('app/views/audio.html')?>'"></ng-include>
+      <a href="#"  id="toggle-audio-icon" ng-click="toggleAudio();"><i class="uk-icon-toggle-up" ></i></a>
 
 
         <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
@@ -37,6 +39,7 @@
         <script src="<?= asset('js/components/timepicker.js') ?>"></script>
         <script src="<?= asset('js/components/autocomplete.js') ?>"></script>
         <script src="<?= asset('js/components/notify.js') ?>"></script>
+        <script src="<?= asset('js/dropzone.js') ?>"></script>
 
         <!-- AngularJS Application Scripts -->
         <script src="<?= asset('app/app.js') ?>"></script>
@@ -46,5 +49,8 @@
         <script src="<?= asset('app/controllers/main.js') ?>"></script>
         <script src="<?= asset('app/controllers/menu.js') ?>"></script>
         <script src="<?= asset('app/controllers/gestion_presence.js') ?>"></script>
+        <script src="<?= asset('app/controllers/audio.js') ?>"></script>
+
+
     </body>
 </html>

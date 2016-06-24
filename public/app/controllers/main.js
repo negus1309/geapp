@@ -28,6 +28,12 @@ app.controller('mainController', function($scope, $http, API_URL) {
 
       $scope.refreshSeance();
 
+      $scope.toggleAudio = function(){
+
+        $('#audio-panel').toggle();
+      }
+
+
 
 
 

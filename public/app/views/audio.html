@@ -1,0 +1,18 @@
+<div id="audio-panel" ng-controller="audioController">
+  <div id="toggle-audio">
+    <a href="#" ng-click="toggleAudio();"><i class="uk-icon-toggle-down" ></i></a>
+  </div>
+  <form action="/file-upload" class="dropzone" style="padding:5px;padding-right:10px;width:100%;">
+    <!--<div class="fallback">-->
+      <!--<p id="message-audio-transfert"> Glisser le fichier audio ici ou cliquer pour commencer le transfert</p>-->
+      <input name="file" type="file"  style="border:white dashed 2px;width:80%;height:85px;border-radius:5px;">
+
+    </input>
+    <!--</div>-->
+    <button id="submit-audio" type="submit" class="uk-button uk-button-primary" ng-click="sauvegarderAudio()">Sauvegarder</button>
+
+  </form>
+
+
+
+</div>

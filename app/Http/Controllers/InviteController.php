@@ -32,7 +32,18 @@ class InviteController extends Controller {
 
   }
 
+  /**
+   * Display a listing of the resource.
+   *
+   * @return Response
+   */
+  public function deleteInvite(Request $request){
+    $idInvite = $request->idInvite;
+    $invite = Invite::find($idInvite);
+    $invite->assistance()->delete();
 
+
+  }
 
 
 
