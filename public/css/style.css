@@ -28,10 +28,11 @@ trix-toolbar .button_groups button.strike {
     box-sizing:border-box;
 }*/
 .accordion {
+  margin-left: 15px;
   overflow: hidden;
   background: #f7f7f7; }
   .accordion a:hover {
-    color: #00a8e6; }
+    color: white; }
 
 /*----- Section Titles -----*/
 .accordion-section-title {
@@ -46,7 +47,7 @@ trix-toolbar .button_groups button.strike {
   color: #333; }
 
 .accordion-section-title.active, .accordion-section-title:hover {
-  background: #4c4c4c;
+  background: #00a8e6;
   /* Type */
   text-decoration: none;
   color: white; }

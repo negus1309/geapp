@@ -180,8 +180,8 @@
 
             <div id="accordion-{{$index}}" class="accordion-section-content">
                 <!--<p>{{rubrique.contenu}}</p>-->
-                <trix-editor angular-trix ng-model="rubrique.contenu"></trix-editor>
-
+                <wysiwyg textarea-id="ed" textarea-class="form-control"  textarea-height="auto" textarea-name="textareaQuestion" textarea-required ng-model="rubrique.contenu"  textarea-menu="yourModel.customMenu"></wysiwyg>
+            <!-- enable-bootstrap-title="true"-->
 
                 <button type="submit" class="uk-button uk-button-primary sauvegarder-pv" ng-click="sauvegarderSeance()">Sauvegarder</button>
 

@@ -57,12 +57,13 @@ trix-toolbar .button_groups {
 }*/
 
 .accordion {
+    margin-left:15px;
     overflow:hidden;
     //box-shadow:0px 1px 3px rgba(0,0,0,0.25);
     //border-radius:3px;
     background:#f7f7f7;
     a:hover{
-      color:$color-primary;
+      color:white;
     }
 }
 
@@ -81,7 +82,7 @@ trix-toolbar .button_groups {
 }
 
 .accordion-section-title.active, .accordion-section-title:hover {
-    background:#4c4c4c;
+    background:$color-primary;
     /* Type */
     text-decoration:none;
     color:white;

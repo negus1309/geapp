@@ -7,6 +7,7 @@
         <!-- *** CSS reset      -->
         <!-- ********************** -->
         <link href="<?= asset('css/reset.css') ?>" rel="stylesheet">
+        <link href="<?= asset('css/bootstrap.min.css') ?>" rel="stylesheet"  />
 
         <!-- ********************** -->
         <!-- *** UIkit assets       -->
@@ -27,11 +28,13 @@
         <!-- ********************** -->
         <!-- *** textAngular        -->
         <!-- ********************** -->
-        <link href="<?= asset('css/trix.css') ?>" rel="stylesheet"  />
+
         <!-- ********************** -->
         <!-- *** Style personnalisé -->
         <!-- ********************** -->
-        <link href="<?= asset('css/style.css') ?>" rel="stylesheet">
+
+
+        <link href="<?= asset('css/style.css') ?>" rel="stylesheet"/>
 
     </head>
 
@@ -71,9 +74,10 @@
         <!-- ********************** -->
         <!-- *** TextAngular -->
         <!-- ********************** -->
+        <script src="<?= asset('js/bootstrap-colorpicker-module.js') ?>"></script>
+        <script src="<?= asset('js/bootstrap.min.js') ?>"></script>
 
-        <script src="<?= asset('js/trix.js') ?>"></script>
-<script src="<?= asset('js/angular-trix.js') ?>"></script>
+        <script src="<?= asset('js/angular-wysiwyg.js') ?>"></script>
 
 
         <!-- AngularJS Application Scripts -->
