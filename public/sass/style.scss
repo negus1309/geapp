@@ -4,6 +4,98 @@
 
 $menu-height: 40px;
 $color-primary: #00a8e6;
+$color-gris:#eee;
+
+//
+markdown-editor {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+markdown-editor textarea {
+    font-family: monospace;
+}
+
+// Trix
+/* SCSS file */
+
+trix-toolbar .button_groups {
+  button.code {
+    display: none;
+  }
+  button.increase {
+    display: none;
+  }
+  button.decrease {
+    display: none;
+  }
+  button.link {
+    display: none;
+  }
+  button.undo {
+    display: none;
+  }
+  button.redo {
+    display: none;
+  }
+  button.strike {
+    display: none;
+  }
+}
+
+
+
+
+//***************************************************//
+// Style accordion jquery
+//***************************************************//
+/*----- Accordion -----*/
+/*.accordion, .accordion * {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}*/
+
+.accordion {
+    overflow:hidden;
+    //box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+    //border-radius:3px;
+    background:#f7f7f7;
+    a:hover{
+      color:$color-primary;
+    }
+}
+
+/*----- Section Titles -----*/
+.accordion-section-title {
+    width:100%;
+    padding:15px;
+    display:inline-block;
+    border-bottom:1px solid #1a1a1a;
+    background:$color-gris;
+    transition:all linear 0.15s;
+    /* Type */
+    font-size:1.200em;
+    //text-shadow:0px 1px 0px #1a1a1a;
+    color:#333;
+}
+
+.accordion-section-title.active, .accordion-section-title:hover {
+    background:#4c4c4c;
+    /* Type */
+    text-decoration:none;
+    color:white;
+}
+
+.accordion-section:last-child .accordion-section-title {
+    border-bottom:none;
+}
+
+/*----- Section Content -----*/
+.accordion-section-content {
+    padding:15px;
+    display:none;
+}
 
 
 
@@ -16,6 +108,7 @@ body{
 }
 div#liste{
   //margin-top: 40px;
+  display: none;
   #mes-pv{
     //background-color: blue;
 
@@ -69,6 +162,15 @@ span.ajouter-invite:before,span.ajouter-odj:before{
 // ODJ
 td.odj-numbered{
   background-color: $color-primary;
+  color: white;
+  font-weight: bold;
+  width: 25px;
+  text-align: center;
+  vertical-align: middle;
+}
+span.odj-numbered{
+  background-color: $color-primary;
+
   color: white;
   font-weight: bold;
   width: 25px;
@@ -165,6 +267,7 @@ div#menu{
   height:$menu-height;
   display: block;
   visibility: visible;
+  border-bottom:1px solid white;
   a{
     color:$color-primary;
     line-height: $menu-height;

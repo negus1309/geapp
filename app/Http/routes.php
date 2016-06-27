@@ -10,6 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/markdowntemplate', function () {
+  return asset('js/angular-lightweight-markdown-template.html');
+});
 
 // Route par défaut
 Route::get('/', function () {
@@ -47,5 +50,10 @@ Route::delete('/geapp/public/api/v1/seance/{seance_id}/invite/{invite_id}/delete
 
 Route::get('/geapp/public/api/v1/commissions/{commission_id}/deputes', 'DeputeController@getDeputeForSeance');
 
+// Accès aux rubriques d'une séance (pv)
+Route::get('/geapp/public/api/v1/seance/{seance_id}/rubriques', 'RubriqueController@getRubriques');
+
 // Ajout d'une rubrique
 Route::post('/geapp/public/api/v1/rubrique/create', 'RubriqueController@storeRubrique');
+// Suppression d'une rubrique
+Route::delete('/geapp/public/api/v1/seance/{seance_id}/rubrique/{rubrique_id}/delete', 'RubriqueController@deleteRubrique');

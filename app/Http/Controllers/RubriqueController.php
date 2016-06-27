@@ -13,6 +13,31 @@ use DB;
 
 class RubriqueController extends Controller {
 
+
+
+  /**
+   * Display a listing of the resource.
+   *
+   * @return Response
+   */
+  public function getRubriques(Request $request){
+
+    $idSeance = $request->seance_id;
+
+    $mesRubriques = Rubrique::where('seance_id', $idSeance)
+               ->orderBy('numero', 'asc')
+               ->get();
+
+
+    $status = 200;
+    $value = "application/json";
+      //return ;
+      return response($mesRubriques, $status)
+                  ->header('Content-Type', $value);
+
+  }
+
+
   /**
    * Display a listing of the resource.
    *
@@ -32,6 +57,7 @@ class RubriqueController extends Controller {
     if(!$maRubrique){
 
         $maRubrique = new Rubrique;
+        $maRubrique->seance_id = $request->seance_id;
 
     }
 
@@ -51,6 +77,19 @@ class RubriqueController extends Controller {
 
   }
 
+  /**
+   * Display a listing of the resource.
+   *
+   * @return Response
+   */
+  public function deleteRubrique(Request $request){
+    $idRubrique = $request->rubrique_id;
+
+    $rubrique = Rubrique::find($idRubrique);
+    $rubrique->delete();
+
+
+  }
 
 
 

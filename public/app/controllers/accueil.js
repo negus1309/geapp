@@ -96,6 +96,19 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
          });
 
+         $http({
+           url: API_URL + "seance/"+$idSeance+"/rubriques",
+           method: "GET"
+           //params: {'commission_id': $idCommission}
+          })
+          .success(function(response) {
+
+            $rootScope.rubriques = response;
+
+          });
+
+
+
       }
 
 

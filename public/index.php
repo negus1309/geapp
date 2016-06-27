@@ -7,6 +7,7 @@
  * @author   Taylor Otwell <taylorotwell@gmail.com>
  */
 
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -34,7 +35,9 @@ require __DIR__.'/../bootstrap/autoload.php';
 */
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
-
+/*$app->bind('path.public', function() {
+    return __DIR__.'/../public';
+});*/
 /*
 |--------------------------------------------------------------------------
 | Run The Application
