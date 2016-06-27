@@ -6,44 +6,12 @@ $menu-height: 40px;
 $color-primary: #00a8e6;
 $color-gris:#eee;
 
+
+div.liste-invites:nth-child(2n+1){
+
+  //background-color: $color-gris;
+}
 //
-markdown-editor {
-    border: 1px solid #ccc;
-    border-radius: 2px;
-}
-
-markdown-editor textarea {
-    font-family: monospace;
-}
-
-// Trix
-/* SCSS file */
-
-trix-toolbar .button_groups {
-  button.code {
-    display: none;
-  }
-  button.increase {
-    display: none;
-  }
-  button.decrease {
-    display: none;
-  }
-  button.link {
-    display: none;
-  }
-  button.undo {
-    display: none;
-  }
-  button.redo {
-    display: none;
-  }
-  button.strike {
-    display: none;
-  }
-}
-
-
 
 
 //***************************************************//
@@ -64,6 +32,10 @@ trix-toolbar .button_groups {
     background:#f7f7f7;
     a:hover{
       color:white;
+    }
+    a:focus, a:hover {
+      color:#333;
+    text-decoration: none;
     }
 }
 

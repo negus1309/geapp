@@ -85,20 +85,20 @@
         <!-- /******* INVITE (assistent) **********/-->
         <div class="uk-form-row">
           <label class="uk-form-label" for="invites">Invités</label>
-          <div ng-repeat="invite in general.invites">
-            <div class="uk-form-controls" style="margin-bottom:10px;">
+        <!--  <div >-->
+            <div class="uk-form-controls" style="margin-bottom:10px;" ng-repeat="invite in general.invites">
 
               <input type="text" ng-model="invite.nom" placeholder="Nom">
               <input type="text" ng-model="invite.prenom" placeholder="Prenom">
               <input type="text" ng-model="invite.titre" placeholder="Titre" size="5">
               <a href="#" ng-click="supprimerInvite($index, general.idSeance, invite.id)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a>
-              {{invite.id}}
-              {{$index}}
+              <!--{{invite.id}}
+              {{$index}}-->
 
             <!--  <input type="text" ng-model="invite.fonction" placeholder="Fonction" size="50">-->
 
             </div>
-          </div>
+          <!--</div>-->
 
           <div class="uk-form-controls">
             <a href="#" ng-click="ajouterInvite()" class="uk-button uk-button-mini uk-button-primary"><span class="ajouter-invite">Ajouter un invité</span></a>
@@ -180,7 +180,7 @@
 
             <div id="accordion-{{$index}}" class="accordion-section-content">
                 <!--<p>{{rubrique.contenu}}</p>-->
-                <wysiwyg textarea-id="ed" textarea-class="form-control"  textarea-height="auto" textarea-name="textareaQuestion" textarea-required ng-model="rubrique.contenu"  textarea-menu="yourModel.customMenu"></wysiwyg>
+                <wysiwyg textarea-id="ed" textarea-class="form-control"   bootstrap-title="true" textarea-height="auto" textarea-name="textareaQuestion" textarea-required ng-model="rubrique.contenu"  textarea-menu="yourModel.customMenu"></wysiwyg>
             <!-- enable-bootstrap-title="true"-->
 
                 <button type="submit" class="uk-button uk-button-primary sauvegarder-pv" ng-click="sauvegarderSeance()">Sauvegarder</button>

@@ -1,26 +1,3 @@
-markdown-editor {
-  border: 1px solid #ccc;
-  border-radius: 2px; }
-
-markdown-editor textarea {
-  font-family: monospace; }
-
-/* SCSS file */
-trix-toolbar .button_groups button.code {
-  display: none; }
-trix-toolbar .button_groups button.increase {
-  display: none; }
-trix-toolbar .button_groups button.decrease {
-  display: none; }
-trix-toolbar .button_groups button.link {
-  display: none; }
-trix-toolbar .button_groups button.undo {
-  display: none; }
-trix-toolbar .button_groups button.redo {
-  display: none; }
-trix-toolbar .button_groups button.strike {
-  display: none; }
-
 /*----- Accordion -----*/
 /*.accordion, .accordion * {
     -webkit-box-sizing:border-box;
@@ -33,6 +10,9 @@ trix-toolbar .button_groups button.strike {
   background: #f7f7f7; }
   .accordion a:hover {
     color: white; }
+  .accordion a:focus, .accordion a:hover {
+    color: #333;
+    text-decoration: none; }
 
 /*----- Section Titles -----*/
 .accordion-section-title {
