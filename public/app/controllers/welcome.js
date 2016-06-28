@@ -1,5 +1,7 @@
 app.controller('welcomeController', function($scope, $http, API_URL,$filter,$rootScope) {
 
+
+
   $scope.goToOnlineMode = function(){
 
     $('div#liste').show();

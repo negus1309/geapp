@@ -98,6 +98,10 @@ div#workflow{
 display:none;
 }
 
+div#draft{
+  display:none;
+}
+
 
 
 .pv-form{
@@ -209,6 +213,9 @@ div#toggle-audio{
 // Gestion présence module
 //***************************************************//
 form#presence-form{
+  table{
+    //float:left;
+  }
   th{
     font-weight: bold;
   }
@@ -224,7 +231,9 @@ form#presence-form{
   text-align: center;
 }
 
-
+#depute-tools{
+  //float:right;
+}
 
 
 //***************************************************//
@@ -247,6 +256,7 @@ div#menu{
   }
   a.back{
     display: none;
+    float:left;
   }
   span.retourAccueil,span.presenceCheck{
     margin-left: 10px;
@@ -313,6 +323,19 @@ a#presence-check{
   }
 }
 
+a#get-draft-infos{
+  display: none;
+  color: white;
+  //position: absolute;
+  //text-align: right;
+  float:right;
+  right: 200px;
+  line-height: $menu-height;
+  font-size: 1.3em;
+  &:hover{
+    text-decoration: none;
+  }
+}
 
 //***************************************************//
 // Page Accueil

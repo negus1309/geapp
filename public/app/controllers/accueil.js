@@ -34,14 +34,16 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
                  //$scope.general.date = currentDateHuman;
 
                  $rootScope.general = {};
-
+                 $rootScope.meta = {};
                $rootScope.general = {
-                 'nomCommission' : $nomCommission,
-                 'idCommission' : $idCommission,
-                 'idSeance' : response.id,
                  'date':currentDateHuman
                }
+               $rootScope.meta = {
+                 'nomCommission' : $nomCommission,
+                 'idCommission' : $idCommission,
+                 'idSeance' : response.id
 
+               }
 
            });
 
@@ -86,12 +88,15 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
               //console.log(dateHuman)
 
               $rootScope.general = {
-                'nomCommission' : $nomCommission,
-                'idCommission' : $idCommission,
-                'idSeance':$idSeance,
                 'numero':response.numero,
                 'invites':mesInvites,
                 'date':dateHuman
+              }
+              $rootScope.meta = {
+                'nomCommission' : $nomCommission,
+                'idCommission' : $idCommission,
+                'idSeance':$idSeance
+
               }
 
          });

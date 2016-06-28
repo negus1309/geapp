@@ -49,6 +49,9 @@ div#liste {
 div#workflow {
   display: none; }
 
+div#draft {
+  display: none; }
+
 .pv-form {
   padding-left: 40px; }
   .pv-form label {
@@ -149,7 +152,8 @@ div#menu {
     color: #00a8e6;
     line-height: 40px; }
   div#menu a.back {
-    display: none; }
+    display: none;
+    float: left; }
   div#menu span.retourAccueil, div#menu span.presenceCheck {
     margin-left: 10px;
     color: #00a8e6; }
@@ -188,6 +192,16 @@ a#presence-check {
   line-height: 40px;
   font-size: 1.3em; }
   a#presence-check:hover {
+    text-decoration: none; }
+
+a#get-draft-infos {
+  display: none;
+  color: white;
+  float: right;
+  right: 200px;
+  line-height: 40px;
+  font-size: 1.3em; }
+  a#get-draft-infos:hover {
     text-decoration: none; }
 
 ul.pv-list-item {

@@ -13,9 +13,9 @@
         <div class="uk-form-row">
             <label class="uk-form-label" for="commission_nom">Commission</label>
             <div class="uk-form-controls">
-                <p>{{general.nomCommission}}</p>
-                <input type="hidden" id="commission_nom" ng-model="general.nomCommission">
-                <input type="hidden" ng-model="general.idCommission">
+                <p>{{meta.nomCommission}}</p>
+                <input type="hidden" id="commission_nom" ng-model="meta.nomCommission">
+                <input type="hidden" ng-model="meta.idCommission">
             </div>
         </div>
 
@@ -91,7 +91,7 @@
               <input type="text" ng-model="invite.nom" placeholder="Nom">
               <input type="text" ng-model="invite.prenom" placeholder="Prenom">
               <input type="text" ng-model="invite.titre" placeholder="Titre" size="5">
-              <a href="#" ng-click="supprimerInvite($index, general.idSeance, invite.id)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a>
+              <a href="#" ng-click="supprimerInvite($index, meta.idSeance, invite.id)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a>
               <!--{{invite.id}}
               {{$index}}-->
 
@@ -101,7 +101,7 @@
           <!--</div>-->
 
           <div class="uk-form-controls">
-            <a href="#" ng-click="ajouterInvite()" class="uk-button uk-button-mini uk-button-primary"><span class="ajouter-invite">Ajouter un invité</span></a>
+            <a href="#" ng-click="ajouterInvite()" class="uk-button uk-button-mini uk-button-success"><span class="ajouter-invite">Ajouter un invité</span></a>
           </div>
         </div>
 
@@ -117,7 +117,7 @@
                             {{point}}
                             <td class="odj-numbered">{{$index+1}}</td>
                             <td><input type="text" class="uk-width-1-1" ng-model="rubrique.titre"/></td>
-                            <td><a href="#" ng-click="supprimerRubrique($index, general.idSeance, rubrique.id)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a></td>
+                            <td><a href="#" ng-click="supprimerRubrique($index, meta.idSeance, rubrique.id)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a></td>
 
                           </tr>
 
@@ -127,7 +127,7 @@
 
               </div>
           <div class="uk-form-controls">
-            <a href="#" ng-click="ajouterPointODJ()" class="uk-button uk-button-mini uk-button-primary"><span class="ajouter-odj">Ajouter un point d'ODJ</span></a>
+            <a href="#" ng-click="ajouterPointODJ()" class="uk-button uk-button-mini uk-button-success"><span class="ajouter-odj">Ajouter un point d'ODJ</span></a>
           </div>
 
         </div>
@@ -176,11 +176,11 @@
 
     <div class="accordion">
         <div class="accordion-section" ng-repeat="rubrique in rubriques">
-            <a class="accordion-section-title" href="#accordion-{{$index}}">{{$index+1}} : {{rubrique.titre}}</a>
+            <a class="accordion-section-title" href="#accordion-{{$index}}">{{$index+1}}. {{rubrique.titre}}</a>
 
             <div id="accordion-{{$index}}" class="accordion-section-content">
                 <!--<p>{{rubrique.contenu}}</p>-->
-                <wysiwyg textarea-id="ed" textarea-class="form-control"   bootstrap-title="true" textarea-height="auto" textarea-name="textareaQuestion" textarea-required ng-model="rubrique.contenu"  textarea-menu="yourModel.customMenu"></wysiwyg>
+                <wysiwyg textarea-id="ed" textarea-class="form-control"   bootstrap-title="true" textarea-height="auto" textarea-name="textareaQuestion" textarea-required ng-model="rubrique.contenu"  textarea-menu="rubrique.customMenu"></wysiwyg>
             <!-- enable-bootstrap-title="true"-->
 
                 <button type="submit" class="uk-button uk-button-primary sauvegarder-pv" ng-click="sauvegarderSeance()">Sauvegarder</button>

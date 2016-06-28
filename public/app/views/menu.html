@@ -5,7 +5,12 @@
   <span id="status-network">
 
   </span>
-  <a id="presence-check"  href="#" class="uk-vertical-align" ng-click="getDeputes(general.idCommission)" data-uk-modal="{target:'#gestion-presence-modal'}">
+
+  <a id="get-draft-infos"  href="#" class="uk-vertical-align" ng-click="getDraftInfos()" >
+    <span class="draftInfos uk-button uk-button-small uk-text-primary">Remplir avec le brouillon</span>
+  </a>
+
+  <a id="presence-check"  href="#" class="uk-vertical-align" ng-click="getDeputes(meta.idCommission)" data-uk-modal="{target:'#gestion-presence-modal'}">
     <span class="presenceCheck uk-button uk-button-small uk-text-primary">Gestion des présences</span>
   </a>
 

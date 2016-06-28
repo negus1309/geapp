@@ -1,4 +1,4 @@
-app.controller('menuController', function($scope, $http, API_URL) {
+app.controller('menuController', function($scope, $http, API_URL, $rootScope) {
 
 
 
@@ -15,6 +15,30 @@ app.controller('menuController', function($scope, $http, API_URL) {
         $('div#menu a').hide();
 
       }
+
+      $scope.getDraftInfos = function(){
+        UIkit.modal.confirm("Êtes-vous sûr? Cela va écraser les données saisies.", function(){
+            // will be executed on confirm.
+            $rootScope.general=JSON.parse(localStorage.getItem('seance'));
+            console.log($rootScope.general)
+            $rootScope.general.invites=JSON.parse(localStorage.getItem('invites'));
+            $rootScope.rubriques=JSON.parse(localStorage.getItem('rubriques'));
+
+            //$rootScope.general.nomCommission =
+            /*
+            'id':$scope.general.idSeance,
+            'commission_id':$scope.general.idCommission*/
+
+
+
+
+
+            $rootScope.$apply()
+          //  $apply();
+
+        });
+      }
+
 
       // FONCTIONS
 

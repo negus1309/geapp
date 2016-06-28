@@ -1,5 +1,6 @@
 app.controller('workflowController', function($scope, $http, API_URL,$filter,$rootScope) {
 
+  //$scope.$watch($rootScope)
   // Jquery accordion
   $(document).ready(function() {
       function close_accordion_section() {
@@ -27,7 +28,18 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
       });
   });
 
+  // NE MARCHE PAS
+  var rubriques = $scope.rubriques;
+  angular.forEach(rubriques, function(rubrique, key) {
+    //This also happens to be the default menu options.
+      rubrique.customMenu = [
+              ['bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript'],
+              ['remove-format'],
+              ['ordered-list', 'unordered-list', 'outdent', 'indent'],
+              ['left-justify', 'center-justify', 'right-justify']
 
+          ];
+  });
 
 
 
@@ -97,12 +109,12 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
         // infos séances
         var maSeance = {
-          'id':$scope.general.idSeance,
+          'id':$scope.meta.idSeance,
           'numero': $scope.general.numero,
           'date': dateToPost,
           'heure_debut':$scope.general.heure_debut,
           'heure_fin':$scope.general.heure_fin,
-          'commission_id':$scope.general.idCommission,
+          'commission_id':$scope.meta.idCommission,
           'president_id':1
 
         };
@@ -115,7 +127,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
          })
          .success(function(response) {
 
-           //console.log(maSeance)
+           console.log(maSeance)
            // infos invites
            var mesInvites = $scope.general.invites;
 

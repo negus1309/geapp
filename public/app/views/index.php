@@ -49,6 +49,7 @@
       <ng-include src="'<?= asset('app/views/draft.html')?>'"></ng-include>
       <ng-include src="'<?= asset('app/views/workflow.html')?>'"></ng-include>
       <ng-include src="'<?= asset('app/views/gestion_presence.html')?>'"></ng-include>
+
       <ng-include src="'<?= asset('app/views/audio.html')?>'"></ng-include>
       <a href="#"  id="toggle-audio-icon" ng-click="toggleAudio();"><i class="uk-icon-toggle-up" ></i></a>
 
