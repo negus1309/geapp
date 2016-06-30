@@ -6,6 +6,4 @@ app.controller('audioController', function($scope, $http, API_URL) {
   }
 
 
-
-
 });

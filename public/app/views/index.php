@@ -44,9 +44,8 @@
       <!-- *** App parts include -->
       <!-- ********************** -->
       <ng-include src="'<?= asset('app/views/menu.html')?>'"></ng-include>
-      <ng-include src="'<?= asset('app/views/welcome.html')?>'"></ng-include>
+
       <ng-include src="'<?= asset('app/views/accueil.html')?>'"></ng-include>
-      <ng-include src="'<?= asset('app/views/draft.html')?>'"></ng-include>
       <ng-include src="'<?= asset('app/views/workflow.html')?>'"></ng-include>
       <ng-include src="'<?= asset('app/views/gestion_presence.html')?>'"></ng-include>
 
@@ -68,9 +67,8 @@
         <script src="<?= asset('js/components/timepicker.js') ?>"></script>
         <script src="<?= asset('js/components/autocomplete.js') ?>"></script>
         <script src="<?= asset('js/components/notify.js') ?>"></script>
-        <script src="<?= asset('js/components/htmleditor.min.js') ?>"></script>
-        <script src="<?= asset('js/dropzone.js') ?>"></script>
-        <script src="<?= asset('js/storage.js') ?>"></script>
+
+
 
         <!-- ********************** -->
         <!-- *** TextAngular -->
@@ -80,10 +78,8 @@
 
         <script src="<?= asset('js/angular-wysiwyg.js') ?>"></script>
 
-
         <!-- AngularJS Application Scripts -->
         <script src="<?= asset('app/app.js') ?>"></script>
-        <script src="<?= asset('app/controllers/welcome.js') ?>"></script>
         <script src="<?= asset('app/controllers/accueil.js') ?>"></script>
         <script src="<?= asset('app/controllers/dernier_pv.js') ?>"></script>
         <script src="<?= asset('app/controllers/workflow.js') ?>"></script>
@@ -91,7 +87,6 @@
         <script src="<?= asset('app/controllers/menu.js') ?>"></script>
         <script src="<?= asset('app/controllers/gestion_presence.js') ?>"></script>
         <script src="<?= asset('app/controllers/audio.js') ?>"></script>
-        <script src="<?= asset('app/controllers/draft.js') ?>"></script>
 
 
 

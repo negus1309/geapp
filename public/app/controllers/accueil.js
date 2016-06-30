@@ -11,12 +11,22 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
       }
 
-      $scope.nouveauPV = function($idCommission,$nomCommission){
+      $scope.nouveauPV = function(){
 
           $('#liste').hide();
           $('#workflow').show();
-        $('div#menu a').show();
+          $('div#menu a').show();
 
+
+          var pvToken = token();
+          //console.log(pvToken)
+          $rootScope.pv = {}
+          $rootScope.pv.token = pvToken;
+
+
+
+
+/*
           $http({
             url: API_URL + "seance/create",
             method: "POST",
@@ -47,7 +57,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
            });
 
-
+*/
 
 
       }
@@ -55,15 +65,26 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
 
 
-      $scope.editPv = function($idCommission,$nomCommission,$idSeance){
+      $scope.editPv = function($pvToken){
 
         $('#liste').hide();
         $('#workflow').show();
         $('div#menu a').show();
 
+        var mesPv = $rootScope.mesPv;
+        angular.forEach(mesPv, function(monPv, key) {
+            if(monPv.token == $pvToken){
+              $rootScope.pv = monPv;
+            }
+
+
+        });
+
+
+
 
         //console.log($idSeance)
-
+/*
         $http({
           url: API_URL + "seance/"+$idSeance,
           method: "GET",
@@ -111,17 +132,57 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
             $rootScope.rubriques = response;
 
           });
-
+*/
 
 
       }
 
 
-      $scope.deletePv = function($idSeance){
+      $scope.deletePv = function($pvToken){
+
+        UIkit.modal.confirm("Êtes-vous sûr de vouloir supprimer ce PV?", function(){
+            // will be executed on confirm.
+            //console.log($rootScope.mesPv)
+            var mesPv = $rootScope.mesPv;
+            angular.forEach(mesPv, function(monPv, key) {
+                if(monPv.token == $pvToken){
+                  mesPv.splice(key,1)
+                  localStorage.setItem('mesPv', JSON.stringify(mesPv));
+                  //$rootScope.refreshSeance();
+                  //$apply();
+                  $rootScope.mesPv = mesPv;
+                  $rootScope.$apply();
+
+                  UIkit.notify({
+                      message : '<i class=\'uk-icon-check\'></i>&nbsp;PV supprimé!',
+                      status  : 'success',
+                      timeout : 3000,
+                      pos     : 'top-right'
+                  });
+                }else{
+                  console.log("probleme")
+                }
+
+
+            });
+
+
+            /*$rootScope.general=JSON.parse(localStorage.getItem('seance'));
+            console.log($rootScope.general)
+            $rootScope.general.invites=JSON.parse(localStorage.getItem('invites'));
+            $rootScope.rubriques=JSON.parse(localStorage.getItem('rubriques'));
+
+
+
+
+            $rootScope.$apply()*/
+          //  $apply();
+
+        });
 
         //console.log($idSeance)
 
-        $http({
+        /*$http({
           url: API_URL + "seance/"+$idSeance+"/delete",
           method: "DELETE"
           //params: {'commission_id': $idCommission}
@@ -136,7 +197,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
            });
 
 
-         });
+         });*/
 
 
       }
@@ -149,6 +210,15 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
         var dateParts = usDate.split(/(\d{4})\-(\d{1,2})\-(\d{1,2})/);
         return dateParts[3] + "-" + dateParts[2] + "-" + dateParts[1];
       }
+      var rand = function() {
+          return Math.random().toString(36).substr(2); // remove `0.`
+      };
+
+      var token = function() {
+          return rand() + rand(); // to make it longer
+      };
+
+
 
 
 

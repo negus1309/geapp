@@ -1,20 +1,10 @@
 [{
   "nom":"Finances",
-  "membres":[
-    {
-      "nom":"Armstrong",
-      "prenom":"Louis",
-      "titre":"m",
-      "parti":"pdc"
-    },
-    {
+  "id":2
 
-    }]
+},{
 
+  "nom":"Environnement",
+  "id":1
 
-},{}
-
-
-
-
-  ]
+}]

@@ -1,4 +1,36 @@
-app.controller('mainController', function($scope, $http, API_URL) {
+app.controller('mainController', function($scope, $http, API_URL, $rootScope) {
+
+
+
+        // synch commissions + deputes
+        if(navigator.onLine){
+          $.getJSON( "../app/data/commissions.json", function( data ) {
+            //console.log(data)
+            localStorage.setItem('commissions', JSON.stringify(data));
+          });
+          $.getJSON( "../app/data/deputes.json", function( data ) {
+            //console.log(data)
+            localStorage.setItem('deputes', JSON.stringify(data));
+          });
+        }
+
+
+
+        //$rootScope.general=
+        if(localStorage.getItem('mesPv')){
+
+          var mesPv = JSON.parse(localStorage.getItem('mesPv'));
+          //console.log(mesPv)
+
+          $rootScope.mesPv = mesPv;
+        }else{
+          var mesPv = [{}];
+          localStorage.setItem('mesPv', JSON.stringify(mesPv));
+
+        }
+
+
+
 
 
 
@@ -7,11 +39,16 @@ app.controller('mainController', function($scope, $http, API_URL) {
         // EVENEMENTS
         //*******************************************//
 
-      $scope.refreshSeance = function(){
+      $rootScope.refreshSeance = function(){
+
+        var mesPv = JSON.parse(localStorage.getItem('mesPv'));
+        //console.log(mesPv)
+
+        $rootScope.mesPv = mesPv;
 
         //console.log('dsjhfjfd')
         // Accès aux commissions et les séances liées
-        $http.get(API_URL + "commissions/seances")
+        /*$http.get(API_URL + "commissions/seances")
           .success(function(response) {
               $scope.commissions = response;
 
@@ -20,13 +57,13 @@ app.controller('mainController', function($scope, $http, API_URL) {
           .success(function(response) {
               $scope.commissionsLast = response;
 
-          });
+          });*/
 
 
 
       }
 
-      $scope.refreshSeance();
+      //$scope.refreshSeance();
 
       $scope.toggleAudio = function(){
 

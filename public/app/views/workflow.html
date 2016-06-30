@@ -1,5 +1,5 @@
 <div id="workflow" ng-controller="workflowController">
-
+{{pv}}
   <div id="workflowaccordion"  class="uk-accordion" data-uk-accordion><!-- -->
 
     <h2 class="uk-accordion-title">Général</h2>
@@ -13,17 +13,23 @@
         <div class="uk-form-row">
             <label class="uk-form-label" for="commission_nom">Commission</label>
             <div class="uk-form-controls">
-                <p>{{meta.nomCommission}}</p>
-                <input type="hidden" id="commission_nom" ng-model="meta.nomCommission">
-                <input type="hidden" ng-model="meta.idCommission">
+              <div class="uk-form-select" data-uk-form-select>
+                <span></span>
+                <select ng-model="pv.commission" ng-options="commission as commission.nom for commission in nomCommissions">
+                    <!--<option ng-repeat="nomCommission in nomCommissions" value='{"nom":"{{nomCommission.nom}}","id":{{nomCommission.id}}}'>{{nomCommission.nom}}</option>-->
+                </select>
+              </div>
+
             </div>
         </div>
+      
+        <button ng-click="showc();">show</button>
 
         <!-- /******* NO PV **********/-->
         <div class="uk-form-row">
             <label class="uk-form-label" for="numero">Numero</label>
             <div class="uk-form-controls">
-                <input type="number" id="numero" ng-model="general.numero">
+                <input type="number" id="numero" ng-model="pv.numero">
             </div>
         </div>
 
@@ -33,7 +39,7 @@
             <div class="uk-form-controls">
               <div class="uk-form-icon">
                <i class="uk-icon-calendar"></i>
-                <input id ="date" type="text" data-uk-datepicker="{format:'DD-MM-YYYY'}"  ng-model="general.date" required>
+                <input id ="date" type="text" data-uk-datepicker="{format:'DD-MM-YYYY'}"  ng-model="pv.date" required>
               </div>
             </div>
         </div>
@@ -43,7 +49,7 @@
             <div class="uk-form-controls">
               <!--<div class="uk-form-icon">
                <i class="uk-icon-clock-o"></i>-->
-              <input id="heure_debut" type="text" data-uk-timepicker placeholder="17:00" ng-model="general.heure_debut">
+              <input id="heure_debut" type="text" data-uk-timepicker placeholder="17:00" ng-model="pv.heure_debut">
             </div>
             <!--</div>-->
         </div>
@@ -54,7 +60,7 @@
           <div class="uk-form-controls">
             <!--<div class="uk-form-icon">-->
              <!--<i class="uk-icon-clock-o"></i>-->
-            <input id="heure_fin" type="text" data-uk-timepicker placeholder="20:00" ng-model="general.heure_fin">
+            <input id="heure_fin" type="text" data-uk-timepicker placeholder="20:00" ng-model="pv.heure_fin">
           <!--</div>-->
           </div>
         </div>
@@ -63,7 +69,7 @@
         <div class="uk-form-row">
           <label class="uk-form-label" for="lieu">Lieu</label>
           <div class="uk-form-controls">
-            <input id="lieu" type="text" placeholder="Salle des Fiefs">
+            <input id="lieu" type="text" placeholder="Salle des Fiefs" ng-model="pv.lieu">
           </div>
         </div>
 
@@ -86,12 +92,12 @@
         <div class="uk-form-row">
           <label class="uk-form-label" for="invites">Invités</label>
         <!--  <div >-->
-            <div class="uk-form-controls" style="margin-bottom:10px;" ng-repeat="invite in general.invites">
+            <div class="uk-form-controls" style="margin-bottom:10px;" ng-repeat="invite in pv.invites">
 
               <input type="text" ng-model="invite.nom" placeholder="Nom">
               <input type="text" ng-model="invite.prenom" placeholder="Prenom">
               <input type="text" ng-model="invite.titre" placeholder="Titre" size="5">
-              <a href="#" ng-click="supprimerInvite($index, meta.idSeance, invite.id)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a>
+              <a href="#" ng-click="supprimerInvite($index)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a>
               <!--{{invite.id}}
               {{$index}}-->
 
@@ -113,11 +119,11 @@
                     <table class="uk-table uk-table-striped">
                       <tbody>
 
-                          <tr ng-repeat="rubrique in rubriques">
+                          <tr ng-repeat="rubrique in pv.rubriques">
                             {{point}}
                             <td class="odj-numbered">{{$index+1}}</td>
                             <td><input type="text" class="uk-width-1-1" ng-model="rubrique.titre"/></td>
-                            <td><a href="#" ng-click="supprimerRubrique($index, meta.idSeance, rubrique.id)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a></td>
+                            <td><a href="#" ng-click="supprimerRubrique($index)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a></td>
 
                           </tr>
 
@@ -175,7 +181,7 @@
 <!-- id="editor{{$index}}"-->
 
     <div class="accordion">
-        <div class="accordion-section" ng-repeat="rubrique in rubriques">
+        <div class="accordion-section" ng-repeat="rubrique in pv.rubriques">
             <a class="accordion-section-title" href="#accordion-{{$index}}">{{$index+1}}. {{rubrique.titre}}</a>
 
             <div id="accordion-{{$index}}" class="accordion-section-content">

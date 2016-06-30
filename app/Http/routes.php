@@ -61,3 +61,5 @@ Route::any('{path?}', function()
     return view("index");
 })->where("path", ".+");
 */
+
+Route::post('/geapp/public/api/v1/file', 'FileUploadController@storeFile');

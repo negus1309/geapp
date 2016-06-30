@@ -1,8 +1,42 @@
 var app = angular.module('myApp', ['colorpicker.module','wysiwyg.module'])
-        .constant('API_URL', 'http://localhost:8000/geapp/public/api/v1/');
-        /*.service('storage', function () {
-            var mystorage = localStorage;
+        .constant('API_URL', 'http://localhost:8000/geapp/public/api/v1/')
+        .directive('fileModel', ['$parse', function ($parse) {
+              return {
+                  restrict: 'A',
+                  link: function(scope, element, attrs) {
+                      var model = $parse(attrs.fileModel);
+                      var modelSetter = model.assign;
 
+                      element.bind('change', function(){
+                          scope.$apply(function(){
+                              modelSetter(scope, element[0].files[0]);
+                          });
+                      });
+                  }
+              };
+          }])
+          .service('fileUpload', ['$http', function ($http) {
+              this.uploadFileToUrl = function(file, uploadUrl){
+                  var fd = new FormData();
+                  fd.append('file', file);
+                  $http.post(uploadUrl, fd, {
+                      transformRequest: angular.identity,
+                      headers: {'Content-Type': undefined}
+                  })
+                  .success(function(){
+                  })
+                  .error(function(){
+                  });
+              }
+          }])
+          .controller('myCtrl', ['$scope', 'fileUpload', 'API_URL',function($scope, fileUpload, API_URL){
 
+                $scope.uploadFile = function(){
+                    var file = $scope.myFile;
+                    console.log('file is ' );
+                    console.dir(file);
+                    var uploadUrl = API_URL+"file";
+                    fileUpload.uploadFileToUrl(file, uploadUrl);
+                };
 
-        });*/
+            }]);
