@@ -351,6 +351,31 @@ a#get-draft-infos{
   }
 }
 
+.clock {
+  &:before{
+    @extend %fontawesome;
+
+      /* down arrow icon */
+      content: "\f017";
+
+      /* some space*/
+      padding-right:5px;
+  }
+  //:500px;
+
+  height: 40px;
+  width: 200px;
+  line-height: 40px;
+  //margin: 150px auto 0;
+  padding: 5px;
+  //background: white;
+  color: white;
+  text-align: center;
+  border-radius: 2px;
+  margin:0px 10px;
+  //box-shadow: 0 0 1px $color-primary inset;
+
+}
 //***************************************************//
 // Page Accueil
 //***************************************************//

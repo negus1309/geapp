@@ -67,6 +67,7 @@
         <script src="<?= asset('js/components/timepicker.js') ?>"></script>
         <script src="<?= asset('js/components/autocomplete.js') ?>"></script>
         <script src="<?= asset('js/components/notify.js') ?>"></script>
+        <script src="<?= asset('js/moment.js') ?>"></script>
 
 
 

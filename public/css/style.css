@@ -213,6 +213,21 @@ a#get-draft-infos {
   a#get-draft-infos:hover {
     text-decoration: none; }
 
+.clock {
+  height: 40px;
+  width: 200px;
+  line-height: 40px;
+  padding: 5px;
+  color: white;
+  text-align: center;
+  border-radius: 2px;
+  margin: 0px 10px; }
+  .clock:before {
+    /* down arrow icon */
+    content: "\f017";
+    /* some space*/
+    padding-right: 5px; }
+
 ul.pv-list-item {
   padding: 0px; }
 
@@ -275,7 +290,7 @@ button.nouveau-pv:before {
 .uk-panel {
   margin: 10px; }
 
-span.supprimer-invite:before, span.ajouter-invite:before, span.ajouter-odj:before, div#menu span.retourAccueil:before, div#menu span.presenceCheck:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, button.nouveau-pv:before, .uk-accordion-title:before, span#status-network #status-online:before, span#status-network #status-offline:before {
+span.supprimer-invite:before, span.ajouter-invite:before, span.ajouter-odj:before, div#menu span.retourAccueil:before, div#menu span.presenceCheck:before, .clock:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, button.nouveau-pv:before, .uk-accordion-title:before, span#status-network #status-online:before, span#status-network #status-offline:before {
   font-family: 'FontAwesome';
   src: url("../fonts/fontawesome-webfont.eot");
   src: url("../fonts/fontawesome-webfont-ie.eot") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2") format("woff2"), url("../fonts/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome-webfont.ttf") format("truetype");
