@@ -128,13 +128,25 @@ div#toggle-audio {
 form#presence-form th {
   font-weight: bold; }
 
+.normal-row td {
+  text-align: left; }
+
 .hour-header {
   background-color: #00a8e6;
   color: white; }
 
-.hour-cell {
+td.hour-cell {
   background-color: rgba(0, 168, 230, 0.2);
   text-align: center; }
+
+#gestion-presence-modal {
+  text-align: center; }
+
+#gestion-presence-dialog {
+  display: inline-block;
+  width: auto; }
+  #gestion-presence-dialog h2 {
+    text-align: left; }
 
 div#menu {
   position: fixed;

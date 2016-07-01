@@ -3,16 +3,22 @@
   "id":2,
   "membres":[
     {
+        "id":1,
       "nom":"Armstrong",
       "prenom":"Louis",
       "titre":"m",
-      "parti":"pdc"
+      "parti":"pdc",
+      "fonction":"president"
+
     },
     {
+      "id":2,
       "nom":"Dupont",
       "prenom":"Marcel",
       "titre":"m",
-      "parti":"udc"
+      "parti":"udc",
+      "fonction":"membre"
+
     }]
 
 
@@ -22,41 +28,37 @@
   "id":1,
   "membres":[
     {
-      "id":2,
+      "id":3,
       "nom":"Duvoyage",
       "prenom":"Jean",
       "titre":"m",
       "parti":"udc",
-      "fonction":"president",
-      "created_at":"2016-06-27 12:19:35",
-      "updated_at":"2016-06-27 12:19:35"
+      "fonction":"president"
+
     },{
-      "id":3,
+      "id":4,
       "nom":"Armstrong",
       "prenom":"Louis",
       "titre":"m",
       "parti":"pdc",
-      "fonction":"membre",
-      "created_at":"2016-06-27 12:19:35",
-      "updated_at":"2016-06-27 12:19:35"
+      "fonction":"membre"
+
     },{
-      "id":4,
+      "id":5,
       "nom":"Bush",
       "prenom":"Georges",
       "titre":"m",
       "parti":"ps",
-      "fonction":"membre",
-      "created_at":"2016-06-27 12:19:35",
-      "updated_at":"2016-06-27 12:19:35"
+      "fonction":"membre"
+
     },{
-      "id":5,
+      "id":6,
       "nom":"Clinton",
       "prenom":"Hillary",
       "titre":"mme",
       "parti":"ps",
-      "fonction":"membre",
-      "created_at":"2016-06-27 12:19:35",
-      "updated_at":"2016-06-27 12:19:35"
+      "fonction":"remplacant"
+
     }]
 
 

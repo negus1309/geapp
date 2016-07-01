@@ -1,6 +1,8 @@
 app.controller('gestionPresenceController', function($scope, $http, API_URL, $rootScope) {
 
-
+  $scope.showPv = function(){
+    console.log($rootScope.pv)
+  }
 
   $rootScope.getDeputes = function($idCommission){
 
@@ -12,15 +14,35 @@ app.controller('gestionPresenceController', function($scope, $http, API_URL, $ro
       });*/
 
       console.log($idCommission)
-      var mesCommissionsAvecMembres = JSON.parse(localStorage.getItem('deputes'));
+      if(!$rootScope.pv.deputes){
 
-      angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
+        var mesCommissionsAvecMembres = JSON.parse(localStorage.getItem('deputes'));
 
-        if(maCommissionAvecMembres.id == $idCommission){
-          $rootScope.deputes = maCommissionAvecMembres.membres;
-        }
+        angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
 
-      });
+          if(maCommissionAvecMembres.id == $idCommission){
+            $rootScope.pv.deputes = maCommissionAvecMembres.membres;
+
+          }
+
+        });
+
+
+        angular.forEach($rootScope.pv.deputes, function(depute, key) {
+
+          depute.isPresentAtTimes = [];
+          depute.isPresentAtTimes.push(true)
+
+          /*if(!$rootScope.pv.deputes){
+            $rootScope.pv.depute
+
+          }*/
+
+        });
+
+
+      }
+
 
 
 
@@ -30,12 +52,31 @@ app.controller('gestionPresenceController', function($scope, $http, API_URL, $ro
   $scope.addHourColumn = function(){
 
     var nbColumn = $('th.hour-header').length + 1;
-    //console.log(nbColumn)
     $('#header-row').append('<th class="hour-header">H'+nbColumn+'</th>');
-    $('.normal-row').append('<td class="hour-cell"><input type="checkbox" checked></td>');
+    //console.log(nbColumn)
+    angular.forEach($rootScope.pv.deputes, function(depute, key) {
+
+      depute.isPresentAtTimes.push(true)
+    });
+    if($rootScope.pv.deputesAdded){
+      angular.forEach($rootScope.pv.deputesAdded, function(deputeAdded, key) {
+
+        deputeAdded.isPresentAtTimes.push(true)
+      });
+    }
+
+
 
   }
+  $scope.addDepute = function(){
 
+    if(!$rootScope.pv.deputesAdded){
+      $rootScope.pv.deputesAdded = [];
+    }
+    $rootScope.pv.deputesAdded.push({"nom":"","prenom":"","titre":"","parti":"","fonction":"","isPresentAtTimes":[true]})
+    //$rootScope.$apply()
+    console.log($rootScope.pv.deputesAdded)
+  }
 
 
 

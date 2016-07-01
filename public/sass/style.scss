@@ -220,12 +220,16 @@ form#presence-form{
     font-weight: bold;
   }
 }
-
+.normal-row{
+  td{
+    text-align: left;
+  }
+}
 .hour-header{
   background-color:$color-primary;
   color:white;
 }
-.hour-cell{
+td.hour-cell{
   //background-color:;
   background-color: rgba($color-primary, 0.2);
   text-align: center;
@@ -233,6 +237,16 @@ form#presence-form{
 
 #depute-tools{
   //float:right;
+}
+#gestion-presence-modal{
+  text-align: center;
+}
+#gestion-presence-dialog{
+  display:inline-block;
+  width:auto;
+  h2{
+    text-align: left;
+  }
 }
 
 

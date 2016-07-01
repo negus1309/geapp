@@ -1,10 +1,10 @@
 <div id="gestion-presence-modal" class="uk-modal" ng-controller="gestionPresenceController">
-  <div class="uk-modal-dialog">
+  <div class="uk-modal-dialog  uk-width-1-1" id="gestion-presence-dialog">
       <div class="uk-modal-header"><h2>Gestion des présences</h2></div>
         <form id="presence-form" class="uk-form">
           <div id="depute-tools">
-            <button type="button" class="uk-button uk-button-success" ng-click="">Ajouter député</button>
-            <button type="button" class="uk-button uk-button-success" ng-click="addHourColumn()">Ajouter H</button>
+            <button type="button" class="uk-button uk-button-success" ng-click="addDepute()">Ajouter un député</button>
+            <button type="button" class="uk-button uk-button-success" ng-click="addHourColumn()">Ajouter une colonne d'heure</button>
           </div>
         <table class="uk-table uk-table-striped">
           <thead>
@@ -19,17 +19,33 @@
         </thead>
         <tbody>
             {{deputes}}
-            <tr ng-repeat="depute in deputes" class="normal-row">
+            <!-- DEPUTES DE BASE DAnS LA COMM: -->
+            <tr ng-repeat="depute in pv.deputes" class="normal-row">
               <td>{{depute.nom}}</td>
               <td>{{depute.prenom}}</td>
               <td>{{depute.titre | uppercase}}</td>
               <td>{{depute.parti | uppercase}}</td>
               <!-- hour tick -->
-              <td class="hour-cell"><input type="checkbox" checked></td>
+              <td class="hour-cell" ng-repeat="present in depute.isPresentAtTimes track by $index">
+                <input type="checkbox" ng-model="depute.isPresentAtTimes[$index]" ng-checked="present">
+              </td>
+              <!-- http://codepen.io/paulbhartzog/pen/kBhzn-->
+            </tr>
+            <!-- DEPUTES OU RAMPLACAANT AJOUT MANUEL-->
+            <tr ng-repeat="deputeAdded in pv.deputesAdded" class="normal-row">
+              <td><input type="text" ng-model="pv.deputesAdded[$index].nom"></td>
+              <td><input type="text" ng-model="pv.deputesAdded[$index].prenom"></td>
+              <td><input type="text" ng-model="pv.deputesAdded[$index].titre"></td>
+              <td><input type="text" ng-model="pv.deputesAdded[$index].parti"></td>
+              <!-- hour tick -->
+              <td class="hour-cell" ng-repeat="present in deputeAdded.isPresentAtTimes track by $index">
+                <input type="checkbox" ng-model="deputeAdded.isPresentAtTimes[$index]" ng-checked="present">
+              </td>
+              <!-- http://codepen.io/paulbhartzog/pen/kBhzn-->
             </tr>
 
         </tbody>
-
+        <!--button ng-click="showPv()"></button-->
       </table>
 
       <button type="submit" class="uk-button uk-button-primary uk-width-1-1" ng-click="sauvegarderPresences()">Sauvegarder</button>
@@ -39,4 +55,22 @@
 
       </div>
   </div>
+
+
+</div>
+
+<!--div class="uk-modal" id="add-depute">
+    <div class="uk-modal-dialog">
+      <form class="uk-form uk-form-horizontal">
+
+        <div class="uk-modal-header">Ajouter un député</div>
+
+          <label class="uk-form-label" for="gnom">Nom</label>
+          <div class="uk-form-controls">
+              <input type="text" id="gnom" ng-model="myDeputeToAdd.nom">
+          </div>
+
+        <div class="uk-modal-footer">...</div>
+      </form>
+    </div-->
 </div>
