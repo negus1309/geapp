@@ -48,6 +48,7 @@
       <ng-include src="'<?= asset('app/views/accueil.html')?>'"></ng-include>
       <ng-include src="'<?= asset('app/views/workflow.html')?>'"></ng-include>
       <ng-include src="'<?= asset('app/views/gestion_presence.html')?>'"></ng-include>
+      <ng-include src="'<?= asset('app/views/word_document.html')?>'"></ng-include>
 
       <ng-include src="'<?= asset('app/views/audio.html')?>'"></ng-include>
       <a href="#"  id="toggle-audio-icon" ng-click="toggleAudio();"><i class="uk-icon-toggle-up" ></i></a>
@@ -60,6 +61,8 @@
         <script src="<?= asset('app/lib/angular/angular.min.js') ?>"></script>
 
         <script src="<?= asset('js/uikit.min.js') ?>"></script>
+        <script src="<?= asset('js/FileSaver.min.js') ?>"></script>
+        <script src="<?= asset('js/jquery.wordexport.js') ?>"></script>
 
 
         <script src="<?= asset('js/components/accordion.js') ?>"></script>

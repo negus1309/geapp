@@ -7,7 +7,30 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
       //*******************************************//
 
 
-      $scope.convertPv = function(){
+      $scope.convertPv = function($pvToken){
+
+        //$('#liste').hide();
+        //$('#workflow').show();
+        //$('div#menu a').show();
+
+        var mesPv = $rootScope.mesPv;
+        angular.forEach(mesPv, function(monPv, key) {
+            if(monPv.token == $pvToken){
+              $rootScope.pv = monPv;
+            }
+
+
+        });
+
+        var pvNumero = $rootScope.pv.numero;
+        console.log(pvNumero)
+        $('#word-document').html('<h1>'+pvNumero+'</h1>');
+        //$('#word-document').html(pvNumero);
+
+        $('#word-document').wordExport();
+
+
+
 
       }
 
@@ -22,6 +45,9 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
           //console.log(pvToken)
           $rootScope.pv = {}
           $rootScope.pv.token = pvToken;
+
+
+
 
 
 
@@ -75,6 +101,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
         angular.forEach(mesPv, function(monPv, key) {
             if(monPv.token == $pvToken){
               $rootScope.pv = monPv;
+              
             }
 
 

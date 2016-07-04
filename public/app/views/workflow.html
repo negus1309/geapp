@@ -14,15 +14,16 @@
             <label class="uk-form-label" for="commission_nom">Commission</label>
             <div class="uk-form-controls">
               <div class="uk-form-select" data-uk-form-select>
-                <span></span>
-                <select ng-model="pv.commission" ng-options="commission as commission.nom for commission in nomCommissions">
+                <!--span></span-->
+                <select ng-model="pv.commission" ng-options="commission_s.nom for commission_s in nomCommissions track by commission_s.id" ng-change="updatePresident()">
                     <!--<option ng-repeat="nomCommission in nomCommissions" value='{"nom":"{{nomCommission.nom}}","id":{{nomCommission.id}}}'>{{nomCommission.nom}}</option>-->
+                  <!--commission as commission.nom for commission in nomCommissions-->
                 </select>
               </div>
 
             </div>
         </div>
-      
+
         <button ng-click="showc();">show</button>
 
         <!-- /******* NO PV **********/-->
@@ -77,7 +78,9 @@
         <div class="uk-form-row">
           <label class="uk-form-label" for="president">Président</label>
           <div class="uk-form-controls">
-            <input id="president" type="text">
+            <input id="president-nom" type="text" ng-model="pv.president.nom">
+            <input id="president-prenom"  type="text" ng-model="pv.president.prenom" placeholder="Prenom">
+            <input id="president-titre"  type="text" ng-model="pv.president.titre" placeholder="Titre" size="5">
           </div>
         </div>
 
@@ -93,10 +96,16 @@
           <label class="uk-form-label" for="invites">Invités</label>
         <!--  <div >-->
             <div class="uk-form-controls" style="margin-bottom:10px;" ng-repeat="invite in pv.invites">
-
+              <select ng-model="invite.titre" placeholder="Titre">
+                <option value="m">Monsieur</option>
+                <option value="mme">Madame</option>
+              </select>
               <input type="text" ng-model="invite.nom" placeholder="Nom">
               <input type="text" ng-model="invite.prenom" placeholder="Prenom">
-              <input type="text" ng-model="invite.titre" placeholder="Titre" size="5">
+              <!--input type="text" ng-model="invite.titre" placeholder="Titre" size="5"-->
+              <!--div class="uk-form-select" data-uk-form-select-->
+
+              <!--/div-->
               <a href="#" ng-click="supprimerInvite($index)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a>
               <!--{{invite.id}}
               {{$index}}-->

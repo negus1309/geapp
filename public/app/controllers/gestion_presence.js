@@ -16,7 +16,8 @@ app.controller('gestionPresenceController', function($scope, $http, API_URL, $ro
       console.log($idCommission)
       if(!$rootScope.pv.deputes){
 
-        var mesCommissionsAvecMembres = JSON.parse(localStorage.getItem('deputes'));
+        //var mesCommissionsAvecMembres = JSON.parse(localStorage.getItem('deputes'));
+        var mesCommissionsAvecMembres = $rootScope.deputes;//JSON.parse(localStorage.getItem('deputes'));
 
         angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
 
