@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::post('/geapp/public/api/v1/seance/save','SeanceController@createOrUpdateSeance');
+
+
+
+
+
 // Accès à chaque commission comprenant les séances liées
 Route::get('/geapp/public/api/v1/commissions/seances', 'CommissionController@getCommissionWithSeances');
 

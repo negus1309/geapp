@@ -11,32 +11,52 @@ div.liste-invites:nth-child(2n+1){
 
   //background-color: $color-gris;
 }
-//
 
+span.placeholder-content{
+  font-style: italic;
+  color: darken($color-gris,20%);
+}
+
+//***************************************************//
+//Workflow
+//***************************************************//
+/*div.rubriques-accordeon{
+  padding-left: 20px;
+  background-color: $color-primary;
+}*/
+
+#calendar{
+  h2{
+    font-size: 1.1em;
+    color: darken(#eee,40%);
+  }
+}
 
 //***************************************************//
 // Style accordion jquery
 //***************************************************//
+
+a:hover, a:focus{
+  color: white;
+  text-decoration: none;
+}
+
 /*----- Accordion -----*/
-/*.accordion, .accordion * {
+.accordion, .accordion * {
     -webkit-box-sizing:border-box;
     -moz-box-sizing:border-box;
     box-sizing:border-box;
-}*/
+}
 
 .accordion {
-    margin-left:15px;
     overflow:hidden;
-    //box-shadow:0px 1px 3px rgba(0,0,0,0.25);
-    //border-radius:3px;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+    border-radius:3px;
     background:#f7f7f7;
-    a:hover{
-      color:white;
-    }
-    a:focus, a:hover {
-      color:#333;
-    text-decoration: none;
-    }
+
+    width: 90%;
+    margin: auto;
+    margin-bottom: 60px;
 }
 
 /*----- Section Titles -----*/
@@ -45,19 +65,18 @@ div.liste-invites:nth-child(2n+1){
     padding:15px;
     display:inline-block;
     border-bottom:1px solid #1a1a1a;
-    background:$color-gris;
+    background:#333;
     transition:all linear 0.15s;
     /* Type */
     font-size:1.200em;
-    //text-shadow:0px 1px 0px #1a1a1a;
-    color:#333;
+    text-shadow:0px 1px 0px #1a1a1a;
+    color:#fff;
 }
 
 .accordion-section-title.active, .accordion-section-title:hover {
-    background:$color-primary;
+    background:#4c4c4c;
     /* Type */
     text-decoration:none;
-    color:white;
 }
 
 .accordion-section:last-child .accordion-section-title {
@@ -69,6 +88,57 @@ div.liste-invites:nth-child(2n+1){
     padding:15px;
     display:none;
 }
+
+
+
+/*----- Accordion -----*/
+/*.accordion, .accordion * {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+.accordion {
+    margin-left:15px;
+    overflow:hidden;
+
+    background:#f7f7f7;
+    a{
+      color:$color-primary;
+    }
+    a:focus, a:hover,a:active {
+      color:white;
+    text-decoration: none;
+    }
+}
+
+.accordion-section-title {
+    width:100%;
+    padding:15px;
+    display:inline-block;
+    border-bottom:1px solid white;
+    background:lighten( $color-primary, 50% );
+    transition:all linear 0.15s;
+
+    font-size:1.200em;
+
+    color:white;
+}
+
+.accordion-section-title.active, .accordion-section-title:hover {
+    background:$color-primary;
+
+    text-decoration:none;
+    color:white;
+}
+
+
+
+.accordion-section-content {
+    padding:15px;
+    display:none;
+    background-color: $color-gris;
+}*/
 
 
 
@@ -212,7 +282,31 @@ div#toggle-audio{
   float:right;
   //margin-left:0px;
 }
+//***************************************************//
+// Tableaux accueil + gestion presence
+//***************************************************//
 
+tr.header-row{
+  th{
+    font-weight: bold;
+  }
+  th.hour-header{
+    background-color:$color-primary;
+    color:white;
+    text-align: center;
+  }
+}
+.normal-row{
+  td{
+    text-align: left;
+  }
+}
+
+td.hour-cell{
+  //background-color:;
+  background-color: rgba($color-primary, 0.2);
+  text-align: center;
+}
 //***************************************************//
 // Gestion présence module
 //***************************************************//
@@ -224,20 +318,8 @@ form#presence-form{
     font-weight: bold;
   }
 }
-.normal-row{
-  td{
-    text-align: left;
-  }
-}
-.hour-header{
-  background-color:$color-primary;
-  color:white;
-}
-td.hour-cell{
-  //background-color:;
-  background-color: rgba($color-primary, 0.2);
-  text-align: center;
-}
+// ATtention utilise a deux endoit (presence + accuel)
+
 
 #depute-tools{
   //float:right;
@@ -455,7 +537,11 @@ button.nouveau-pv:before{
   font-weight: normal;
 }
 
+ td.pv-action{
 
+   width: 10%;
+   border-left:1px $color-gris solid;
+ }
 //***************************************************//
 // UIkit modifications
 //***************************************************//

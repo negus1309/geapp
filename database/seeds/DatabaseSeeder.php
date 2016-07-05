@@ -213,6 +213,7 @@ class MyAppSeeder extends Seeder {
 
         Seance::create(array(
             //'id'    => 1,
+            'token' => 'cmpjeii948g5mnmtu2wewmi2n3bt8trx2eepgp8jbj7vqjjor',
             'numero' => 200001,
             'date' => '2016-06-03',
             'heure_debut' => '16:00',
@@ -222,6 +223,7 @@ class MyAppSeeder extends Seeder {
         ));
         Seance::create(array(
           //  'id'    => 2,
+          'token' => 'ampjeiitzelomnmtu2wewmi2n3bt8trx2eepgp8jbj7vqjjor',
             'numero' => 200002,
             'date' => '2016-06-10',
             'heure_debut' => '17:00',
@@ -231,6 +233,7 @@ class MyAppSeeder extends Seeder {
         ));
         Seance::create(array(
           //  'id'    => 3,
+          'token' => 'bmpjeii948g5mnmtu2wewmifhtzg8trx2eepgp8jbj7vqjjor',
             'numero' => 200003,
             'date' => '2016-06-11',
             'heure_debut' => '18:00',

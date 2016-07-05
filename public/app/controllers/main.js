@@ -30,8 +30,18 @@ app.controller('mainController', function($scope, $http, API_URL, $rootScope) {
         }
 
 
-
-
+        // SERVICE WORKER
+        if (navigator.serviceWorker) {
+            navigator.serviceWorker.register('../../js/service-worker.js', {})
+                .then(function (registration) {
+                    console.log(registration);
+                })
+                .catch(function (e) {
+                    console.error(e);
+                })
+        } else {
+            console.log('Service Worker is not supported in this browser.')
+        }
 
 
 

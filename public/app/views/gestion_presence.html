@@ -8,7 +8,7 @@
           </div>
         <table class="uk-table uk-table-striped">
           <thead>
-            <tr id="header-row">
+            <tr class="header-row">
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Titre</th>
@@ -29,7 +29,7 @@
               <td class="hour-cell" ng-repeat="present in depute.isPresentAtTimes track by $index">
                 <input type="checkbox" ng-model="depute.isPresentAtTimes[$index]" ng-checked="present">
               </td>
-              
+
             </tr>
             <!-- DEPUTES OU RAMPLACAANT AJOUT MANUEL-->
             <tr ng-repeat="deputeAdded in pv.deputesAdded" class="normal-row">

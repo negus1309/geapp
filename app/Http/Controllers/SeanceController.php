@@ -14,6 +14,47 @@ use DB;
 
 class SeanceController extends Controller {
 
+    // v2
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function createOrUpdateSeance(Request $request){
+
+
+      $seanceToken = $request->token;
+
+      $maSeance = Seance::where('token', $seanceToken)->first();
+
+      if($maSeance){
+        return "ok il existe";
+      }
+
+      //$maSeance
+
+/*
+      $maSeance->save();
+      $status = 201;
+      $value = "application/json";
+        //return ;
+        return response($maSeance, $status)
+                    ->header('Content-Type', $value);*/
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
   /**
    * Display a listing of the resource.
    *

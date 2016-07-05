@@ -24,7 +24,6 @@
             </div>
         </div>
 
-        <button ng-click="showc();">show</button>
 
         <!-- /******* NO PV **********/-->
         <div class="uk-form-row">
@@ -40,7 +39,7 @@
             <div class="uk-form-controls">
               <div class="uk-form-icon">
                <i class="uk-icon-calendar"></i>
-                <input id ="date" type="text" data-uk-datepicker="{format:'DD-MM-YYYY'}"  ng-model="pv.date" required>
+                <input id ="date" type="text" data-uk-datepicker="{format:'DD-MM-YYYY'}"  ng-model="pv.date">
               </div>
             </div>
         </div>
@@ -189,7 +188,7 @@
 
 <!-- id="editor{{$index}}"-->
 
-    <div class="accordion">
+    <div class="accordion rubriques-accordeon">
         <div class="accordion-section" ng-repeat="rubrique in pv.rubriques">
             <a class="accordion-section-title" href="#accordion-{{$index}}">{{$index+1}}. {{rubrique.titre}}</a>
 

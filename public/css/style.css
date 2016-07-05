@@ -1,18 +1,33 @@
-/*----- Accordion -----*/
-/*.accordion, .accordion * {
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    box-sizing:border-box;
+span.placeholder-content {
+  font-style: italic;
+  color: #bbbbbb; }
+
+/*div.rubriques-accordeon{
+  padding-left: 20px;
+  background-color: $color-primary;
 }*/
+#calendar h2 {
+  font-size: 1.1em;
+  color: #888888; }
+
+a:hover, a:focus {
+  color: white;
+  text-decoration: none; }
+
+/*----- Accordion -----*/
+.accordion, .accordion * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
 .accordion {
-  margin-left: 15px;
   overflow: hidden;
-  background: #f7f7f7; }
-  .accordion a:hover {
-    color: white; }
-  .accordion a:focus, .accordion a:hover {
-    color: #333;
-    text-decoration: none; }
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  background: #f7f7f7;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 60px; }
 
 /*----- Section Titles -----*/
 .accordion-section-title {
@@ -20,17 +35,17 @@
   padding: 15px;
   display: inline-block;
   border-bottom: 1px solid #1a1a1a;
-  background: #eee;
+  background: #333;
   transition: all linear 0.15s;
   /* Type */
   font-size: 1.200em;
-  color: #333; }
+  text-shadow: 0px 1px 0px #1a1a1a;
+  color: #fff; }
 
 .accordion-section-title.active, .accordion-section-title:hover {
-  background: #00a8e6;
+  background: #4c4c4c;
   /* Type */
-  text-decoration: none;
-  color: white; }
+  text-decoration: none; }
 
 .accordion-section:last-child .accordion-section-title {
   border-bottom: none; }
@@ -40,6 +55,54 @@
   padding: 15px;
   display: none; }
 
+/*----- Accordion -----*/
+/*.accordion, .accordion * {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+.accordion {
+    margin-left:15px;
+    overflow:hidden;
+
+    background:#f7f7f7;
+    a{
+      color:$color-primary;
+    }
+    a:focus, a:hover,a:active {
+      color:white;
+    text-decoration: none;
+    }
+}
+
+.accordion-section-title {
+    width:100%;
+    padding:15px;
+    display:inline-block;
+    border-bottom:1px solid white;
+    background:lighten( $color-primary, 50% );
+    transition:all linear 0.15s;
+
+    font-size:1.200em;
+
+    color:white;
+}
+
+.accordion-section-title.active, .accordion-section-title:hover {
+    background:$color-primary;
+
+    text-decoration:none;
+    color:white;
+}
+
+
+
+.accordion-section-content {
+    padding:15px;
+    display:none;
+    background-color: $color-gris;
+}*/
 body {
   padding-top: 40px; }
 
@@ -128,19 +191,22 @@ div#toggle-audio {
 #submit-audio {
   float: right; }
 
-form#presence-form th {
+tr.header-row th {
   font-weight: bold; }
+tr.header-row th.hour-header {
+  background-color: #00a8e6;
+  color: white;
+  text-align: center; }
 
 .normal-row td {
   text-align: left; }
 
-.hour-header {
-  background-color: #00a8e6;
-  color: white; }
-
 td.hour-cell {
   background-color: rgba(0, 168, 230, 0.2);
   text-align: center; }
+
+form#presence-form th {
+  font-weight: bold; }
 
 #gestion-presence-modal {
   text-align: center; }
@@ -276,6 +342,10 @@ button.nouveau-pv:before {
   content: "\f067";
   padding-right: 5px;
   font-weight: normal; }
+
+td.pv-action {
+  width: 10%;
+  border-left: 1px #eee solid; }
 
 .uk-accordion h4 {
   font-weight: bold; }

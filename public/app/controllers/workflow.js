@@ -157,32 +157,48 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
 
 
-        var isOnline = false;
+      //  var isOnline = false;
 
-        if(isOnline){
+        if(navigator.onLine){
+
+
 
           //var dateHuman =
-          var dateHuman = $scope.general.date;
-          //console.log(dateHuman)
+
+          var dateHuman = $scope.pv.date;
+          console.log(dateHuman)
+
           var dateToPost = convertHumanDateToMysqlDate(dateHuman);
 
-
+          console.log(dateToPost)
          //var dateToPost = reverse(dateHuman);
          //console.log(dateToPost)
 
           // infos séances
           var maSeance = {
-            'id':$scope.meta.idSeance,
-            'numero': $scope.general.numero,
+            //'id':$scope.meta.idSeance,
+            'token': $scope.pv.token,
+            'numero': $scope.pv.numero,
             'date': dateToPost,
-            'heure_debut':$scope.general.heure_debut,
-            'heure_fin':$scope.general.heure_fin,
-            'commission_id':$scope.meta.idCommission,
-            'president_id':1
+            'heure_debut':$scope.pv.heure_debut,
+            'heure_fin':$scope.pv.heure_fin,
+            'commission_id':$scope.pv.commission.id,
+            'president_id':$scope.pv.president.id
 
           };
+          console.log(maSeance)
+
+          $http({
+            url: API_URL + "seance/save",
+            method: "POST",
+            params: maSeance
+          }).success(function(response){
+            console.log(response)
+
+          })
 
 
+/*
           $http({
             url: API_URL + "seance/update",
             method: "PUT",
@@ -262,7 +278,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
 
            });
-
+*/
         }
 
 

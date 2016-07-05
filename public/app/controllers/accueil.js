@@ -1,7 +1,17 @@
 app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$filter) {
 
 
+  $(document).ready(function() {
 
+      // page is now ready, initialize the calendar...
+
+      $('#calendar').fullCalendar({
+          // put your options and callbacks here
+          lang:"fr",
+          height:'auto'
+      })
+
+  });
       //*******************************************//
       // EVENEMENTS
       //*******************************************//
@@ -101,7 +111,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
         angular.forEach(mesPv, function(monPv, key) {
             if(monPv.token == $pvToken){
               $rootScope.pv = monPv;
-              
+
             }
 
 

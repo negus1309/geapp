@@ -25,6 +25,9 @@
         <!-- ********************** -->
         <link href="<?= asset('css/font-awesome.min.css') ?>" rel="stylesheet"  />
 
+
+        <link href="<?= asset('css/fullcalendar.css') ?>" rel="stylesheet"  />
+
         <!-- ********************** -->
         <!-- *** textAngular        -->
         <!-- ********************** -->
@@ -71,6 +74,7 @@
         <script src="<?= asset('js/components/autocomplete.js') ?>"></script>
         <script src="<?= asset('js/components/notify.js') ?>"></script>
         <script src="<?= asset('js/moment.js') ?>"></script>
+        <script src="<?= asset('js/fullcalendar.js') ?>"></script>
 
 
 
