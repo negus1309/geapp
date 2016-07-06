@@ -1,9 +1,10 @@
 <div id="workflow" ng-controller="workflowController">
 {{pv}}
-  <div id="workflowaccordion"  class="uk-accordion" data-uk-accordion><!-- -->
 
-    <h2 class="uk-accordion-title">Général</h2>
-    <div class="uk-accordion-content">
+
+
+
+    <div class="">
       <!-- /***********************************/-->
       <!-- /*******  GENERAL FORMULAIRE *******/-->
       <!-- /***********************************/-->
@@ -15,7 +16,7 @@
             <div class="uk-form-controls">
               <div class="uk-form-select" data-uk-form-select>
                 <!--span></span-->
-                <select ng-model="pv.commission" ng-options="commission_s.nom for commission_s in nomCommissions track by commission_s.id" ng-change="updatePresident()">
+                <select ng-model="pv.commission" ng-options="commission_s.nom for commission_s in nomCommissions track by commission_s.id" ng-change="updatePresident();updateDeputes();">
                     <!--<option ng-repeat="nomCommission in nomCommissions" value='{"nom":"{{nomCommission.nom}}","id":{{nomCommission.id}}}'>{{nomCommission.nom}}</option>-->
                   <!--commission as commission.nom for commission in nomCommissions-->
                 </select>
@@ -255,7 +256,7 @@
 
 
 
-  </div>
+
 
 
 

@@ -12,6 +12,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
 
 
+
   $scope.updatePresident = function(){
     console.log('tete')
     var mesCommissionsAvecMembres = $rootScope.deputes;
@@ -33,8 +34,28 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
     });
   }
 
-  $scope.showc = function(){
-    console.log($scope.pv)
+
+  $rootScope.updateDeputes = function(){
+    var mesCommissionsAvecMembres = $rootScope.deputes;
+    angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
+      if(maCommissionAvecMembres.id == $rootScope.pv.commission.id){
+
+
+          $rootScope.pv.deputes = maCommissionAvecMembres.membres;
+          /*if(membre.fonction =="president"){
+            console.log(membre)
+            $rootScope.pv.president = membre;
+
+          }*/
+
+
+
+      }
+
+
+    });
+
+
   }
 
   //$scope.$watch($rootScope)
@@ -67,7 +88,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
 
 
-
+  
 
       //*******************************************//
       // EVENEMENTS
