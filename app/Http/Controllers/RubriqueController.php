@@ -38,7 +38,7 @@ class RubriqueController extends Controller {
   }
 
 
-  /**
+  /**v2
    * Display a listing of the resource.
    *
    * @return Response

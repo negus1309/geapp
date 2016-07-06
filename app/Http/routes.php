@@ -34,6 +34,14 @@ Route::post('/geapp/public/api/v1/presence/create','PresenceController@storePres
 //Ajout absence
 Route::post('/geapp/public/api/v1/absence/create','AbsenceController@storeAbsence');
 
+//Supprimer toutes absence pour seance
+Route::delete('/geapp/public/api/v1/absence/delete','AbsenceController@deleteAbsenceFromThisSeance');
+
+//Supprimer toutes absence pour seance
+Route::delete('/geapp/public/api/v1/presence/delete','PresenceController@deletePresenceFromThisSeance');
+
+
+
 
 
 

@@ -90,6 +90,8 @@
         <script src="<?= asset('js/angular-froala.js') ?>"></script> <!--js/froala_editor.min.js'-->
 
 
+
+
         <!-- AngularJS Application Scripts -->
         <script src="<?= asset('app/app.js') ?>"></script>
         <script src="<?= asset('app/controllers/accueil.js') ?>"></script>

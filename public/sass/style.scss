@@ -35,6 +35,13 @@ body{
   }
 }
 
+div#workflow{
+  div#workflow-general{
+    padding:30px 0px 30px 0px;
+  }
+}
+
+
 //***************************************************//
 // Style accordion jquery
 //***************************************************//
@@ -189,11 +196,11 @@ div#draft{
 }
 
 
-span.supprimer-invite,span.ajouter-invite, span.ajouter-odj{
+span.supprimer-invite,span.ajouter-invite, span.ajouter-odj, span.ajouter-rapporteur, span.supprimer-rapporteur, span.supprimer-odj{
   line-height: 25px;
 
 }
-span.supprimer-invite:before{
+span.supprimer-invite:before, span.supprimer-rapporteur:before, span.supprimer-odj:before{
   @extend %fontawesome;
 
     /* down arrow icon */
@@ -205,7 +212,7 @@ span.supprimer-invite:before{
   margin-top:20px;
 }
 
-span.ajouter-invite:before,span.ajouter-odj:before{
+span.ajouter-invite:before,span.ajouter-odj:before, span.ajouter-rapporteur:before{
   @extend %fontawesome;
 
     /* down arrow icon */

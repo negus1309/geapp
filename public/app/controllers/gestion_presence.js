@@ -14,35 +14,19 @@ app.controller('gestionPresenceController', function($scope, $http, API_URL, $ro
       });*/
 
       console.log($idCommission)
-      if(!$rootScope.pv.deputes){
-
-        //var mesCommissionsAvecMembres = JSON.parse(localStorage.getItem('deputes'));
-        var mesCommissionsAvecMembres = $rootScope.deputes;//JSON.parse(localStorage.getItem('deputes'));
-
-        angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
-
-          if(maCommissionAvecMembres.id == $idCommission){
-            $rootScope.pv.deputes = maCommissionAvecMembres.membres;
-
-          }
-
-        });
-
+    //  console.log(!$rootScope.pv.deputes.isPresentAtTimes)
+      /*if(!$rootScope.pv.deputes[0].isPresentAtTimes.length){
 
         angular.forEach($rootScope.pv.deputes, function(depute, key) {
 
-          depute.isPresentAtTimes = [];
-          depute.isPresentAtTimes.push(true)
+          //depute.isPresentAtTimes = [];
+          depute.
 
-          /*if(!$rootScope.pv.deputes){
-            $rootScope.pv.depute
-
-          }*/
 
         });
 
 
-      }
+      }*/
 
 
 
@@ -53,7 +37,7 @@ app.controller('gestionPresenceController', function($scope, $http, API_URL, $ro
   $scope.addHourColumn = function(){
 
     var nbColumn = $('th.hour-header').length + 1;
-    $('#header-row').append('<th class="hour-header">H'+nbColumn+'</th>');
+    $('#gestion-presence-modal .header-row').append('<th class="hour-header">H'+nbColumn+'</th>');
     //console.log(nbColumn)
     angular.forEach($rootScope.pv.deputes, function(depute, key) {
 

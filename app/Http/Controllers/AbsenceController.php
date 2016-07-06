@@ -38,6 +38,23 @@ class AbsenceController extends Controller {
 
   }
 
+  /**
+   * Display a listing of the resource.
+   *
+   * @return Response
+   */
+  public function deleteAbsenceFromThisSeance(Request $request){
+    //$maPresence = new Presence;
+    $idSeance = $request->seance_id;
+
+    $mesAbsences = Absence::where('seance_id', $idSeance)->delete();
+
+
+    return "ok dele";
+
+
+  }
+
 
 
 

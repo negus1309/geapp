@@ -10,6 +10,9 @@ span.placeholder-content {
   font-size: 1.1em;
   color: #888888; }
 
+div#workflow div#workflow-general {
+  padding: 30px 0px 30px 0px; }
+
 a:hover, a:focus {
   color: white;
   text-decoration: none; }
@@ -120,10 +123,10 @@ div#draft {
   .pv-form label {
     font-weight: bold; }
 
-span.supprimer-invite, span.ajouter-invite, span.ajouter-odj {
+span.supprimer-invite, span.ajouter-invite, span.ajouter-odj, span.ajouter-rapporteur, span.supprimer-rapporteur, span.supprimer-odj {
   line-height: 25px; }
 
-span.supprimer-invite:before {
+span.supprimer-invite:before, span.supprimer-rapporteur:before, span.supprimer-odj:before {
   /* down arrow icon */
   content: "\f00d";
   padding-right: 5px; }
@@ -131,7 +134,7 @@ span.supprimer-invite:before {
 .sauvegarder-pv {
   margin-top: 20px; }
 
-span.ajouter-invite:before, span.ajouter-odj:before {
+span.ajouter-invite:before, span.ajouter-odj:before, span.ajouter-rapporteur:before {
   /* down arrow icon */
   content: "\f067";
   padding-right: 5px; }
@@ -372,7 +375,7 @@ td.pv-action-first {
 .uk-panel {
   margin: 10px; }
 
-span.supprimer-invite:before, span.ajouter-invite:before, span.ajouter-odj:before, div#menu span.retourAccueil:before, div#menu span.presenceCheck:before, .clock:before, span.soumettre-pv:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, button.nouveau-pv:before, .uk-accordion-title:before, span#status-network #status-online:before, span#status-network #status-offline:before {
+span.supprimer-invite:before, span.supprimer-rapporteur:before, span.supprimer-odj:before, span.ajouter-invite:before, span.ajouter-odj:before, span.ajouter-rapporteur:before, div#menu span.retourAccueil:before, div#menu span.presenceCheck:before, .clock:before, span.soumettre-pv:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, button.nouveau-pv:before, .uk-accordion-title:before, span#status-network #status-online:before, span#status-network #status-offline:before {
   font-family: 'FontAwesome';
   src: url("../fonts/fontawesome-webfont.eot");
   src: url("../fonts/fontawesome-webfont-ie.eot") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2") format("woff2"), url("../fonts/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome-webfont.ttf") format("truetype");

@@ -38,7 +38,22 @@ class PresenceController extends Controller {
 
   }
 
+  /**
+   * Display a listing of the resource.
+   *
+   * @return Response
+   */
+  public function deletePresenceFromThisSeance(Request $request){
+    //$maPresence = new Presence;
+    $idSeance = $request->seance_id;
 
+    $mesPresences = Presence::where('seance_id', $idSeance)->delete();
+
+
+    return "ok del";
+
+
+  }
 
 
 

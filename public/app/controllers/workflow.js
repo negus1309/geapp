@@ -87,7 +87,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
           });
         }
 
-
+        // a fair elors de la cretion, re init tout le temps is present
         $rootScope.updateDeputes = function(){
           var mesCommissionsAvecMembres = $rootScope.deputes;
           angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
@@ -95,11 +95,16 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
 
                 $rootScope.pv.deputes = maCommissionAvecMembres.membres;
-                /*if(membre.fonction =="president"){
-                  console.log(membre)
-                  $rootScope.pv.president = membre;
+                var mesDeputes = $rootScope.pv.deputes;
 
-                }*/
+                angular.forEach(mesDeputes, function(monDepute, key) {
+
+                    monDepute.isPresentAtTimes = [];
+                    monDepute.isPresentAtTimes.push(true);
+
+                });
+
+
 
 
 
@@ -341,43 +346,63 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
                           //***************************************************//
                           var mesDeputes = $scope.pv.deputes;
 
-                          angular.forEach(mesDeputes, function(monDepute, key) {
-                            console.log(monDepute)
-                              angular.forEach(monDepute.isPresentAtTimes, function(isPresentAtTime, key) {
-                                var idDepute = monDepute.id;
-                                //var idSeance =
-                                console.log(isPresentAtTime)
-                                var heure = key+1;
-                                if(isPresentAtTime == true){
+                          $http({
+                            url: API_URL + "presence/delete",
+                            method: "DELETE",
+                            params: {'seance_id':idSeance}
+                           })
+                           .success(function(response) {
 
-                                  $http({
-                                    url: API_URL + "presence/create",
-                                    method: "POST",
-                                    params: {'seance_id':idSeance,'depute_id':idDepute, 'heure':heure}
-                                   })
-                                   .success(function(response) {
+                             $http({
+                               url: API_URL + "absence/delete",
+                               method: "DELETE",
+                               params: {'seance_id':idSeance}
+                              })
+                              .success(function(response) {
+                                angular.forEach(mesDeputes, function(monDepute, key) {
+                                  console.log(monDepute)
+                                    angular.forEach(monDepute.isPresentAtTimes, function(isPresentAtTime, key) {
+                                      var idDepute = monDepute.id;
+                                      //var idSeance =
+                                      console.log(isPresentAtTime)
+                                      var heure = key+1;
+                                      if(isPresentAtTime == true){
+
+                                        $http({
+                                          url: API_URL + "presence/create",
+                                          method: "POST",
+                                          params: {'seance_id':idSeance,'depute_id':idDepute, 'heure':heure}
+                                         })
+                                         .success(function(response) {
 
 
-                                   });
+                                         });
 
-                                }else{
+                                      }else{
 
-                                  $http({
-                                    url: API_URL + "absence/create",
-                                    method: "POST",
-                                    params: {'seance_id':idSeance,'depute_id':idDepute, 'heure':heure}
-                                   })
-                                   .success(function(response) {
+                                        $http({
+                                          url: API_URL + "absence/create",
+                                          method: "POST",
+                                          params: {'seance_id':idSeance,'depute_id':idDepute, 'heure':heure}
+                                         })
+                                         .success(function(response) {
 
 
-                                   });
-                                }
+                                         });
+                                      }
 
+
+                                    });
+
+
+                                });
 
                               });
 
+                           });
 
-                          });
+
+
 
 
 

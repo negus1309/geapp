@@ -112,7 +112,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
             if(monPv.token == $pvToken){
               $rootScope.pv = monPv;
 
-              
+
 
 
 
