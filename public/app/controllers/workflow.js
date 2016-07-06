@@ -1,4 +1,4 @@
-app.controller('workflowController', function($scope, $http, API_URL,$filter,$rootScope) {
+app.controller('workflowController', function($scope, $http, API_URL,$filter,$rootScope,$timeout) {
 
 
   //$scope.pv = {}
@@ -12,51 +12,6 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
 
 
-
-  $scope.updatePresident = function(){
-    console.log('tete')
-    var mesCommissionsAvecMembres = $rootScope.deputes;
-
-    angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
-      if(maCommissionAvecMembres.id == $rootScope.pv.commission.id){
-        angular.forEach(maCommissionAvecMembres.membres, function(membre, key) {
-          if(membre.fonction =="president"){
-            console.log(membre)
-            $rootScope.pv.president = membre;
-
-          }
-
-        });
-
-      }
-
-
-    });
-  }
-
-
-  $rootScope.updateDeputes = function(){
-    var mesCommissionsAvecMembres = $rootScope.deputes;
-    angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
-      if(maCommissionAvecMembres.id == $rootScope.pv.commission.id){
-
-
-          $rootScope.pv.deputes = maCommissionAvecMembres.membres;
-          /*if(membre.fonction =="president"){
-            console.log(membre)
-            $rootScope.pv.president = membre;
-
-          }*/
-
-
-
-      }
-
-
-    });
-
-
-  }
 
   //$scope.$watch($rootScope)
   // Jquery accordion
@@ -88,11 +43,74 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
 
 
-  
+
 
       //*******************************************//
       // EVENEMENTS
       //*******************************************//
+
+
+      //angular.element(document).find('#editor-0').froalaEditor();
+      //$scope.$evalAsync(function() {  angular.element(document).find('#editor-0').froalaEditor();});
+      //$timeout(function() { showEditors(); }, 2000, false);
+
+
+        var showEditors =  function(){
+          var nbRubriques = $rootScope.pv.rubriques.length;
+          console.log(nbRubriques)
+          for (var i=0; i<nbRubriques; i++) {
+            //$("#editor-"+i).html('<p>hjhjhj</p>')
+             $("#editor-"+i).froalaEditor();
+           }
+        }
+
+
+
+        $scope.updatePresident = function(){
+          console.log('tete')
+          var mesCommissionsAvecMembres = $rootScope.deputes;
+
+          angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
+            if(maCommissionAvecMembres.id == $rootScope.pv.commission.id){
+              angular.forEach(maCommissionAvecMembres.membres, function(membre, key) {
+                if(membre.fonction =="president"){
+                  console.log(membre)
+                  $rootScope.pv.president = membre;
+
+                }
+
+              });
+
+            }
+
+
+          });
+        }
+
+
+        $rootScope.updateDeputes = function(){
+          var mesCommissionsAvecMembres = $rootScope.deputes;
+          angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
+            if(maCommissionAvecMembres.id == $rootScope.pv.commission.id){
+
+
+                $rootScope.pv.deputes = maCommissionAvecMembres.membres;
+                /*if(membre.fonction =="president"){
+                  console.log(membre)
+                  $rootScope.pv.president = membre;
+
+                }*/
+
+
+
+            }
+
+
+          });
+
+
+        }
+
 
       // Ajout de champ invités
       $scope.ajouterInvite = function(){

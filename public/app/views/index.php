@@ -14,9 +14,7 @@
         <!-- ********************** -->
         <link href="<?= asset('css/uikit.min.css') ?>" rel="stylesheet"  />
         <link href="<?= asset('css/uikit.almost-flat.min.css') ?>" rel="stylesheet"  />
-        <link href="<?= asset('css/components/htmleditor.min.css') ?>" rel="stylesheet"  />
-        <link href="<?= asset('css/components/htmleditor.almost-flat.min.css') ?>" rel="stylesheet"  />
-        <link href="<?= asset('css/components/accordion.min.css') ?>" rel="stylesheet"  />
+
         <link href="<?= asset('css/components/datepicker.min.css') ?>" rel="stylesheet"  />
         <link href="<?= asset('css/components/notify.min.css') ?>" rel="stylesheet"  />
 
@@ -27,6 +25,10 @@
 
 
         <link href="<?= asset('css/fullcalendar.css') ?>" rel="stylesheet"  />
+
+        <link href="<?= asset('css/froala_editor.min.css') ?>" rel="stylesheet"  />
+        <link href="<?= asset('css/froala_style.min.css') ?>" rel="stylesheet"  />
+
 
         <!-- ********************** -->
         <!-- *** textAngular        -->
@@ -84,7 +86,9 @@
         <script src="<?= asset('js/bootstrap-colorpicker-module.js') ?>"></script>
         <script src="<?= asset('js/bootstrap.min.js') ?>"></script>
 
-        <script src="<?= asset('js/angular-wysiwyg.js') ?>"></script>
+        <script src="<?= asset('js/froala_editor.min.js') ?>"></script>
+        <script src="<?= asset('js/angular-froala.js') ?>"></script> <!--js/froala_editor.min.js'-->
+
 
         <!-- AngularJS Application Scripts -->
         <script src="<?= asset('app/app.js') ?>"></script>

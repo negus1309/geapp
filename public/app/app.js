@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['colorpicker.module','wysiwyg.module'])
+var app = angular.module('myApp', ['froala'])//'colorpicker.module','wysiwyg.module'
         .constant('API_URL', 'http://localhost:8000/geapp/public/api/v1/')
         .directive('fileModel', ['$parse', function ($parse) {
               return {
