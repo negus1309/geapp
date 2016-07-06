@@ -122,7 +122,31 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
       }
 
-      $scope.sauvegarderSeance = function(){
+      $scope.ajouterRapporteur = function($noRubrique){
+        console.log($noRubrique)
+        if(!$scope.pv.rubriques[$noRubrique].rapporteurs){
+
+          $scope.pv.rubriques[$noRubrique].rapporteurs = [];
+        }
+        $scope.pv.rubriques[$noRubrique].rapporteurs.push({})
+        /*console.log('fd')
+        if(!$scope.pv.invites){
+          $scope.pv.invites = [];
+        }
+        $scope.pv.invites.push({'nom':'','prenom':'','titre':''});*/
+
+      }
+
+      $scope.supprimerRapporteur = function($rapporteurPosition, $noRubrique){
+        //console.log($rapporteurPosition +" et "+$noRubrique)
+        $scope.pv.rubriques[$noRubrique].rapporteurs.splice($rapporteurPosition,1);
+
+      }
+
+
+
+
+      $rootScope.sauvegarderSeance = function(){
 
 
 
@@ -147,7 +171,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
         localStorage.setItem('mesPv', JSON.stringify(tousMesPv));
 
         UIkit.notify({
-            message : '<i class=\'uk-icon-check\'></i>&nbsp;PV sauvegardé en local!',
+            message : '<i class=\'uk-icon-check\'></i>&nbsp;PV sauvegardé!',
             status  : 'success',
             timeout : 3000,
             pos     : 'top-right'
@@ -172,11 +196,11 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
             var dateToPost = null;
           }
 
-          console.log(dateHuman)
+          //console.log(dateHuman)
 
 
 
-          console.log(dateToPost)
+          //console.log(dateToPost)
          //var dateToPost = reverse(dateHuman);
          //console.log(dateToPost)
 
@@ -198,9 +222,9 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
             method: "POST",
             params: maSeance
           }).success(function(response){
-                          console.log(response)
+              //console.log(response)
+              var idSeance = response.id;
 
-                          var idSeance = response.id;
 
                           //***************************************************//
                           // Sauvegarde Rubriques
@@ -212,30 +236,30 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
                            })
                            .success(function(response) {
 
-                             console.log(response)
+                             //console.log(response)
+                                      var mesRubriques = $scope.pv.rubriques;
 
+                                      angular.forEach(mesRubriques, function(maRubrique, key) {
+                                         //console.log(maSeance.id)
+                                         maRubrique.seance_id = idSeance;
+                                         var numeroToPost = key + 1;
+                                         maRubrique.numero = numeroToPost;
 
-                          var mesRubriques = $scope.pv.rubriques;
+                                         //console.log(maRubrique)
 
-                          angular.forEach(mesRubriques, function(maRubrique, key) {
-                             //console.log(maSeance.id)
-                             maRubrique.seance_id = idSeance;
-                             var numeroToPost = key + 1;
-                             maRubrique.numero = numeroToPost;
+                                          $http({
+                                            url: API_URL + "rubrique/create",
+                                            method: "POST",
+                                            params: maRubrique
+                                           })
+                                           .success(function(response) {
 
-                             console.log(maRubrique)
+                                             //console.log(response)
+                                           });
 
-                              $http({
-                                url: API_URL + "rubrique/create",
-                                method: "POST",
-                                params: maRubrique
-                               })
-                               .success(function(response) {
+                                      });
 
-                                 console.log(response)
-                               });
-
-                          });
+                            });
 
                           //***************************************************//
                           // Sauvegarde Invités
@@ -252,97 +276,79 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
                              })
                              .success(function(response) {
 
-                             //  console.log(response.id)
-                               //console.log(maSeance.id)
-                               var idInvite = response.id;
+                                     //  console.log(response.id)
+                                       //console.log(maSeance.id)
+                                       var idInvite = response.id;
 
 
-                               $http({
-                                 url: API_URL + "assistance/create",
-                                 method: "POST",
-                                 params: {'seance_id':idSeance,'invite_id':idInvite}
-                                })
-                                .success(function(response) {
+                                       $http({
+                                         url: API_URL + "assistance/create",
+                                         method: "POST",
+                                         params: {'seance_id':idSeance,'invite_id':idInvite}
+                                        })
+                                        .success(function(response) {
 
-                                   //console.log(response)
+                                           //console.log(response)
 
 
-                                });
+                                        });
 
                              });
 
                           });
-                       });
+
+                          //***************************************************//
+                          // Sauvegarde Présence / Absence
+                          //***************************************************//
+                          var mesDeputes = $scope.pv.deputes;
+
+                          angular.forEach(mesDeputes, function(monDepute, key) {
+                            console.log(monDepute)
+                              angular.forEach(monDepute.isPresentAtTimes, function(isPresentAtTime, key) {
+                                var idDepute = monDepute.id;
+                                //var idSeance =
+                                console.log(isPresentAtTime)
+                                var heure = key+1;
+                                if(isPresentAtTime == true){
+
+                                  $http({
+                                    url: API_URL + "presence/create",
+                                    method: "POST",
+                                    params: {'seance_id':idSeance,'depute_id':idDepute, 'heure':heure}
+                                   })
+                                   .success(function(response) {
+
+
+                                   });
+
+                                }else{
+
+                                  $http({
+                                    url: API_URL + "absence/create",
+                                    method: "POST",
+                                    params: {'seance_id':idSeance,'depute_id':idDepute, 'heure':heure}
+                                   })
+                                   .success(function(response) {
+
+
+                                   });
+                                }
+
+
+                              });
+
+
+                          });
 
 
 
+          }) // fin save Seance success
 
-
-          })
-
-
-
+        } // fin si online
 
 
 
-
-
-/*
-          $http({
-            url: API_URL + "seance/update",
-            method: "PUT",
-            params: maSeance
-           })
-           .success(function(response) {
-
-             console.log(maSeance)
-             // infos invites
-
-
-             var mesRubriques = $scope.rubriques;
-
-             angular.forEach(mesRubriques, function(maRubrique, key) {
-                //console.log(maSeance.id)
-                maRubrique.seance_id = maSeance.id;
-                var numeroToPost = key + 1;
-                maRubrique.numero = numeroToPost;
-
-                console.log(maRubrique)
-
-                 $http({
-                   url: API_URL + "rubrique/create",
-                   method: "POST",
-                   params: maRubrique
-                  })
-                  .success(function(response) {
-
-                    console.log(response)
-                  });
-
-             });
-
-
-
-
-             UIkit.notify({
-                 message : '<i class=\'uk-icon-check\'></i>&nbsp;PV sauvegardé!',
-                 status  : 'success',
-                 timeout : 3000,
-                 pos     : 'top-right'
-             });
-
-             //console.log(response)
-
-
-
-
-           });
-*/
-        }
-
-
-
-      }
+      }// fin scope save
 
       // convertir date
       var convertHumanDateToMysqlDate = function(usDate) {

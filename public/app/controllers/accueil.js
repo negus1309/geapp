@@ -116,6 +116,46 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
 
         });
+      }
+
+        $scope.soumettrePv = function($pvToken){
+
+          /*$('#liste').hide();
+          $('#workflow').show();
+          $('div#menu a').show();*/
+
+          var mesPv = $rootScope.mesPv;
+          angular.forEach(mesPv, function(monPv, key) {
+              if(monPv.token == $pvToken){
+                $rootScope.pv = monPv;
+                if(navigator.onLine){
+                  $rootScope.sauvegarderSeance();
+                  UIkit.notify({
+                      message : '<i class=\'uk-icon-check\'></i>&nbsp;PV soumis!',
+                      status  : 'success',
+                      timeout : 3000,
+                      pos     : 'top-right'
+                  });
+
+                }else{
+                  UIkit.notify({
+                      message : '<i class=\'uk-icon-close\'></i>&nbsp;Il faut être connecté à Internet.',
+                      status  : 'danger',
+                      timeout : 3000,
+                      pos     : 'top-right'
+                  });
+                }
+
+
+
+              }
+
+
+          });
+
+
+        }
+
 
 
 
@@ -172,7 +212,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 */
 
 
-      }
+      //}
 
 
       $scope.deletePv = function($pvToken){

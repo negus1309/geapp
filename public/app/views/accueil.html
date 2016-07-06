@@ -12,7 +12,7 @@
                         <th>Date</th>
                         <th>Commission</th>
                         <th>Heure</th>
-                        <th colspan="3" style="border-left:1px solid #eee;">Actions</th>
+                        <th colspan="4" style="border-left:1px solid #eee;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,18 +35,23 @@
                       <span class="placeholder-content" ng-hide="pv.heure_debut">Aucune</span>
                     </td>
                     <!-- tools -->
-                    <td class="pv-action">
-                      <a href="#" ng-click="editPv(pv.token);" class="uk-button uk-button-mini uk-button-primary"><span class="edit-pv">éditer</span></a><br/>
+                    <td class="pv-action pv-action-first">
+                      <a href="#" ng-click="editPv(pv.token);" class="uk-button uk-button-mini uk-button-success"><span class="edit-pv">éditer</span></a><br/>
 
                     </td>
                     <td class="pv-action">
-                      <a href="#" ng-click="convertPv(pv.token)" class="uk-button uk-button-mini uk-button-success"><span class="convert-pv">convertir</span></a>
+                      <a href="#" ng-click="convertPv(pv.token)" class="uk-button uk-button-mini "><span class="convert-pv">convertir</span></a>
+
+                    </td>
+                    <td class="pv-action">
+                      <a href="#" ng-click="soumettrePv(pv.token);refreshSeance();" class="uk-button uk-button-mini "><span class="soumettre-pv" data-pv-id="{{pv.id}}">soumettre</span></a>
 
                     </td>
                     <td class="pv-action">
                       <a href="#" ng-click="deletePv(pv.token);refreshSeance();" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-pv" data-pv-id="{{pv.id}}">supprimer</span></a>
 
                     </td>
+
                   </tr>
                 </tbody>
 

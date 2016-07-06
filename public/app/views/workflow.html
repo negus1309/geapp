@@ -194,8 +194,42 @@
 
             <div id="accordion-{{$index}}" class="accordion-section-content">
                 <!--<p>{{rubrique.contenu}}</p>-->
+                <!-- /***********************************/-->
+                <!-- /*******  TEXT EDIT  *******/-->
+                <!-- /***********************************/-->
                 <wysiwyg textarea-id="ed" textarea-class="form-control"   bootstrap-title="true" textarea-height="auto" textarea-name="textareaQuestion" textarea-required ng-model="rubrique.contenu"  textarea-menu="rubrique.customMenu"></wysiwyg>
-            <!-- enable-bootstrap-title="true"-->
+
+                <!-- /***********************************/-->
+                <!-- /*******  RAPPORTEUR  *******/-->
+                <!-- /***********************************/-->
+                <div class="uk-form-row">
+                  <label class="uk-form-label" for="rapporteurs">Rapporteurs</label>
+
+                    <div class="uk-form-controls" style="margin-bottom:10px;" ng-repeat="rapporteur in rubrique.rapporteurs">
+                      <label>nom</label>
+                      <select placeholder="Député" ng-model="rubrique.rapporteurs[$index].depute_id">
+                        <option value="{{depute.id}}" ng-repeat="depute in pv.deputes">{{depute.nom}}</option>
+
+                      </select>
+                      <label>type</label>
+                      <select placeholder="Type" ng-model="rubrique.rapporteurs[$index].type">
+                        <option value="majorite">majorité</option>
+                        <option value="majorite">minorité</option>
+                        <option value="majorite">autre</option>
+
+                      </select>
+                      <a href="#" ng-click="supprimerRapporteur($index, $parent.$index)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-rapporteur">supprimer</span></a>
+
+                    </div>
+
+                  <div class="uk-form-controls">
+                    <a href="#" ng-click="ajouterRapporteur($index)" class="uk-button uk-button-mini uk-button-success"><span class="ajouter-rapporteur">Ajouter un rapporteur</span></a>
+                  </div>
+                </div>
+
+
+
+
 
                 <button type="submit" class="uk-button uk-button-primary sauvegarder-pv" ng-click="sauvegarderSeance()">Sauvegarder</button>
 

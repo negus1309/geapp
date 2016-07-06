@@ -270,17 +270,17 @@ class MyAppSeeder extends Seeder {
         ));
         $this->command->info('assistance ok');
 
-        Presence::create(array(
+        /*Presence::create(array(
             'depute_id'    => 1,
             'seance_id'   => 1
-        ));
+        ));*/
 
         $this->command->info('presence ok');
 
-        Absence::create(array(
+        /*Absence::create(array(
             'depute_id'    => 2,
             'seance_id'   => 1
-        ));
+        ));*/
 
         $this->command->info('presence ok');
         // seed our picnics table ---------------------

@@ -28,8 +28,11 @@ Route::post('/geapp/public/api/v1/assistance/create', 'AssistanceController@stor
 
 Route::delete('/geapp/public/api/v1/rubriques/delete', 'RubriqueController@deleteRubriquesFromThisSeance');
 
+// Ajout presence
+Route::post('/geapp/public/api/v1/presence/create','PresenceController@storePresence');
 
-
+//Ajout absence
+Route::post('/geapp/public/api/v1/absence/create','AbsenceController@storeAbsence');
 
 
 

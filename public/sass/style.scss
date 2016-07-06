@@ -496,8 +496,19 @@ div.tools-pv{
 }
 
 
-span.edit-pv,span.convert-pv,span.supprimer-pv{
+span.edit-pv,span.convert-pv,span.supprimer-pv, span.soumettre-pv{
   line-height: 25px;
+
+}
+
+span.soumettre-pv:before{
+  @extend %fontawesome;
+
+  /* down arrow icon */
+  content: "\f176";
+
+  /* some space*/
+  padding-right:5px;
 
 }
 
@@ -543,8 +554,14 @@ button.nouveau-pv:before{
  td.pv-action{
 
    width: auto;
+   //border-left:1px $color-gris solid;
+   text-align: center;
+ }
+ td.pv-action-first{
+
    border-left:1px $color-gris solid;
  }
+
 //***************************************************//
 // UIkit modifications
 //***************************************************//
