@@ -17,6 +17,7 @@ class CreateDeputeTable extends Migration
         $table->string('nom');
         $table->string('prenom');
         $table->enum('titre', array('m','mme'));
+        $table->string('fonction');
         $table->string('parti');
         $table->timestamps();
       });

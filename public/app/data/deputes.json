@@ -1,65 +1,61 @@
 [{
   "nom":"Finances",
-  "id":2,
-  "membres":[
-    {
-        "id":1,
-      "nom":"Armstrong",
-      "prenom":"Louis",
-      "titre":"m",
-      "parti":"pdc",
-      "fonction":"president"
-
-    },
-    {
-      "id":2,
-      "nom":"Dupont",
-      "prenom":"Marcel",
-      "titre":"m",
-      "parti":"udc",
-      "fonction":"membre"
-
-    }]
+  "id":1,
+  "membres":[{
+    "id": "1",
+    "nom": "Empion",
+    "prenom": "Tarte",
+    "fonction": "president",
+    "titre": "mme",
+    "parti": "pdc"
+  },
+  {
+    "id": "2",
+    "nom": "Duvoyage",
+    "prenom": "Jean",
+    "fonction": "membre",
+    "titre": "m",
+    "parti": "udc"
+  },
+  {
+    "id": "3",
+    "nom": "Armstrong",
+    "prenom": "Louis",
+    "fonction": "membre",
+    "titre": "m",
+    "parti": "pdc"
+  }]
 
 
 },{
 
   "nom":"Environnement",
-  "id":1,
+  "id":2,
   "membres":[
     {
-      "id":3,
-      "nom":"Duvoyage",
-      "prenom":"Jean",
-      "titre":"m",
-      "parti":"udc",
-      "fonction":"president"
-
-    },{
-      "id":4,
-      "nom":"Armstrong",
-      "prenom":"Louis",
-      "titre":"m",
-      "parti":"pdc",
-      "fonction":"membre"
-
-    },{
-      "id":5,
-      "nom":"Bush",
-      "prenom":"Georges",
-      "titre":"m",
-      "parti":"ps",
-      "fonction":"membre"
-
-    },{
-      "id":6,
-      "nom":"Clinton",
-      "prenom":"Hillary",
-      "titre":"mme",
-      "parti":"ps",
-      "fonction":"remplacant"
-
-    }]
+    "id": "4",
+    "nom": "Bush",
+    "prenom": "Georges",
+    "fonction": "president",
+    "titre": "m",
+    "parti": "ps"
+  },
+  {
+    "id": "5",
+    "nom": "Clinton",
+    "prenom": "Hillary",
+    "fonction": "membre",
+    "titre": "mme",
+    "parti": "ps"
+  },
+  {
+    "id": "6",
+    "nom": "Trump",
+    "prenom": "Donald",
+    "fonction": "membre",
+    "titre": "m",
+    "parti": "mcg"
+  }]
 
 
 }

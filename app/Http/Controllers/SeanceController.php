@@ -28,18 +28,39 @@ class SeanceController extends Controller {
       $maSeance = Seance::where('token', $seanceToken)->first();
 
       if($maSeance){
-        return "ok il existe";
+
+        $maSeance->numero = $request->numero;
+        $maSeance->date = $request->date;
+        $maSeance->heure_debut = $request->heure_debut;
+        $maSeance->heure_fin = $request->heure_fin;
+        $maSeance->commission_id = $request->commission_id;
+        $maSeance->depute_id = $request->depute_id;
+        $maSeance->save();
+        $maSeanceToSend = $maSeance;
+
+
+
+      }else{
+        $maNouvelleSeance = new Seance;
+        $maNouvelleSeance->token = $request->token;
+        $maNouvelleSeance->numero = $request->numero;
+        $maNouvelleSeance->date = $request->date;
+        $maNouvelleSeance->heure_debut = $request->heure_debut;
+        $maNouvelleSeance->heure_fin = $request->heure_fin;
+        $maNouvelleSeance->commission_id = $request->commission_id;
+        $maNouvelleSeance->depute_id = $request->depute_id;
+        $maNouvelleSeance->save();
+        $maSeanceToSend = $maNouvelleSeance;
+
       }
-
-      //$maSeance
-
-/*
-      $maSeance->save();
       $status = 201;
       $value = "application/json";
-        //return ;
-        return response($maSeance, $status)
-                    ->header('Content-Type', $value);*/
+      return response($maSeanceToSend, $status)
+                  ->header('Content-Type', $value);
+
+
+
+
 
 
 
@@ -112,7 +133,7 @@ class SeanceController extends Controller {
       $majPv->date = $request->date;
       $majPv->heure_debut = $request->heure_debut;
       $majPv->heure_fin = $request->heure_fin;
-      $majPv->president_id = $request->president_id;
+      $majPv->depute_id = $request->president_id;
       $majPv->commission_id = $request->commission_id;
 
 

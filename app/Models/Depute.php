@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Depute extends Model
 {
+  public function rapport() {
+    return $this->hasMany('Rapport'); // this matches the Eloquent model
+  }
   public function presence() {
     return $this->hasMany('Presence'); // this matches the Eloquent model
   }
@@ -14,5 +17,8 @@ class Depute extends Model
   }
   public function attribution() {
     return $this->hasMany('Attribution'); // this matches the Eloquent model
+  }
+  public function seance() {
+    return $this->hasMany('seance'); // this matches the Eloquent model
   }
 }

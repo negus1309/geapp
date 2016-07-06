@@ -161,14 +161,20 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
         if(navigator.onLine){
 
-
-
+          //***************************************************//
+          // Sauvegarde Seance
+          //***************************************************//
           //var dateHuman =
-
           var dateHuman = $scope.pv.date;
+          if(dateHuman){
+            var dateToPost = convertHumanDateToMysqlDate(dateHuman);
+          }else{
+            var dateToPost = null;
+          }
+
           console.log(dateHuman)
 
-          var dateToPost = convertHumanDateToMysqlDate(dateHuman);
+
 
           console.log(dateToPost)
          //var dateToPost = reverse(dateHuman);
@@ -183,8 +189,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
             'heure_debut':$scope.pv.heure_debut,
             'heure_fin':$scope.pv.heure_fin,
             'commission_id':$scope.pv.commission.id,
-            'president_id':$scope.pv.president.id
-
+            'depute_id':$scope.pv.president.id
           };
           console.log(maSeance)
 
@@ -193,9 +198,93 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
             method: "POST",
             params: maSeance
           }).success(function(response){
-            console.log(response)
+                          console.log(response)
+
+                          var idSeance = response.id;
+
+                          //***************************************************//
+                          // Sauvegarde Rubriques
+                          //***************************************************//
+                          $http({
+                            url: API_URL + "rubriques/delete",
+                            method: "DELETE",
+                            params: {'seance_id':idSeance}
+                           })
+                           .success(function(response) {
+
+                             console.log(response)
+
+
+                          var mesRubriques = $scope.pv.rubriques;
+
+                          angular.forEach(mesRubriques, function(maRubrique, key) {
+                             //console.log(maSeance.id)
+                             maRubrique.seance_id = idSeance;
+                             var numeroToPost = key + 1;
+                             maRubrique.numero = numeroToPost;
+
+                             console.log(maRubrique)
+
+                              $http({
+                                url: API_URL + "rubrique/create",
+                                method: "POST",
+                                params: maRubrique
+                               })
+                               .success(function(response) {
+
+                                 console.log(response)
+                               });
+
+                          });
+
+                          //***************************************************//
+                          // Sauvegarde Invités
+                          //***************************************************//
+                          var mesInvites = $scope.pv.invites;
+
+                          angular.forEach(mesInvites, function(monInvite, key) {
+
+                            //console.log(monInvite)
+                            $http({
+                              url: API_URL + "invite/create",
+                              method: "POST",
+                              params: monInvite
+                             })
+                             .success(function(response) {
+
+                             //  console.log(response.id)
+                               //console.log(maSeance.id)
+                               var idInvite = response.id;
+
+
+                               $http({
+                                 url: API_URL + "assistance/create",
+                                 method: "POST",
+                                 params: {'seance_id':idSeance,'invite_id':idInvite}
+                                })
+                                .success(function(response) {
+
+                                   //console.log(response)
+
+
+                                });
+
+                             });
+
+                          });
+                       });
+
+
+
+
 
           })
+
+
+
+
+
+
 
 
 /*
@@ -208,37 +297,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
              console.log(maSeance)
              // infos invites
-             var mesInvites = $scope.general.invites;
 
-             angular.forEach(mesInvites, function(monInvite, key) {
-
-               //console.log(monInvite)
-               $http({
-                 url: API_URL + "invite/create",
-                 method: "POST",
-                 params: monInvite
-                })
-                .success(function(response) {
-
-                //  console.log(response.id)
-                  //console.log(maSeance.id)
-
-
-                  $http({
-                    url: API_URL + "assistance/create",
-                    method: "POST",
-                    params: {'seance_id':maSeance.id,'invite_id':response.id}
-                   })
-                   .success(function(response) {
-
-                      //console.log(response)
-
-
-                   });
-
-                });
-
-             });
 
              var mesRubriques = $scope.rubriques;
 

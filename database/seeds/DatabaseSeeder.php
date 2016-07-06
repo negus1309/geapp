@@ -2,8 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Depute;
-use App\Models\President;
-use App\Models\Rapporteur;
 use App\Models\Invite;
 use App\Models\Procesverbaliste;
 use App\Models\Commission;
@@ -42,9 +40,7 @@ class MyAppSeeder extends Seeder {
 
         // clear our database ------------------------------------------
         DB::table('deputes')->delete();
-        DB::table('presidents')->delete();
         DB::table('invites')->delete();
-        DB::table('rapporteurs')->delete();
 
         DB::table('assistances')->delete();
         DB::table('absences')->delete();
@@ -65,42 +61,53 @@ class MyAppSeeder extends Seeder {
             'nom'        => 'Empion',
             'prenom'     => 'Tarte',
             'titre'      => 'mme',
-            'parti'      => 'pdc'
+            'parti'      => 'pdc',
+            'fonction'  => 'president'
         ));
         Depute::create(array(
             'id'         => 2,
             'nom'        => 'Duvoyage',
             'prenom'     => 'Jean',
             'titre'      => 'm',
-            'parti'      => 'udc'
+            'parti'      => 'udc',
+            'fonction'  => 'membre'
+
         ));
         Depute::create(array(
             'id'         => 3,
             'nom'        => 'Armstrong',
             'prenom'     => 'Louis',
             'titre'      => 'm',
-            'parti'      => 'pdc'
+            'parti'      => 'pdc',
+            'fonction'  => 'membre'
+
         ));
         Depute::create(array(
             'id'         => 4,
             'nom'        => 'Bush',
             'prenom'     => 'Georges',
             'titre'      => 'm',
-            'parti'      => 'ps'
+            'parti'      => 'ps',
+            'fonction'  => 'president'
+
         ));
         Depute::create(array(
             'id'         => 5,
             'nom'        => 'Clinton',
             'prenom'     => 'Hillary',
             'titre'      => 'mme',
-            'parti'      => 'ps'
+            'parti'      => 'ps',
+            'fonction'  => 'membre'
+
         ));
         Depute::create(array(
             'id'         => 6,
             'nom'        => 'Trump',
             'prenom'     => 'Donald',
             'titre'      => 'm',
-            'parti'      => 'mcg'
+            'parti'      => 'mcg',
+            'fonction'  => 'membre'
+
         ));
         $this->command->info('The bears are alive!');
 
@@ -109,35 +116,8 @@ class MyAppSeeder extends Seeder {
 
         // we will use the variables we used to create the bears to get their id
 
-        President::create(array(
-            'id'  => 1,
-            'nom' => 'Banderas',
-            'prenom' => 'Antonio',
-            'titre' => 'm'
-        ));
-        President::create(array(
-            'id'  => 2,
-            'nom' => 'Hayek',
-            'prenom' => 'Salma',
-            'titre' => 'mme'
-        ));
-
-        $this->command->info('president ok');
 
         // seed our trees table ---------------------
-        Rapporteur::create(array(
-            'id'    => 1,
-            'nom' => 'Orteur',
-            'prenom' => 'Rappe',
-            'titre' => 'm'
-        ));
-        Rapporteur::create(array(
-            'id'    => 2,
-            'nom' => 'Christ',
-            'prenom' => 'Jesus',
-            'titre' => 'm'
-
-        ));
 
         $this->command->info('rapporteurs ok');
         Procesverbaliste::create(array(
@@ -190,11 +170,11 @@ class MyAppSeeder extends Seeder {
         ));
         Attribution::create(array(
             'depute_id'    => 2,
-            'commission_id' => 2
+            'commission_id' => 1
         ));
         Attribution::create(array(
             'depute_id'    => 3,
-            'commission_id' => 2
+            'commission_id' => 1
         ));
         Attribution::create(array(
             'depute_id'    => 4,
@@ -218,7 +198,7 @@ class MyAppSeeder extends Seeder {
             'date' => '2016-06-03',
             'heure_debut' => '16:00',
             'heure_fin' => '20:30',
-            'president_id' => 1,
+            'depute_id' => 1,
             'commission_id' => 2
         ));
         Seance::create(array(
@@ -228,7 +208,7 @@ class MyAppSeeder extends Seeder {
             'date' => '2016-06-10',
             'heure_debut' => '17:00',
             'heure_fin' => '22:30',
-            'president_id' => 2,
+            'depute_id' => 2,
             'commission_id' => 1
         ));
         Seance::create(array(
@@ -238,12 +218,13 @@ class MyAppSeeder extends Seeder {
             'date' => '2016-06-11',
             'heure_debut' => '18:00',
             'heure_fin' => '21:30',
-            'president_id' => 2,
+            'depute_id' => 2,
             'commission_id' => 1
         ));
         $this->command->info('seance ok');
 
         Rubrique::create(array(
+
             'numero'    => 1,
             'titre'   => 'Approbation du dernier pv',
             'contenu' => 'blablabla',
@@ -272,9 +253,8 @@ class MyAppSeeder extends Seeder {
         Rapport::create(array(
             'id'    => 1,
             'type'   => 'majorité',
-            'rubrique_id' => 1,
-            'rubrique_seance_id' => 1,
-            'rapporteur_id' => 2
+            'rubrique_id' => 3,
+            'depute_id' => 2
         ));
 
         $this->command->info('rapport ok');

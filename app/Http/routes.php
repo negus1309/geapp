@@ -17,7 +17,19 @@ Route::get('/', function () {
     return view('index');
 });
 
+// Sauvegarde Seance
 Route::post('/geapp/public/api/v1/seance/save','SeanceController@createOrUpdateSeance');
+
+// Ajout d'un invité
+Route::post('/geapp/public/api/v1/invite/create', 'InviteController@storeInvite');
+
+// Ajout d'un assistance
+Route::post('/geapp/public/api/v1/assistance/create', 'AssistanceController@storeAssistance');
+
+Route::delete('/geapp/public/api/v1/rubriques/delete', 'RubriqueController@deleteRubriquesFromThisSeance');
+
+
+
 
 
 
@@ -41,11 +53,9 @@ Route::get('/geapp/public/api/v1/seance/{idSeance}', 'SeanceController@getSeance
 // Suppression d'une séance en fonction de son id
 Route::delete('/geapp/public/api/v1/seance/{idSeance}/delete', 'SeanceController@deleteSeance');
 
-// Ajout d'un invité
-Route::post('/geapp/public/api/v1/invite/create', 'InviteController@storeInvite');
 
-// Ajout d'un assistance
-Route::post('/geapp/public/api/v1/assistance/create', 'AssistanceController@storeAssistance');
+
+
 
 // Accès aux invite d'une séance
 Route::get('/geapp/public/api/v1/seance/{seance_id}/invite', 'InviteController@getInvitePourSeance');

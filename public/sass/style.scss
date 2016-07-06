@@ -17,6 +17,9 @@ span.placeholder-content{
   color: darken($color-gris,20%);
 }
 
+body{
+
+}
 //***************************************************//
 //Workflow
 //***************************************************//
@@ -539,7 +542,7 @@ button.nouveau-pv:before{
 
  td.pv-action{
 
-   width: 10%;
+   width: auto;
    border-left:1px $color-gris solid;
  }
 //***************************************************//

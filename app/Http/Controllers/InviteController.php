@@ -14,7 +14,7 @@ use DB;
 
 
 class InviteController extends Controller {
-
+  // V2 ok
   /**
    * Display a listing of the resource.
    *
@@ -25,10 +25,7 @@ class InviteController extends Controller {
       //$monInvite = new Invite;
       $monInvite = Invite::firstOrCreate(['nom' => $request->nom, 'prenom'=>$request->prenom, 'titre'=>$request->titre]);
 
-
       return response($monInvite->toJson(), 201, array('Content-Type' => 'application/json'));
-
-
 
   }
 

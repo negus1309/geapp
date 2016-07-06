@@ -344,7 +344,7 @@ button.nouveau-pv:before {
   font-weight: normal; }
 
 td.pv-action {
-  width: 10%;
+  width: auto;
   border-left: 1px #eee solid; }
 
 .uk-accordion h4 {

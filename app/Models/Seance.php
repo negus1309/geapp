@@ -17,8 +17,8 @@ class Seance extends Model
   public function commission() {
     return $this->belongsTo('App\Models\Commission'); // this matches the Eloquent model
   }
-  public function president() {
-    return $this->belongsTo('President'); // this matches the Eloquent model
+  public function depute() {
+    return $this->belongsTo('Depute'); // this matches the Eloquent modelpresident
   }
   public function absence() {
     return $this->hasMany('Absence'); // this matches the Eloquent model

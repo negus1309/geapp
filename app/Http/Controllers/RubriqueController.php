@@ -45,22 +45,9 @@ class RubriqueController extends Controller {
    */
   public function storeRubrique(Request $request){
 
-    $idRubrique = $request->id;
 
-    $maRubrique = Rubrique::find($idRubrique);
-
-    // VERSION SI PAS D'ID
-    /*Rubrique::where('numero', '=', $request->numero)
-                ->where('seance_id', '=', $request->seance_id)
-                ->first();*/
-
-    if(!$maRubrique){
-
-        $maRubrique = new Rubrique;
-        $maRubrique->seance_id = $request->seance_id;
-
-    }
-
+    $maRubrique = new Rubrique;
+    $maRubrique->seance_id = $request->seance_id;
     $maRubrique->titre = $request->titre;
     $maRubrique->numero = $request->numero;
     $maRubrique->contenu = $request->contenu;
@@ -76,6 +63,30 @@ class RubriqueController extends Controller {
                   ->header('Content-Type', $value);
 
   }
+
+//v2
+  /**
+   * Display a listing of the resource.
+   *
+   * @return Response
+   */
+  public function deleteRubriquesFromThisSeance(Request $request){
+    $idSeance = $request->seance_id;
+
+    $mesRubriques = Rubrique::where('seance_id', $idSeance)->delete();
+
+
+
+
+    //return $mesRubriques;
+    //$mesRubriques->delete();
+    return "ok delete";
+
+
+  }
+
+
+
 
   /**
    * Display a listing of the resource.

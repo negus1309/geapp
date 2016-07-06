@@ -1,0 +1,3 @@
+SELECT deputes.id, deputes.nom, deputes.prenom, deputes.fonction, deputes.titre, deputes.parti FROM commissions
+INNER JOIN attributions ON attributions.commission_id = commissions.id
+INNER JOIN deputes ON deputes.id = attributions.depute_id
