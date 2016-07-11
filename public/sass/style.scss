@@ -2,7 +2,7 @@
 // Variables
 //***************************************************//
 
-$menu-height: 40px;
+$menu-height: 50px;
 $color-primary: #00a8e6;
 $color-gris:#eee;
 
@@ -157,7 +157,7 @@ a:hover, a:focus{
 //***************************************************//
 
 body{
-  padding-top: 40px;
+  padding-top: $menu-height;
 }
 div#liste{
   //margin-top: 40px;
@@ -459,9 +459,9 @@ a#get-draft-infos{
   }
   //:500px;
 
-  height: 40px;
+  height: $menu-height;
   width: 200px;
-  line-height: 40px;
+  line-height: $menu-height;
   //margin: 150px auto 0;
   padding: 5px;
   //background: white;

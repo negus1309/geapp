@@ -212,6 +212,17 @@
                 <!-- /***********************************/-->
                 <form class="uk-form uk-form-horizontal rubrique-form" style="padding-top:20px;">
                 <div class="uk-form-row">
+                  <label class="uk-form-label" for="rapporteurs">Heure début</label>
+                  <div class="uk-form-controls" style="margin-bottom:10px;">
+                    <input class="heure_debut_rubrique" type="text" data-uk-timepicker placeholder="17:00" ng-model="rubrique.heure_debut">
+                  </div>
+                  <label class="uk-form-label" for="rapporteurs">Heure fin</label>
+                  <div class="uk-form-controls" style="margin-bottom:10px;">
+                    <input class="heure_fin_rubrique" type="text" data-uk-timepicker placeholder="18:00" ng-model="rubrique.heure_fin">
+                  </div>
+                </div>
+                <div class="uk-form-row">
+
                   <label class="uk-form-label" for="rapporteurs">Rapporteurs</label>
 
                     <div class="uk-form-controls" style="margin-bottom:10px;" ng-repeat="rapporteur in rubrique.rapporteurs">

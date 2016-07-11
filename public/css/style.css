@@ -107,7 +107,7 @@ a:hover, a:focus {
     background-color: $color-gris;
 }*/
 body {
-  padding-top: 40px; }
+  padding-top: 50px; }
 
 div#workflow {
   display: none; }
@@ -225,13 +225,13 @@ div#menu {
   top: 0px;
   z-index: 1;
   width: 100%;
-  height: 40px;
+  height: 50px;
   display: block;
   visibility: visible;
   border-bottom: 1px solid white; }
   div#menu a {
     color: #00a8e6;
-    line-height: 40px; }
+    line-height: 50px; }
   div#menu a.back {
     display: none;
     float: left; }
@@ -257,7 +257,7 @@ span#status-network {
   color: white;
   right: 20px;
   float: right;
-  line-height: 40px;
+  line-height: 50px;
   margin-left: 20px;
   margin-right: 20px; }
   span#status-network #status-online:before {
@@ -270,7 +270,7 @@ a#presence-check {
   color: white;
   float: right;
   right: 130px;
-  line-height: 40px;
+  line-height: 50px;
   font-size: 1.3em; }
   a#presence-check:hover {
     text-decoration: none; }
@@ -280,15 +280,15 @@ a#get-draft-infos {
   color: white;
   float: right;
   right: 200px;
-  line-height: 40px;
+  line-height: 50px;
   font-size: 1.3em; }
   a#get-draft-infos:hover {
     text-decoration: none; }
 
 .clock {
-  height: 40px;
+  height: 50px;
   width: 200px;
-  line-height: 40px;
+  line-height: 50px;
   padding: 5px;
   color: white;
   text-align: center;
@@ -384,7 +384,7 @@ span.supprimer-invite:before, span.supprimer-rapporteur:before, span.supprimer-o
 
 span#status-network #status-online:before, span#status-network #status-offline:before {
   content: "\f111";
-  line-height: 40px;
+  line-height: 50px;
   padding-right: 5px; }
 
 /*# sourceMappingURL=style.css.map */

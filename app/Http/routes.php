@@ -41,7 +41,8 @@ Route::delete('/geapp/public/api/v1/absence/delete','AbsenceController@deleteAbs
 Route::delete('/geapp/public/api/v1/presence/delete','PresenceController@deletePresenceFromThisSeance');
 
 
-
+// pv jsonc create
+Route::post('/geapp/public/api/v1/pv/save','PvController@createOrUpdatePv');
 
 
 

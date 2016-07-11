@@ -13,7 +13,7 @@ app.controller('gestionPresenceController', function($scope, $http, API_URL, $ro
 
       });*/
 
-      console.log($idCommission)
+      //console.log($idCommission)
     //  console.log(!$rootScope.pv.deputes.isPresentAtTimes)
       /*if(!$rootScope.pv.deputes[0].isPresentAtTimes.length){
 

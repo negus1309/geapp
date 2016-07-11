@@ -23,7 +23,6 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
       $('#workflow').on('click', '.accordion-section-title' ,function(e) {
           // Grab current anchor value
-          console.log('oui')
           var currentAttrValue = $(this).attr('href');
 
           if($(e.target).is('.active')) {
@@ -86,7 +85,9 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
           });
         }
-
+        //dfsfsdfffsfsd
+//fsdfsdfsdfsdfsdfsdf             FAIRE VALIDATION QUAND SOUMETTRE EN PLUS DE SAVE
+  //fsdfsdfsdfsdfsdfsdfsdfsd
         // a fair elors de la cretion, re init tout le temps is present
         $rootScope.updateDeputes = function(){
           var mesCommissionsAvecMembres = $rootScope.deputes;
@@ -228,6 +229,15 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
       //  var isOnline = false;
 
         if(navigator.onLine){
+
+          $http({
+            url: API_URL + "pv/save",
+            method: "POST",
+            params: {'pv':monNouveauPv,'token':monNouveauPv.token}
+          }).success(function(response){
+
+            console.log(response)
+          });
 
           //***************************************************//
           // Sauvegarde Seance
