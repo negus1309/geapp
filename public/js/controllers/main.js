@@ -4,11 +4,11 @@ app.controller('mainController', function($scope, $http, API_URL, $rootScope) {
 
         // synch commissions + deputes
         if(navigator.onLine){
-          $.getJSON( "../app/data/commissions.json", function( data ) {
+          $.getJSON( "../js/data/commissions.json", function( data ) {
             //console.log(data)
             localStorage.setItem('commissions', JSON.stringify(data));
           });
-          $.getJSON( "../app/data/deputes.json", function( data ) {
+          $.getJSON( "../js/data/deputes.json", function( data ) {
             //console.log(data)
             localStorage.setItem('deputes', JSON.stringify(data));
           });
@@ -32,7 +32,7 @@ app.controller('mainController', function($scope, $http, API_URL, $rootScope) {
 
         // SERVICE WORKER
         if (navigator.serviceWorker) {
-            navigator.serviceWorker.register('../../js/service-worker.js', {})
+            navigator.serviceWorker.register('../../js/sw/service-worker.js', {})
                 .then(function (registration) {
                     console.log(registration);
                 })

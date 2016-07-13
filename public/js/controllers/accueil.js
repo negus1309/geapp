@@ -49,6 +49,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
           $('#liste').hide();
           $('#workflow').show();
           $('div#menu a').show();
+          $('div#menu a#recuperer-pv').hdie();
 
 
           var pvToken = token();
@@ -106,6 +107,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
         $('#liste').hide();
         $('#workflow').show();
         $('div#menu a').show();
+        $('div#menu a#recuperer-pv').hide();
 
         var mesPv = $rootScope.mesPv;
         angular.forEach(mesPv, function(monPv, key) {

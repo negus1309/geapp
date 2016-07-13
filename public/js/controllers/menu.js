@@ -23,6 +23,7 @@ app.controller('menuController', function($scope, $http, API_URL, $rootScope) {
         $('#liste').show();
         $('#workflow').hide();
         $('div#menu a').hide();
+        $('div#menu a#recuperer-pv').show();
 
       }
 /*

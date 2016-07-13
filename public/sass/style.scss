@@ -46,7 +46,7 @@ div#workflow{
 // Style accordion jquery
 //***************************************************//
 
-a:hover, a:focus{
+.accordion a:hover, .accordion a:focus{
   color: white;
   text-decoration: none;
 }
@@ -368,13 +368,24 @@ div#menu{
     display: none;
     float:left;
   }
-  span.retourAccueil,span.presenceCheck{
+  span.retourAccueil,span.presenceCheck, span.recupererPv{
     margin-left: 10px;
     color:$color-primary;
     //line-height: 40px;
 
   }
 
+span.recupererPv:before{
+@extend %fontawesome;
+  color:$color-primary;
+  /* down arrow icon */
+  content: "\f01a";
+  //line-height: 40px;
+  font-size: 1.3em;
+
+  /* some space*/
+  padding-right:5px;
+}
   span.retourAccueil:before{
   @extend %fontawesome;
     color:$color-primary;
@@ -418,7 +429,19 @@ span#status-network{
 
   }
 }
+a#recuperer-pv{
+  color: white;
+  //position: absolute;
+  //text-align: right;
+  float:right;
+  right: 130px;
+  line-height: $menu-height;
+  font-size: 1.3em;
+  &:hover{
+    text-decoration: none;
+  }
 
+}
 a#presence-check{
   display: none;
   color: white;
