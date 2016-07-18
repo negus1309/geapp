@@ -20,6 +20,10 @@ span.placeholder-content{
 body{
 
 }
+
+.bouton{
+  margin-top:20px;
+}
 //***************************************************//
 //Workflow
 //***************************************************//
@@ -318,7 +322,7 @@ td.hour-cell{
   text-align: center;
 }
 //***************************************************//
-// Gestion présence module
+// Gestion présence module + choix commission
 //***************************************************//
 form#presence-form{
   table{
@@ -334,7 +338,7 @@ form#presence-form{
 #depute-tools{
   //float:right;
 }
-#gestion-presence-modal{
+#gestion-presence-modal{ //, #choix-commission-modal
   text-align: center;
 }
 #gestion-presence-dialog{

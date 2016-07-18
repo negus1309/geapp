@@ -4,7 +4,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
   //$scope.pv = {}
   //$scope.pv.commission = {}
 
-  $scope.nomCommissions = JSON.parse(localStorage.getItem('commissions'));
+  $rootScope.nomCommissions = JSON.parse(localStorage.getItem('commissions'));
 
   $rootScope.deputes = JSON.parse(localStorage.getItem('deputes'));
 
@@ -65,7 +65,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
 
 
-        $scope.updatePresident = function(){
+        $rootScope.updatePresident = function(){
           console.log('tete')
           var mesCommissionsAvecMembres = $rootScope.deputes;
 

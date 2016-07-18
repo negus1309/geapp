@@ -44,18 +44,53 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
       }
 
-      $scope.nouveauPV = function(){
+      $scope.nouveauPv = function(){
 
+
+
+        //console.log(pvToken)
+        $rootScope.pv = {}
+        var pvToken = token();
+        $rootScope.pv.token = pvToken;
+        $rootScope.pv.commission = {}
+
+        //UIkit.modal.prompt("Commission:", $scope.pv.commission.nom, function(newvale){
+            // will be executed on submit.
+          //  console.log("vabien: "+newvale)
+          //   $scope.pv.commission.nom = newvale;
+        //});
+
+
+        var modal = UIkit.modal("#choix-commission-modal");
+        modal.show();
+
+
+      }
+
+
+      $scope.initPv = function(){
+      //  var modal = UIkit.modal("#choix-commission-modal");
+      //  modal.hide();
+          //$rootScope.pv.commission.nom = $scope.pv.commission.nom;
           $('#liste').hide();
           $('#workflow').show();
           $('div#menu a').show();
-          $('div#menu a#recuperer-pv').hdie();
+          $('div#menu a#recuperer-pv').hide();
+
+          $rootScope.updateDeputes();
+          $rootScope.updatePresident();
 
 
-          var pvToken = token();
-          //console.log(pvToken)
-          $rootScope.pv = {}
-          $rootScope.pv.token = pvToken;
+
+
+
+
+
+
+
+
+
+        //  $rootScope.pv.commission = "abbraham";
 
 
 

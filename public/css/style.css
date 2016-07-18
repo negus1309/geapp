@@ -2,6 +2,9 @@ span.placeholder-content {
   font-style: italic;
   color: #bbbbbb; }
 
+.bouton {
+  margin-top: 20px; }
+
 /*div.rubriques-accordeon{
   padding-left: 20px;
   background-color: $color-primary;

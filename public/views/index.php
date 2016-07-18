@@ -57,6 +57,7 @@
       <ng-include src="'<?= asset('views/menu.html')?>'"></ng-include>
 
       <ng-include src="'<?= asset('views/accueil.html')?>'"></ng-include>
+
       <ng-include src="'<?= asset('views/workflow.html')?>'"></ng-include>
       <ng-include src="'<?= asset('views/gestion_presence.html')?>'"></ng-include>
       <ng-include src="'<?= asset('views/word_document.html')?>'"></ng-include>
@@ -72,7 +73,8 @@
         <!-- ********************** -->
         <script src="<?= asset('js/libs/jquery.min.js') ?>"></script>
         <script src="<?= asset('js/libs/angular.min.js') ?>"></script>
-        <script src="<?= asset('js/libs/bootstrap.min.js') ?>"></script>
+        <!--'js/libs/bootstrap.min.js' -->
+
         <script src="<?= asset('js/libs/uikit.min.js') ?>"></script>
 
 
