@@ -32,8 +32,8 @@
 
         <link href="<?= asset('css/fullcalendar.css') ?>" rel="stylesheet"  />
 
-        <link href="<?= asset('css/froala/froala_editor.min.css') ?>" rel="stylesheet"  />
-        <link href="<?= asset('css/froala/froala_style.min.css') ?>" rel="stylesheet"  />
+        <!--link href=" asset('css/froala/froala_editor.min.css') " rel="stylesheet"  />
+        <link href=" asset('css/froala/froala_style.min.css') " rel="stylesheet"  /-->
 
 
         <!-- ********************** -->
@@ -90,10 +90,11 @@
         <script src="<?= asset('js/plugins/uikit/autocomplete.min.js') ?>"></script>
 
         <script src="<?= asset('js/plugins/uikit/notify.min.js') ?>"></script>
-        <script src="<?= asset('js/plugins/bootstrap-colorpicker-module.js') ?>"></script>
-        <script src="<?= asset('js/plugins/froala/froala_editor.min.js') ?>"></script>
-        <script src="<?= asset('js/plugins/froala/angular-froala.js') ?>"></script>
-
+        <!--script src=" asset('js/plugins/bootstrap-colorpicker-module.js') "></script-->
+        <!--script src=" asset('js/plugins/froala/froala_editor.min.js') "></script>
+        <script src=" asset('js/plugins/froala/angular-froala.js') "></script-->
+        <script src="<?= asset('js/plugins/tinymce/tinymce.min.js') ?>"></script>
+        <script src="<?= asset('js/plugins/tinymce/ui-tinymce.js') ?>"></script>
 
 
         <!-- ********************** -->

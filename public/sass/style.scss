@@ -17,12 +17,16 @@ span.placeholder-content{
   color: darken($color-gris,20%);
 }
 
-body{
-
+html body.ng-scope{
+  overflow-y: auto;
 }
 
 .bouton{
   margin-top:20px;
+}
+
+.uk-modal-page, .uk-modal-page body{
+  overflow-y: auto;
 }
 //***************************************************//
 //Workflow
@@ -180,6 +184,7 @@ div#liste{
 
 div#workflow{
 display:none;
+  overflow-y: auto;
 }
 
 div#word-document{

@@ -196,7 +196,11 @@
                 <!-- /*******  TEXT EDIT  *******/-->
                 <!-- /***********************************/-->
 
-                <textarea froala ng-model="rubrique.contenu"></textarea>
+                <!--textarea froala ng-model="rubrique.contenu"></textarea-->
+                <!--textarea ui-tinymce="tinymceOptions" ng-model="rubrique.contenu"></textarea-->
+                <form method="post">
+                  <textarea ui-tinymce ng-model="rubrique.contenu"></textarea>
+                </form>
 
 
 

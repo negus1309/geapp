@@ -2,8 +2,14 @@ span.placeholder-content {
   font-style: italic;
   color: #bbbbbb; }
 
+html body.ng-scope {
+  overflow-y: auto; }
+
 .bouton {
   margin-top: 20px; }
+
+.uk-modal-page, .uk-modal-page body {
+  overflow-y: auto; }
 
 /*div.rubriques-accordeon{
   padding-left: 20px;
@@ -113,7 +119,8 @@ body {
   padding-top: 50px; }
 
 div#workflow {
-  display: none; }
+  display: none;
+  overflow-y: auto; }
 
 div#word-document {
   display: none; }

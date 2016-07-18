@@ -72,6 +72,8 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
       //  var modal = UIkit.modal("#choix-commission-modal");
       //  modal.hide();
           //$rootScope.pv.commission.nom = $scope.pv.commission.nom;
+          var modal = UIkit.modal("#choix-commission-modal");
+          modal.hide();
           $('#liste').hide();
           $('#workflow').show();
           $('div#menu a').show();
