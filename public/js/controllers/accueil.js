@@ -46,23 +46,21 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
       $scope.nouveauPv = function(){
 
+        var pvCount = $rootScope.mesPv.length;
+        console.log(pvCount)
 
+        if(pvCount < 3){
+          $rootScope.pv = {}
+          var pvToken = token();
+          $rootScope.pv.token = pvToken;
+          $rootScope.pv.commission = {}
+          var modal = UIkit.modal("#choix-commission-modal");
+          modal.show();
 
-        //console.log(pvToken)
-        $rootScope.pv = {}
-        var pvToken = token();
-        $rootScope.pv.token = pvToken;
-        $rootScope.pv.commission = {}
+        }else{
+          UIkit.modal.alert("<h2>Attention!</h2><p>Le quota de 3 PV est atteint, veuillez supprimer un PV pour faire de la place.</p>");
+        }
 
-        //UIkit.modal.prompt("Commission:", $scope.pv.commission.nom, function(newvale){
-            // will be executed on submit.
-          //  console.log("vabien: "+newvale)
-          //   $scope.pv.commission.nom = newvale;
-        //});
-
-
-        var modal = UIkit.modal("#choix-commission-modal");
-        modal.show();
 
 
       }
@@ -81,6 +79,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
           $rootScope.updateDeputes();
           $rootScope.updatePresident();
+          $rootScope.updateNumero();
 
 
 
@@ -269,66 +268,88 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
       //}
 
 
-      $scope.deletePv = function($pvToken){
+      $scope.deletePv = function($index){
 
-        UIkit.modal.confirm("Êtes-vous sûr de vouloir supprimer ce PV?", function(){
+        UIkit.modal.confirm("Êtes-vous sûr de vouloir supprimer ce PV définitivement?", function(){
             // will be executed on confirm.
             //console.log($rootScope.mesPv)
-            var mesPv = $rootScope.mesPv;
-            angular.forEach(mesPv, function(monPv, key) {
-                if(monPv.token == $pvToken){
-                  mesPv.splice(key,1)
-                  localStorage.setItem('mesPv', JSON.stringify(mesPv));
-                  //$rootScope.refreshSeance();
-                  //$apply();
-                  $rootScope.mesPv = mesPv;
-                  $rootScope.$apply();
-
-                  UIkit.notify({
-                      message : '<i class=\'uk-icon-check\'></i>&nbsp;PV supprimé!',
-                      status  : 'success',
-                      timeout : 3000,
-                      pos     : 'top-right'
-                  });
-                }else{
-                  console.log("probleme")
-                }
+          //  var mesPvCorbeille = $rootScope.mesPvCorbeille;
+            $rootScope.mesPvCorbeille.splice($index,1)
+            var mesPvCorbeille = $rootScope.mesPvCorbeille;
+            localStorage.setItem('mesPvCorbeille', JSON.stringify(mesPvCorbeille));
+            //$rootScope.mesPvCorbeille = mesPvCorbeille;
+            $rootScope.$apply();
 
 
+            UIkit.notify({
+                message : '<i class=\'uk-icon-check\'></i>&nbsp;PV supprimé!',
+                status  : 'success',
+                timeout : 3000,
+                pos     : 'top-right'
             });
 
 
-            /*$rootScope.general=JSON.parse(localStorage.getItem('seance'));
-            console.log($rootScope.general)
-            $rootScope.general.invites=JSON.parse(localStorage.getItem('invites'));
-            $rootScope.rubriques=JSON.parse(localStorage.getItem('rubriques'));
-
-
-
-
-            $rootScope.$apply()*/
-          //  $apply();
-
         });
 
-        //console.log($idSeance)
-
-        /*$http({
-          url: API_URL + "seance/"+$idSeance+"/delete",
-          method: "DELETE"
-          //params: {'commission_id': $idCommission}
-         })
-         .success(function(response) {
-
-           UIkit.notify({
-               message : '<i class=\'uk-icon-check\'></i>&nbsp;PV supprimé!',
-               status  : 'success',
-               timeout : 3000,
-               pos     : 'top-right'
-           });
 
 
-         });*/
+
+
+
+
+
+      }
+
+      $scope.moveToTrash = function($index){
+
+        if($rootScope.mesPvCorbeille.length < 3){
+          console.log($index)
+          var mesPvCorbeille = $rootScope.mesPvCorbeille;
+          var mesPv = $rootScope.mesPv;
+
+          var myPvToMove = $rootScope.mesPv.splice($index,1)[0]
+          console.log(myPvToMove)
+
+          mesPvCorbeille.push(myPvToMove);
+          localStorage.setItem('mesPvCorbeille', JSON.stringify(mesPvCorbeille));
+          //mesPv.splice($index,1)
+          console.log(mesPvCorbeille)
+          localStorage.setItem('mesPv', JSON.stringify(mesPv));
+        }else{
+          UIkit.modal.alert("<h2>Attention!</h2><p>Le quota de 3 PV dans la corbeille est atteint, veuillez supprimer définitivement un PV pour faire de la place.</p>");
+
+        }
+
+
+
+
+
+
+      }
+
+      $scope.moveToPv = function($index){
+
+        if($rootScope.mesPv.length < 3){
+          console.log($index)
+          var mesPvCorbeille = $rootScope.mesPvCorbeille;
+          var mesPv = $rootScope.mesPv;
+
+          var myPvToMove = $rootScope.mesPvCorbeille.splice($index,1)[0]
+          console.log(myPvToMove)
+
+          mesPv.push(myPvToMove);
+          localStorage.setItem('mesPv', JSON.stringify(mesPv));
+          //mesPv.splice($index,1)
+          console.log(mesPvCorbeille)
+          localStorage.setItem('mesPvCorbeille', JSON.stringify(mesPvCorbeille));
+
+        }else{
+          UIkit.modal.alert("<h2>Attention!</h2><p>Le quota de 3 PV est atteint, veuillez supprimer un PV pour faire de la place.</p>");
+
+        }
+
+
+
 
 
       }

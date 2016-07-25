@@ -12,10 +12,7 @@ div.liste-invites:nth-child(2n+1){
   //background-color: $color-gris;
 }
 
-span.placeholder-content{
-  font-style: italic;
-  color: darken($color-gris,20%);
-}
+
 
 html body.ng-scope{
   overflow-y: auto;
@@ -109,55 +106,6 @@ div#workflow{
 
 
 
-/*----- Accordion -----*/
-/*.accordion, .accordion * {
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    box-sizing:border-box;
-}
-
-.accordion {
-    margin-left:15px;
-    overflow:hidden;
-
-    background:#f7f7f7;
-    a{
-      color:$color-primary;
-    }
-    a:focus, a:hover,a:active {
-      color:white;
-    text-decoration: none;
-    }
-}
-
-.accordion-section-title {
-    width:100%;
-    padding:15px;
-    display:inline-block;
-    border-bottom:1px solid white;
-    background:lighten( $color-primary, 50% );
-    transition:all linear 0.15s;
-
-    font-size:1.200em;
-
-    color:white;
-}
-
-.accordion-section-title.active, .accordion-section-title:hover {
-    background:$color-primary;
-
-    text-decoration:none;
-    color:white;
-}
-
-
-
-.accordion-section-content {
-    padding:15px;
-    display:none;
-    background-color: $color-gris;
-}*/
-
 
 
 //***************************************************//
@@ -204,6 +152,72 @@ div#draft{
   }
 }
 
+
+//***************************************************//
+// Boutons
+//***************************************************//
+
+// general style
+span.action-button{
+  line-height: 25px;
+}
+
+span.soumettre-pv:before{
+  @extend %fontawesome;
+  content: "\f176";
+  padding-right:5px;
+
+}
+
+span.trash-pv:before{
+  @extend %fontawesome;
+  content: "\f1f8";
+  padding-right:5px;
+
+}
+
+span.supprimer-pv:before{
+  @extend %fontawesome;
+  content: "\f00d";
+  padding-right:5px;
+
+}
+
+span.edit-pv:before{
+  @extend %fontawesome;
+  content: "\f044";
+  padding-right:5px;
+}
+
+span.convert-pv:before{
+  @extend %fontawesome;
+  content: "\f1c2";
+  padding-right:5px;
+
+}
+span.untrash-pv:before{
+  @extend %fontawesome;
+  content: "\f112";
+  padding-right:5px;
+
+}
+
+
+
+button.nouveau-pv:before{
+  @extend %fontawesome;
+  content: "\f067";
+  padding-right:5px;
+  font-weight: normal;
+}
+
+
+
+
+
+span.workflow-button{
+
+}
 
 span.supprimer-invite,span.ajouter-invite, span.ajouter-odj, span.ajouter-rapporteur, span.supprimer-rapporteur, span.supprimer-odj{
   line-height: 25px;
@@ -535,60 +549,9 @@ div.tools-pv{
 }
 
 
-span.edit-pv,span.convert-pv,span.supprimer-pv, span.soumettre-pv{
-  line-height: 25px;
 
-}
 
-span.soumettre-pv:before{
-  @extend %fontawesome;
 
-  /* down arrow icon */
-  content: "\f176";
-
-  /* some space*/
-  padding-right:5px;
-
-}
-
-span.supprimer-pv:before{
-  @extend %fontawesome;
-
-  /* down arrow icon */
-  content: "\f00d";
-
-  /* some space*/
-  padding-right:5px;
-
-}
-
-span.edit-pv:before{
-  @extend %fontawesome;
-
-  /* down arrow icon */
-  content: "\f044";
-
-  /* some space*/
-  padding-right:5px;
-}
-
-span.convert-pv:before{
-  @extend %fontawesome;
-
-  /* down arrow icon */
-  content: "\f1c2";
-
-  /* some space*/
-  padding-right:5px;
-
-}
-
-button.nouveau-pv:before{
-  @extend %fontawesome;
-  content: "\f067";
-  padding-right:5px;
-  font-weight: normal;
-}
 
  td.pv-action{
 
@@ -600,6 +563,28 @@ button.nouveau-pv:before{
 
    border-left:1px $color-gris solid;
  }
+// message si aucun pv existant
+span.no-pv{
+  text-align: center;
+  width: 100%;
+  display: block;
+  color:darken($color-gris,20%);
+  font-style: italic;
+  padding: 15px;
+}
+
+span.placeholder-content{
+  font-style: italic;
+  color: darken($color-gris,20%);
+}
+
+.corbeille-toggle{
+  display: inline;
+  position: absolute;
+  right:15px;
+  top:15px;
+}
+
 
 //***************************************************//
 // UIkit modifications

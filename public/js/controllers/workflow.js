@@ -8,7 +8,41 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
   $rootScope.deputes = JSON.parse(localStorage.getItem('deputes'));
 
+  $scope.tinymceOptions = {
+    menubar:false,
+    setup: function (editor) {
+        editor.addButton('ajoutdepute', {
+          text: 'Insérer un député',
+          icon: false,
+          onclick: function () {
+            //editor.insertContent('salut');
+            var modal = UIkit.modal("#insert-depute");
+            modal.show();
+          }
+        });
+        editor.on("init", function(editor) {
 
+        });
+        editor.addShortcut('alt+d', 'Insertiond depute', function(){
+          var modal = UIkit.modal("#insert-depute");
+          modal.toggle();
+
+        });
+        var deputes = $rootScope.pv.deputes;
+        angular.forEach(deputes, function(depute, key) {
+          keyNumber = key+1;
+          var shortcut = "alt+"+keyNumber+"";
+          editor.addShortcut(shortcut, 'Insertion ', function(){
+            $scope.insertDepute(depute);
+          });
+
+        });
+
+
+    },
+    toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | cut copy paste | ajoutdepute'
+
+  };
 
 
 
@@ -38,30 +72,47 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
           e.preventDefault();
       });
-  });
 
 
 
+
+
+
+      });
+
+
+  
 
 
       //*******************************************//
       // EVENEMENTS
       //*******************************************//
 
+      $scope.insertDepute = function(depute){
+        console.log(depute)
+        var titre;
 
-      //angular.element(document).find('#editor-0').froalaEditor();
-      //$scope.$evalAsync(function() {  angular.element(document).find('#editor-0').froalaEditor();});
-      //$timeout(function() { showEditors(); }, 2000, false);
 
+        if(depute.fonction == "president"){
+          titre = "Le PRÉSIDENT ";
+          tinymce.activeEditor.execCommand('mceInsertContent', false, titre );
 
-        var showEditors =  function(){
-          var nbRubriques = $rootScope.pv.rubriques.length;
-          console.log(nbRubriques)
-          for (var i=0; i<nbRubriques; i++) {
-            //$("#editor-"+i).html('<p>hjhjhj</p>')
-             $("#editor-"+i).froalaEditor();
-           }
+        }else{
+          var nom = depute.nom.toUpperCase();
+          if(depute.titre == "m"){
+            titre = "M."
+          }else{
+            titre = "Mme"
+          }
+          tinymce.activeEditor.execCommand('mceInsertContent', false, titre+" "+nom+" " );
         }
+
+        var modal = UIkit.modal("#insert-depute");
+        modal.hide();
+
+      }
+
+
 
 
 
@@ -114,6 +165,11 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
           });
 
+
+        }
+
+        $rootScope.updateNumero = function(){
+          $rootScope.pv.numero = $rootScope.pv.commission.lastPv + 1;
 
         }
 
@@ -250,13 +306,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
             var dateToPost = null;
           }
 
-          //console.log(dateHuman)
 
-
-
-          //console.log(dateToPost)
-         //var dateToPost = reverse(dateHuman);
-         //console.log(dateToPost)
 
           // infos séances
           var maSeance = {

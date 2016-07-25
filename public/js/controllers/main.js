@@ -24,11 +24,26 @@ app.controller('mainController', function($scope, $http, API_URL, $rootScope) {
 
           $rootScope.mesPv = mesPv;
         }else{
-          var mesPv = [{}];
+          var mesPv = [];
           localStorage.setItem('mesPv', JSON.stringify(mesPv));
+          $rootScope.mesPv = mesPv;
+
 
         }
 
+
+        if(localStorage.getItem('mesPvCorbeille')){
+
+          var mesPvCorbeille = JSON.parse(localStorage.getItem('mesPvCorbeille'));
+          //console.log(mesPv)
+
+          $rootScope.mesPvCorbeille = mesPvCorbeille;
+        }else{
+          var mesPvCorbeille = [];
+          localStorage.setItem('mesPvCorbeille', JSON.stringify(mesPvCorbeille));
+          $rootScope.mesPvCorbeille = mesPvCorbeille;
+
+        }
 
         // SERVICE WORKER
         if (navigator.serviceWorker) {

@@ -199,7 +199,7 @@
                 <!--textarea froala ng-model="rubrique.contenu"></textarea-->
                 <!--textarea ui-tinymce="tinymceOptions" ng-model="rubrique.contenu"></textarea-->
                 <form method="post">
-                  <textarea ui-tinymce ng-model="rubrique.contenu"></textarea>
+                  <textarea ui-tinymce="tinymceOptions" ng-model="rubrique.contenu"></textarea>
                 </form>
 
 
@@ -250,13 +250,24 @@
 
 
 
-                <button type="submit" class="uk-button uk-button-primary sauvegarder-pv" ng-click="sauvegarderSeance()">Sauvegarder</button>
+                <button type="submit" class="uk-button uk-button-primary sauvegarder-pv uk-width-1-1" ng-click="sauvegarderSeance()">Sauvegarder</button>
               </form>
             </div>
         </div>
     </div>
 
-
+    <!-- depute insertion -->
+    <div id="insert-depute" class="uk-modal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <table>
+              <tr ng-repeat="depute in pv.deputes track by $index">
+                <td>{{$index+1}}</td>
+                <td><a href="#" ng-click="insertDepute(depute)">{{depute.nom}}</a></td>
+              </tr>
+            </table>
+        </div>
+    </div>
 
 
 </div>

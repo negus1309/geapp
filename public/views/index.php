@@ -90,11 +90,10 @@
         <script src="<?= asset('js/plugins/uikit/autocomplete.min.js') ?>"></script>
 
         <script src="<?= asset('js/plugins/uikit/notify.min.js') ?>"></script>
-        <!--script src=" asset('js/plugins/bootstrap-colorpicker-module.js') "></script-->
-        <!--script src=" asset('js/plugins/froala/froala_editor.min.js') "></script>
-        <script src=" asset('js/plugins/froala/angular-froala.js') "></script-->
+
         <script src="<?= asset('js/plugins/tinymce/tinymce.min.js') ?>"></script>
         <script src="<?= asset('js/plugins/tinymce/ui-tinymce.js') ?>"></script>
+        <script src="<?= asset('js/plugins/keymaster.js') ?>"></script>
 
 
         <!-- ********************** -->

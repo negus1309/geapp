@@ -1,7 +1,3 @@
-span.placeholder-content {
-  font-style: italic;
-  color: #bbbbbb; }
-
 html body.ng-scope {
   overflow-y: auto; }
 
@@ -67,54 +63,6 @@ div#workflow div#workflow-general {
   padding: 15px;
   display: none; }
 
-/*----- Accordion -----*/
-/*.accordion, .accordion * {
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    box-sizing:border-box;
-}
-
-.accordion {
-    margin-left:15px;
-    overflow:hidden;
-
-    background:#f7f7f7;
-    a{
-      color:$color-primary;
-    }
-    a:focus, a:hover,a:active {
-      color:white;
-    text-decoration: none;
-    }
-}
-
-.accordion-section-title {
-    width:100%;
-    padding:15px;
-    display:inline-block;
-    border-bottom:1px solid white;
-    background:lighten( $color-primary, 50% );
-    transition:all linear 0.15s;
-
-    font-size:1.200em;
-
-    color:white;
-}
-
-.accordion-section-title.active, .accordion-section-title:hover {
-    background:$color-primary;
-
-    text-decoration:none;
-    color:white;
-}
-
-
-
-.accordion-section-content {
-    padding:15px;
-    display:none;
-    background-color: $color-gris;
-}*/
 body {
   padding-top: 50px; }
 
@@ -132,6 +80,38 @@ div#draft {
   padding-left: 40px; }
   .pv-form label {
     font-weight: bold; }
+
+span.action-button {
+  line-height: 25px; }
+
+span.soumettre-pv:before {
+  content: "\f176";
+  padding-right: 5px; }
+
+span.trash-pv:before {
+  content: "\f1f8";
+  padding-right: 5px; }
+
+span.supprimer-pv:before {
+  content: "\f00d";
+  padding-right: 5px; }
+
+span.edit-pv:before {
+  content: "\f044";
+  padding-right: 5px; }
+
+span.convert-pv:before {
+  content: "\f1c2";
+  padding-right: 5px; }
+
+span.untrash-pv:before {
+  content: "\f112";
+  padding-right: 5px; }
+
+button.nouveau-pv:before {
+  content: "\f067";
+  padding-right: 5px;
+  font-weight: normal; }
 
 span.supprimer-invite, span.ajouter-invite, span.ajouter-odj, span.ajouter-rapporteur, span.supprimer-rapporteur, span.supprimer-odj {
   line-height: 25px; }
@@ -346,44 +326,30 @@ div.tools-pv {
     margin-bottom: 3px;
     width: 80px; }
 
-span.edit-pv, span.convert-pv, span.supprimer-pv, span.soumettre-pv {
-  line-height: 25px; }
-
-span.soumettre-pv:before {
-  /* down arrow icon */
-  content: "\f176";
-  /* some space*/
-  padding-right: 5px; }
-
-span.supprimer-pv:before {
-  /* down arrow icon */
-  content: "\f00d";
-  /* some space*/
-  padding-right: 5px; }
-
-span.edit-pv:before {
-  /* down arrow icon */
-  content: "\f044";
-  /* some space*/
-  padding-right: 5px; }
-
-span.convert-pv:before {
-  /* down arrow icon */
-  content: "\f1c2";
-  /* some space*/
-  padding-right: 5px; }
-
-button.nouveau-pv:before {
-  content: "\f067";
-  padding-right: 5px;
-  font-weight: normal; }
-
 td.pv-action {
   width: auto;
   text-align: center; }
 
 td.pv-action-first {
   border-left: 1px #eee solid; }
+
+span.no-pv {
+  text-align: center;
+  width: 100%;
+  display: block;
+  color: #bbbbbb;
+  font-style: italic;
+  padding: 15px; }
+
+span.placeholder-content {
+  font-style: italic;
+  color: #bbbbbb; }
+
+.corbeille-toggle {
+  display: inline;
+  position: absolute;
+  right: 15px;
+  top: 15px; }
 
 .uk-accordion h4 {
   font-weight: bold; }
@@ -401,7 +367,7 @@ td.pv-action-first {
 .uk-panel {
   margin: 10px; }
 
-span.supprimer-invite:before, span.supprimer-rapporteur:before, span.supprimer-odj:before, span.ajouter-invite:before, span.ajouter-odj:before, span.ajouter-rapporteur:before, div#menu span.recupererPv:before, div#menu span.retourAccueil:before, div#menu span.presenceCheck:before, .clock:before, span.soumettre-pv:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, button.nouveau-pv:before, .uk-accordion-title:before, span#status-network #status-online:before, span#status-network #status-offline:before {
+span.soumettre-pv:before, span.trash-pv:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, span.untrash-pv:before, button.nouveau-pv:before, span.supprimer-invite:before, span.supprimer-rapporteur:before, span.supprimer-odj:before, span.ajouter-invite:before, span.ajouter-odj:before, span.ajouter-rapporteur:before, div#menu span.recupererPv:before, div#menu span.retourAccueil:before, div#menu span.presenceCheck:before, .clock:before, .uk-accordion-title:before, span#status-network #status-online:before, span#status-network #status-offline:before {
   font-family: 'FontAwesome';
   src: url("../fonts/fontawesome-webfont.eot");
   src: url("../fonts/fontawesome-webfont-ie.eot") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2") format("woff2"), url("../fonts/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome-webfont.ttf") format("truetype");

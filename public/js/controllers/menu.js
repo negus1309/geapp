@@ -26,24 +26,7 @@ app.controller('menuController', function($scope, $http, API_URL, $rootScope) {
         $('div#menu a#recuperer-pv').show();
 
       }
-/*
-      $scope.getDraftInfos = function(){
-        UIkit.modal.confirm("Êtes-vous sûr? Cela va écraser les données saisies.", function(){
-            // will be executed on confirm.
-            $rootScope.general=JSON.parse(localStorage.getItem('seance'));
-            console.log($rootScope.general)
-            $rootScope.general.invites=JSON.parse(localStorage.getItem('invites'));
-            $rootScope.rubriques=JSON.parse(localStorage.getItem('rubriques'));
 
-
-
-
-            $rootScope.$apply()
-          //  $apply();
-
-        });
-      }
-*/
 
       // FONCTIONS
 
