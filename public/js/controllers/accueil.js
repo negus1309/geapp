@@ -58,7 +58,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
           modal.show();
 
         }else{
-          UIkit.modal.alert("<h2>Attention!</h2><p>Le quota de 3 PV est atteint, veuillez supprimer un PV pour faire de la place.</p>");
+          UIkit.modal.alert("<h2>Attention!</h2><p class='uk-alert uk-alert-warning'>Le quota de 3 PV est atteint, veuillez mettre un PV à la corbeille ou le supprimer définitivement pour faire de la place.</p>");
         }
 
 
@@ -316,7 +316,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
           console.log(mesPvCorbeille)
           localStorage.setItem('mesPv', JSON.stringify(mesPv));
         }else{
-          UIkit.modal.alert("<h2>Attention!</h2><p>Le quota de 3 PV dans la corbeille est atteint, veuillez supprimer définitivement un PV pour faire de la place.</p>");
+          UIkit.modal.alert("<h2>Attention!</h2><p class='uk-alert uk-alert-warning'>Le quota de 3 PV dans la corbeille est atteint, veuillez supprimer définitivement un PV pour faire de la place.</p>");
 
         }
 
@@ -344,7 +344,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
           localStorage.setItem('mesPvCorbeille', JSON.stringify(mesPvCorbeille));
 
         }else{
-          UIkit.modal.alert("<h2>Attention!</h2><p>Le quota de 3 PV est atteint, veuillez supprimer un PV pour faire de la place.</p>");
+          UIkit.modal.alert("<h2>Attention!</h2><p class='uk-alert uk-alert-warning'>Le quota de 3 PV est atteint, veuillez mettre un PV à la corbeille ou le supprimer définitivement pour faire de la place.</p>");
 
         }
 
