@@ -1,53 +1,115 @@
 app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$filter) {
 
+//*******************************************//
+// INITIALISATION
+//*******************************************//
 
+  // *** | Initialisation du caendrier ***** //
   $(document).ready(function() {
-
-      // page is now ready, initialize the calendar...
-
       $('#calendar').fullCalendar({
-          // put your options and callbacks here
-          lang:"fr",
-          height:'auto'
+          lang:"fr", // choix de la langue
+          height:'auto' // hauteur automatique
       })
-
   });
-      //*******************************************//
-      // EVENEMENTS
-      //*******************************************//
+
+//*******************************************//
+// EVENEMENTS
+//*******************************************//
+
+  // *** | Convertir le PV au format Word ***** //
+  $scope.convertPv = function($pvToken){
+
+    // Récupération du PV à convertir à l'aide du token
+    var mesPv = $rootScope.mesPv;
+    angular.forEach(mesPv, function(monPv, key) {
+        if(monPv.token == $pvToken){
+          $rootScope.pv = monPv;
+        }
+    });
+
+    var pvNumero = $rootScope.pv.numero; // numéro du PV
+    var pvCommission = $rootScope.pv.commission.nom; // nom de la commission
+
+    var pvDate = $rootScope.pv.date; // date du PV
+    var pvDateMoment = moment(pvDate, "DD-MM-YYYY"); // date du PV parsée avec moment.js
+      var pvJourNom = pvDateMoment.format('dddd'); // nom du jour de la semaine (string)
+      var pvJourNum = pvDateMoment.date(); // jour du mois (number)
+      var pvMois = pvDateMoment.format('MMMM'); // nom du moins (string)
+      var pvAnnee = pvDateMoment.format('YYYY'); // année
+
+    var pvHeureDebut = $rootScope.pv.heure_debut; // heure de début de la séance
+    var pvHeureFin = $rootScope.pv.heure_fin; // heure de fin de la séance
+      var pvHeureDebutMoment = moment(pvHeureDebut, "hh:mm"); // heure de début de la séance parsée avec moment.js
+      var pvHeureFinMoment = moment(pvHeureFin, "hh:mm"); // heure de fin de la séance parsée avec moment.js
+
+    var pvPresident = $rootScope.pv.president; // président de la séance
+    var pvDeputes = $rootScope.pv.deputes; // députés de la commission qui participe à la séance
+
+        // ******************************
+        // *** | Page de présentation
+        // ******************************
+        $('#word-document').append('<h1>PROCÈS-VERBAL</h1><br/>');
+        $('#word-document').append('<h1>COMMISSION '+pvCommission.toUpperCase()+'</h1><br/>');
+        $('#word-document').append('<p>Séance du '+pvJourNom+' '+pvJourNum+' '+pvMois+' '+pvAnnee+' de '
+        +pvHeureDebutMoment.format('hh')+'h'+pvHeureDebutMoment.format('mm')+' à '+pvHeureFinMoment.format('hh')+'h'+pvHeureFinMoment.format('mm')+'</p>');
+
+        $('#word-document').append('<table class="w-table"></table>');
+
+          // Presidence
+          $('.w-table').append('<tr class="w-president"></tr>');
+            $('.w-president').append('<td>Présidence:</td>');
+            $('.w-president').append('<td>'+pvPresident.nom+'</td>');
+
+          // Membres, présence
+          $('.w-table').append('<tr class="w-membres"></tr>');
+            $('.w-membres').append('<td valign="top">Membres (présents):</td>');
+            $('.w-membres').append('<td class="w-deputes-liste"></td>');
+              angular.forEach(pvDeputes, function(depute, key) {
+                $('.w-deputes-liste').append('<p>'+depute.titre+' '+depute.nom+'</p>');
+              });
+
+          // Excusés
+          $('.w-table').append('<tr class="w-excuses"></tr>');
+            $('.w-excuses').append('<td valign="top">Excusés:</td>');
+            $('.w-excuses').append('<td></td>');
 
 
-      $scope.convertPv = function($pvToken){
 
-        //$('#liste').hide();
-        //$('#workflow').show();
-        //$('div#menu a').show();
+        // ******************************
+        // *** | Ordre du jour
+        // ******************************
 
-        var mesPv = $rootScope.mesPv;
-        angular.forEach(mesPv, function(monPv, key) {
-            if(monPv.token == $pvToken){
-              $rootScope.pv = monPv;
-            }
+        var pvRubriques = $rootScope.pv.rubriques;
 
+        $('#word-document').append('<h1>Ordre du jour</h1><ol class="w-odj"></ol>');
+          angular.forEach(pvRubriques, function(rubrique, key) {
+            $('.w-odj').append('<li>'+rubrique.titre+'</li>');
+          });
 
-        });
-
-        var pvNumero = $rootScope.pv.numero;
-        console.log(pvNumero)
-        $('#word-document').html('<h1>'+pvNumero+'</h1>');
-        //$('#word-document').html(pvNumero);
-
-        $('#word-document').wordExport();
-
-
+        // ******************************
+        // *** | Points d'ODJ (corps de PV)
+        // ******************************
+        $('#word-document').append('<div id="w-rubriques"></div>');
+          angular.forEach(pvRubriques, function(rubrique, key) {
+            var numero = key +1;
+            $('#w-rubriques').append('<h3>'+numero+') '+rubrique.titre+'</h3>');
+            $('#w-rubriques').append(rubrique.contenu);
+          });
 
 
-      }
 
-      $scope.nouveauPv = function(){
+          // Générer fichier Word
+        $('#word-document').wordExport('PV-'+pvCommission+'-'+pvNumero);
+
+
+
+
+  }
+
+  // *** | Création d'un nouveau PV ***** //
+  $scope.nouveauPv = function(){
 
         var pvCount = $rootScope.mesPv.length;
-        console.log(pvCount)
 
         if(pvCount < 3){
           $rootScope.pv = {}
@@ -61,15 +123,11 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
           UIkit.modal.alert("<h2>Attention!</h2><p class='uk-alert uk-alert-warning'>Le quota de 3 PV est atteint, veuillez mettre un PV à la corbeille ou le supprimer définitivement pour faire de la place.</p>");
         }
 
+  }
 
+  // *** | Initialisation du PV ***** //
+  $scope.initPv = function(){
 
-      }
-
-
-      $scope.initPv = function(){
-      //  var modal = UIkit.modal("#choix-commission-modal");
-      //  modal.hide();
-          //$rootScope.pv.commission.nom = $scope.pv.commission.nom;
           var modal = UIkit.modal("#choix-commission-modal");
           modal.hide();
           $('#liste').hide();
@@ -81,101 +139,25 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
           $rootScope.updatePresident();
           $rootScope.updateNumero();
 
+  }
 
+  // *** | Édition du PV ***** //
+  $scope.editPv = function($pvToken){
 
+    $('#liste').hide();
+    $('#workflow').show();
+    $('div#menu a').show();
+    $('div#menu a#recuperer-pv').hide();
 
+    var mesPv = $rootScope.mesPv;
+    angular.forEach(mesPv, function(monPv, key) {
+        if(monPv.token == $pvToken){
+          $rootScope.pv = monPv;
+        }
+    });
+  }
 
-
-
-
-
-
-
-        //  $rootScope.pv.commission = "abbraham";
-
-
-
-
-
-
-
-/*
-          $http({
-            url: API_URL + "seance/create",
-            method: "POST",
-            params: {'commission_id': $idCommission}
-           })
-           .success(function(response) {
-
-               //console.log($nomCommission)
-               // Date actuelle pour le placeholder du formulaire
-               var currentDate = new Date();
-
-               var currentDateHuman = $filter('date')(currentDate, 'dd-MM-yyyy')
-
-
-                 //$scope.general.date = currentDateHuman;
-
-                 $rootScope.general = {};
-                 $rootScope.meta = {};
-               $rootScope.general = {
-                 'date':currentDateHuman
-               }
-               $rootScope.meta = {
-                 'nomCommission' : $nomCommission,
-                 'idCommission' : $idCommission,
-                 'idSeance' : response.id
-
-               }
-
-           });
-
-*/
-
-
-      }
-
-
-
-
-      $scope.editPv = function($pvToken){
-
-        $('#liste').hide();
-        $('#workflow').show();
-        $('div#menu a').show();
-        $('div#menu a#recuperer-pv').hide();
-
-        var mesPv = $rootScope.mesPv;
-        angular.forEach(mesPv, function(monPv, key) {
-            if(monPv.token == $pvToken){
-              $rootScope.pv = monPv;
-
-
-
-
-
-
-
-                //
-
-
-
-
-
-
-
-
-            }
-
-
-        });
-      }
-
-        $scope.soumettrePv = function($pvToken){
-
-          /*$('#liste').hide();
-          $('#workflow').show();
-          $('div#menu a').show();*/
+  $scope.soumettrePv = function($pvToken){
 
           var mesPv = $rootScope.mesPv;
           angular.forEach(mesPv, function(monPv, key) {
@@ -199,73 +181,14 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
                   });
                 }
 
-
-
               }
-
 
           });
 
-
-        }
-
+  }
 
 
 
-
-        //console.log($idSeance)
-/*
-        $http({
-          url: API_URL + "seance/"+$idSeance,
-          method: "GET",
-          params: {'commission_id': $idCommission}
-         })
-         .success(function(response) {
-             //$scope.reponse = response;
-             //console.log(response)
-             //console.log($idCommission)
-             //console.log($nomCommission)
-             //console.log(response)
-             var mesInvites = [];
-             angular.forEach(response.assistance, function(assist, key) {
-
-                mesInvites.push({'nom':assist.invite.nom,'prenom':assist.invite.prenom,'titre':assist.invite.titre, 'id':assist.invite.id});
-              });
-              //console.log(mesInvites)
-
-              var dateMysql = response.date;
-              var dateHuman = convertMysqlDateToHumanDate(dateMysql);
-              //console.log(dateMysql)
-              //console.log(dateHuman)
-
-              $rootScope.general = {
-                'numero':response.numero,
-                'invites':mesInvites,
-                'date':dateHuman
-              }
-              $rootScope.meta = {
-                'nomCommission' : $nomCommission,
-                'idCommission' : $idCommission,
-                'idSeance':$idSeance
-
-              }
-
-         });
-
-         $http({
-           url: API_URL + "seance/"+$idSeance+"/rubriques",
-           method: "GET"
-           //params: {'commission_id': $idCommission}
-          })
-          .success(function(response) {
-
-            $rootScope.rubriques = response;
-
-          });
-*/
-
-
-      //}
 
 
       $scope.deletePv = function($index){
