@@ -376,7 +376,7 @@ form#presence-form{
 div#menu{
   position: fixed;
   top:0px;
-  z-index: 1;
+  z-index: 1000;
   //margin-bottom: 40px;
   width:100%;
   height:$menu-height;

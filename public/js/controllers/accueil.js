@@ -12,6 +12,13 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
       })
   });
 
+  $scope.tinymceOptionsNotes = {
+    menubar:false,
+    toolbar:false,
+    elementpath: false,
+     statusbar: false
+  }
+
 //*******************************************//
 // EVENEMENTS
 //*******************************************//
