@@ -1,39 +1,15 @@
 app.controller('gestionPresenceController', function($scope, $http, API_URL, $rootScope) {
 
-  $scope.showPv = function(){
-    console.log($rootScope.pv)
-  }
 
-  $rootScope.getDeputes = function($idCommission){
+  //*******************************************//
+  // 01 ) EVENEMENTS
+  //*******************************************//
 
-/*
-    $http.get(API_URL + "commissions/"+$idCommission+"/deputes")
-      .success(function(response) {
-          $scope.deputes = response;
-
-      });*/
-
-      //console.log($idCommission)
-    //  console.log(!$rootScope.pv.deputes.isPresentAtTimes)
-      /*if(!$rootScope.pv.deputes[0].isPresentAtTimes.length){
-
-        angular.forEach($rootScope.pv.deputes, function(depute, key) {
-
-          //depute.isPresentAtTimes = [];
-          depute.
-
-
-        });
-
-
-      }*/
-
-
-
-
-
-  }
-
+  /**
+   * 1.1 Ajoute un colonne d'heure supplémentaire
+   *
+   * @param aucun paramètre
+   */
   $scope.addHourColumn = function(){
 
     var nbColumn = $('th.hour-header').length + 1;
@@ -50,9 +26,13 @@ app.controller('gestionPresenceController', function($scope, $http, API_URL, $ro
       });
     }
 
-
-
   }
+
+  /**
+   * 1.2 Ajoute une ligne pour un député supplémentaire
+   *
+   * @param aucun paramètre
+   */
   $scope.addDepute = function(){
 
     if(!$rootScope.pv.deputesAdded){

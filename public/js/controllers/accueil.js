@@ -1,10 +1,14 @@
 app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$filter) {
 
 //*******************************************//
-// INITIALISATION
+// 01 ) INITIALISATION
 //*******************************************//
 
-  // *** | Initialisation du caendrier ***** //
+  /**
+   * 1.1 Initialisation du calendrier en avec jQuery
+   *
+   * @param aucun paramètre
+   */
   $(document).ready(function() {
       $('#calendar').fullCalendar({
           lang:"fr", // choix de la langue
@@ -12,6 +16,11 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
       })
   });
 
+  /**
+   * 1.2 Initialisation du module de notes
+   *
+   * @param aucun paramètre
+   */
   $scope.tinymceOptionsNotes = {
     menubar:false,
     toolbar:false,
@@ -20,10 +29,57 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
   }
 
 //*******************************************//
-// EVENEMENTS
+// 02 ) EVENEMENTS
 //*******************************************//
 
-  // *** | Convertir le PV au format Word ***** //
+/**
+ * 2.1 Création d'un nouveau PV
+ *
+ * @param aucun paramètre
+ */
+ $scope.nouveauPv = function(){
+
+        var pvCount = $rootScope.mesPv.length;
+
+        if(pvCount < 3){
+          $rootScope.pv = {}
+          var pvToken = token();
+          $rootScope.pv.token = pvToken;
+          $rootScope.pv.commission = {}
+          var modal = UIkit.modal("#choix-commission-modal");
+          modal.show();
+
+        }else{
+          UIkit.modal.alert("<h2>Attention!</h2><p class='uk-alert uk-alert-warning'>Le quota de 3 PV est atteint, veuillez mettre un PV à la corbeille ou le supprimer définitivement pour faire de la place.</p>");
+        }
+
+  }
+
+  /**
+   * 2.2 Initialisation d'un nouveau PV
+   *
+   * @param aucun paramètre
+   */
+  $scope.initPv = function(){
+
+          var modal = UIkit.modal("#choix-commission-modal");
+          modal.hide();
+          $('#liste').hide();
+          $('#workflow').show();
+          $('div#menu a').show();
+          $('div#menu a#recuperer-pv').hide();
+
+          $rootScope.updateDeputes();
+          $rootScope.updatePresident();
+          $rootScope.updateNumero();
+
+  }
+
+  /**
+   * 2.3 Convertir le PV au format Word
+   *
+   * @param pvToken Token du PV à convertir
+   */
   $scope.convertPv = function($pvToken){
 
     // Récupération du PV à convertir à l'aide du token
@@ -52,9 +108,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
     var pvPresident = $rootScope.pv.president; // président de la séance
     var pvDeputes = $rootScope.pv.deputes; // députés de la commission qui participe à la séance
 
-        // ******************************
-        // *** | Page de présentation
-        // ******************************
+        // Traitement de la page de présentation
         $('#word-document').append('<h1>PROCÈS-VERBAL</h1><br/>');
         $('#word-document').append('<h1>COMMISSION '+pvCommission.toUpperCase()+'</h1><br/>');
         $('#word-document').append('<p>Séance du '+pvJourNom+' '+pvJourNum+' '+pvMois+' '+pvAnnee+' de '
@@ -82,10 +136,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
 
 
-        // ******************************
-        // *** | Ordre du jour
-        // ******************************
-
+        // Traitement de l'ODJ
         var pvRubriques = $rootScope.pv.rubriques;
 
         $('#word-document').append('<h1>Ordre du jour</h1><ol class="w-odj"></ol>');
@@ -93,9 +144,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
             $('.w-odj').append('<li>'+rubrique.titre+'</li>');
           });
 
-        // ******************************
-        // *** | Points d'ODJ (corps de PV)
-        // ******************************
+        // Traitement des points d'ODJ (corps de PV)
         $('#word-document').append('<div id="w-rubriques"></div>');
           angular.forEach(pvRubriques, function(rubrique, key) {
             var numero = key +1;
@@ -105,7 +154,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
 
 
-          // Générer fichier Word
+        // Générer fichier Word
         $('#word-document').wordExport('PV-'+pvCommission+'-'+pvNumero);
 
 
@@ -113,42 +162,12 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
   }
 
-  // *** | Création d'un nouveau PV ***** //
-  $scope.nouveauPv = function(){
 
-        var pvCount = $rootScope.mesPv.length;
-
-        if(pvCount < 3){
-          $rootScope.pv = {}
-          var pvToken = token();
-          $rootScope.pv.token = pvToken;
-          $rootScope.pv.commission = {}
-          var modal = UIkit.modal("#choix-commission-modal");
-          modal.show();
-
-        }else{
-          UIkit.modal.alert("<h2>Attention!</h2><p class='uk-alert uk-alert-warning'>Le quota de 3 PV est atteint, veuillez mettre un PV à la corbeille ou le supprimer définitivement pour faire de la place.</p>");
-        }
-
-  }
-
-  // *** | Initialisation du PV ***** //
-  $scope.initPv = function(){
-
-          var modal = UIkit.modal("#choix-commission-modal");
-          modal.hide();
-          $('#liste').hide();
-          $('#workflow').show();
-          $('div#menu a').show();
-          $('div#menu a#recuperer-pv').hide();
-
-          $rootScope.updateDeputes();
-          $rootScope.updatePresident();
-          $rootScope.updateNumero();
-
-  }
-
-  // *** | Édition du PV ***** //
+  /**
+   * 2.4 Edition du PV (flux d'édition)
+   *
+   * @param pvToken Token du PV à éditer
+   */
   $scope.editPv = function($pvToken){
 
     $('#liste').hide();
@@ -164,6 +183,11 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
     });
   }
 
+  /**
+   * 2.5 Soumission du PV
+   *
+   * @param pvToken Token du PV à soumettre
+   */
   $scope.soumettrePv = function($pvToken){
 
           var mesPv = $rootScope.mesPv;
@@ -195,10 +219,12 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
   }
 
 
-
-
-
-      $scope.deletePv = function($index){
+  /**
+   * 2.6 Suppression d'un PV
+   *
+   * @param $index Index du PV à supprimer
+   */
+  $scope.deletePv = function($index){
 
         UIkit.modal.confirm("Êtes-vous sûr de vouloir supprimer ce PV définitivement?", function(){
             // will be executed on confirm.
@@ -221,16 +247,14 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
         });
 
-
-
-
-
-
-
-
       }
 
-      $scope.moveToTrash = function($index){
+  /**
+   * 2.7 Mise à la corbeille d'un PV
+   *
+   * @param $index Index du PV à supprimer
+   */
+  $scope.moveToTrash = function($index){
 
         if($rootScope.mesPvCorbeille.length < 3){
           console.log($index)
@@ -250,14 +274,14 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
         }
 
+  }
 
-
-
-
-
-      }
-
-      $scope.moveToPv = function($index){
+  /**
+   * 2.8 Déplacement du PV de la corbeille vers la liste de PV en traitement
+   *
+   * @param $index Index du PV à déplacer
+   */
+  $scope.moveToPv = function($index){
 
         if($rootScope.mesPv.length < 3){
           console.log($index)
@@ -278,26 +302,32 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
         }
 
+    }
 
+  //*******************************************//
+  // 03 ) FONCTIONS
+  //*******************************************//
 
-
-
-      }
-
-      //*******************************************//
-      // FONCTIONS
-      //*******************************************//
-
+      /**
+       * 3.1 Permet de convertir une date de type AAAA-MM-JJ en JJ-MM-AAAA
+       *
+       * @param usDate Date de type AAAA-MM-JJ
+       */
       var convertMysqlDateToHumanDate = function(usDate) {
         var dateParts = usDate.split(/(\d{4})\-(\d{1,2})\-(\d{1,2})/);
         return dateParts[3] + "-" + dateParts[2] + "-" + dateParts[1];
       }
-      var rand = function() {
-          return Math.random().toString(36).substr(2); // remove `0.`
-      };
 
+      /**
+       * 3.2 Permet de générer un token lors de la création d'un nouveau PV
+       *
+       * @param aucun paramètre
+       */
+      var rand = function() {
+          return Math.random().toString(36).substr(2); // génère un token
+      };
       var token = function() {
-          return rand() + rand(); // to make it longer
+          return rand() + rand(); // pour le rendre plus long
       };
 
 

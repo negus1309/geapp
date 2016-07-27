@@ -1,103 +1,102 @@
 app.controller('workflowController', function($scope, $http, API_URL,$filter,$rootScope,$timeout) {
 
 
-  //$scope.pv = {}
-  //$scope.pv.commission = {}
+  //*******************************************//
+  // 01 ) INITIALISATION
+  //*******************************************//
 
-  $rootScope.nomCommissions = JSON.parse(localStorage.getItem('commissions'));
+      /**
+       * 1.1 Initialisation du conteneur accordéon des éditeurs de contenu
+       *
+       * @param aucun paramètre
+       */
+       $(document).ready(function() {
+           function close_accordion_section() {
+               $('.accordion .accordion-section-title').removeClass('active');
+               $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
+           }
 
-  $rootScope.deputes = JSON.parse(localStorage.getItem('deputes'));
+           $('#workflow').on('click', '.accordion-section-title' ,function(e) {
+               // Grab current anchor value
+               var currentAttrValue = $(this).attr('href');
 
-  $scope.tinymceOptions = {
-    menubar:false,
-    setup: function (editor) {
-        editor.addButton('ajoutdepute', {
-          text: 'Insérer un député',
-          icon: false,
-          onclick: function () {
-            //editor.insertContent('salut');
-            var modal = UIkit.modal("#insert-depute");
-            modal.show();
-          }
-        });
-        editor.on("init", function(editor) {
+               if($(e.target).is('.active')) {
+                   close_accordion_section();
+               }else {
+                   close_accordion_section();
 
-        });
-        editor.addShortcut('alt+d', 'Insertiond depute', function(){
-          var modal = UIkit.modal("#insert-depute");
-          modal.toggle();
+                   // Add active class to section title
+                   $(this).addClass('active');
+                   // Open up the hidden content panel
+                   $('.accordion ' + currentAttrValue).slideDown(300).addClass('open');
+               }
 
-        });
-        var deputes = $rootScope.pv.deputes;
-        angular.forEach(deputes, function(depute, key) {
-          keyNumber = key+1;
-          var shortcut = "alt+"+keyNumber+"";
-          editor.addShortcut(shortcut, 'Insertion ', function(){
-            $scope.insertDepute(depute);
-          });
-
-        });
+               e.preventDefault();
+           });
+         });
 
 
-    },
-    toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | cut copy paste | ajoutdepute'
+      /**
+       * 1.2 Initialisation de l'éditeur de contenu
+       *
+       * @param aucun paramètre
+       */
+        $scope.tinymceOptions = {
+          menubar:false, // barre de menu masquée
+          setup: function (editor) {
+              editor.addButton('ajoutdepute', { // ajoute la fonction d'ajout de député à la barre d'outils
+                text: 'Insérer un député',
+                icon: false,
+                onclick: function () {
+                  //editor.insertContent('salut');
+                  var modal = UIkit.modal("#insert-depute");
+                  modal.show();
+                }
+              });
+              editor.on("init", function(editor) {
 
-  };
+              });
+              editor.addShortcut('alt+d', 'Insertiond depute', function(){
+                var modal = UIkit.modal("#insert-depute");
+                modal.toggle();
 
+              });
+              var deputes = $rootScope.pv.deputes;
+              angular.forEach(deputes, function(depute, key) {
+                keyNumber = key+1;
+                var shortcut = "alt+"+keyNumber+"";
+                editor.addShortcut(shortcut, 'Insertion ', function(){
+                  $scope.insertDepute(depute);
+                });
+              });
+          },
+          // choix des éléments apparaissant dans la barre d'outils
+          toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | cut copy paste | ajoutdepute'
 
-
-
-  //$scope.$watch($rootScope)
-  // Jquery accordion
-  $(document).ready(function() {
-      function close_accordion_section() {
-          $('.accordion .accordion-section-title').removeClass('active');
-          $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
-      }
-
-      $('#workflow').on('click', '.accordion-section-title' ,function(e) {
-          // Grab current anchor value
-          var currentAttrValue = $(this).attr('href');
-
-          if($(e.target).is('.active')) {
-              close_accordion_section();
-          }else {
-              close_accordion_section();
-
-              // Add active class to section title
-              $(this).addClass('active');
-              // Open up the hidden content panel
-              $('.accordion ' + currentAttrValue).slideDown(300).addClass('open');
-          }
-
-          e.preventDefault();
-      });
-
-
-
-
-
-
-      });
+        };
 
 
-  
 
 
-      //*******************************************//
-      // EVENEMENTS
-      //*******************************************//
+  //*******************************************//
+  // 02 ) EVENEMENTS
+  //*******************************************//
 
+      /**
+       * 2.1 Insère le nom et le titre du député dans l'éditeur de contenu actif
+       *
+       * @param depute Deputé dont le nom doit être inséré
+       */
       $scope.insertDepute = function(depute){
-        console.log(depute)
         var titre;
 
-
+        // Cas particulier si le député est le président
         if(depute.fonction == "president"){
           titre = "Le PRÉSIDENT ";
           tinymce.activeEditor.execCommand('mceInsertContent', false, titre );
 
         }else{
+          // Pour tous les autres députés
           var nom = depute.nom.toUpperCase();
           if(depute.titre == "m"){
             titre = "M."
@@ -113,9 +112,11 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
       }
 
 
-
-
-
+      /**
+       * 2.2 Permet de récupérer les informations sur le président de la commission
+       *
+       * @param aucun paramètre
+       */
         $rootScope.updatePresident = function(){
           console.log('tete')
           var mesCommissionsAvecMembres = $rootScope.deputes;
@@ -136,15 +137,16 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
           });
         }
-        //dfsfsdfffsfsd
-//fsdfsdfsdfsdfsdfsdf             FAIRE VALIDATION QUAND SOUMETTRE EN PLUS DE SAVE
-  //fsdfsdfsdfsdfsdfsdfsdfsd
-        // a fair elors de la cretion, re init tout le temps is present
+
+        /**
+         * 2.3 Permet de récupérer les informations sur les députés de la commission
+         *
+         * @param aucun paramètre
+         */
         $rootScope.updateDeputes = function(){
           var mesCommissionsAvecMembres = $rootScope.deputes;
           angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
             if(maCommissionAvecMembres.id == $rootScope.pv.commission.id){
-
 
                 $rootScope.pv.deputes = maCommissionAvecMembres.membres;
                 var mesDeputes = $rootScope.pv.deputes;
@@ -155,94 +157,90 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
                     monDepute.isPresentAtTimes.push(true);
 
                 });
-
-
-
-
-
             }
-
-
           });
-
-
         }
 
+        /**
+         * 2.4 Permet de récupérer le numéro du dernier PV et de l'incrémenter
+         *
+         * @param aucun paramètre
+         */
         $rootScope.updateNumero = function(){
           $rootScope.pv.numero = $rootScope.pv.commission.lastPv + 1;
 
         }
 
 
-      // Ajout de champ invités
-      $scope.ajouterInvite = function(){
-        if(!$scope.pv.invites){
-          $scope.pv.invites = [];
+        /**
+         * 2.5 Permet d'ajouter des champs pour renseigner les informations sur un éventuel invité
+         *
+         * @param aucun paramètre
+         */
+        $scope.ajouterInvite = function(){
+          if(!$scope.pv.invites){
+            $scope.pv.invites = [];
+          }
+          $scope.pv.invites.push({'nom':'','prenom':'','titre':''});
         }
-        $scope.pv.invites.push({'nom':'','prenom':'','titre':''});
-      }
 
 
+        /**
+         * 2.6 Permet de supprimer un éventuel invité
+         *
+         * @param aucun paramètre
+         */
+         $scope.supprimerInvite = function($index, $seance_id, $invite_id){
 
-      // Suppression de champ invité
-      $scope.supprimerInvite = function($index, $seance_id, $invite_id){
+           $scope.pv.invites.splice($index,1);
 
-        $scope.pv.invites.splice($index,1);
-        /*
-        $http({
-          url: API_URL + "seance/"+$seance_id+"/invite/"+$invite_id+"/delete",
-          method: "DELETE"
-          //params: {'commission_id': $idCommission}
-         })
-         .success(function(response){
-           console.log('furof')
-         });*/
+         }
 
-      }
+         /**
+          * 2.7 Permet d'ajouter un point d'ODJ
+          *
+          * @param aucun paramètre
+          */
+          $scope.ajouterPointODJ = function(){
+            if(!$scope.pv.rubriques){
+              $scope.pv.rubriques = [];
+            }
+            $scope.pv.rubriques.push({'titre':'','contenu':'','heure_debut':'','heure_fin':''});
+          }
 
-      // Ajout de champ invités
-      $scope.ajouterPointODJ = function(){
-        if(!$scope.pv.rubriques){
-          $scope.pv.rubriques = [];
-        }
-        $scope.pv.rubriques.push({'titre':'','contenu':'','heure_debut':'','heure_fin':''});
-      }
-      // Suppression de champ invité
-      $scope.supprimerRubrique = function($index, $seance_id, $rubrique_id){
 
-        $scope.pv.rubriques.splice($index,1);
-        /*
-        $http({
-          url: API_URL + "seance/"+$seance_id+"/rubrique/"+$rubrique_id+"/delete",
-          method: "DELETE"
-          //params: {'commission_id': $idCommission}
-         })
-         .success(function(response){
-           console.log('furof')
-         });*/
+          /**
+           * 2.8 Permet de supprimer un point d'ODJ (rubrique)
+           *
+           * @param $index Index du point d'ODJ à supprimer
+           */
+           $scope.supprimerRubrique = function($index){
+              $scope.pv.rubriques.splice($index,1);
+            }
 
-      }
+            /**
+             * 2.9 Permet d'ajouter un rapporteur au point d'ODJ
+             *
+             * @param $index Index du point d'ODJ à supprimer
+             */
+            $scope.ajouterRapporteur = function($index){
+                if(!$scope.pv.rubriques[$index].rapporteurs){
+                  $scope.pv.rubriques[$index].rapporteurs = [];
+                }
+                $scope.pv.rubriques[$index].rapporteurs.push({})
 
-      $scope.ajouterRapporteur = function($noRubrique){
-        console.log($noRubrique)
-        if(!$scope.pv.rubriques[$noRubrique].rapporteurs){
+            }
 
-          $scope.pv.rubriques[$noRubrique].rapporteurs = [];
-        }
-        $scope.pv.rubriques[$noRubrique].rapporteurs.push({})
-        /*console.log('fd')
-        if(!$scope.pv.invites){
-          $scope.pv.invites = [];
-        }
-        $scope.pv.invites.push({'nom':'','prenom':'','titre':''});*/
+            /**
+             * 2.10 Permet de supprimer un rapporteur au point d'ODJ
+             *
+             * @param $index Index du point d'ODJ à supprimer
+             */
+            $scope.supprimerRapporteur = function($rapporteurPosition, $noRubrique){
+              //console.log($rapporteurPosition +" et "+$noRubrique)
+              $scope.pv.rubriques[$noRubrique].rapporteurs.splice($rapporteurPosition,1);
 
-      }
-
-      $scope.supprimerRapporteur = function($rapporteurPosition, $noRubrique){
-        //console.log($rapporteurPosition +" et "+$noRubrique)
-        $scope.pv.rubriques[$noRubrique].rapporteurs.splice($rapporteurPosition,1);
-
-      }
+            }
 
 
 
@@ -475,12 +473,20 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
       }// fin scope save
 
       // convertir date
-      var convertHumanDateToMysqlDate = function(usDate) {
-        var dateParts = usDate.split(/(\d{1,2})\-(\d{1,2})\-(\d{4})/);
-        return dateParts[3] + "-" + dateParts[2] + "-" + dateParts[1];
-      }
 
+  //*******************************************//
+  // 03 ) FONCTIONS
+  //*******************************************//
 
+        /**
+         * 3.1 Permet de convertir une date de type JJ-MM-AAAA en AAAA-MM-JJ
+         *
+         * @param usDate Date au format JJ-MM-AAAA
+         */
+        var convertHumanDateToMysqlDate = function(usDate) {
+          var dateParts = usDate.split(/(\d{1,2})\-(\d{1,2})\-(\d{4})/);
+          return dateParts[3] + "-" + dateParts[2] + "-" + dateParts[1];
+        }
 
 
 
