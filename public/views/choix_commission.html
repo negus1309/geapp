@@ -9,19 +9,13 @@
 
       <div class="uk-form-controls">
         <div class="uk-form-select" data-uk-form-select>
-                <!--//track by commission_s.id-->
-          <select ng-model="pv.commission" ng-options="commission_s.nom for commission_s in nomCommissions"  ng-change="" required><!--//ngch : updatePresident();updateDeputes();-->
-              <!--<option ng-repeat="nomCommission in nomCommissions" value='{"nom":"{{nomCommission.nom}}","id":{{nomCommission.id}}}'>{{nomCommission.nom}}</option>-->
-            <!--commission as commission.nom for commission in nomCommissions-->
-            <option value="">-- choisir une commission svp --</option>
-
+          <select ng-model="pv.commission" ng-options="item.nom for item in other.commissions">
+            <option value="">Select Type</option>
           </select>
         </div>
-
-
       </div>
     </div>
-
+    {{other.commissions}}
 
       <button class="uk-button uk-button-primary uk-width-1-1 bouton" type="submit" ng-click="initPv()">Créer</button>
     </form>

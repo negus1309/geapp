@@ -5,7 +5,7 @@ app.controller('mainController', function($scope, $http, API_URL, $rootScope) {
   //*******************************************//
 
     /**
-     * 1.1 Récupère les données des commissions et leur membres dans le local storage s'il y a Internet
+     * 1.1 Récupère les données des commissions, leurs membres et le dernier PV dans le local storage s'il y a Internet
      *
      * @param aucun paramètre
      */
@@ -17,6 +17,10 @@ app.controller('mainController', function($scope, $http, API_URL, $rootScope) {
       $.getJSON( "../js/data/deputes.json", function( data ) {
         //console.log(data)
         localStorage.setItem('deputes', JSON.stringify(data));
+      });
+      $.getJSON( "../js/data/dernierpv.json", function( data ) {
+        //console.log(data)
+        localStorage.setItem('mesDerniersPv', JSON.stringify(data));
       });
     }
 
@@ -55,8 +59,27 @@ app.controller('mainController', function($scope, $http, API_URL, $rootScope) {
 
     }
 
+
     /**
-     * 1.4 Initialisation et enregistrement du SW (Service Worker) pour la mise en cache
+     * 1.4 Récupère dernier PV de la commission dans le scope depuis le local storage ou crée le espace de stockage la première fois
+     *
+     * @param aucun paramètre
+     */
+    if(localStorage.getItem('mesDerniersPv')){
+
+      var mesDerniersPv = JSON.parse(localStorage.getItem('mesDerniersPv'));
+
+      $rootScope.mesDerniersPv = mesDerniersPv;
+    }else{
+      var mesDerniersPv = [];
+      localStorage.setItem('mesDerniersPv', JSON.stringify(mesDerniersPv));
+      $rootScope.mesDerniersPv = mesDerniersPv;
+
+    }
+
+
+    /**
+     * 1.5 Initialisation et enregistrement du SW (Service Worker) pour la mise en cache
      *
      * @param aucun paramètre
      */

@@ -2,7 +2,7 @@
   "nom":"Finances",
   "id":1,
   "membres":[{
-    "id": "1",
+    "id": 1,
     "nom": "Empion",
     "prenom": "Tarte",
     "fonction": "president",
@@ -10,7 +10,7 @@
     "parti": "pdc"
   },
   {
-    "id": "2",
+    "id": 2,
     "nom": "Duvoyage",
     "prenom": "Jean",
     "fonction": "membre",
@@ -18,7 +18,7 @@
     "parti": "udc"
   },
   {
-    "id": "3",
+    "id": 3,
     "nom": "Armstrong",
     "prenom": "Louis",
     "fonction": "membre",
@@ -33,7 +33,7 @@
   "id":2,
   "membres":[
     {
-    "id": "4",
+    "id": 4,
     "nom": "Bush",
     "prenom": "Georges",
     "fonction": "president",
@@ -41,7 +41,7 @@
     "parti": "ps"
   },
   {
-    "id": "5",
+    "id": 5,
     "nom": "Clinton",
     "prenom": "Hillary",
     "fonction": "membre",
@@ -49,7 +49,7 @@
     "parti": "ps"
   },
   {
-    "id": "6",
+    "id": 6,
     "nom": "Trump",
     "prenom": "Donald",
     "fonction": "membre",

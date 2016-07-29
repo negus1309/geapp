@@ -45,7 +45,9 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
           $rootScope.pv = {}
           var pvToken = token();
           $rootScope.pv.token = pvToken;
-          $rootScope.pv.commission = {}
+          $rootScope.pv.commission = {};
+          $rootScope.other = {};
+          $rootScope.other.commissions = JSON.parse(localStorage.getItem('commissions'));
           var modal = UIkit.modal("#choix-commission-modal");
           modal.show();
 

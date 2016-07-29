@@ -1,0 +1,62 @@
+[{
+  "id":43,
+  "token":"vu3ytqijqvksdnxmdgfrbe29o4v7jprdnqtofrwxpn6tg9zfr",
+  "numero":244,
+  "lastPv":243,
+  "date":"02-06-2016",
+  "lieu":"Salle de ff",
+  "heure_debut":"13:00",
+  "heure_fin":"16:00",
+  "commission":{"nom":"Environnement","id":1},
+  "president":{
+    "id":2,
+    "nom":"Duvoyage",
+    "prenom":"Jean",
+    "titre":"m",
+    "parti":"udc",
+    "fonction":"president",
+    "created_at":"2016-06-27 12:19:35",
+    "updated_at":"2016-06-27 12:19:35"},
+  "deputes":[
+    {
+      "id":2,
+      "nom":"Duvoyage",
+      "prenom":"Jean",
+      "titre":"m",
+      "parti":"udc",
+      "fonction":"president",
+      "created_at":"2016-06-27 12:19:35",
+      "updated_at":"2016-06-27 12:19:35"
+    },{
+      "id":3,
+      "nom":"Armstrong",
+      "prenom":"Louis",
+      "titre":"m",
+      "parti":"pdc",
+      "fonction":"membre",
+      "created_at":"2016-06-27 12:19:35",
+      "updated_at":"2016-06-27 12:19:35"
+    },{
+      "id":4,
+      "nom":"Bush",
+      "prenom":"Georges",
+      "titre":"m",
+      "parti":"ps",
+      "fonction":"membre",
+      "created_at":"2016-06-27 12:19:35",
+      "updated_at":"2016-06-27 12:19:35"
+    },{
+      "id":5,
+      "nom":"Clinton",
+      "prenom":"Hillary",
+      "titre":"mme",
+      "parti":"ps",
+      "fonction":"membre",
+      "created_at":"2016-06-27 12:19:35",
+      "updated_at":"2016-06-27 12:19:35"
+    }
+  ],
+  "invites":[
+    {"nom":"ds","prenom":"dsds","titre":"m","id":4},
+    {"nom":"dsfsdfsd","prenom":"fsdfsd","titre":"mme","id":5}]
+  }]

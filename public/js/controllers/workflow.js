@@ -118,7 +118,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
        * @param aucun paramètre
        */
         $rootScope.updatePresident = function(){
-          console.log('tete')
+          $rootScope.deputes = JSON.parse(localStorage.getItem('deputes'));
           var mesCommissionsAvecMembres = $rootScope.deputes;
 
           angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
@@ -144,6 +144,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
          * @param aucun paramètre
          */
         $rootScope.updateDeputes = function(){
+          $rootScope.deputes = JSON.parse(localStorage.getItem('deputes'));
           var mesCommissionsAvecMembres = $rootScope.deputes;
           angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
             if(maCommissionAvecMembres.id == $rootScope.pv.commission.id){

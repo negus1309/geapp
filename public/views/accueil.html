@@ -129,7 +129,69 @@
                 </div>
               </div>
 
+              <!-- Dernier PV -->
+              <div class="uk-panel uk-panel-box uk-width-1-1">
+                <h3 class="uk-panel-title"><i class="uk-icon-archive"></i> Derniers PV</h3>
+                <button class="uk-button corbeille-toggle" data-uk-toggle="{target:'#dernierspv'}">
+                  <div>Afficher / Masquer la corbeille</div>
 
+                </button>
+                <div id='dernierspv' class="uk-hidden">
+                  <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
+                    <thead>
+                      <tr class="header-row">
+                          <th></th>
+                          <th>Numéro</th>
+                          <th>Date</th>
+                          <th>Commission</th>
+                          <th>Heure</th>
+                          <th colspan="4" style="border-left:1px solid #eee;">Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="pv in mesDerniersPv track by $index">
+                      <td><b>{{$index+1}}</b></td>
+                      <td>
+                        {{pv.numero}}
+                        <span class="placeholder-content" ng-hide="pv.numero">Aucun</span>
+                      </td>
+                      <td>
+                        {{pv.date}}
+                        <span class="placeholder-content" ng-hide="pv.date">Aucune</span>
+                      </td>
+                      <td>
+                        {{pv.commission.nom}}
+                        <span class="placeholder-content" ng-hide="pv.commission.nom">Aucune</span>
+                      </td>
+                      <td>
+                        {{pv.heure_debut}}
+                        <span class="placeholder-content" ng-hide="pv.heure_debut">Aucune</span>
+                      </td>
+                      <!-- tools -->
+                      <td class="pv-action pv-action-first">
+                        <a href="#" ng-click="editPv(pv.token);" class="uk-button uk-button-mini uk-button-success"><span class="edit-pv action-button">éditer</span></a><br/>
+
+                      </td>
+                      <td class="pv-action">
+                        <a href="#" ng-click="convertPv(pv.token)" class="uk-button uk-button-mini uk-button-success"><span class="convert-pv action-button">convertir</span></a>
+
+                      </td>
+                      <td class="pv-action">
+                        <a href="#" ng-click="soumettrePv(pv.token);refreshSeance();" class="uk-button uk-button-mini uk-button-success"><span class="soumettre-pv action-button" data-pv-id="{{pv.id}}">soumettre</span></a>
+
+                      </td>
+
+                    </tr>
+                  </tbody>
+
+                  </table>
+                  <span class="no-pv" ng-hide="mesPvCorbeille.length">Aucun PV dans la corbeille</span>
+
+
+
+
+                </div>
+              </div>
 
 
       </div>
