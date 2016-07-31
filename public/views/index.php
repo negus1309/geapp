@@ -23,7 +23,8 @@
         <link href="<?= asset('css/uikit/components/notify.min.css') ?>" rel="stylesheet"  />
         <link href="<?= asset('css/uikit/components/datepicker.almost-flat.min.css') ?>" rel="stylesheet"  />
         <link href="<?= asset('css/uikit/components/notify.almost-flat.min.css') ?>" rel="stylesheet"  />
-
+        <link href="<?= asset('css/uikit/components/tooltip.min.css') ?>" rel="stylesheet"  />
+        <link href="<?= asset('css/uikit/components/tooltip.almost-flat.min.css') ?>" rel="stylesheet"  />
         <!-- ********************** -->
         <!-- *** Fontawesome (icon) -->
         <!-- ********************** -->
@@ -88,6 +89,7 @@
         <script src="<?= asset('js/plugins/uikit/datepicker.min.js') ?>"></script>
         <script src="<?= asset('js/plugins/uikit/timepicker.min.js') ?>"></script>
         <script src="<?= asset('js/plugins/uikit/autocomplete.min.js') ?>"></script>
+        <script src="<?= asset('js/plugins/uikit/tooltip.min.js') ?>"></script>
 
         <script src="<?= asset('js/plugins/uikit/notify.min.js') ?>"></script>
 

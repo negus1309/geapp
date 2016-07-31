@@ -112,7 +112,8 @@
                       </td>
 
                       <td class="pv-action">
-                        <a href="#" ng-click="deletePv($index);refreshSeance();" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-pv action-button" data-pv-id="{{pv.id}}">supprimer définitivement</span></a> <i class="uk-icon-warning"></i>
+                        <a href="#" ng-click="deletePv($index);refreshSeance();" class="uk-button uk-button-mini uk-button-danger" data-uk-tooltip title="Cette action est irréversible!"><span class="supprimer-pv action-button" data-pv-id="{{pv.id}}">supprimer définitivement</span></a>
+                        <i class="uk-icon-warning"></i>
 
 
                       </td>
@@ -131,9 +132,9 @@
 
               <!-- Dernier PV -->
               <div class="uk-panel uk-panel-box uk-width-1-1">
-                <h3 class="uk-panel-title"><i class="uk-icon-archive"></i> Derniers PV</h3>
+                <h3 class="uk-panel-title"><i class="uk-icon-archive"></i> Dernier(s) PV</h3>
                 <button class="uk-button corbeille-toggle" data-uk-toggle="{target:'#dernierspv'}">
-                  <div>Afficher / Masquer la corbeille</div>
+                  <div>Afficher / Masquer le(s) derniers() PV</div>
 
                 </button>
                 <div id='dernierspv' class="uk-hidden">
@@ -185,7 +186,7 @@
                   </tbody>
 
                   </table>
-                  <span class="no-pv" ng-hide="mesPvCorbeille.length">Aucun PV dans la corbeille</span>
+                  <span class="no-pv" ng-hide="mesPvCorbeille.length">Aucun dernier(s) PV</span>
 
 
 
