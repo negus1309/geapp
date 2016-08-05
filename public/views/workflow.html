@@ -1,6 +1,4 @@
 <div id="workflow" ng-controller="workflowController">
-{{pv}}
-{{deputes}}
 
 
 
@@ -74,7 +72,11 @@
           <div class="uk-form-controls">
             <input id="president-nom" type="text" ng-model="pv.president.nom">
             <input id="president-prenom"  type="text" ng-model="pv.president.prenom" placeholder="Prenom">
-            <input id="president-titre"  type="text" ng-model="pv.president.titre" placeholder="Titre" size="5">
+            <!--input id="president-titre"  type="text" ng-model="pv.president.titre" placeholder="Titre" size="5"-->
+            <select id="president-titre" ng-model="pv.president.titre" placeholder="Titre">
+              <option value="m">Monsieur</option>
+              <option value="mme">Madame</option>
+            </select>
           </div>
         </div>
 

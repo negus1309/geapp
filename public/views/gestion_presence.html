@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            
+
             <!-- DEPUTES DE BASE DAnS LA COMM: -->
             <tr ng-repeat="depute in pv.deputes" class="normal-row">
               <td>{{depute.nom}}</td>
@@ -37,7 +37,12 @@
             <tr ng-repeat="deputeAdded in pv.deputesAdded" class="normal-row">
               <td><input type="text" ng-model="pv.deputesAdded[$index].nom"></td>
               <td><input type="text" ng-model="pv.deputesAdded[$index].prenom"></td>
-              <td><input type="text" ng-model="pv.deputesAdded[$index].titre"></td>
+              <td><!--input type="text" ng-model="pv.deputesAdded[$index].titre"-->
+                <select ng-model="pv.deputesAdded[$index].titre" placeholder="Titre">
+                  <option value="m">Monsieur</option>
+                  <option value="mme">Madame</option>
+                </select>
+              </td>
               <td><input type="text" ng-model="pv.deputesAdded[$index].parti"></td>
               <!-- hour tick -->
               <td class="hour-cell" ng-repeat="present in deputeAdded.isPresentAtTimes track by $index">
