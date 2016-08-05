@@ -8,12 +8,12 @@
                 <table class="uk-table uk-table-hover">
                   <thead>
                     <tr class="header-row">
-                        <th></th>
-                        <th>Numéro</th>
-                        <th>Date</th>
-                        <th>Commission</th>
-                        <th>Heure</th>
-                        <th colspan="4" style="border-left:1px solid #eee;">Actions</th>
+                        <th style="width:5%;"></th>
+                        <th class="uk-width-1-10">Numéro</th>
+                        <th class="uk-width-2-10">Date</th>
+                        <th class="uk-width-2-10">Commission</th>
+                        <th class="uk-width-1-10">Heure</th>
+                        <th class="uk-width-4-10" colspan="4" style="border-left:1px solid #eee;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,16 +36,12 @@
                       <span class="placeholder-content" ng-hide="pv.heure_debut">Aucune</span>
                     </td>
                     <!-- tools -->
-                    <td class="pv-action pv-action-first">
-                      <a href="#" ng-click="editPv(pv.token);" class="uk-button uk-button-mini uk-button-success"><span class="edit-pv action-button">éditer</span></a><br/>
+                    <td>
+                      <a href="#" ng-click="editPv(pv.token);" class="uk-button uk-button-mini uk-button-success"><span class="edit-pv action-button">éditer</span></a>
 
-                    </td>
-
-                    <td class="pv-action">
                       <a href="#" ng-click="soumettrePv(pv.token);refreshSeance();convertPv(pv.token);" class="uk-button uk-button-mini uk-button-success"><span class="soumettre-pv action-button" data-pv-id="{{pv.id}}">soumettre</span></a>
 
-                    </td>
-                    <td class="pv-action">
+
                       <a href="#" ng-click="moveToTrash($index);refreshSeance();" class="uk-button uk-button-mini uk-button-danger"><span class="trash-pv action-button" >Mettre à la corbeille</span></a>
 
                     </td>
@@ -77,12 +73,12 @@
                   <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
                     <thead>
                       <tr class="header-row">
-                          <th></th>
-                          <th>Numéro</th>
-                          <th>Date</th>
-                          <th>Commission</th>
-                          <th>Heure</th>
-                          <th colspan="4" style="border-left:1px solid #eee;">Actions</th>
+                          <th style="width:5%;"></th>
+                          <th class="uk-width-1-10">Numéro</th>
+                          <th class="uk-width-2-10">Date</th>
+                          <th class="uk-width-2-10">Commission</th>
+                          <th class="uk-width-1-10">Heure</th>
+                          <th class="uk-width-4-10" colspan="4" style="border-left:1px solid #eee;" >Actions</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -105,12 +101,10 @@
                         <span class="placeholder-content" ng-hide="pv.heure_debut">Aucune</span>
                       </td>
                       <!-- tools -->
-                      <td class="pv-action pv-action-first">
-                        <a href="#" ng-click="editPv(pv.token);" class="uk-button uk-button-mini uk-button-success"><span class="edit-pv action-button">éditer</span></a><br/>
+                      <td>
+                        <a href="#" ng-click="editPv(pv.token);" class="uk-button uk-button-mini uk-button-success"><span class="edit-pv action-button">éditer</span></a>
 
-                      </td>
 
-                      <td class="pv-action">
                         <a href="#" ng-click="soumettrePv(pv.token);convertPv(pv.token);refreshSeance();" class="uk-button uk-button-mini uk-button-success"><span class="soumettre-pv action-button" data-pv-id="{{pv.id}}">soumettre</span></a>
 
                       </td>
@@ -138,12 +132,12 @@
                   <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
                     <thead>
                       <tr class="header-row">
-                          <th></th>
-                          <th>Numéro</th>
-                          <th>Date</th>
-                          <th>Commission</th>
-                          <th>Heure</th>
-                          <th colspan="4" style="border-left:1px solid #eee;">Actions</th>
+                          <th style="width:5%;"></th>
+                          <th class="uk-width-1-10">Numéro</th>
+                          <th class="uk-width-2-10">Date</th>
+                          <th class="uk-width-2-10">Commission</th>
+                          <th class="uk-width-1-10">Heure</th>
+                          <th class="uk-width-4-10" colspan="4" style="border-left:1px solid #eee;">Actions</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -166,12 +160,10 @@
                         <span class="placeholder-content" ng-hide="pv.heure_debut">Aucune</span>
                       </td>
                       <!-- tools -->
-                      <td class="pv-action pv-action-first">
-                        <a href="#" ng-click="moveToPv($index);" class="uk-button uk-button-mini uk-button-success"><span class="untrash-pv action-button">récupérer</span></a><br/>
+                      <td>
+                        <a href="#" ng-click="moveToPv($index);" class="uk-button uk-button-mini uk-button-success"><span class="untrash-pv action-button">récupérer</span></a>
 
-                      </td>
 
-                      <td class="pv-action">
                         <a href="#" ng-click="deletePv($index);refreshSeance();" class="uk-button uk-button-mini uk-button-danger" data-uk-tooltip title="Cette action est irréversible!"><span class="supprimer-pv action-button" data-pv-id="{{pv.id}}">supprimer définitivement</span></a>
                         <i class="uk-icon-warning"></i>
 

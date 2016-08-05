@@ -27,6 +27,8 @@ Route::post('/geapp/public/api/v1/invite/create', 'InviteController@storeInvite'
 Route::post('/geapp/public/api/v1/assistance/create', 'AssistanceController@storeAssistance');
 
 Route::delete('/geapp/public/api/v1/rubriques/delete', 'RubriqueController@deleteRubriquesFromThisSeance');
+// Ajout d'une rubrique
+Route::post('/geapp/public/api/v1/rubrique/create', 'RubriqueController@storeRubrique');
 
 // Ajout presence
 Route::post('/geapp/public/api/v1/presence/create','PresenceController@storePresence');
@@ -40,11 +42,15 @@ Route::delete('/geapp/public/api/v1/absence/delete','AbsenceController@deleteAbs
 //Supprimer toutes absence pour seance
 Route::delete('/geapp/public/api/v1/presence/delete','PresenceController@deletePresenceFromThisSeance');
 
-
 // pv jsonc create
 Route::post('/geapp/public/api/v1/pv/save','PvController@createOrUpdatePv');
 
+Route::get('/geapp/public/api/v1/pvs','PvController@getAllPv');
 
+
+
+
+//------ useless
 
 
 // Accès à chaque commission comprenant les séances liées
@@ -79,8 +85,7 @@ Route::get('/geapp/public/api/v1/commissions/{commission_id}/deputes', 'DeputeCo
 // Accès aux rubriques d'une séance (pv)
 Route::get('/geapp/public/api/v1/seance/{seance_id}/rubriques', 'RubriqueController@getRubriques');
 
-// Ajout d'une rubrique
-Route::post('/geapp/public/api/v1/rubrique/create', 'RubriqueController@storeRubrique');
+
 // Suppression d'une rubrique
 Route::delete('/geapp/public/api/v1/seance/{seance_id}/rubrique/{rubrique_id}/delete', 'RubriqueController@deleteRubrique');
 /*

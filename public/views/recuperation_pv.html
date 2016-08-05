@@ -1,0 +1,69 @@
+<div id="recuperation-pv-modal" class="uk-modal" ng-controller="recuperationPvController"><!-- ng-controller=""-->
+  <div class="uk-modal-dialog  uk-width-1-1" id="recuperation-pv-dialog">
+      <div class="uk-modal-header"><h2>Récupération d'un PV</h2></div>
+
+
+      <table class="uk-table uk-table-hover">
+        <thead>
+          <tr class="header-row">
+              <th style="width:5%;"></th>
+              <th class="uk-width-1-10">Numéro</th>
+              <th class="uk-width-2-10">Date</th>
+              <th class="uk-width-2-10">Commission</th>
+              <th class="uk-width-1-10">Heure</th>
+              <th class="uk-width-4-10" colspan="4" style="border-left:1px solid #eee;">Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="pv in mesPvRecuperes track by $index">
+          <td><b>{{$index+1}}</b></td>
+          <td>
+            {{pv.numero}}
+            <span class="placeholder-content" ng-hide="pv.numero">Aucun</span>
+          </td>
+          <td>
+            {{pv.date}}
+            <span class="placeholder-content" ng-hide="pv.date">Aucune</span>
+          </td>
+          <td>
+            {{pv.commission.nom}}
+            <span class="placeholder-content" ng-hide="pv.commission.nom">Aucune</span>
+          </td>
+          <td>
+            {{pv.heure_debut}}
+            <span class="placeholder-content" ng-hide="pv.heure_debut">Aucune</span>
+          </td>
+          <!-- tools -->
+          <td>
+            <a href="#" ng-click="" class="uk-button uk-button-mini uk-button-success"><span class="edit-pv action-button">Récupérer</span></a>
+
+
+          </td>
+
+        </tr>
+      </tbody>
+
+      </table>
+      <div class="uk-modal-footer">
+
+      </div>
+  </div>
+
+
+</div>
+
+<!--div class="uk-modal" id="add-depute">
+    <div class="uk-modal-dialog">
+      <form class="uk-form uk-form-horizontal">
+
+        <div class="uk-modal-header">Ajouter un député</div>
+
+          <label class="uk-form-label" for="gnom">Nom</label>
+          <div class="uk-form-controls">
+              <input type="text" id="gnom" ng-model="myDeputeToAdd.nom">
+          </div>
+
+        <div class="uk-modal-footer">...</div>
+      </form>
+    </div-->
+</div>

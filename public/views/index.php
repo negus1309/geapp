@@ -65,7 +65,10 @@
       <ng-include src="'<?= asset('views/accueil.html')?>'"></ng-include>
 
       <ng-include src="'<?= asset('views/workflow.html')?>'"></ng-include>
+
       <ng-include src="'<?= asset('views/gestion_presence.html')?>'"></ng-include>
+      <ng-include src="'<?= asset('views/recuperation_pv.html')?>'"></ng-include>
+
       <ng-include src="'<?= asset('views/word_document.html')?>'"></ng-include>
 
       <ng-include src="'<?= asset('views/audio.html')?>'"></ng-include>
@@ -91,7 +94,7 @@
         <script src="<?= asset('js/plugins/jquery.wordexport.js') ?>"></script>
         <script src="<?= asset('js/plugins/moment.js') ?>"></script>
         <script src="<?= asset('js/plugins/fullcalendar.js') ?>"></script>
-        
+
         <script src="<?= asset('js/plugins/uikit/datepicker.min.js') ?>"></script>
         <script src="<?= asset('js/plugins/uikit/timepicker.min.js') ?>"></script>
         <script src="<?= asset('js/plugins/uikit/autocomplete.min.js') ?>"></script>
@@ -114,6 +117,7 @@
         <script src="<?= asset('js/controllers/main.js') ?>"></script>
         <script src="<?= asset('js/controllers/menu.js') ?>"></script>
         <script src="<?= asset('js/controllers/gestion_presence.js') ?>"></script>
+        <script src="<?= asset('js/controllers/recuperation_pv.js') ?>"></script>
         <script src="<?= asset('js/controllers/audio.js') ?>"></script>
 
 

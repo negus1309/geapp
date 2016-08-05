@@ -25,7 +25,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
     menubar:false,
     toolbar:false,
     elementpath: false,
-     statusbar: false
+    statusbar: false
   }
 
 //*******************************************//

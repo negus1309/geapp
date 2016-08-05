@@ -326,13 +326,11 @@ div.tools-pv {
     margin-bottom: 3px;
     width: 80px; }
 
-td.pv-action {
-  width: auto;
-  text-align: center; }
+ /*
+ td.pv-action-first{
 
-td.pv-action-first {
-  border-left: 1px #eee solid; }
-
+   border-left:1px $color-gris solid;
+ }*/
 span.no-pv {
   text-align: center;
   width: 100%;
