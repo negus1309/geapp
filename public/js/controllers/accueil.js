@@ -39,6 +39,8 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
  */
  $scope.nouveauPv = function(){
 
+
+
         var pvCount = $rootScope.mesPv.length;
 
         if(pvCount < 3){
@@ -70,6 +72,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
           $('#workflow').show();
           $('div#menu a').show();
           $('div#menu a#recuperer-pv').hide();
+          $('a#toggle-audio-icon').show();
 
           $rootScope.updateDeputes();
           $rootScope.updatePresident();
@@ -176,6 +179,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
     $('#workflow').show();
     $('div#menu a').show();
     $('div#menu a#recuperer-pv').hide();
+    $('a#toggle-audio-icon').show();
 
     var mesPv = $rootScope.mesPv;
     angular.forEach(mesPv, function(monPv, key) {
@@ -202,7 +206,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
                       message : '<i class=\'uk-icon-check\'></i>&nbsp;PV soumis!',
                       status  : 'success',
                       timeout : 3000,
-                      pos     : 'top-right'
+                      pos     : 'top-center'
                   });
 
                 }else{
@@ -210,7 +214,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
                       message : '<i class=\'uk-icon-close\'></i>&nbsp;Il faut être connecté à Internet.',
                       status  : 'danger',
                       timeout : 3000,
-                      pos     : 'top-right'
+                      pos     : 'top-center'
                   });
                 }
 
@@ -243,7 +247,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
                 message : '<i class=\'uk-icon-check\'></i>&nbsp;PV supprimé!',
                 status  : 'success',
                 timeout : 3000,
-                pos     : 'top-right'
+                pos     : 'top-center'
             });
 
 

@@ -122,6 +122,8 @@ app.controller('mainController', function($scope, $http, API_URL, $rootScope) {
       $scope.toggleAudio = function(){
 
         $('#audio-panel').toggle();
+        $('#toggle-audio-icon').hide();
+
       }
 
 

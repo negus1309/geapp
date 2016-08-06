@@ -47,9 +47,9 @@ Route::post('/geapp/public/api/v1/pv/save','PvController@createOrUpdatePv');
 
 Route::get('/geapp/public/api/v1/pvs','PvController@getAllPv');
 
+Route::post('geapp/public/api/v1/audio/upload','AudioController@audioUpload');
 
-
-
+Route::get('geapp/public/api/v1/audio/file/{token}', 'AudioController@getAudio');
 //------ useless
 
 

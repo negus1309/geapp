@@ -41,6 +41,8 @@ app.controller('menuController', function($scope, $http, API_URL, $rootScope) {
             $('#workflow').hide();
             $('div#menu a').hide();
             $('div#menu a#recuperer-pv').show();
+            $('#audio-panel').hide();
+            $('#toggle-audio-icon').hide();
 
           }
 

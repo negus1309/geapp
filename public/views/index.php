@@ -30,6 +30,19 @@
 
         <link href="<?= asset('css/uikit/components/autocomplete.min.css') ?>" rel="stylesheet"  />
         <link href="<?= asset('css/uikit/components/autocomplete.almost-flat.min.css') ?>" rel="stylesheet"  />
+
+        <link href="<?= asset('css/uikit/components/upload.min.css') ?>" rel="stylesheet"  />
+        <link href="<?= asset('css/uikit/components/upload.almost-flat.min.css') ?>" rel="stylesheet"  />
+
+        <link href="<?= asset('css/uikit/components/progress.min.css') ?>" rel="stylesheet"  />
+        <link href="<?= asset('css/uikit/components/progress.almost-flat.min.css') ?>" rel="stylesheet"  />
+
+        <link href="<?= asset('css/uikit/components/form-file.min.css') ?>" rel="stylesheet"  />
+        <link href="<?= asset('css/uikit/components/form-file.almost-flat.min.css') ?>" rel="stylesheet"  />
+
+        <link href="<?= asset('css/uikit/components/placeholder.min.css') ?>" rel="stylesheet"  />
+        <link href="<?= asset('css/uikit/components/placeholder.almost-flat.min.css') ?>" rel="stylesheet"  />
+        
         <!-- ********************** -->
         <!-- *** Fontawesome (icon) -->
         <!-- ********************** -->
@@ -72,7 +85,7 @@
       <ng-include src="'<?= asset('views/word_document.html')?>'"></ng-include>
 
       <ng-include src="'<?= asset('views/audio.html')?>'"></ng-include>
-      <a href="#"  id="toggle-audio-icon" ng-click="toggleAudio();"><i class="uk-icon-toggle-up" ></i></a>
+      <a href="#" id="toggle-audio-icon" ng-click="toggleAudio();"><i class="uk-icon-toggle-up" ></i></a>
 
 
 
@@ -101,6 +114,8 @@
         <script src="<?= asset('js/plugins/uikit/tooltip.min.js') ?>"></script>
 
         <script src="<?= asset('js/plugins/uikit/notify.min.js') ?>"></script>
+        <script src="<?= asset('js/plugins/uikit/upload.min.js') ?>"></script>
+
 
         <script src="<?= asset('js/plugins/tinymce/tinymce.min.js') ?>"></script>
         <script src="<?= asset('js/plugins/tinymce/ui-tinymce.js') ?>"></script>

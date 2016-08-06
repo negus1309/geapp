@@ -10,7 +10,7 @@ app.controller('recuperationPvController', function($scope, $http, API_URL, $roo
    *
    * @param aucun paramètre
    */
-  $scope.getPvRecuperes = function(){
+  $rootScope.getPvRecuperes = function(){
 
     $http({
       url: API_URL + "pvs",

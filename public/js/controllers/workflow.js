@@ -43,6 +43,10 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
        */
         $scope.tinymceOptions = {
           menubar:false, // barre de menu masquée
+          elementpath: false,
+          statusbar: false,
+          plugins:"autoresize",
+          autoresize_max_height:"600px",
           setup: function (editor) {
               editor.addButton('ajoutdepute', { // ajoute la fonction d'ajout de député à la barre d'outils
                 text: 'Insérer un député',
@@ -56,7 +60,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
               editor.on("init", function(editor) {
 
               });
-              editor.addShortcut('alt+d', 'Insertiond depute', function(){
+              editor.addShortcut('alt+d', 'Insertion depute', function(){
                 var modal = UIkit.modal("#insert-depute");
                 modal.toggle();
 
@@ -274,7 +278,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
             message : '<i class=\'uk-icon-check\'></i>&nbsp;PV sauvegardé!',
             status  : 'success',
             timeout : 3000,
-            pos     : 'top-right'
+            pos     : 'top-center'
         });
 
 
@@ -285,10 +289,12 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
         if(navigator.onLine){
 
+          var monNouveauPvStringify = JSON.stringify(monNouveauPv)
+          console.log(monNouveauPvStringify)
           $http({
             url: API_URL + "pv/save",
             method: "POST",
-            params: {'pv':monNouveauPv,'token':monNouveauPv.token}
+            data: {'pv':monNouveauPvStringify,'token':monNouveauPv.token}
           }).success(function(response){
 
             console.log(response)
@@ -318,7 +324,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
             'commission_id':$scope.pv.commission.id,
             'depute_id':$scope.pv.president.id
           };
-          console.log(maSeance)
+          //console.log(maSeance)
 
           $http({
             url: API_URL + "seance/save",
@@ -419,11 +425,11 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
                               })
                               .success(function(response) {
                                 angular.forEach(mesDeputes, function(monDepute, key) {
-                                  console.log(monDepute)
+                                  //console.log(monDepute)
                                     angular.forEach(monDepute.isPresentAtTimes, function(isPresentAtTime, key) {
                                       var idDepute = monDepute.id;
                                       //var idSeance =
-                                      console.log(isPresentAtTime)
+                                      //console.log(isPresentAtTime)
                                       var heure = key+1;
                                       if(isPresentAtTime == true){
 

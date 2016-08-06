@@ -3,13 +3,21 @@
     <a href="#" ng-click="toggleAudio();"><i class="uk-icon-toggle-down" ></i></a>
   </div>
 
-  <div ng-controller = "myCtrl">
-    <form>
-      <input type="file" file-model="myFile"/>
-      <input type="hidden" ng-model="meta.idSeance" name="seance" value="{{meta.idSeance}}"/>
-      {{meta.idSeance}}
-      <button ng-click="uploadFile()">upload me</button>
-    </form>
+  <div id="audio-submit" style="padding:10px;">
+
+        <div id="upload-drop" class="uk-placeholder">
+            Glisser le fichier audio ou<br/>
+            <button class="uk-form-file uk-button uk-button-mini uk-button-success"><span class="action-button">Sélectionner le fichier</span><input id="upload-select" name="audio" type="file"></button>
+        </div>
+
+        <div id="progressbar" class="uk-progress uk-hidden">
+            <div class="uk-progress-bar" style="width: 0%;">...</div>
+        </div>
+
+  </div>
+
+  <div id="audio-player">
+
   </div>
 
 </div>
