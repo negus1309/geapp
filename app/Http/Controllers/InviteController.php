@@ -14,15 +14,15 @@ use DB;
 
 
 class InviteController extends Controller {
-  // V2 ok
+
+
   /**
-   * Display a listing of the resource.
+   * Création d'un Invite
    *
    * @return Response
    */
   public function storeInvite(Request $request){
 
-      //$monInvite = new Invite;
       $monInvite = Invite::firstOrCreate(['nom' => $request->nom, 'prenom'=>$request->prenom, 'titre'=>$request->titre]);
 
       return response($monInvite->toJson(), 201, array('Content-Type' => 'application/json'));
@@ -30,7 +30,7 @@ class InviteController extends Controller {
   }
 
   /**
-   * Display a listing of the resource.
+   * Suppression d'un Invite
    *
    * @return Response
    */
@@ -41,11 +41,6 @@ class InviteController extends Controller {
 
 
   }
-
-
-
-
-
 
 
 }

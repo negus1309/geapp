@@ -15,7 +15,7 @@ use DB;
 class AssistanceController extends Controller {
 
   /**
-   * Display a listing of the resource.
+   * Création d'une Assistance pour une Seance
    *
    * @return Response
    */
@@ -23,17 +23,13 @@ class AssistanceController extends Controller {
 
     $monAssistance = Assistance::firstOrCreate(['seance_id' => $request->seance_id, 'invite_id'=>$request->invite_id]);
 
-
     return response($monAssistance->toJson(), 201, array('Content-Type' => 'application/json'));
-
-
 
   }
 
 
-
   /**
-   * Display a listing of the resource.
+   * Suppression d'une Assistance pour une Seance
    *
    * @return Response
    */
@@ -54,13 +50,6 @@ class AssistanceController extends Controller {
           ->delete();
           return $test;
       }
-
-
-
-
   }
-
-
-
 
 }

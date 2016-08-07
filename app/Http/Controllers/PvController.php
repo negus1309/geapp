@@ -14,14 +14,12 @@ use DB;
 
 class PvController extends Controller {
 
-    // v2
     /**
-     * Display a listing of the resource.
+     * Création ou mise à jour d'un PV (JSON)
      *
      * @return Response
      */
     public function createOrUpdatePv(Request $request){
-
 
       $seanceToken = $request->token;
       $pvToStore = $request->pv;
@@ -48,17 +46,11 @@ class PvController extends Controller {
       return response($monPvToSend, $status)
                   ->header('Content-Type', $value);
 
-
-
-
-
-
-
     }
 
 
     /**
-     * Display a listing of the resource.
+     * Accès à tous les PV (JSON)
      *
      * @return Response
      */
@@ -70,8 +62,6 @@ class PvController extends Controller {
       $value = "application/json";
       return response($tousMesPv, $status)
                   ->header('Content-Type', $value);
-
-
 
     }
 

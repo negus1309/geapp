@@ -13,7 +13,7 @@ use DB;
 class CommissionController extends Controller {
 
     /**
-     * Display a listing of the resource.
+     * Accès à toutes les Commissions (collection)
      *
      * @return Response
      */
@@ -23,14 +23,13 @@ class CommissionController extends Controller {
     }
 
     /**
-     * Display a listing of the resource.
+     * Accès aux Commissions et aux Seances liées
      *
      * @return Response
      */
     public function getCommissionWithSeances(){
+
       $comWithSeance = Commission::with('seance')->get();
-
-
 
       return $comWithSeance;
 
@@ -38,14 +37,13 @@ class CommissionController extends Controller {
 
 
     /**
-     * Display a listing of the resource.
+     * Accès à la aux Commissions et à la dernière Seance liée
      *
      * @return Response
      */
     public function getCommissionWithLastSeance(){
+
       $comWithSeance = Commission::with('seance_lastpv')->get();
-
-
 
       return $comWithSeance;
 

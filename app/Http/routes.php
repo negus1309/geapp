@@ -4,95 +4,83 @@
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
 */
 
+  // Route par défaut (accueil)
+  Route::get('/', function () {
+      return view('index');
+  });
 
-// Route par défaut
-Route::get('/', function () {
-    return view('index');
-});
+  /*
+  | 01 ) Seance Controller routes (relationnel)
+  |--------------------------------------------------------------------------
+  */
 
-// Sauvegarde Seance
-Route::post('/geapp/public/api/v1/seance/save','SeanceController@createOrUpdateSeance');
+    // Sauvegarde et met à jour les informations générales d'une Seance
+    Route::post('/geapp/public/api/v1/seance/save','SeanceController@createOrUpdateSeance');
 
-// Ajout d'un invité
-Route::post('/geapp/public/api/v1/invite/create', 'InviteController@storeInvite');
+  /*
+  | 02 ) Pv Controller routes (JSON object store)
+  |--------------------------------------------------------------------------
+  */
 
-// Ajout d'un assistance
-Route::post('/geapp/public/api/v1/assistance/create', 'AssistanceController@storeAssistance');
+    // Sauvegarde et met à jour le PV sous forme d'objet JSON
+    Route::post('/geapp/public/api/v1/pv/save','PvController@createOrUpdatePv');
 
-Route::delete('/geapp/public/api/v1/rubriques/delete', 'RubriqueController@deleteRubriquesFromThisSeance');
-// Ajout d'une rubrique
-Route::post('/geapp/public/api/v1/rubrique/create', 'RubriqueController@storeRubrique');
+    // Récupération d'un PV sous forme d'objet JSON
+    Route::get('/geapp/public/api/v1/pv','PvController@getAllPv');
 
-// Ajout presence
-Route::post('/geapp/public/api/v1/presence/create','PresenceController@storePresence');
+  /*
+  | 03 ) Invite Controller routes
+  |--------------------------------------------------------------------------
+  */
+    // Ajout d'un Invité
+    Route::post('/geapp/public/api/v1/invite/create', 'InviteController@storeInvite');
 
-//Ajout absence
-Route::post('/geapp/public/api/v1/absence/create','AbsenceController@storeAbsence');
+  /*
+  | 04 ) Assistance Controller routes
+  |--------------------------------------------------------------------------
+  */
+    // Ajout d'un assistance
+    Route::post('/geapp/public/api/v1/assistance/create', 'AssistanceController@storeAssistance');
 
-//Supprimer toutes absence pour seance
-Route::delete('/geapp/public/api/v1/absence/delete','AbsenceController@deleteAbsenceFromThisSeance');
+  /*
+  | 05 ) Rubrique Controller routes
+  |--------------------------------------------------------------------------
+  */
+    // Suppression de toutes les Rubriques pour une Seance
+    Route::delete('/geapp/public/api/v1/rubriques/delete', 'RubriqueController@deleteRubriquesFromThisSeance');
 
-//Supprimer toutes absence pour seance
-Route::delete('/geapp/public/api/v1/presence/delete','PresenceController@deletePresenceFromThisSeance');
+    // Ajout d'une rubrique pour une Séance
+    Route::post('/geapp/public/api/v1/rubrique/create', 'RubriqueController@storeRubrique');
 
-// pv jsonc create
-Route::post('/geapp/public/api/v1/pv/save','PvController@createOrUpdatePv');
+  /*
+  | 06 ) Presence Controller routes
+  |--------------------------------------------------------------------------
+  */
+    // Ajout d'une présence pour l'heure d'une Seance
+    Route::post('/geapp/public/api/v1/presence/create','PresenceController@storePresence');
 
-Route::get('/geapp/public/api/v1/pvs','PvController@getAllPv');
+    // Suppression de toutes les absence pour une Seance
+    Route::delete('/geapp/public/api/v1/presences/delete','PresenceController@deletePresencesFromThisSeance');
 
-Route::post('geapp/public/api/v1/audio/upload','AudioController@audioUpload');
+  /*
+  | 07 ) Absence Controller routes
+  |--------------------------------------------------------------------------
+  */
+    //Ajout absence
+    Route::post('/geapp/public/api/v1/absence/create','AbsenceController@storeAbsence');
 
-Route::get('geapp/public/api/v1/audio/file/{token}', 'AudioController@getAudio');
-//------ useless
-
-
-// Accès à chaque commission comprenant les séances liées
-Route::get('/geapp/public/api/v1/commissions/seances', 'CommissionController@getCommissionWithSeances');
-
-// Accès à chaque commission comprenant la dernière séance en date
-Route::get('/geapp/public/api/v1/commissions/seance/last', 'CommissionController@getCommissionWithLastSeance');
-
-// Création d'une séance vide
-Route::post('/geapp/public/api/v1/seance/create', 'SeanceController@newSeance');
-
-// Ajout d'information pour une séance
-Route::put('/geapp/public/api/v1/seance/update', 'SeanceController@updateSeance');
-
-// Accès aux informations d'une séance en fonction de son id
-Route::get('/geapp/public/api/v1/seance/{idSeance}', 'SeanceController@getSeance');
-
-// Suppression d'une séance en fonction de son id
-Route::delete('/geapp/public/api/v1/seance/{idSeance}/delete', 'SeanceController@deleteSeance');
-
-
-
-
-
-// Accès aux invite d'une séance
-Route::get('/geapp/public/api/v1/seance/{seance_id}/invite', 'InviteController@getInvitePourSeance');
-
-Route::delete('/geapp/public/api/v1/seance/{seance_id}/invite/{invite_id}/delete','AssistanceController@deleteAssistance');
-
-Route::get('/geapp/public/api/v1/commissions/{commission_id}/deputes', 'DeputeController@getDeputeForSeance');
-
-// Accès aux rubriques d'une séance (pv)
-Route::get('/geapp/public/api/v1/seance/{seance_id}/rubriques', 'RubriqueController@getRubriques');
+    //Supprimer toutes absence pour seance
+    Route::delete('/geapp/public/api/v1/absences/delete','AbsenceController@deleteAbsencesFromThisSeance');
 
 
-// Suppression d'une rubrique
-Route::delete('/geapp/public/api/v1/seance/{seance_id}/rubrique/{rubrique_id}/delete', 'RubriqueController@deleteRubrique');
-/*
-Route::any('{path?}', function()
-{
-    return view("index");
-})->where("path", ".+");
-*/
+  /*
+  | 08 ) Audio Controller routes
+  |--------------------------------------------------------------------------
+  */
+    // Sauvegarde d'un fichier audio pour une Seance
+    Route::post('geapp/public/api/v1/audio/upload','AudioController@audioUpload');
 
-Route::post('/geapp/public/api/v1/file', 'FileUploadController@storeFile');
+    // Accès au fichier audio d'une Seance
+    Route::get('geapp/public/api/v1/audio/file/{token}', 'AudioController@getAudio');

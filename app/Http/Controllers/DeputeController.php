@@ -14,11 +14,12 @@ use DB;
 class DeputeController extends Controller {
 
   /**
-   * Display a listing of the resource.
+   * Accès aux Députés pour une Séance
    *
    * @return Response
    */
   public function getDeputeForSeance(Request $request){
+
     $commission_id = $request->commission_id;
 
     $deputes = DB::table('deputes')
@@ -28,17 +29,6 @@ class DeputeController extends Controller {
             ->get();
 
       return $deputes;
-
-
-
   }
-
-
-
-
-
-
-
-
 
 }

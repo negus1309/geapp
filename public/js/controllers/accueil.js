@@ -39,8 +39,6 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
  */
  $scope.nouveauPv = function(){
 
-
-
         var pvCount = $rootScope.mesPv.length;
 
         if(pvCount < 3){
@@ -140,7 +138,6 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
             $('.w-excuses').append('<td></td>');
 
 
-
         // Traitement de l'ODJ
         var pvRubriques = $rootScope.pv.rubriques;
 
@@ -159,9 +156,6 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
 
         // Générer fichier Word
         $('#word-document').wordExport('PV-'+pvCommission+'-'+pvNumero);
-
-
-
 
   }
 
@@ -202,6 +196,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
                 $rootScope.pv = monPv;
                 if(navigator.onLine){
                   $rootScope.sauvegarderSeance();
+                  // notification si réussi
                   UIkit.notify({
                       message : '<i class=\'uk-icon-check\'></i>&nbsp;PV soumis!',
                       status  : 'success',
@@ -210,6 +205,7 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
                   });
 
                 }else{
+                  // notification si échoué
                   UIkit.notify({
                       message : '<i class=\'uk-icon-close\'></i>&nbsp;Il faut être connecté à Internet.',
                       status  : 'danger',
@@ -233,16 +229,13 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
   $scope.deletePv = function($index){
 
         UIkit.modal.confirm("Êtes-vous sûr de vouloir supprimer ce PV définitivement?", function(){
-            // will be executed on confirm.
-            //console.log($rootScope.mesPv)
-          //  var mesPvCorbeille = $rootScope.mesPvCorbeille;
+
             $rootScope.mesPvCorbeille.splice($index,1)
             var mesPvCorbeille = $rootScope.mesPvCorbeille;
             localStorage.setItem('mesPvCorbeille', JSON.stringify(mesPvCorbeille));
-            //$rootScope.mesPvCorbeille = mesPvCorbeille;
             $rootScope.$apply();
 
-
+            // notification si PV supprimé
             UIkit.notify({
                 message : '<i class=\'uk-icon-check\'></i>&nbsp;PV supprimé!',
                 status  : 'success',
@@ -263,17 +256,13 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
   $scope.moveToTrash = function($index){
 
         if($rootScope.mesPvCorbeille.length < 3){
-          console.log($index)
           var mesPvCorbeille = $rootScope.mesPvCorbeille;
           var mesPv = $rootScope.mesPv;
 
           var myPvToMove = $rootScope.mesPv.splice($index,1)[0]
-          console.log(myPvToMove)
 
           mesPvCorbeille.push(myPvToMove);
           localStorage.setItem('mesPvCorbeille', JSON.stringify(mesPvCorbeille));
-          //mesPv.splice($index,1)
-          console.log(mesPvCorbeille)
           localStorage.setItem('mesPv', JSON.stringify(mesPv));
         }else{
           UIkit.modal.alert("<h2>Attention!</h2><p class='uk-alert uk-alert-warning'>Le quota de 3 PV dans la corbeille est atteint, veuillez supprimer définitivement un PV pour faire de la place.</p>");
@@ -290,17 +279,13 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
   $scope.moveToPv = function($index){
 
         if($rootScope.mesPv.length < 3){
-          console.log($index)
           var mesPvCorbeille = $rootScope.mesPvCorbeille;
           var mesPv = $rootScope.mesPv;
 
           var myPvToMove = $rootScope.mesPvCorbeille.splice($index,1)[0]
-          console.log(myPvToMove)
 
           mesPv.push(myPvToMove);
           localStorage.setItem('mesPv', JSON.stringify(mesPv));
-          //mesPv.splice($index,1)
-          console.log(mesPvCorbeille)
           localStorage.setItem('mesPvCorbeille', JSON.stringify(mesPvCorbeille));
 
         }else{

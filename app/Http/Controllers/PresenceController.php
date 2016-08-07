@@ -16,7 +16,7 @@ class PresenceController extends Controller {
 
 
   /**
-   * Display a listing of the resource.
+   * Création d'une Presence
    *
    * @return Response
    */
@@ -29,33 +29,28 @@ class PresenceController extends Controller {
     $maPresence->save();
     $status = 201;
     $value = "application/json";
-      //return ;
+
       return response($maPresence, $status)
                   ->header('Content-Type', $value);
-
-
 
 
   }
 
   /**
-   * Display a listing of the resource.
+   * Suppression de toutes les Presence pour une Seance
    *
    * @return Response
    */
-  public function deletePresenceFromThisSeance(Request $request){
-    //$maPresence = new Presence;
+  public function deletePresencesFromThisSeance(Request $request){
+
     $idSeance = $request->seance_id;
 
     $mesPresences = Presence::where('seance_id', $idSeance)->delete();
 
-
-    return "ok del";
+    return "Presences supprimées";
 
 
   }
-
-
 
 
 }

@@ -14,63 +14,50 @@ use File;
 
 class AudioController extends Controller {
 
-    // v2
     /**
-     * Display a listing of the resource.
+     * Upload d'un fichier audio et stockage dans /storage/uploads/username
      *
      * @return Response
      */
     public function audioUpload(Request $request){
 
-      //dd($request->input('token'));
+      $file = $request->file('audio'); // récupération du fichier audio
+      $token = $request->input('token'); // récupération du token
+      $user = "qschwitzguebel"; // nom d'utilisateur à prendre dans le header
 
-      $file = $request->file('audio');
+      $destinationPath = '../storage/uploads/'.$user; // destination
 
-      $token = $request->input('token');
-      $user = "qschwitzguebel";
+      $fileName = $token.'.mp3'; // renommer le fichier
 
-      $destinationPath = '../storage/uploads/'.$user; // upload path
-
-      $fileName = $token.'.mp3'; // renameing image
-
-      $file->move($destinationPath, $fileName);
+      $file->move($destinationPath, $fileName); // sauvegarde dans storage
 
 
-    echo 'vabien';
-
-
+      echo 'Fichier sauvegardé';
 
     }
 
     /**
-     * Display a listing of the resource.
+     * Accès au fichier audio de la Seance en fonction du token
      *
-     * @return Response
+     * @return Response Fichier audio binaire
      */
     public function getAudio(Request $request){
 
         $user = 'qschwitzguebel';
-        //$numero = $request->input('numero');
         $token = $request->token;
         $path = storage_path() . '/uploads/' .$user.'/'.$token.'.mp3';
 
         if(!File::exists($path)) abort(404);
 
-
-
         $file = File::get($path);
         $value = File::mimeType($path);
         $status = 200;
-          //return ;
+
           return response($file, $status)
                       ->header('Content-Type', $value);
 
 
-
-
     }
-
-
 
 
 }

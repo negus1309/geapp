@@ -14,9 +14,9 @@ use DB;
 
 class SeanceController extends Controller {
 
-    // v2
+
     /**
-     * Display a listing of the resource.
+     * Création ou mise à jour d'une Seance
      *
      * @return Response
      */
@@ -38,8 +38,6 @@ class SeanceController extends Controller {
         $maSeance->save();
         $maSeanceToSend = $maSeance;
 
-
-
       }else{
         $maNouvelleSeance = new Seance;
         $maNouvelleSeance->token = $request->token;
@@ -59,110 +57,7 @@ class SeanceController extends Controller {
                   ->header('Content-Type', $value);
 
 
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-  /**
-   * Display a listing of the resource.
-   *
-   * @return Response
-   */
-  public function getSeance(Request $request){
-
-      $idPv = $request->idSeance;
-
-      //$editPv = Seance::find($idPv)->with('assistance')->with('invite')->get();
-      $editPv = Seance::where('seances.id',$idPv)->with( array( 'assistance', 'assistance.invite' ) )->first();
-      return $editPv;
-      //eturn $editPv;
-      //return response($editPv->toJson(), 200, array('Content-Type' => 'application/json'));
-
-
-
-  }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function newSeance(Request $request){
-
-        $nouveauPv = new Seance;
-
-        //$humanDate = $request->date;
-        //$mysql_date = date('YYYY-mm-dd', strtodate($humanDate));
-
-        //$nouveauPv->date = $mysql_date;
-
-        $nouveauPv->commission_id = $request->input('commission_id');
-
-        $nouveauPv->save();
-
-        return response($nouveauPv->toJson(), 201, array('Content-Type' => 'application/json'));
-
-
-
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function updateSeance(Request $request){
-
-      $idPv = $request->id;
-
-      $majPv = Seance::find($idPv);
-      $majPv->numero = $request->numero;
-      $majPv->date = $request->date;
-      $majPv->heure_debut = $request->heure_debut;
-      $majPv->heure_fin = $request->heure_fin;
-      $majPv->depute_id = $request->president_id;
-      $majPv->commission_id = $request->commission_id;
-
-
-      $majPv->save();
-      return response($majPv->toJson(), 201, array('Content-Type' => 'application/json'));
-
-
-
-    }
-
-
-    public function deleteSeance(Request $request){
-
-      //return $request->idSeance;
-      $idPv = $request->idSeance;
-
-      $deletePv = Seance::find($idPv);
-
-      if($deletePv){
-
-        $deletePv->delete();
-      }
-
-      //return response($deletePv->toJson(), 200, array('Content-Type' => 'application/json'));
-
-
-
-    }
-
 
 
 

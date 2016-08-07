@@ -17,7 +17,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
            }
 
            $('#workflow').on('click', '.accordion-section-title' ,function(e) {
-    
+
                var currentAttrValue = $(this).attr('href');
 
                if($(e.target).is('.active')) {
@@ -59,15 +59,15 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
               editor.on("init", function(editor) {
 
               });
-              editor.addShortcut('alt+d', 'Insertion depute', function(){
+              editor.addShortcut('alt+d', 'Insertion depute', function(){ // Ajout du raccourci
                 var modal = UIkit.modal("#insert-depute");
                 modal.toggle();
 
               });
-              var deputes = $rootScope.pv.deputes;
+              var deputes = $rootScope.pv.deputes; // récupération de la liste des députés
               angular.forEach(deputes, function(depute, key) {
                 keyNumber = key+1;
-                var shortcut = "alt+"+keyNumber+"";
+                var shortcut = "alt+"+keyNumber+""; // assignation d'un numéro par député
                 editor.addShortcut(shortcut, 'Insertion ', function(){
                   $scope.insertDepute(depute);
                 });
@@ -125,20 +125,17 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
           var mesCommissionsAvecMembres = $rootScope.deputes;
 
           angular.forEach(mesCommissionsAvecMembres, function(maCommissionAvecMembres, key) {
+
             if(maCommissionAvecMembres.id == $rootScope.pv.commission.id){
               angular.forEach(maCommissionAvecMembres.membres, function(membre, key) {
                 if(membre.fonction =="president"){
-                  console.log(membre)
                   $rootScope.pv.president = membre;
-
                 }
-
               });
-
             }
 
-
           });
+
         }
 
       /**
@@ -383,7 +380,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
                       // Suppression des présences existantes
                       $http({
-                        url: API_URL + "presence/delete",
+                        url: API_URL + "presences/delete",
                         method: "DELETE",
                         params: {'seance_id':idSeance}
                        })
@@ -391,7 +388,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
 
                             // Suppression des absences existantes
                             $http({
-                                url: API_URL + "absence/delete",
+                                url: API_URL + "absences/delete",
                                 method: "DELETE",
                                 params: {'seance_id':idSeance}
                             })

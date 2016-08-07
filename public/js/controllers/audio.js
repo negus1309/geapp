@@ -12,7 +12,6 @@ app.controller('audioController', function($scope, $http, API_URL, $rootScope) {
     $(function(){
 
 
-
           // initilsation de l'uploader de fichier audio
           var progressbar = $("#progressbar"),
               bar         = progressbar.find('.uk-progress-bar'),
@@ -42,7 +41,7 @@ app.controller('audioController', function($scope, $http, API_URL, $rootScope) {
                   setTimeout(function(){
                       progressbar.addClass("uk-hidden");
                   }, 250);
-
+                  // affichage du lecteur audio
                   $('#audio-submit').hide()
                   $('#audio-player').show()
                   $('#audio-player').append('<audio class="audio-file" controls><source src="'+API_URL+'audio/file/'+$rootScope.pv.token+'" type="audio/mpeg">Your browser does not support the audio element.</audio>');
@@ -51,7 +50,6 @@ app.controller('audioController', function($scope, $http, API_URL, $rootScope) {
 
           var select = UIkit.uploadSelect($("#upload-select"), settings),
               drop   = UIkit.uploadDrop($("#upload-drop"), settings);
-
 
 
           // Attribution des raccourcis audio (toggle play/pause)

@@ -15,8 +15,56 @@ class RubriqueController extends Controller {
 
 
 
+
+
+
   /**
-   * Display a listing of the resource.
+   * Création d'une Rubrique pour une Seance
+   *
+   * @return Response
+   */
+  public function storeRubrique(Request $request){
+
+
+    $maRubrique = new Rubrique;
+    $maRubrique->seance_id = $request->seance_id;
+    $maRubrique->titre = $request->titre;
+    $maRubrique->numero = $request->numero;
+    $maRubrique->contenu = $request->contenu;
+    $maRubrique->heure_debut = $request->heure_debut;
+    $maRubrique->heure_fin = $request->heure_fin;
+
+    $maRubrique->save();
+    $status = 201;
+    $value = "application/json";
+
+      return response($maRubrique, $status)
+                  ->header('Content-Type', $value);
+
+  }
+
+
+  /**
+   * Suppression de toutes les Rubriques pour une Seance
+   *
+   * @return Response
+   */
+  public function deleteRubriquesFromThisSeance(Request $request){
+
+    $idSeance = $request->seance_id;
+
+    $mesRubriques = Rubrique::where('seance_id', $idSeance)->delete();
+
+    return "Rubriques supprimées";
+
+
+  }
+
+
+  /** UNUSED: **/
+
+  /**
+   * Accès à toutes les Rubriques (point d'ODJ) pour une Seance par ordre de numerotation
    *
    * @return Response
    */
@@ -31,65 +79,14 @@ class RubriqueController extends Controller {
 
     $status = 200;
     $value = "application/json";
-      //return ;
+
       return response($mesRubriques, $status)
                   ->header('Content-Type', $value);
 
   }
 
-
-  /**v2
-   * Display a listing of the resource.
-   *
-   * @return Response
-   */
-  public function storeRubrique(Request $request){
-
-
-    $maRubrique = new Rubrique;
-    $maRubrique->seance_id = $request->seance_id;
-    $maRubrique->titre = $request->titre;
-    $maRubrique->numero = $request->numero;
-    $maRubrique->contenu = $request->contenu;
-    $maRubrique->heure_debut = $request->heure_debut;
-    $maRubrique->heure_fin = $request->heure_fin;
-    //$maRubrique->seance_id = "GGGGGGGGGGGGG"; // a priori pas besoin
-
-    $maRubrique->save();
-    $status = 201;
-    $value = "application/json";
-      //return ;
-      return response($maRubrique, $status)
-                  ->header('Content-Type', $value);
-
-  }
-
-//v2
   /**
-   * Display a listing of the resource.
-   *
-   * @return Response
-   */
-  public function deleteRubriquesFromThisSeance(Request $request){
-    $idSeance = $request->seance_id;
-
-    $mesRubriques = Rubrique::where('seance_id', $idSeance)->delete();
-
-
-
-
-    //return $mesRubriques;
-    //$mesRubriques->delete();
-    return "ok delete";
-
-
-  }
-
-
-
-
-  /**
-   * Display a listing of the resource.
+   * Suppression d'un Rubrique
    *
    * @return Response
    */
@@ -101,9 +98,6 @@ class RubriqueController extends Controller {
 
 
   }
-
-
-
 
 
 

@@ -196,23 +196,35 @@
         </div>
     </div>
 
+    <!-- /*******  ICON AUDIO PANEL TOGGLE  *******/-->
+    <a href="#" id="toggle-audio-icon" ng-click="toggleAudio();"><i class="uk-icon-toggle-up" ></i></a>
 
     <!-- /*******  MODAL INSERTION NOM DEPUTES  *******/-->
     <div id="insert-depute" class="uk-modal">
         <div class="uk-modal-dialog">
             <a class="uk-modal-close uk-close"></a>
-            <table>
-              <tr ng-repeat="depute in pv.deputes track by $index">
-                <td>{{$index+1}}</td>
-                <td>
-                  <a href="#" ng-click="insertDepute(depute)">{{depute.nom}}</a>
-                </td>
-              </tr>
-            </table>
+            <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
+              <thead>
+                <tr class="header-row">
+                    <th>N°</th> <!-- numero assigné -->
+                    <th>Député</th> <!-- nom du député -->
+                    <th>Action</th> <!-- action (insérer dans le texte) -->
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr ng-repeat="depute in pv.deputes track by $index">
+                  <td>{{$index+1}}</td>
+                  <td>{{depute.nom}}</td>
+                  <td>
+                    <a href="#" ng-click="insertDepute(depute)" class="uk-button uk-button-mini uk-button-success"><span class="action-button">Insérer</span></a>
+                  </td>
+                </tr>
+              </tbody>
+
         </div>
     </div>
 
-    <!-- /*******  ICON AUDIO PANEL TOGGLE  *******/-->
-    <a href="#" id="toggle-audio-icon" ng-click="toggleAudio();"><i class="uk-icon-toggle-up" ></i></a>
+
 
 </div>

@@ -14,7 +14,7 @@ app.controller('recuperationPvController', function($scope, $http, API_URL, $roo
 
     // Récupération des PV de l'utilisateur sauvegardés sur le serveur
     $http({
-      url: API_URL + "pvs",
+      url: API_URL + "pv",
       method: "GET"
     }).success(function(response){
       var mesPvRecuperes = [];

@@ -39,6 +39,4 @@ app.controller('gestionPresenceController', function($scope, $http, API_URL, $ro
     $rootScope.pv.deputesAdded.push({"nom":"","prenom":"","titre":"","parti":"","fonction":"","isPresentAtTimes":[true]})
   }
 
-
-
 });
