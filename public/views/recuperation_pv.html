@@ -1,8 +1,10 @@
-<div id="recuperation-pv-modal" class="uk-modal" ng-controller="recuperationPvController"><!-- ng-controller=""-->
+<!-- Modal pour la récupération des PV -->
+<div id="recuperation-pv-modal" class="uk-modal" ng-controller="recuperationPvController">
   <div class="uk-modal-dialog  uk-width-1-1" id="recuperation-pv-dialog">
+
       <div class="uk-modal-header"><h2>Récupération d'un PV</h2></div>
 
-
+      <!-- Liste des PV à récupéré -->
       <table class="uk-table uk-table-hover">
         <thead>
           <tr class="header-row">
@@ -14,6 +16,7 @@
               <th class="uk-width-4-10" colspan="4" style="border-left:1px solid #eee;">Actions</th>
           </tr>
       </thead>
+
       <tbody>
         <tr ng-repeat="pv in mesPvRecuperes track by $index">
           <td><b>{{$index+1}}</b></td>
@@ -33,37 +36,19 @@
             {{pv.heure_debut}}
             <span class="placeholder-content" ng-hide="pv.heure_debut">Aucune</span>
           </td>
-          <!-- tools -->
+
+          <!-- action -->
           <td>
             <a href="#" ng-click="" class="uk-button uk-button-mini uk-button-success"><span class="edit-pv action-button">Récupérer</span></a>
-
-
           </td>
 
         </tr>
       </tbody>
 
-      </table>
-      <div class="uk-modal-footer">
+    </table>
 
-      </div>
+    <div class="uk-modal-footer"></div>
+
   </div>
 
-
-</div>
-
-<!--div class="uk-modal" id="add-depute">
-    <div class="uk-modal-dialog">
-      <form class="uk-form uk-form-horizontal">
-
-        <div class="uk-modal-header">Ajouter un député</div>
-
-          <label class="uk-form-label" for="gnom">Nom</label>
-          <div class="uk-form-controls">
-              <input type="text" id="gnom" ng-model="myDeputeToAdd.nom">
-          </div>
-
-        <div class="uk-modal-footer">...</div>
-      </form>
-    </div-->
 </div>

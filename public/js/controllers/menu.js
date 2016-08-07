@@ -40,8 +40,7 @@ app.controller('menuController', function($scope, $http, API_URL, $rootScope) {
             $('div#menu a').hide();
             $('div#menu a#recuperer-pv').show();
             $('#audio-panel').hide();
-            $('#toggle-audio-icon').hide();
-
+            $('#workflow #toggle-audio-icon').hide();
           }
 
 

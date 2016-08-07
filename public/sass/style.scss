@@ -4,119 +4,26 @@
 
 $menu-height: 50px;          //hauteur du menu
 $color-primary: #00a8e6;     //couleur bleue uikit (primary)
-$color-success: #8cc14c;     //couleur verte uikit (sucess)
+$color-success: #8cc14c;     //couleur verte uikit (success)
+$color-error: #e4354f;       //couleur rouge uikit (error)
 $color-gris:#eee;            //couleur gris claire
 
+//*******************************************//
+// 02 ) GENERAL
+//*******************************************//
 
-
-//***************************************************//
-//Workflow
-//***************************************************//
-/*div.rubriques-accordeon{
-  padding-left: 20px;
-  background-color: $color-primary;
-}*/
-
-#calendar{
-  h2{
-    font-size: 1.1em;
-    color: darken(#eee,40%);
-  }
+body{
+  padding-top: $menu-height;
+}
+div#liste{
+  padding-bottom: 150px;
 }
 
 div#workflow{
   div#workflow-general{
     padding:30px 0px 30px 0px;
   }
-}
-
-
-//***************************************************//
-// Style accordion jquery
-//***************************************************//
-
-.accordion a:hover, .accordion a:focus{
-  color: white;
-  text-decoration: none;
-}
-
-/*----- Accordion -----*/
-.accordion, .accordion * {
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    box-sizing:border-box;
-}
-
-.accordion {
-    overflow:hidden;
-    box-shadow:0px 1px 3px rgba(0,0,0,0.25);
-    border-radius:3px;
-    background:#f7f7f7;
-
-    width: 90%;
-    margin: auto;
-    margin-bottom: 60px;
-}
-
-/*----- Section Titles -----*/
-.accordion-section-title {
-    width:100%;
-    padding:15px;
-    display:inline-block;
-    border-bottom:1px solid #1a1a1a;
-    background:#333;
-    transition:all linear 0.15s;
-    /* Type */
-    font-size:1.200em;
-    text-shadow:0px 1px 0px #1a1a1a;
-    color:#fff;
-}
-
-.accordion-section-title.active, .accordion-section-title:hover {
-    background:#4c4c4c;
-    /* Type */
-    text-decoration:none;
-}
-
-.accordion-section:last-child .accordion-section-title {
-    border-bottom:none;
-}
-
-/*----- Section Content -----*/
-.accordion-section-content {
-    padding:15px;
-    display:none;
-}
-
-
-
-
-
-//***************************************************//
-// Style personnalisé
-//***************************************************//
-
-body{
-  padding-top: $menu-height;
-}
-div#liste{
-  //margin-top: 40px;
-  //display: none;
-  padding-bottom: 150px;
-  #mes-pv{
-    //background-color: blue;
-
-  }
-
-  #dernier-pv{
-    //background-color: red;
-  }
-
-}
-
-
-div#workflow{
-display:none;
+  display:none;
   overflow-y: auto;
   padding-bottom: 150px;
 }
@@ -125,25 +32,17 @@ div#word-document{
 display: none;
 }
 
-div#draft{
-  display:none;
-}
-
-
-
-.pv-form{
-  padding-left:40px;
-  label{
-    font-weight: bold;
+#calendar{
+  h2{
+    font-size: 1.1em;
+    color: darken(#eee,40%);
   }
 }
 
+//*******************************************//
+// 03 ) BOUTONS
+//*******************************************//
 
-//***************************************************//
-// Boutons
-//***************************************************//
-
-// general style
 span.action-button{
   line-height: 25px;
 }
@@ -188,8 +87,6 @@ span.untrash-pv:before{
 
 }
 
-
-
 button.nouveau-pv:before{
   @extend %fontawesome;
   content: "\f067";
@@ -197,23 +94,14 @@ button.nouveau-pv:before{
   font-weight: normal;
 }
 
-
-
-
-
-span.workflow-button{
-
-}
-
 span.supprimer-invite,span.ajouter-invite, span.ajouter-odj, span.ajouter-rapporteur, span.supprimer-rapporteur, span.supprimer-odj{
   line-height: 25px;
-
 }
+
 span.supprimer-invite:before, span.supprimer-rapporteur:before, span.supprimer-odj:before{
   @extend %fontawesome;
-
-    content: "\f00d";
-    padding-right:5px;
+  content: "\f00d";
+  padding-right:5px;
 }
 
 .sauvegarder-pv{
@@ -222,12 +110,223 @@ span.supprimer-invite:before, span.supprimer-rapporteur:before, span.supprimer-o
 
 span.ajouter-invite:before,span.ajouter-odj:before, span.ajouter-rapporteur:before{
   @extend %fontawesome;
-
     content: "\f067";
     padding-right:5px;
 }
 
-// ODJ
+
+//*******************************************//
+// 04 ) MENU
+//*******************************************//
+
+div#menu{
+  position: fixed;
+  top:0px;
+  z-index: 1000;
+  width:100%;
+  height:$menu-height;
+  display: block;
+  visibility: visible;
+  border-bottom:1px solid white;
+  a{
+    color:$color-primary;
+    line-height: $menu-height;
+  }
+  a.back{
+    display: none;
+    float:left;
+  }
+  span.retourAccueil,span.presenceCheck, span.recupererPv{
+    margin-left: 10px;
+    color:$color-primary;
+  }
+
+span.recupererPv:before{
+@extend %fontawesome;
+  color:$color-primary;
+  content: "\f01a";
+  font-size: 1.3em;
+  padding-right:5px;
+}
+  span.retourAccueil:before{
+  @extend %fontawesome;
+    color:$color-primary;
+    content: "\f104";
+    font-size: 1.3em;
+    padding-right:5px;
+  }
+  span.presenceCheck:before{
+  @extend %fontawesome;
+    color: $color-primary;
+    content: "\f0c0";
+    font-size: 1.3em;
+    padding-right:5px;
+  }
+}
+
+span#status-network{
+  color: white;
+  right: 20px;
+  float:right;
+  line-height: $menu-height;
+  margin-left:20px;
+  margin-right:20px;
+
+  #status-online:before{
+    color: green;
+    @extend %circle-status;
+  }
+  #status-offline:before{
+    color: red;
+    @extend %circle-status;
+  }
+}
+
+a#recuperer-pv{
+  color: white;
+  float:right;
+  right: 130px;
+  line-height: $menu-height;
+  font-size: 1.3em;
+  &:hover{
+    text-decoration: none;
+  }
+
+}
+a#presence-check{
+  display: none;
+  color: white;
+  float:right;
+  right: 130px;
+  line-height: $menu-height;
+  font-size: 1.3em;
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+.clock {
+  &:before{
+    @extend %fontawesome;
+      content: "\f017";
+      padding-right:5px;
+  }
+  height: $menu-height;
+  width: 200px;
+  line-height: $menu-height;
+  padding: 5px;
+  color: white;
+  text-align: center;
+  border-radius: 2px;
+  margin:0px 10px;
+
+}
+
+//*******************************************//
+// 05 ) ACCUEIL
+//*******************************************//
+
+ul.pv-list-item{
+  padding: 0px;
+
+}
+
+ul.pv-list-item li {
+  background-color: #eee;
+  height: 80px;
+  width: 75%;
+  margin-bottom: 15px;
+  display: inline-block;
+  float:left;
+  margin-right:5px;
+  padding:5px;
+}
+
+div.tools-pv{
+  float:left;
+  width:20%;
+  a{
+    margin-bottom:3px;
+    width: 80px;
+  }
+}
+
+span.no-pv{
+  text-align: center;
+  width: 100%;
+  display: block;
+  color:darken($color-gris,20%);
+  font-style: italic;
+  padding: 15px;
+}
+
+span.placeholder-content{
+  font-style: italic;
+  color: darken($color-gris,20%);
+}
+
+.corbeille-toggle{
+  display: inline;
+  position: absolute;
+  right:15px;
+  top:15px;
+}
+
+//*******************************************//
+// 06 ) WORKFLOW
+//*******************************************//
+
+// Conteneur accordéon jQuery pour les rubriques et leur contenu (points d'ODJ)
+.accordion a:hover, .accordion a:focus{
+  color: white;
+  text-decoration: none;
+}
+.accordion, .accordion * {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
+.accordion {
+    overflow:hidden;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+    border-radius:3px;
+    background:#f7f7f7;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 60px;
+}
+.accordion-section-title {
+    width:100%;
+    padding:15px;
+    display:inline-block;
+    border-bottom:1px solid #1a1a1a;
+    background:#333;
+    transition:all linear 0.15s;
+    font-size:1.200em;
+    text-shadow:0px 1px 0px #1a1a1a;
+    color:#fff;
+}
+.accordion-section-title.active, .accordion-section-title:hover {
+    background:#4c4c4c;
+    text-decoration:none;
+}
+.accordion-section:last-child .accordion-section-title {
+    border-bottom:none;
+}
+.accordion-section-content {
+    padding:15px;
+    display:none;
+}
+
+// Formulaire de saisie du PV
+.pv-form{
+  padding-left:40px;
+  label{
+    font-weight: bold;
+  }
+}
+
+// Tableau de l'ODJ
 td.odj-numbered{
   background-color: $color-primary;
   color: white;
@@ -236,9 +335,9 @@ td.odj-numbered{
   text-align: center;
   vertical-align: middle;
 }
+
 span.odj-numbered{
   background-color: $color-primary;
-
   color: white;
   font-weight: bold;
   width: 25px;
@@ -246,11 +345,9 @@ span.odj-numbered{
   vertical-align: middle;
 }
 
-
-
-//***************************************************//
-// Audio panel
-//***************************************************//
+//*******************************************//
+// 07 ) AUDIO PANEL
+//*******************************************//
 div#audio-panel{
   display: none;
   position: fixed;
@@ -284,9 +381,6 @@ div#toggle-audio{
   right:10px;
   color:$color-success;
   font-size: 1.5em;
-
-
-
   display: none;
 }
 
@@ -311,9 +405,9 @@ div#toggle-audio{
   padding: 20px;
 }
 
-//***************************************************//
-// Tableaux accueil + gestion presence
-//***************************************************//
+//*******************************************//
+// 08 ) GESTION DES PRESENCES (MODULE)
+//*******************************************//
 
 tr.header-row{
   th{
@@ -332,13 +426,10 @@ tr.header-row{
 }
 
 td.hour-cell{
-  //background-color:;
   background-color: rgba($color-primary, 0.2);
   text-align: center;
 }
-//***************************************************//
-// Gestion présence module + choix commission
-//***************************************************//
+
 form#presence-form{
   table{
     //float:left;
@@ -347,13 +438,9 @@ form#presence-form{
     font-weight: bold;
   }
 }
-// ATtention utilise a deux endoit (presence + accuel)
 
 
-#depute-tools{
-  //float:right;
-}
-#gestion-presence-modal{ //, #choix-commission-modal
+#gestion-presence-modal{
   text-align: center;
 }
 #gestion-presence-dialog{
@@ -365,257 +452,24 @@ form#presence-form{
 }
 
 
-//***************************************************//
-// Menu
-//***************************************************//
-
-div#menu{
-  position: fixed;
-  top:0px;
-  z-index: 1000;
-  //margin-bottom: 40px;
-  width:100%;
-  height:$menu-height;
-  display: block;
-  visibility: visible;
-  border-bottom:1px solid white;
-  a{
-    color:$color-primary;
-    line-height: $menu-height;
-  }
-  a.back{
-    display: none;
-    float:left;
-  }
-  span.retourAccueil,span.presenceCheck, span.recupererPv{
-    margin-left: 10px;
-    color:$color-primary;
-    //line-height: 40px;
-
-  }
-
-span.recupererPv:before{
-@extend %fontawesome;
-  color:$color-primary;
-  /* down arrow icon */
-  content: "\f01a";
-  //line-height: 40px;
-  font-size: 1.3em;
-
-  /* some space*/
-  padding-right:5px;
-}
-  span.retourAccueil:before{
-  @extend %fontawesome;
-    color:$color-primary;
-    /* down arrow icon */
-    content: "\f104";
-    //line-height: 40px;
-    font-size: 1.3em;
-
-    /* some space*/
-    padding-right:5px;
-  }
-  span.presenceCheck:before{
-  @extend %fontawesome;
-    color: $color-primary;
-    /* down arrow icon */
-    content: "\f0c0";
-    //line-height: 40px;
-    font-size: 1.3em;
-
-    /* some space*/
-    padding-right:5px;
-  }
-}
-
-span#status-network{
-  color: white;
-//  position: absolute;
-  right: 20px;
-  float:right;
-  line-height: $menu-height;
-  margin-left:20px;
-  margin-right:20px;
-
-  #status-online:before{
-    color: green;
-    @extend %circle-status;
-  }
-  #status-offline:before{
-    color: red;
-    @extend %circle-status;
-
-  }
-}
-a#recuperer-pv{
-  color: white;
-  //position: absolute;
-  //text-align: right;
-  float:right;
-  right: 130px;
-  line-height: $menu-height;
-  font-size: 1.3em;
-  &:hover{
-    text-decoration: none;
-  }
-
-}
-a#presence-check{
-  display: none;
-  color: white;
-  //position: absolute;
-  //text-align: right;
-  float:right;
-  right: 130px;
-  line-height: $menu-height;
-  font-size: 1.3em;
-  &:hover{
-    text-decoration: none;
-  }
-}
-
-a#get-draft-infos{
-  display: none;
-  color: white;
-  //position: absolute;
-  //text-align: right;
-  float:right;
-  right: 200px;
-  line-height: $menu-height;
-  font-size: 1.3em;
-  &:hover{
-    text-decoration: none;
-  }
-}
-
-.clock {
-  &:before{
-    @extend %fontawesome;
-
-      /* down arrow icon */
-      content: "\f017";
-
-      /* some space*/
-      padding-right:5px;
-  }
-  //:500px;
-
-  height: $menu-height;
-  width: 200px;
-  line-height: $menu-height;
-  //margin: 150px auto 0;
-  padding: 5px;
-  //background: white;
-  color: white;
-  text-align: center;
-  border-radius: 2px;
-  margin:0px 10px;
-  //box-shadow: 0 0 1px $color-primary inset;
-
-}
-//***************************************************//
-// Page Accueil
-//***************************************************//
-
-//corbeill:
-
-
-ul.pv-list-item{
-  padding: 0px;
-
-}
-
-ul.pv-list-item li {
-  background-color: #eee;
-  height: 80px;
-  width: 75%;
-  margin-bottom: 15px;
-  display: inline-block;
-  float:left;
-  margin-right:5px;
-  padding:5px;
-}
-
-div.tools-pv{
-  float:left;
-  width:20%;
-  //padding-left:2px;
-  a{
-    margin-bottom:3px;
-    width: 80px;
-  }
-}
 
 
 
 
-
-
- /*
- td.pv-action-first{
-
-   border-left:1px $color-gris solid;
- }*/
-// message si aucun pv existant
-span.no-pv{
-  text-align: center;
-  width: 100%;
-  display: block;
-  color:darken($color-gris,20%);
-  font-style: italic;
-  padding: 15px;
-}
-
-span.placeholder-content{
-  font-style: italic;
-  color: darken($color-gris,20%);
-}
-
-.corbeille-toggle{
-  display: inline;
-  position: absolute;
-  right:15px;
-  top:15px;
-}
-
-
-//***************************************************//
-// UIkit modifications
-//***************************************************//
-
-// icon on accordion UIkit
-.uk-accordion h4{
-  font-weight: bold;
-}
-
-.uk-accordion-title:before {
-  @extend %fontawesome;
-
-    /* down arrow icon */
-    content: "\f107";
-
-    /* some space*/
-    padding-right:5px;
-
- }
-.uk-accordion-title.uk-active:before {
-    /* up arrow icon */
-    content: "\f106";
-
- }
+//*******************************************//
+// 09 ) UIkit modifications
+//*******************************************//
 
 .uk-panel{
   margin: 10px;
 }
 
 
+//*******************************************//
+// 10 ) CLASSES + MIXINS + FUNCTIONS
+//*******************************************//
 
-//***************************************************//
-// Classes abstraites (mixin, placeholder)
-//***************************************************//
-
-
+// Fontawesome elements button icons
 %fontawesome{
   font-family: 'FontAwesome';
   src: url("../fonts/fontawesome-webfont.eot");
@@ -625,14 +479,12 @@ span.placeholder-content{
        url("../fonts/fontawesome-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
-
 }
 
+// Fontawesome elements menu icons
 %circle-status{
   @extend %fontawesome;
-    // circle character
     content: "\f111";
     line-height: $menu-height;
     padding-right:5px;
-
 }

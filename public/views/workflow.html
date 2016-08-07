@@ -1,11 +1,10 @@
+<!-- Workflow (flux d'édition du PV) -->
 <div id="workflow" ng-controller="workflowController">
 
-
-
     <div id="workflow-general">
-      <!-- /***********************************/-->
-      <!-- /*******  GENERAL FORMULAIRE *******/-->
-      <!-- /***********************************/-->
+      <!-- /**********************************************************/-->
+      <!-- /*******  01) GENERAL FORMULAIRE (INFORMATIONS GENERALES)*******/-->
+      <!-- /**********************************************************/-->
       <form class="uk-form uk-form-horizontal pv-form">
 
         <!-- /******* NOM COMMISSION **********/-->
@@ -16,7 +15,6 @@
 
             </div>
         </div>
-
 
         <!-- /******* NO PV **********/-->
         <div class="uk-form-row">
@@ -40,21 +38,15 @@
         <div class="uk-form-row">
             <label class="uk-form-label" for="heure_debut">Heure de début</label>
             <div class="uk-form-controls">
-              <!--<div class="uk-form-icon">
-               <i class="uk-icon-clock-o"></i>-->
               <input id="heure_debut" type="text" data-uk-timepicker placeholder="17:00" ng-model="pv.heure_debut">
             </div>
-            <!--</div>-->
         </div>
 
         <!-- /******* HEURE FIN **********/-->
         <div class="uk-form-row">
           <label class="uk-form-label" for="heure_fin">Heure de fin</label>
           <div class="uk-form-controls">
-            <!--<div class="uk-form-icon">-->
-             <!--<i class="uk-icon-clock-o"></i>-->
             <input id="heure_fin" type="text" data-uk-timepicker placeholder="20:00" ng-model="pv.heure_fin">
-          <!--</div>-->
           </div>
         </div>
 
@@ -72,7 +64,6 @@
           <div class="uk-form-controls">
             <input id="president-nom" type="text" ng-model="pv.president.nom">
             <input id="president-prenom"  type="text" ng-model="pv.president.prenom" placeholder="Prenom">
-            <!--input id="president-titre"  type="text" ng-model="pv.president.titre" placeholder="Titre" size="5"-->
             <select id="president-titre" ng-model="pv.president.titre" placeholder="Titre">
               <option value="m">Monsieur</option>
               <option value="mme">Madame</option>
@@ -80,17 +71,9 @@
           </div>
         </div>
 
-
-
-
-        <!-- PLACE POUR PRESENT/ABSENT -->
-
-
-
         <!-- /******* INVITE (assistent) **********/-->
         <div class="uk-form-row">
           <label class="uk-form-label" for="invites">Invités</label>
-        <!--  <div >-->
             <div class="uk-form-controls" style="margin-bottom:10px;" ng-repeat="invite in pv.invites">
               <select ng-model="invite.titre" placeholder="Titre">
                 <option value="m">Monsieur</option>
@@ -98,24 +81,20 @@
               </select>
               <input type="text" ng-model="invite.nom" placeholder="Nom">
               <input type="text" ng-model="invite.prenom" placeholder="Prenom">
-              <!--input type="text" ng-model="invite.titre" placeholder="Titre" size="5"-->
-              <!--div class="uk-form-select" data-uk-form-select-->
 
-              <!--/div-->
               <a href="#" ng-click="supprimerInvite($index)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-invite">supprimer</span></a>
-              <!--{{invite.id}}
-              {{$index}}-->
-
-            <!--  <input type="text" ng-model="invite.fonction" placeholder="Fonction" size="50">-->
 
             </div>
-          <!--</div>-->
 
           <div class="uk-form-controls">
             <a href="#" ng-click="ajouterInvite()" class="uk-button uk-button-mini uk-button-success"><span class="ajouter-invite">Ajouter un invité</span></a>
           </div>
+
         </div>
 
+        <!-- /**********************************************************/-->
+        <!-- /******* 02) ODJ (ordre du jour)*******************************/-->
+        <!-- /**********************************************************/-->
         <div class="uk-form-row">
           <label class="uk-form-label" for="odj">Ordre du jour</label>
 
@@ -129,7 +108,6 @@
                             <td class="odj-numbered">{{$index+1}}</td>
                             <td><input type="text" class="uk-width-1-1" ng-model="rubrique.titre"/></td>
                             <td><a href="#" ng-click="supprimerRubrique($index)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-odj">supprimer</span></a></td>
-
                           </tr>
 
                       </tbody>
@@ -143,48 +121,16 @@
 
         </div>
 
-
-
-
-
-
           <button type="submit" class="uk-button uk-button-primary uk-width-1-1 sauvegarder-pv" ng-click="sauvegarderSeance()">Sauvegarder</button>
-
-
-
-
-
-              <!--<label>Commission</label>
-              <input type="text" placeholder="" ng-model="general.nomCommission">
-              <input type="hidden" placeholder="" ng-model="general.idCommission">
-              <br/>
-              <label>Numero</label>
-              <input type="number" placeholder="" >-->
-
-
-
-
-
-              <!--<input type="password" placeholder="">
-              <select>
-                  <option>...</option>
-                  <option>...</option>
-              </select>
-              <button class="uk-button">...</button>
-              <label><input type="checkbox"> ...</label>-->
 
       </form>
 
-
     </div>
 
-    <!-- ************************-->
-    <!-- ** RUBRIQUES ***********-->
-    <!-- ************************-->
 
-
-<!-- id="editor{{$index}}"-->
-
+    <!-- /**********************************************************/-->
+    <!-- /******* 03 ) Points d'ODJ *******************************/-->
+    <!-- /**********************************************************/-->
     <div class="accordion rubriques-accordeon">
         <div class="accordion-section" ng-repeat="rubrique in pv.rubriques">
             <a class="accordion-section-title" href="#accordion-{{$index}}">{{$index+1}}. {{rubrique.titre}}</a>
@@ -192,23 +138,16 @@
             <div id="accordion-{{$index}}" class="accordion-section-content">
 
 
-
-                <!--<p>{{rubrique.contenu}}</p>-->
                 <!-- /***********************************/-->
-                <!-- /*******  TEXT EDIT  *******/-->
+                <!-- /*******  TinyMCE html editor wysywig  *******/-->
                 <!-- /***********************************/-->
-
-                <!--textarea froala ng-model="rubrique.contenu"></textarea-->
-                <!--textarea ui-tinymce="tinymceOptions" ng-model="rubrique.contenu"></textarea-->
                 <form method="post">
                   <textarea ui-tinymce="tinymceOptions" ng-model="rubrique.contenu"></textarea>
                 </form>
 
 
-
-
                 <!-- /***********************************/-->
-                <!-- /*******  RAPPORTEUR  *******/-->
+                <!-- /*******  HEURES DEBUT / FIN  *******/-->
                 <!-- /***********************************/-->
                 <form class="uk-form uk-form-horizontal rubrique-form" style="padding-top:20px;">
                 <div class="uk-form-row">
@@ -221,12 +160,14 @@
                     <input class="heure_fin_rubrique" type="text" data-uk-timepicker placeholder="18:00" ng-model="rubrique.heure_fin">
                   </div>
                 </div>
+
+                <!-- /***********************************/-->
+                <!-- /*******  RAPPORTEUR  *******/-->
+                <!-- /***********************************/-->
                 <div class="uk-form-row">
 
                   <label class="uk-form-label" for="rapporteurs">Rapporteurs</label>
-
                     <div class="uk-form-controls" style="margin-bottom:10px;" ng-repeat="rapporteur in rubrique.rapporteurs">
-
                       <label>nom</label>
                       <select placeholder="Député" ng-model="rubrique.rapporteurs[$index].depute_id">
                         <option value="{{depute.id}}" ng-repeat="depute in pv.deputes">{{depute.nom}}</option>
@@ -248,28 +189,30 @@
                   </div>
                 </div>
 
-
-
-
-
                 <button type="submit" class="uk-button uk-button-primary sauvegarder-pv uk-width-1-1" ng-click="sauvegarderSeance()">Sauvegarder</button>
+
               </form>
             </div>
         </div>
     </div>
 
-    <!-- depute insertion -->
+
+    <!-- /*******  MODAL INSERTION NOM DEPUTES  *******/-->
     <div id="insert-depute" class="uk-modal">
         <div class="uk-modal-dialog">
             <a class="uk-modal-close uk-close"></a>
             <table>
               <tr ng-repeat="depute in pv.deputes track by $index">
                 <td>{{$index+1}}</td>
-                <td><a href="#" ng-click="insertDepute(depute)">{{depute.nom}}</a></td>
+                <td>
+                  <a href="#" ng-click="insertDepute(depute)">{{depute.nom}}</a>
+                </td>
               </tr>
             </table>
         </div>
     </div>
 
+    <!-- /*******  ICON AUDIO PANEL TOGGLE  *******/-->
+    <a href="#" id="toggle-audio-icon" ng-click="toggleAudio();"><i class="uk-icon-toggle-up" ></i></a>
 
 </div>

@@ -1,24 +1,26 @@
+<!-- Menu principal -->
 <div id="menu" class="uk-block-primary" ng-controller="menuController">
+  <!-- Bouton de retour à l'accueil -->
   <a class="back" href="#" class="uk-vertical-align" ng-click="retourAccueil();refreshSeance();">
     <span class="retourAccueil uk-button uk-button-small uk-text-primary">Retour à l'accueil</span>
   </a>
-  <span id="status-network">
+  <!-- Statut connexion Internet -->
+  <span id="status-network"></span>
 
-  </span>
+  <!-- Horloge / Date -->
   <span id="clock" class="clock">chargement ...</span>
-  <!--
-  <a id="get-draft-infos"  href="#" class="uk-vertical-align" ng-click="getDraftInfos()" >
-    <span class="draftInfos uk-button uk-button-small uk-text-primary">Remplir avec le brouillon</span>
-  </a>-->
+  
 
-  <a id="presence-check"  href="#" class="uk-vertical-align" ng-click="" data-uk-modal="{target:'#gestion-presence-modal'}">
-    <span class="presenceCheck uk-button uk-button-small uk-text-primary">Gestion des présences</span>
-  </a>
-  <a id="recuperer-pv"  href="#" class="uk-vertical-align" ng-click="getPvRecuperes();" data-uk-modal="{target:'#recuperation-pv-modal'}">
-    <span class="recupererPv uk-button uk-button-small uk-text-primary">Récupérer un PV</span>
-  </a>
+  <!-- / Boutons modules -->
 
+    <!-- Bouton module de gestion des présences -->
+    <a id="presence-check"  href="#" class="uk-vertical-align" ng-click="" data-uk-modal="{target:'#gestion-presence-modal'}">
+      <span class="presenceCheck uk-button uk-button-small uk-text-primary">Gestion des présences</span>
+    </a>
 
-  <!-- modal absence -->
+    <!-- Bouton module de récupération -->
+    <a id="recuperer-pv"  href="#" class="uk-vertical-align" ng-click="getPvRecuperes();" data-uk-modal="{target:'#recuperation-pv-modal'}">
+      <span class="recupererPv uk-button uk-button-small uk-text-primary">Récupérer un PV</span>
+    </a>
 
 </div>
