@@ -12,8 +12,6 @@ app.controller('menuController', function($scope, $http, API_URL, $rootScope) {
        */
       function update() {
         $('#clock').html(moment().locale('fr').format('LLLL'));
-
-
       }
       setInterval(update, 1000);
 

@@ -157,8 +157,6 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
             $('#w-rubriques').append(rubrique.contenu);
           });
 
-
-
         // Générer fichier Word
         $('#word-document').wordExport('PV-'+pvCommission+'-'+pvNumero);
 
@@ -188,6 +186,8 @@ app.controller('accueilController', function($scope, $http, API_URL,$rootScope,$
         }
     });
   }
+
+
 
   /**
    * 2.5 Soumission du PV

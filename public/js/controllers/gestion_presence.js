@@ -14,9 +14,7 @@ app.controller('gestionPresenceController', function($scope, $http, API_URL, $ro
 
     var nbColumn = $('th.hour-header').length + 1;
     $('#gestion-presence-modal .header-row').append('<th class="hour-header">H'+nbColumn+'</th>');
-    //console.log(nbColumn)
     angular.forEach($rootScope.pv.deputes, function(depute, key) {
-
       depute.isPresentAtTimes.push(true)
     });
     if($rootScope.pv.deputesAdded){
@@ -39,8 +37,6 @@ app.controller('gestionPresenceController', function($scope, $http, API_URL, $ro
       $rootScope.pv.deputesAdded = [];
     }
     $rootScope.pv.deputesAdded.push({"nom":"","prenom":"","titre":"","parti":"","fonction":"","isPresentAtTimes":[true]})
-    //$rootScope.$apply()
-    console.log($rootScope.pv.deputesAdded)
   }
 
 

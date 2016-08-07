@@ -17,7 +17,7 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
            }
 
            $('#workflow').on('click', '.accordion-section-title' ,function(e) {
-               // Grab current anchor value
+    
                var currentAttrValue = $(this).attr('href');
 
                if($(e.target).is('.active')) {
@@ -25,9 +25,9 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
                }else {
                    close_accordion_section();
 
-                   // Add active class to section title
+                   // Titre de la rubrique active
                    $(this).addClass('active');
-                   // Open up the hidden content panel
+                   // Affiche le contenu du conteneur en question
                    $('.accordion ' + currentAttrValue).slideDown(300).addClass('open');
                }
 
@@ -52,7 +52,6 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
                 text: 'Insérer un député',
                 icon: false,
                 onclick: function () {
-                  //editor.insertContent('salut');
                   var modal = UIkit.modal("#insert-depute");
                   modal.show();
                 }
@@ -142,11 +141,11 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
           });
         }
 
-        /**
-         * 2.3 Permet de récupérer les informations sur les députés de la commission
-         *
-         * @param aucun paramètre
-         */
+      /**
+       * 2.3 Permet de récupérer les informations sur les députés de la commission
+       *
+       * @param aucun paramètre
+       */
         $rootScope.updateDeputes = function(){
           $rootScope.deputes = JSON.parse(localStorage.getItem('deputes'));
           var mesCommissionsAvecMembres = $rootScope.deputes;
@@ -177,11 +176,11 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
         }
 
 
-        /**
-         * 2.5 Permet d'ajouter des champs pour renseigner les informations sur un éventuel invité
-         *
-         * @param aucun paramètre
-         */
+      /**
+       * 2.5 Permet d'ajouter des champs pour renseigner les informations sur un éventuel invité
+       *
+       * @param aucun paramètre
+       */
         $scope.ajouterInvite = function(){
           if(!$scope.pv.invites){
             $scope.pv.invites = [];
@@ -190,22 +189,22 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
         }
 
 
-        /**
-         * 2.6 Permet de supprimer un éventuel invité
-         *
-         * @param aucun paramètre
-         */
+      /**
+       * 2.6 Permet de supprimer un éventuel invité
+       *
+       * @param aucun paramètre
+       */
          $scope.supprimerInvite = function($index, $seance_id, $invite_id){
 
            $scope.pv.invites.splice($index,1);
 
          }
 
-         /**
-          * 2.7 Permet d'ajouter un point d'ODJ
-          *
-          * @param aucun paramètre
-          */
+       /**
+        * 2.7 Permet d'ajouter un point d'ODJ
+        *
+        * @param aucun paramètre
+        */
           $scope.ajouterPointODJ = function(){
             if(!$scope.pv.rubriques){
               $scope.pv.rubriques = [];
@@ -214,170 +213,148 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
           }
 
 
-          /**
-           * 2.8 Permet de supprimer un point d'ODJ (rubrique)
-           *
-           * @param $index Index du point d'ODJ à supprimer
-           */
+        /**
+         * 2.8 Permet de supprimer un point d'ODJ (rubrique)
+         *
+         * @param $index Index du point d'ODJ à supprimer
+         */
            $scope.supprimerRubrique = function($index){
               $scope.pv.rubriques.splice($index,1);
             }
 
-            /**
-             * 2.9 Permet d'ajouter un rapporteur au point d'ODJ
-             *
-             * @param $index Index du point d'ODJ à supprimer
-             */
-            $scope.ajouterRapporteur = function($index){
-                if(!$scope.pv.rubriques[$index].rapporteurs){
-                  $scope.pv.rubriques[$index].rapporteurs = [];
+        /**
+         * 2.9 Permet d'ajouter un rapporteur au point d'ODJ
+         *
+         * @param $index Index du point d'ODJ à supprimer
+         */
+          $scope.ajouterRapporteur = function($index){
+              if(!$scope.pv.rubriques[$index].rapporteurs){
+                $scope.pv.rubriques[$index].rapporteurs = [];
+              }
+              $scope.pv.rubriques[$index].rapporteurs.push({})
+
+          }
+
+        /**
+         * 2.10 Permet de supprimer un rapporteur au point d'ODJ
+         *
+         * @param $index Index du point d'ODJ à supprimer
+         */
+        $scope.supprimerRapporteur = function($rapporteurPosition, $noRubrique){
+          $scope.pv.rubriques[$noRubrique].rapporteurs.splice($rapporteurPosition,1);
+
+        }
+
+
+
+        /**
+         * 2.11 Permet de sauvegarder la séance dans en local et sur le serveur si Internet est disponible
+         *
+         * @param aucun paramètre
+         */
+        $rootScope.sauvegarderSeance = function(){
+
+            // Notes : intégrer les promises
+
+            // A. sauvegarde locale
+            var tousMesPv = JSON.parse(localStorage.getItem('mesPv')) || []; // récupération des PV dans le local Storage
+            var monNouveauPv = $scope.pv; // récupération du PV en cours de traitement
+
+            angular.forEach(tousMesPv, function(unPv, key) {
+
+              if(unPv.token == monNouveauPv.token){
+                tousMesPv.splice(key,1)
+              }
+
+            });
+            tousMesPv.push(monNouveauPv);
+            localStorage.setItem('mesPv', JSON.stringify(tousMesPv));
+
+            // notification de sauvegarde réussie
+            UIkit.notify({
+                message : '<i class=\'uk-icon-check\'></i>&nbsp;PV sauvegardé!',
+                status  : 'success',
+                timeout : 3000,
+                pos     : 'top-center'
+            });
+
+
+
+            // B. sauvegarde serveur (si Internet est disponible, sauvegarde sur le serveur)
+            if(navigator.onLine){
+                var monNouveauPvStringify = JSON.stringify(monNouveauPv)
+                // Sauvegarde du PV au format JSON pour la récupération
+                $http({
+                  url: API_URL + "pv/save",
+                  method: "POST",
+                  data: {'pv':monNouveauPvStringify,'token':monNouveauPv.token}
+                }).success(function(response){
+
+                });
+
+                // Format des dates (à faire avec moment.js)
+                var dateHuman = $scope.pv.date;
+                if(dateHuman){
+                  var dateToPost = convertHumanDateToMysqlDate(dateHuman);
+                }else{
+                  var dateToPost = null;
                 }
-                $scope.pv.rubriques[$index].rapporteurs.push({})
 
-            }
+                // Récupération des informations générales de la séance
+                var maSeance = {
+                  'token': $scope.pv.token, // token
+                  'numero': $scope.pv.numero, // numero du PV
+                  'date': dateToPost, // date de la séance modifiée
+                  'heure_debut':$scope.pv.heure_debut, // heure de début de la séance
+                  'heure_fin':$scope.pv.heure_fin, // heure de fin de la séance
+                  'commission_id':$scope.pv.commission.id, // id de la commission concernée
+                  'depute_id':$scope.pv.president.id // id du député qui préside la séance
+                };
 
-            /**
-             * 2.10 Permet de supprimer un rapporteur au point d'ODJ
-             *
-             * @param $index Index du point d'ODJ à supprimer
-             */
-            $scope.supprimerRapporteur = function($rapporteurPosition, $noRubrique){
-              //console.log($rapporteurPosition +" et "+$noRubrique)
-              $scope.pv.rubriques[$noRubrique].rapporteurs.splice($rapporteurPosition,1);
+                // Sauvegarde au format relationnel
+                $http({
+                  url: API_URL + "seance/save",
+                  method: "POST",
+                  params: maSeance
+                }).success(function(response){
 
-            }
-
-
-
-
-      $rootScope.sauvegarderSeance = function(){
-
-
-
-        var tousMesPv = JSON.parse(localStorage.getItem('mesPv')) || [];
-
-        var monNouveauPv = $scope.pv;
-
-
-        angular.forEach(tousMesPv, function(unPv, key) {
-
-          if(unPv.token == monNouveauPv.token){
-            tousMesPv.splice(key,1)
-          }
+                    var idSeance = response.id;
+                    // Suppression des rubriques existantes (soft delete à mettre en place)
+                    $http({
+                      url: API_URL + "rubriques/delete",
+                      method: "DELETE",
+                      params: {'seance_id':idSeance}
+                     })
+                     .success(function(response) {
 
 
-        });
+                        var mesRubriques = $scope.pv.rubriques;
 
+                        angular.forEach(mesRubriques, function(maRubrique, key) {
 
+                              maRubrique.seance_id = idSeance;
+                              var numeroToPost = key + 1;
+                              maRubrique.numero = numeroToPost;
 
-        tousMesPv.push(monNouveauPv);
+                              // Sauvegarde des rubriques (corps du PV)
+                              $http({
+                                url: API_URL + "rubrique/create",
+                                method: "POST",
+                                params: maRubrique
+                               })
+                               .success(function(response) {
 
-        localStorage.setItem('mesPv', JSON.stringify(tousMesPv));
+                               });
 
-        UIkit.notify({
-            message : '<i class=\'uk-icon-check\'></i>&nbsp;PV sauvegardé!',
-            status  : 'success',
-            timeout : 3000,
-            pos     : 'top-center'
-        });
+                        });
 
+                      });
 
+                      var mesInvites = $scope.pv.invites;
 
+                      angular.forEach(mesInvites, function(monInvite, key) {
 
-
-      //  var isOnline = false;
-
-        if(navigator.onLine){
-
-          var monNouveauPvStringify = JSON.stringify(monNouveauPv)
-          console.log(monNouveauPvStringify)
-          $http({
-            url: API_URL + "pv/save",
-            method: "POST",
-            data: {'pv':monNouveauPvStringify,'token':monNouveauPv.token}
-          }).success(function(response){
-
-            console.log(response)
-          });
-
-          //***************************************************//
-          // Sauvegarde Seance
-          //***************************************************//
-          //var dateHuman =
-          var dateHuman = $scope.pv.date;
-          if(dateHuman){
-            var dateToPost = convertHumanDateToMysqlDate(dateHuman);
-          }else{
-            var dateToPost = null;
-          }
-
-
-
-          // infos séances
-          var maSeance = {
-            //'id':$scope.meta.idSeance,
-            'token': $scope.pv.token,
-            'numero': $scope.pv.numero,
-            'date': dateToPost,
-            'heure_debut':$scope.pv.heure_debut,
-            'heure_fin':$scope.pv.heure_fin,
-            'commission_id':$scope.pv.commission.id,
-            'depute_id':$scope.pv.president.id
-          };
-          //console.log(maSeance)
-
-          $http({
-            url: API_URL + "seance/save",
-            method: "POST",
-            params: maSeance
-          }).success(function(response){
-              //console.log(response)
-              var idSeance = response.id;
-
-
-                          //***************************************************//
-                          // Sauvegarde Rubriques
-                          //***************************************************//
-                          $http({
-                            url: API_URL + "rubriques/delete",
-                            method: "DELETE",
-                            params: {'seance_id':idSeance}
-                           })
-                           .success(function(response) {
-
-                             //console.log(response)
-                                      var mesRubriques = $scope.pv.rubriques;
-
-                                      angular.forEach(mesRubriques, function(maRubrique, key) {
-                                         //console.log(maSeance.id)
-                                         maRubrique.seance_id = idSeance;
-                                         var numeroToPost = key + 1;
-                                         maRubrique.numero = numeroToPost;
-
-                                         //console.log(maRubrique)
-
-                                          $http({
-                                            url: API_URL + "rubrique/create",
-                                            method: "POST",
-                                            params: maRubrique
-                                           })
-                                           .success(function(response) {
-
-                                             //console.log(response)
-                                           });
-
-                                      });
-
-                            });
-
-                          //***************************************************//
-                          // Sauvegarde Invités
-                          //***************************************************//
-                          var mesInvites = $scope.pv.invites;
-
-                          angular.forEach(mesInvites, function(monInvite, key) {
-
-                            //console.log(monInvite)
+                            // Création des invités de la séance
                             $http({
                               url: API_URL + "invite/create",
                               method: "POST",
@@ -385,101 +362,85 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
                              })
                              .success(function(response) {
 
-                                     //  console.log(response.id)
-                                       //console.log(maSeance.id)
-                                       var idInvite = response.id;
+                                 var idInvite = response.id;
 
+                                 // Création des assistances
+                                 $http({
+                                   url: API_URL + "assistance/create",
+                                   method: "POST",
+                                   params: {'seance_id':idSeance,'invite_id':idInvite}
+                                  })
+                                  .success(function(response) {
 
-                                       $http({
-                                         url: API_URL + "assistance/create",
-                                         method: "POST",
-                                         params: {'seance_id':idSeance,'invite_id':idInvite}
-                                        })
-                                        .success(function(response) {
-
-                                           //console.log(response)
-
-
-                                        });
+                                  });
 
                              });
 
-                          });
+                      });
 
-                          //***************************************************//
-                          // Sauvegarde Présence / Absence
-                          //***************************************************//
-                          var mesDeputes = $scope.pv.deputes;
 
-                          $http({
-                            url: API_URL + "presence/delete",
-                            method: "DELETE",
-                            params: {'seance_id':idSeance}
-                           })
-                           .success(function(response) {
+                      var mesDeputes = $scope.pv.deputes;
 
-                             $http({
-                               url: API_URL + "absence/delete",
-                               method: "DELETE",
-                               params: {'seance_id':idSeance}
-                              })
-                              .success(function(response) {
+                      // Suppression des présences existantes
+                      $http({
+                        url: API_URL + "presence/delete",
+                        method: "DELETE",
+                        params: {'seance_id':idSeance}
+                       })
+                       .success(function(response) {
+
+                            // Suppression des absences existantes
+                            $http({
+                                url: API_URL + "absence/delete",
+                                method: "DELETE",
+                                params: {'seance_id':idSeance}
+                            })
+                            .success(function(response) {
                                 angular.forEach(mesDeputes, function(monDepute, key) {
-                                  //console.log(monDepute)
                                     angular.forEach(monDepute.isPresentAtTimes, function(isPresentAtTime, key) {
-                                      var idDepute = monDepute.id;
-                                      //var idSeance =
-                                      //console.log(isPresentAtTime)
-                                      var heure = key+1;
-                                      if(isPresentAtTime == true){
 
-                                        $http({
-                                          url: API_URL + "presence/create",
-                                          method: "POST",
-                                          params: {'seance_id':idSeance,'depute_id':idDepute, 'heure':heure}
-                                         })
-                                         .success(function(response) {
+                                        var idDepute = monDepute.id;
+                                        var heure = key+1;
+                                        if(isPresentAtTime == true){
 
+                                            // Sauvegarde des présences
+                                            $http({
+                                                url: API_URL + "presence/create",
+                                                method: "POST",
+                                                params: {'seance_id':idSeance,'depute_id':idDepute, 'heure':heure}
+                                            })
+                                            .success(function(response) {
 
-                                         });
+                                            });
 
-                                      }else{
+                                        }else{
 
-                                        $http({
-                                          url: API_URL + "absence/create",
-                                          method: "POST",
-                                          params: {'seance_id':idSeance,'depute_id':idDepute, 'heure':heure}
-                                         })
-                                         .success(function(response) {
+                                            // Sauvegarde des absences
+                                            $http({
+                                                url: API_URL + "absence/create",
+                                                method: "POST",
+                                                params: {'seance_id':idSeance,'depute_id':idDepute, 'heure':heure}
+                                              })
+                                              .success(function(response) {
 
-
-                                         });
-                                      }
+                                              });
+                                        }
 
 
                                     });
 
-
                                 });
 
-                              });
+                            });
 
-                           });
+                       });
 
+            })
+          }
 
-
-
-
-
-          }) // fin save Seance success
-
-        } // fin si online
+        }
 
 
-
-      }// fin scope save
-
-      // convertir date
 
   //*******************************************//
   // 03 ) FONCTIONS

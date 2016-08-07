@@ -11,15 +11,12 @@ app.controller('mainController', function($scope, $http, API_URL, $rootScope) {
      */
     if(navigator.onLine){
       $.getJSON( "../js/data/commissions.json", function( data ) {
-        //console.log(data)
         localStorage.setItem('commissions', JSON.stringify(data));
       });
       $.getJSON( "../js/data/deputes.json", function( data ) {
-        //console.log(data)
         localStorage.setItem('deputes', JSON.stringify(data));
       });
       $.getJSON( "../js/data/dernierpv.json", function( data ) {
-        //console.log(data)
         localStorage.setItem('mesDerniersPv', JSON.stringify(data));
       });
     }
@@ -116,21 +113,17 @@ app.controller('mainController', function($scope, $http, API_URL, $rootScope) {
 
 
 
-
-      //$scope.refreshSeance();
-
+      /**
+       * 2.2 Affiche / masque le conteneur de l'uploader de fichier audio / lecteur audio
+       *
+       * @param aucun paramètre
+       */
       $scope.toggleAudio = function(){
 
         $('#audio-panel').toggle();
         $('#toggle-audio-icon').hide();
 
       }
-
-
-
-
-
-
 
 
 });
