@@ -464,7 +464,14 @@ form#presence-form{
   margin: 10px;
 }
 
+html body.ng-scope{
+  overflow-y: auto;
+}
 
+
+.uk-modal-page, .uk-modal-page body{
+  overflow-y: auto;
+}
 //*******************************************//
 // 10 ) CLASSES + MIXINS + FUNCTIONS
 //*******************************************//

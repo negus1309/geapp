@@ -438,6 +438,12 @@ app.controller('workflowController', function($scope, $http, API_URL,$filter,$ro
         }
 
 
+        //2.12
+        $scope.supprimerPointODJ = function(){
+          $('.supprimer-pt').attr('disabled',false);
+        }
+
+
 
   //*******************************************//
   // 03 ) FONCTIONS

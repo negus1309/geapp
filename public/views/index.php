@@ -51,6 +51,8 @@
           <link href="<?= asset('css/uikit/components/placeholder.min.css') ?>" rel="stylesheet"  />
           <link href="<?= asset('css/uikit/components/placeholder.almost-flat.min.css') ?>" rel="stylesheet"  />
 
+          <!-- *** Sortable component  *** -->
+
         <!-- *** CSS Fontawesome (icons) *** -->
           <link href="<?= asset('css/font-awesome.min.css') ?>" rel="stylesheet"  />
 

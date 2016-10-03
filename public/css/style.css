@@ -320,6 +320,12 @@ form#presence-form th {
 .uk-panel {
   margin: 10px; }
 
+html body.ng-scope {
+  overflow-y: auto; }
+
+.uk-modal-page, .uk-modal-page body {
+  overflow-y: auto; }
+
 span.soumettre-pv:before, span.trash-pv:before, span.supprimer-pv:before, span.edit-pv:before, span.convert-pv:before, span.untrash-pv:before, button.nouveau-pv:before, span.supprimer-invite:before, span.supprimer-rapporteur:before, span.supprimer-odj:before, span.ajouter-invite:before, span.ajouter-odj:before, span.ajouter-rapporteur:before, div#menu span.recupererPv:before, div#menu span.retourAccueil:before, div#menu span.presenceCheck:before, .clock:before, span#status-network #status-online:before, span#status-network #status-offline:before {
   font-family: 'FontAwesome';
   src: url("../fonts/fontawesome-webfont.eot");

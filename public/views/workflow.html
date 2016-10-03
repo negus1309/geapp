@@ -103,11 +103,11 @@
                     <table class="uk-table uk-table-striped">
                       <tbody>
 
-                          <tr ng-repeat="rubrique in pv.rubriques">
+                          <tr ng-repeat="rubrique in pv.rubriques" class="uk-sortable" data-uk-sortable>
                             {{point}}
                             <td class="odj-numbered">{{$index+1}}</td>
                             <td><input type="text" class="uk-width-1-1" ng-model="rubrique.titre"/></td>
-                            <td><a href="#" ng-click="supprimerRubrique($index)" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-odj">supprimer</span></a></td>
+                            <td><button href="#" ng-click="supprimerRubrique($index)" class="uk-button uk-button-mini uk-button-danger supprimer-pt" disabled><span class="supprimer-odj">supprimer</span></button>&nbsp;<i class="uk-icon-warning"></td>
                           </tr>
 
                       </tbody>
@@ -117,6 +117,7 @@
               </div>
           <div class="uk-form-controls">
             <a href="#" ng-click="ajouterPointODJ()" class="uk-button uk-button-mini uk-button-success"><span class="ajouter-odj">Ajouter un point d'ODJ</span></a>
+            <a href="#" ng-click="supprimerPointODJ()" class="uk-button uk-button-mini uk-button-danger"><span class="supprimer-odj">Supprimer un point</span></a>
           </div>
 
         </div>
