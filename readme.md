@@ -1,27 +1,57 @@
-# Laravel PHP Framework
+#GEAPP POC
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+##Prérequis
+Premièrement, il faut copier le répertoire du code source (disponible sur le CD du travail) dans le répertoire de votre choix de votre ordinateur. Ensuite, il est nécessaire d’avoir quelques logiciels installés pour installer le projet :
+- Apache
+- PHP
+- MySQL
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Ils peuvent tous être installés avec un paquet de logiciels propre à chaque système d’exploitation :
+-	WAMP pour Windows
+www.wampserver.com
+-	MAMP pour Mac OS X
+www.mamp.info
+-	LAMP pour Linux
+www.lamphowto.com
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+##Base de données
+Une fois le serveur MySQL installé, il faut le démarrer. Rendez-vous ensuite dans l’interface d’administration phpmyadmin pour :
+-	Créer une nouvelle base de données et la nommer « geapp »
+-	Créer un nouvel utilisateur avec tous les droits :
+  - Nom d’utilisateur : « laravel »
+  - Mot de passe : « laravel »
 
-## Official Documentation
+Les informations sur la base de données et l’utilisateur peuvent être modifiées dans le fichier «.env», à la racine du répertoire du code source :
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=8889
+DB_DATABASE=geapp
+DB_USERNAME=laravel
+DB_PASSWORD=laravel
+```
+##Serveur PHP
+Ensuite il faut installer le serveur PHP (Laravel) via Composer. Composer est un gestionnaire de dépendances pour PHP nécessaire à l’installation de Laravel.
 
-## Contributing
+Pour installer Composer, rendez-vous à l’adresse suivante : https://getcomposer.org/download/
+Composer peut être installé de plusieurs façons, il suffit de suivre les instructions pour chaque système d’exploitation (https://getcomposer.org/doc/00-intro.md).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Quand Composer est installé, exécuter la commande suivante dans l’invite de commande ou le terminal pour installer Laravel :
+```
+composer global require "laravel/installer"
+```
+De l’aide supplémentaire pour installer Laravel peut être consultée ici : https://laravel.com/docs/master
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Lorsque Laravel est installé, il faut remplir la base de données à l’aide des tables de migration et des seeds. Pour cela, rendez-vous dans le dossier du projet à l’aide de l’invite de commande ou du terminal et exécuter les commandes suivantes :
+```
+composer dump-autoload
+php artisan migrate
+php artisan db:seed
+```
+##Exécution
+Pour lancer le serveur PHP et accéder à l’application web, il suffit d’exécuter la commande suivante (dans l’invite de commande ou le terminal) :
+```
+php artisan serve
+```
+L’application s’ouvre ensuite dans le navigateur web par défaut et peut être utilisée.
