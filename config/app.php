@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://morning-taiga-62860.herokuapp.com'),
 
     /*
     |--------------------------------------------------------------------------
